@@ -1,8 +1,9 @@
 'use strict';
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 const Hapi = require('hapi');
 const Path = require('path');
 const Inert = require('inert');
+var request = require('request');
 
 const server = new Hapi.Server({
   connections : {
@@ -17,6 +18,23 @@ const server = new Hapi.Server({
 server.connection({ port : PORT });
 
 server.register(Inert, () => {});
+
+//test route that pings the API and retrieves database data
+server.route({
+  method : 'GET',
+  path : '/brock',
+  handler : function (req, rep) {
+    request.get({
+      url : 'http://localhost:3000/annual',
+      json : true
+    }, (err, response, body) => {
+      if (err) {
+        return rep.status(500).json(err);
+      }
+      rep(body);
+    });
+  }
+});
 
 // serves index for angular
 server.route({
