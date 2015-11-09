@@ -153,7 +153,7 @@ select {
 /* line 223, bower_components/foundation/scss/foundation/components/_grid.scss */
 .row {
   margin: 0 auto;
-  max-width: 62.5rem;
+  max-width: 6.25rem;
   width: 100%; }
   /* line 239, bower_components/foundation/scss/foundation/components/_global.scss */
   .row:before, .row:after {
@@ -1201,14 +1201,31 @@ select {
     right: 91.66667%;
     left: auto; } }
 
-/* line 5, stdin */
+/* line 3, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_header.scss */
+header {
+  height: 100px;
+  width: 100%;
+  background-color: #eee; }
+
+/* line 5, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_footer.scss */
+footer nav {
+  display: inline;
+  width: 100%;
+  margin: 0 auto; }
+
+/* line 13, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_footer.scss */
+footer #attribution {
+  display: inline;
+  font-size: 12px; }
+
+/* line 7, stdin */
 * {
   margin: 0;
   padding: 0; }
 
-/* line 12, stdin */
+/* line 14, stdin */
 body {
   height: 100%;
   width: 100%;
   position: absolute;
-  background-color: #ccc; }
+  background-color: #fff; }

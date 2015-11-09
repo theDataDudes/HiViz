@@ -5,13 +5,13 @@ var livereload = require('gulp-livereload');
 
 // keeps gulp from crashing for scss errors
 gulp.task('sass', function () {
-  return gulp.src('./src/sass/*.scss')
+  return gulp.src('./src/sass/styles.scss')
       .pipe(sass({
         errLogToConsole : true,
         sourceComments : true, //adds comments to css //remove for final minify build
         includePaths: ['bower_components/foundation/scss']
       }).on('error', sass.logError))
-      .pipe(gulp.dest('./public/css'));
+      .pipe(gulp.dest('./public/css/'));
 });
 
 gulp.task('watch', function () {
