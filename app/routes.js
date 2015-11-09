@@ -4,9 +4,9 @@
 
   //defining routes
   exports.endpoints = [
-    { method : 'GET', path : '/api/annual', config : Controller.getAnnual },
-    { method : 'GET', path : '/api/expenditures', config : Controller.getExpenditures },
-    { method : 'GET', path : '/api/daily', config : Controller.getDaily },
+    { method : 'GET', path : '/annual', config : Controller.getAnnual },
+    { method : 'GET', path : '/expenditures', config : Controller.getExpenditures },
+    { method : 'GET', path : '/daily', config : Controller.getDaily },
     // serves index for angular
     { method : 'GET', path : '/', config : Controller.getIndex },
 
