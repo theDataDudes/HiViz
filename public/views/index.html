@@ -3,14 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <title>HiViz</title>
 </head>
 <body ng-app="hivisApp">
-  <div ui-view></div>
 
-  <a ui-sref="default">Home</a>
-  <a ui-sref="about">About</a>
+	<div id="mainViewContainer">
+
+		<header>
+
+			<h1 id="mainTitle">Hawaii Tourism Data Visualization</h1>
+
+			<h5 id="subtitle">Annual, Monthy, Daily Visitors by Origin and Island</h5>
+
+		</header>
+
+		<section id="sidebar" class="hide">
+
+			<h2 id="sideTitle">Side Title</h2>
+
+		</section>
+
+		<section id="mainContent">
+
+
+		</section>
+
+		<footer ui-view>
+
+			<a ui-sref="default">Home</a>
+
+		</footer>
+
+	</div>
+
   <script src="../js/vendors/jquery.js"></script>
   <script src="../js/vendors/foundation.min.js"></script>
   <script src="../js/vendors/angular.min.js"></script>
