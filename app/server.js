@@ -6,7 +6,7 @@
   const Inert = require('inert');
   const Config = require('./config');
   const Route = require('./routes');
-  var request = require('request');
+
 
   const server = new Hapi.Server({
     connections : {

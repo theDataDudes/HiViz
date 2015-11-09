@@ -1,5 +1,6 @@
 (function () {
   'use strict';
+var request = require('request');
 
   exports.getIndex = {
     handler : {

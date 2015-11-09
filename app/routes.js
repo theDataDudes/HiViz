@@ -1,6 +1,7 @@
 (function () {
   'use strict';
-  const Controller = require('./controller')
+  const Controller = require('./controller');
+
 
   //defining routes
   exports.endpoints = [
