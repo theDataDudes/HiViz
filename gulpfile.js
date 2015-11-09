@@ -22,7 +22,7 @@ gulp.task('watch', function () {
 
 gulp.task('start', function () {
   nodemon({
-    script : 'server.js',
+    script : './app/server.js',
     ext : 'js html',
     env : { 'NODE_ENV' : 'development' }
   })
@@ -31,7 +31,7 @@ gulp.task('start', function () {
     setTimeout(function() {
 
       console.log('restarted server!');
-      livereload.changed('server.js');
+      livereload.changed('./app/server.js');
 
     }, 500);
 

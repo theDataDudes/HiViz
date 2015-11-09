@@ -5,7 +5,6 @@ angular.module('hivisApp', [
 angular.module('hivisApp')
   .config( ($stateProvider, $urlRouterProvider) => {
     // for unmatched urls redirect to default view
-    $urlRouterProvider.otherwise('/default');
 
     $stateProvider
       .state('default', {
@@ -17,6 +16,7 @@ angular.module('hivisApp')
         templateUrl : 'views/about.html'
       });
 
+    $urlRouterProvider.otherwise('/');
   })
   .run(['$rootScope', '$state', '$stateParams', ($rootScope, $state, $stateParams) => {
     $rootScope.$state = $state;
