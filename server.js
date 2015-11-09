@@ -22,7 +22,7 @@ server.register(Inert, () => {});
 //test route that pings the API and retrieves database data
 server.route({
   method : 'GET',
-  path : '/brock',
+  path : '/annual',
   handler : function (req, rep) {
     request.get({
       url : 'http://localhost:3000/annual',
@@ -36,24 +36,58 @@ server.route({
   }
 });
 
+//test route that pings the API and retrieves database data
+server.route({
+  method : 'GET',
+  path : '/daily',
+  handler : function (req, rep) {
+    request.get({
+      url : 'http://localhost:3000/daily',
+      json : true
+    }, (err, response, body) => {
+      if (err) {
+        return rep.status(500).json(err);
+      }
+      rep(body);
+    });
+  }
+});
+
+//test route that pings the API and retrieves database data
+server.route({
+  method : 'GET',
+  path : '/expenditures',
+  handler : function (req, rep) {
+    request.get({
+      url : 'http://localhost:3000/expenditures',
+      json : true
+    }, (err, response, body) => {
+      if (err) {
+        return rep.status(500).json(err);
+      }
+      rep(body);
+    });
+  }
+});
+
 // serves index for angular
 server.route({
-    method: 'GET',
-    path: '/',
-    handler: {
-        file: 'views/index.html'
-    }
+  method : 'GET',
+  path : '/',
+  handler : {
+    file : 'views/index.html'
+  }
 });
 server.route({
-    method: 'GET',
-    path: '/{param*}',
-    handler : {
-        directory : {
-            path : '.',
-            redirectToSlash : true,
-            index : true
-        }
+  method : 'GET',
+  path : '/{param*}',
+  handler : {
+    directory : {
+      path : '.',
+      redirectToSlash : true,
+      index : true
     }
+  }
 });
 
 server.start( (err) => {
