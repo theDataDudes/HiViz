@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = () => {
-  return (collection, year) => {
+  return (collection, region) => {
     if (collection) {
       return collection.filter( (item) => {
-        return item.year == year;
+        return item.region == region;
       });
     }
   };

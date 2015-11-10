@@ -1398,7 +1398,6 @@ process.chdir = function (dir) {
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = ['apiService', '$scope', (apiService, $scope) => {
-  $scope.dataset = '';
   apiService.getAnnual()
     .success( (data) => {
       $scope.dataset = data;
@@ -1424,9 +1423,24 @@ module.exports = angular.module('app.charts', [])
 'use strict';
 module.exports = angular.module('app.service', [])
 .service('apiService', require('./services'))
-.filter('year', require('./yearFilter'));
+.filter('year', require('./yearFilter'))
+.filter('region', require('./regionFilter'));
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/index.js","/common")
-},{"./services":8,"./yearFilter":9,"buffer":2,"rH1JPG":4}],8:[function(require,module,exports){
+},{"./regionFilter":8,"./services":9,"./yearFilter":10,"buffer":2,"rH1JPG":4}],8:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+
+module.exports = () => {
+  return (collection, region) => {
+    if (collection) {
+      return collection.filter( (item) => {
+        return item.region == region;
+      });
+    }
+  };
+};
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/regionFilter.js","/common")
+},{"buffer":2,"rH1JPG":4}],9:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1444,18 +1458,21 @@ module.exports = ['$http', function apiService ($http) {
   };
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services.js","/common")
-},{"buffer":2,"rH1JPG":4}],9:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
 module.exports = () => {
-  return (years, input) => {
-    if (years == input)
-      return years;
+  return (collection, year) => {
+    if (collection) {
+      return collection.filter( (item) => {
+        return item.year == year;
+      });
+    }
   };
 };
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/yearFilter.js","/common")
-},{"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 angular.module('app', [
   'ui.router',
@@ -1467,8 +1484,8 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_681ca951.js","/")
-},{"./charts":6,"./common":7,"./main":11,"buffer":2,"rH1JPG":4}],11:[function(require,module,exports){
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_34ff7dbe.js","/")
+},{"./charts":6,"./common":7,"./main":12,"buffer":2,"rH1JPG":4}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1489,4 +1506,4 @@ module.exports = angular.module('app.main', [])
     $urlRouterProvider.otherwise('/');
   });
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/main/index.js","/main")
-},{"buffer":2,"rH1JPG":4}]},{},[10])
+},{"buffer":2,"rH1JPG":4}]},{},[11])
