@@ -1397,42 +1397,70 @@ process.chdir = function (dir) {
 },{"buffer":2,"rH1JPG":4}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = angular.module('hivisApp.service', [])
-.service('apiService', apiService);
+module.exports = ['apiService', '$scope', (apiService, $scope) => {
+  $scope.dataset = '';
+  apiService.getAnnual()
+    .success( (data) => {
+      $scope.dataset = data;
+     });
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/charts/controller.js","/charts")
+},{"buffer":2,"rH1JPG":4}],6:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+module.exports = angular.module('app.charts', [])
+  .directive('d3Charts', function () {
+    return {
+      scope : true,
+      controller : 'chartController',
+      controllerAs : 'chartctrl',
+      templateUrl : 'views/chart.html'
+    };
+  })
+  .controller('chartController', require('./controller'));
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/charts/index.js","/charts")
+},{"./controller":5,"buffer":2,"rH1JPG":4}],7:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+module.exports = angular.module('app.service', [])
+.service('apiService', require('./services'));
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/index.js","/common")
+},{"./services":8,"buffer":2,"rH1JPG":4}],8:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
 
-function apiService ($http) {
+module.exports = ['$http', function apiService ($http) {
   this.getAnnual = () => {
-    return $http.get('http://localhost:3000/annual');
+    return $http.get('http://localhost:8000/annual');
   };
 
   this.getDaily = () => {
-    return $http.get('http://localhost:3000/daily');
+    return $http.get('http://localhost:8000/daily');
   };
 
   this.getExpenditures = () => {
-    return $http.get('http://localhost:3000/expenditures');
+    return $http.get('http://localhost:8000/expenditures');
   };
-};
-
-apiService.$inject = ['$http'];
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/index.js","/common")
-},{"buffer":2,"rH1JPG":4}],6:[function(require,module,exports){
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services.js","/common")
+},{"buffer":2,"rH1JPG":4}],9:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-angular.module('hivisApp', [
+angular.module('app', [
   'ui.router',
-  require('./main').name,
-  require('./common').name
+  require('./common').name,
+  require('./charts').name,
+  require('./main').name
 ])
 .run(['$rootScope', '$state', '$stateParams', ($rootScope, $state, $stateParams) => {
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_56467984.js","/")
-},{"./common":5,"./main":7,"buffer":2,"rH1JPG":4}],7:[function(require,module,exports){
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_61a76c8a.js","/")
+},{"./charts":6,"./common":7,"./main":10,"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
-module.exports = angular.module('hivisApp.main', [])
+module.exports = angular.module('app.main', [])
 .config( ($stateProvider, $urlRouterProvider) => {
     // for unmatched urls redirect to default view
 
@@ -1449,4 +1477,4 @@ module.exports = angular.module('hivisApp.main', [])
     $urlRouterProvider.otherwise('/');
   });
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/main/index.js","/main")
-},{"buffer":2,"rH1JPG":4}]},{},[6])
+},{"buffer":2,"rH1JPG":4}]},{},[9])

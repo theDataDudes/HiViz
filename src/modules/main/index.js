@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = angular.module('hivisApp.main', [])
+module.exports = angular.module('app.main', [])
 .config( ($stateProvider, $urlRouterProvider) => {
     // for unmatched urls redirect to default view
 
