@@ -1,9 +1,7 @@
-angular.module('hivisApp', [
-  'ui.router'
-]);
+'use strict';
 
-angular.module('hivisApp')
-  .config( ($stateProvider, $urlRouterProvider) => {
+module.exports = angular.module('hivisApp.main', [])
+.config( ($stateProvider, $urlRouterProvider) => {
     // for unmatched urls redirect to default view
 
     $stateProvider
@@ -17,8 +15,4 @@ angular.module('hivisApp')
       });
 
     $urlRouterProvider.otherwise('/');
-  })
-  .run(['$rootScope', '$state', '$stateParams', ($rootScope, $state, $stateParams) => {
-    $rootScope.$state = $state;
-    $rootScope.$stateParams = $stateParams;
-  }]);
+  });
