@@ -153,7 +153,7 @@ select {
 /* line 223, bower_components/foundation/scss/foundation/components/_grid.scss */
 .row {
   margin: 0 auto;
-  max-width: 6.25rem;
+  max-width: 100%;
   width: 100%; }
   /* line 239, bower_components/foundation/scss/foundation/components/_global.scss */
   .row:before, .row:after {
@@ -1203,29 +1203,88 @@ select {
 
 /* line 3, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_header.scss */
 header {
-  height: 100px;
+  height: 12%;
+  min-height: 100px;
   width: 100%;
-  background-color: #eee; }
+  min-width: 480px;
+  background-color: RGBA(238, 238, 238, 0.7); }
+  /* line 11, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_header.scss */
+  header h1 {
+    font-size: 40px;
+    padding: 5px 0 0 10px; }
+    @media only screen and (max-width: 680px) {
+      /* line 11, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_header.scss */
+      header h1 {
+        font-size: 24px; } }
+  /* line 24, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_header.scss */
+  header h5 {
+    font-size: 14px;
+    padding: 0 0 0 10px; }
+    @media only screen and (max-width: 680px) {
+      /* line 24, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_header.scss */
+      header h5 {
+        font-size: 12px;
+        padding: 20px 0 0 10px; } }
 
-/* line 5, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_footer.scss */
-footer nav {
-  display: inline;
+/* line 3, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_mainContent.scss */
+#mainContent {
+  height: 100%;
   width: 100%;
-  margin: 0 auto; }
+  min-width: 480px; }
 
-/* line 13, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_footer.scss */
-footer #attribution {
-  display: inline;
-  font-size: 12px; }
+/* line 3, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_footer.scss */
+footer {
+  height: 12%;
+  background-color: RGBA(238, 238, 238, 0.7);
+  min-height: 100px; }
+  /* line 9, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_footer.scss */
+  footer #timeline {
+    display: block;
+    height: 50px;
+    width: 100%; }
+    /* line 17, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_footer.scss */
+    footer #timeline hr {
+      top: 30px;
+      background-color: gray;
+      height: 2px; }
+  /* line 27, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_footer.scss */
+  footer nav {
+    display: block;
+    width: 215px;
+    margin: 0 auto; }
+    /* line 33, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_footer.scss */
+    footer nav a {
+      padding: 0 10px; }
+  /* line 41, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_footer.scss */
+  footer #attribution {
+    display: block;
+    bottom: 0px;
+    width: 265px;
+    font-size: 12px; }
+  /* line 50, /Users/bryan/Develop/devleague/HiViz/src/sass/partials/_footer.scss */
+  footer a {
+    text-decoration: none; }
 
-/* line 7, stdin */
+/* line 8, stdin */
 * {
   margin: 0;
   padding: 0; }
 
-/* line 14, stdin */
+/* line 15, stdin */
+html {
+  height: 100%; }
+
+/* line 21, stdin */
 body {
   height: 100%;
   width: 100%;
   position: absolute;
   background-color: #fff; }
+
+/* line 30, stdin */
+#mainViewContainer {
+  height: 100%; }
+
+/* line 36, stdin */
+#contentContainer {
+  height: 76%; }

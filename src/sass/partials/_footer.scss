@@ -2,18 +2,54 @@
 
 footer {
 
+  height: 12%;
+  background-color: RGBA(238, 238, 238, 0.7);
+  min-height: 100px;
+
+  #timeline {
+
+    display: block;
+    height: 50px;
+    width: 100%;
+
+    //placehoder for d3 timeline
+
+    hr {
+
+      top: 30px;
+      background-color: gray;
+      height: 2px;
+
+    }
+
+  }
+
   nav {
 
-    display: inline;
-    width: 100%;
+    display: block;
+    width: 215px;
     margin: 0 auto;
+
+    a {
+
+      padding: 0 10px;
+
+    }
 
   }
 
   #attribution {
 
-    display: inline;
+    display: block;
+    bottom: 0px;
+    width: 265px;
     font-size: 12px;
+
+  }
+
+  a {
+
+    text-decoration: none;
 
   }
 

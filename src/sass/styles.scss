@@ -2,6 +2,7 @@
 @import 'partials/settings';
 @import 'foundation/components/grid';
 @import 'partials/header';
+@import 'partials/mainContent';
 @import 'partials/footer';
 
 * {
@@ -11,15 +12,29 @@
 
 }
 
+html {
+
+  height: 100%;
+
+}
+
 body {
 
   height:100%;
   width:100%;
   position:absolute;
   background-color: #fff;
+
 }
 
 #mainViewContainer {
 
+  height: 100%;
+
+}
+
+#contentContainer {
+
+  height: 76%;
 
 }
