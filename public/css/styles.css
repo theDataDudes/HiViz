@@ -958,8 +958,28 @@ header {
 
 #mainContent {
   height: 100%;
-  width: 100%;
   min-width: 480px; }
+
+#mapNav {
+  width: 350px;
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+  box-sizing: border-box; }
+  #mapNav:hover::after {
+    content: "nav bar currently centered on mainContent div which re-sizes. thus the nav moves. could refactor to have it stay static. thoughts?"; }
+  #mapNav ul {
+    box-sizing: border-box; }
+    #mapNav ul li {
+      display: inline;
+      height: 40px;
+      width: 40px;
+      box-sizing: border-box;
+      padding: 0 5px; }
+    #mapNav ul a {
+      width: 40px; }
+    #mapNav ul img {
+      height: 40px;
+      width: 40px; }
 
 footer {
   height: 12%;

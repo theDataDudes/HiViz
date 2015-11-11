@@ -3,7 +3,55 @@
 #mainContent {
 
   height: 100%;
-  width: 100%;
   min-width: 480px;
+
+}
+
+#mapNav {
+
+  width: 350px;
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+  box-sizing: border-box;
+
+  &:hover {
+
+    &::after {
+
+      content: "nav bar currently centered on mainContent div which re-sizes. thus the nav moves. could refactor to have it stay static. thoughts?";
+
+    }
+
+  }
+
+  ul {
+
+    box-sizing: border-box;
+
+    li {
+
+      display: inline;
+      height: 40px;
+      width: 40px;
+      box-sizing: border-box;
+      padding: 0 5px;
+
+    }
+
+    a {
+
+      width: 40px;
+    }
+
+    img {
+
+      height: 40px;
+      width: 40px;
+
+    }
+
+  }
+
+
 
 }
