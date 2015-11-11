@@ -1,5 +1,5 @@
 angular.module('app', [
-  'ui.router',
+    'ui.router',
   require('./common').name,
   require('./charts').name,
   require('./main').name

@@ -1401,7 +1401,7 @@ module.exports = ['apiService', '$scope', (apiService, $scope) => {
   apiService.getAnnual()
     .success( (data) => {
       $scope.dataset = data;
-     });
+    });
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/charts/controller.js","/charts")
 },{"buffer":2,"rH1JPG":4}],6:[function(require,module,exports){
@@ -1420,12 +1420,78 @@ module.exports = angular.module('app.charts', [])
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/charts/index.js","/charts")
 },{"./controller":5,"buffer":2,"rH1JPG":4}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+//directive for d3
+module.exports = [function () {
+  return {
+    restrict : 'EA',
+    scope : {},
+    templateUrl : 'views/chart.html',
+    link : function (scope, element, attrs) {
+          //code goes here
+  (function () {
+    var width = 960,
+        height = 600;
+
+    var rateById = d3.map();
+
+    var quantize = d3.scale.quantize()
+        .domain([0, .15])
+        .range(d3.range(9).map(function(i) { return 'q' + i + '-9'; }));
+
+    var projection = d3.geo.albersUsa()
+        .scale(1280)
+        .translate([width / 2, height / 2]);
+
+    var path = d3.geo.path()
+        .projection(projection);
+
+    var svg = d3.select('body').append('svg')
+        .attr('width', width)
+        .attr('height', height);
+
+    queue()
+        .defer(d3.json, './hawaii.geo.json')
+        // .defer(d3.tsv, 'unemployment.tsv', function(d) { rateById.set(d.id, +d.rate); })
+        .await(ready);
+
+    function ready(error, us) {
+      if (error) throw error;
+
+      svg.append('g')
+          .attr('class', 'counties')
+        .selectAll('path')
+          .data(geojson.feature(us, us.objects.counties).features)
+        .enter().append('path')
+          .attr('class', function(d) { return quantize(rateById.get(d.id)); })
+          .attr('d', path);
+
+      svg.append('path')
+          .datum(geojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+          .attr('class', 'states')
+          .attr('d', path);
+    }
+
+    d3.select(self.frameElement).style('height', height + 'px');
+  })();
+    }
+  }
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/factories/d3Directives.js","/common/factories")
+},{"buffer":2,"rH1JPG":4}],8:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+
+module.exports = angular.module('app.common.factories', [])
+  .directive('dThreeChoropleth', require('./d3Directives'));
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/factories/index.js","/common/factories")
+},{"./d3Directives":7,"buffer":2,"rH1JPG":4}],9:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.common.filters', [])
 .filter('region', require('./regionFilter'))
 .filter('year', require('./yearFilter'));
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/filters/index.js","/common/filters")
-},{"./regionFilter":8,"./yearFilter":9,"buffer":2,"rH1JPG":4}],8:[function(require,module,exports){
+},{"./regionFilter":10,"./yearFilter":11,"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1439,7 +1505,7 @@ module.exports = () => {
   };
 };
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/filters/regionFilter.js","/common/filters")
-},{"buffer":2,"rH1JPG":4}],9:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1453,16 +1519,17 @@ module.exports = () => {
   };
 };
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/filters/yearFilter.js","/common/filters")
-},{"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
 module.exports = angular.module('app.common', [
   require('./services').name,
-  require('./filters').name
+  require('./filters').name,
+  require('./factories').name
 ]);
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/index.js","/common")
-},{"./filters":7,"./services":12,"buffer":2,"rH1JPG":4}],11:[function(require,module,exports){
+},{"./factories":8,"./filters":9,"./services":14,"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1480,16 +1547,16 @@ module.exports = ['$http', function apiService ($http) {
   };
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/apiService.js","/common/services")
-},{"buffer":2,"rH1JPG":4}],12:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.common.services', [])
 .service('apiService', require('./apiService'));
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/index.js","/common/services")
-},{"./apiService":11,"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
+},{"./apiService":13,"buffer":2,"rH1JPG":4}],15:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 angular.module('app', [
-  'ui.router',
+    'ui.router',
   require('./common').name,
   require('./charts').name,
   require('./main').name
@@ -1498,8 +1565,8 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c9dfff5.js","/")
-},{"./charts":6,"./common":10,"./main":14,"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_426f82bd.js","/")
+},{"./charts":6,"./common":12,"./main":16,"buffer":2,"rH1JPG":4}],16:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1520,4 +1587,4 @@ module.exports = angular.module('app.main', [])
     $urlRouterProvider.otherwise('/');
   });
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/main/index.js","/main")
-},{"buffer":2,"rH1JPG":4}]},{},[13])
+},{"buffer":2,"rH1JPG":4}]},{},[15])
