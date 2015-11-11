@@ -1397,12 +1397,14 @@ process.chdir = function (dir) {
 },{"buffer":2,"rH1JPG":4}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = ['apiService', '$scope', (apiService, $scope) => {
+module.exports = ['apiService', service];
+
+function service (apiService) {
   apiService.getAnnual()
     .success( (data) => {
-      $scope.dataset = data;
+      this.dataset = data;
      });
-}];
+};
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/charts/controller.js","/charts")
 },{"buffer":2,"rH1JPG":4}],6:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
@@ -1478,15 +1480,32 @@ module.exports = ['$http', function apiService ($http) {
   this.getExpenditures = () => {
     return $http.get('http://localhost:8000/expenditures');
   };
+
+  this.getAvgStay = () => {
+    return $http.get('http://localhost:8000/avgstay');
+  };
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/apiService.js","/common/services")
 },{"buffer":2,"rH1JPG":4}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.common.services', [])
-.service('apiService', require('./apiService'));
+.service('apiService', require('./apiService'))
+.service('relationalService', require('./relationalService'));
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/index.js","/common/services")
-},{"./apiService":11,"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
+},{"./apiService":11,"./relationalService":13,"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+
+module.exports = ['apiService', function relationalService (apiService) {
+
+  this.stitch = (passengers, expenditures, stay) => {
+
+  };
+
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/relationalService.js","/common/services")
+},{"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 angular.module('app', [
   'ui.router',
@@ -1498,8 +1517,8 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c9dfff5.js","/")
-},{"./charts":6,"./common":10,"./main":14,"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_8ae7d7c5.js","/")
+},{"./charts":6,"./common":10,"./main":15,"buffer":2,"rH1JPG":4}],15:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1520,4 +1539,4 @@ module.exports = angular.module('app.main', [])
     $urlRouterProvider.otherwise('/');
   });
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/main/index.js","/main")
-},{"buffer":2,"rH1JPG":4}]},{},[13])
+},{"buffer":2,"rH1JPG":4}]},{},[14])

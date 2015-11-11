@@ -5,10 +5,11 @@
   <input type="text" placeholder="region" ng-model="regionInput" />
 </div>
 <ul>
-  <li ng-repeat="data in dataset | year:yearInput | region:regionInput">
+  <li ng-repeat="data in chartctrl.dataset | year:yearInput | region:regionInput">
     {{ data.year }}
     {{ data.region }}
     {{ data.reference }}
     {{ data.JAN }}
+    {{ data.TOTAL }}
   </li>
  </ul>

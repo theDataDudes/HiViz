@@ -12,4 +12,8 @@ module.exports = ['$http', function apiService ($http) {
   this.getExpenditures = () => {
     return $http.get('http://localhost:8000/expenditures');
   };
+
+  this.getAvgStay = () => {
+    return $http.get('http://localhost:8000/avgstay');
+  };
 }];
