@@ -1012,8 +1012,54 @@ header {
 
 #mainContent {
   height: 100%;
-  width: 100%;
   min-width: 480px; }
+
+#mapNav {
+  width: 350px;
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+  box-sizing: border-box; }
+  #mapNav ul {
+    box-sizing: border-box; }
+    #mapNav ul li {
+      display: inline;
+      height: 40px;
+      width: 40px;
+      box-sizing: border-box;
+      padding: 0 5px; }
+    #mapNav ul a {
+      width: 40px; }
+      #mapNav ul a:active {
+        position: relative;
+        top: 1px; }
+    #mapNav ul img {
+      height: 40px;
+      width: 40px; }
+
+#timeNav {
+  width: 100px;
+  height: 150px;
+  float: right;
+  margin: -40px 20px 0 0; }
+  #timeNav ul {
+    list-style-type: none; }
+    #timeNav ul li {
+      box-sizing: border-box;
+      border: 1px solid black;
+      border-bottom: none; }
+      #timeNav ul li:last-child {
+        border-bottom: 1px solid black; }
+  #timeNav button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    height: 50px;
+    width: 100px;
+    box-sizing: border-box;
+    font-size: 16px; }
+    #timeNav button:active {
+      position: relative;
+      top: 1px; }
 
 .background {
   fill: none;

@@ -3,7 +3,113 @@
 #mainContent {
 
   height: 100%;
-  width: 100%;
   min-width: 480px;
+
+}
+
+#mapNav {
+
+  width: 350px;
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+  box-sizing: border-box;
+
+  //todo remove this hover
+
+  &:hover {
+
+    //&::after {
+    //
+    //  content: "nav bar currently centered on mainContent div which re-sizes. thus the nav moves. could refactor to have it stay static. thoughts?";
+    //
+    //}
+
+  }
+
+  ul {
+
+    box-sizing: border-box;
+
+    li {
+
+      display: inline;
+      height: 40px;
+      width: 40px;
+      box-sizing: border-box;
+      padding: 0 5px;
+
+    }
+
+    a {
+
+      width: 40px;
+
+      &:active {
+
+        position: relative;
+        top: 1px;
+
+      }
+
+    }
+
+    img {
+
+      height: 40px;
+      width: 40px;
+
+    }
+
+  }
+
+}
+
+#timeNav {
+
+  width: 100px;
+  height: 150px;
+  float: right;
+  margin: -40px 20px 0 0;
+
+
+  ul {
+
+    list-style-type: none;
+
+    li {
+
+      box-sizing: border-box;
+      border: 1px solid black;
+      border-bottom: none;
+      //border-radius: 5px 5px 5px 5px;
+
+      &:last-child {
+
+        border-bottom: 1px solid black;
+
+      }
+
+    }
+
+  }
+
+  button {
+
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    height: 50px;
+    width: 100px;
+    box-sizing: border-box;
+    font-size: 16px;
+
+    &:active {
+
+      position: relative;
+      top: 1px;
+
+    }
+
+  }
 
 }
