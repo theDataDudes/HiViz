@@ -1032,13 +1032,21 @@ svg {
   #mapNav ul {
     box-sizing: border-box; }
     #mapNav ul li {
-      display: inline;
+      display: inline-block;
       height: 40px;
-      width: 40px;
+      width: 50px;
       box-sizing: border-box;
       padding: 0 5px; }
+      #mapNav ul li p {
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+        box-sizing: border-box;
+        font-size: 12px;
+        text-align: center; }
     #mapNav ul a {
-      width: 40px; }
+      width: 40px;
+      height: 40px; }
       #mapNav ul a:active {
         position: relative;
         top: 1px; }
@@ -1096,12 +1104,12 @@ svg {
 #pipContainer {
   border: 1px solid gray;
   width: 300px;
-  height: 150px;
+  height: 200px;
   position: absolute;
   left: 50px;
   bottom: 50px;
   z-index: 2;
-  background: url(/assets/worldMap.png);
+  background: url(/assets/chart.gif);
   background-size: cover; }
 
 .background {
