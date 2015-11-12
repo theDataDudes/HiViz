@@ -19,21 +19,49 @@
 
 		</header>
 
-		<div id="contentContainer" class="row">
+		<div id="contentContainer" class="row small-collapse">
 
-			<section id="sidebar" class="ng-hide" class="large-2 columns">
+			<div id="sidebar" class="small-2 columns">
 
 				<h2 id="sideTitle">Side Title</h2>
 
-			</section>
+					<d3-charts></d3-charts>
 
-			<section id="mainContent" class="small-12 columns">
+			</div>
 
-      <d3-charts></d3-charts>
+			<div id="mainContent" class="small-10 columns">
 
-      <c3-charts></c3-charts>
+				<!--<d-three-choropleth></d-three-choropleth>-->
 
-      </section>
+				<nav id="mapNav">
+
+					<!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
+
+					<ul>
+						<li><a href=""><img src="../assets/dollar.svg" alt="spending"></a></li><!--
+						--><li><a href=""><img src="../assets/plane.svg" alt="flights"></a></li><!--
+						--><li><a href=""><img src="../assets/bed.svg" alt="lodging"></a></li><!--
+						--><li><a href=""><img src="../assets/car.svg" alt="transportation"></a></li><!--
+						--><li><a href=""><img src="../assets/creditcard.svg" alt="shopping"></a></li><!--
+						--><li><a href=""><img src="../assets/utensil.svg" alt="food"></a></li><!--
+						--><li><a href=""><img src="../assets/tickets.svg" alt="entertainment"></a></li>
+					</ul>
+
+				</nav>
+
+				<nav id="timeNav">
+
+					<ul>
+						<li><button>Annual</button></li><!--
+						--><li><button>Monthly</button></li><!--
+						--><li><button>Daily</button></li>
+					</ul>
+
+				</nav>
+
+  <c3-charts></c3-charts>
+
+			</div>
 
 		</div>
 
@@ -47,6 +75,9 @@
 
   <script src="../js/vendors/jquery.js"></script>
   <script src="../js/vendors/foundation.min.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/queue.v1.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
   <script src="../js/vendors/angular.min.js"></script>
   <script src="../js/vendors/d3.min.js"></script>
   <script src="../js/vendors/c3.min.js"></script>

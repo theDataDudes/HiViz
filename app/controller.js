@@ -59,4 +59,17 @@ var request = require('request');
       });
     }
   };
+  exports.getAvgStay = {
+  handler : function (req, rep) {
+      request.get({
+        url : 'http://localhost:3000/avgstay',
+        json : true
+      }, (err, response, body) => {
+        if (err) {
+          return rep.status(500).json(err);
+        }
+        rep(body);
+      });
+    }
+  };
 })();
