@@ -1401,10 +1401,40 @@ module.exports = ['apiService', '$scope', (apiService, $scope) => {
   apiService.getAnnual()
     .success( (data) => {
       $scope.dataset = data;
+
+
+
+      data.forEach( function(d) {
+
+      });
+     });
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/c3-charts/controller.js","/c3-charts")
+},{"buffer":2,"rH1JPG":4}],6:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+module.exports = angular.module('app.c3-charts', ['gridshore.c3js.chart'])
+  .directive('c3Charts', function () {
+    return {
+      scope : true,
+      controller : 'GraphCtrl',
+      controllerAs : 'graphtCtrl',
+      templateUrl : 'views/c3.html'
+    };
+  })
+  .controller('GraphCtrl', require('./controller'));
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/c3-charts/index.js","/c3-charts")
+},{"./controller":5,"buffer":2,"rH1JPG":4}],7:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+module.exports = ['apiService', '$scope', (apiService, $scope) => {
+  apiService.getAnnual()
+    .success( (data) => {
+      $scope.dataset = data;
      });
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/charts/controller.js","/charts")
-},{"buffer":2,"rH1JPG":4}],6:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],8:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.charts', [])
@@ -1418,7 +1448,7 @@ module.exports = angular.module('app.charts', [])
   })
   .controller('chartController', require('./controller'));
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/charts/index.js","/charts")
-},{"./controller":5,"buffer":2,"rH1JPG":4}],7:[function(require,module,exports){
+},{"./controller":7,"buffer":2,"rH1JPG":4}],9:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.service', [])
@@ -1426,7 +1456,7 @@ module.exports = angular.module('app.service', [])
 .filter('year', require('./yearFilter'))
 .filter('region', require('./regionFilter'));
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/index.js","/common")
-},{"./regionFilter":8,"./services":9,"./yearFilter":10,"buffer":2,"rH1JPG":4}],8:[function(require,module,exports){
+},{"./regionFilter":10,"./services":11,"./yearFilter":12,"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1440,7 +1470,7 @@ module.exports = () => {
   };
 };
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/regionFilter.js","/common")
-},{"buffer":2,"rH1JPG":4}],9:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1458,7 +1488,7 @@ module.exports = ['$http', function apiService ($http) {
   };
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services.js","/common")
-},{"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1472,20 +1502,21 @@ module.exports = () => {
   };
 };
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/yearFilter.js","/common")
-},{"buffer":2,"rH1JPG":4}],11:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 angular.module('app', [
   'ui.router',
   require('./common').name,
   require('./charts').name,
+  require('./c3-charts').name,
   require('./main').name
 ])
 .run(['$rootScope', '$state', '$stateParams', ($rootScope, $state, $stateParams) => {
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_34ff7dbe.js","/")
-},{"./charts":6,"./common":7,"./main":12,"buffer":2,"rH1JPG":4}],12:[function(require,module,exports){
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_3b348e21.js","/")
+},{"./c3-charts":6,"./charts":8,"./common":9,"./main":14,"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1506,4 +1537,4 @@ module.exports = angular.module('app.main', [])
     $urlRouterProvider.otherwise('/');
   });
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/main/index.js","/main")
-},{"buffer":2,"rH1JPG":4}]},{},[11])
+},{"buffer":2,"rH1JPG":4}]},{},[13])
