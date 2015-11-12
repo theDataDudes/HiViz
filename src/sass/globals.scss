@@ -13,6 +13,9 @@ $small: "only screen and (max-width: 680px)";
 #states {
   fill: #aaa;
 }
+svg {
+  z-index: 1;
+}
 
 #states .active {
   fill: #87CEFA;

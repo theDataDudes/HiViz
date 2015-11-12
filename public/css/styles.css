@@ -5,6 +5,9 @@
 #states {
   fill: #aaa; }
 
+svg {
+  z-index: 1; }
+
 #states .active {
   fill: #87CEFA; }
 
@@ -961,6 +964,9 @@ select {
 #states {
   fill: #aaa; }
 
+svg {
+  z-index: 1; }
+
 #states .active {
   fill: #87CEFA; }
 
@@ -998,6 +1004,9 @@ header {
 
 #states {
   fill: #aaa; }
+
+svg {
+  z-index: 1; }
 
 #states .active {
   fill: #87CEFA; }
@@ -1070,6 +1079,9 @@ header {
 #states {
   fill: #aaa; }
 
+svg {
+  z-index: 1; }
+
 #states .active {
   fill: #87CEFA; }
 
@@ -1098,6 +1110,9 @@ header {
 
 #states {
   fill: #aaa; }
+
+svg {
+  z-index: 1; }
 
 #states .active {
   fill: #87CEFA; }
