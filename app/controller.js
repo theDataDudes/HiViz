@@ -72,4 +72,17 @@ var request = require('request');
       });
     }
   };
+  exports.getHawaiiVisitors = {
+  handler : function (req, rep) {
+      request.get({
+        url : 'http://localhost:3000/hawaiivisitors',
+        json : true
+      }, (err, response, body) => {
+        if (err) {
+          return rep.status(500).json(err);
+        }
+        rep(body);
+      });
+    }
+  };
 })();
