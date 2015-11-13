@@ -9,10 +9,15 @@ module.exports = angular.module('app.main', [])
         url : '/',
         templateUrl : 'views/default.html'
       })
+      .state('graph', {
+        url : '/graph',
+        templateUrl : 'views/graph.html'
+      })
       .state('about', {
         url : '/about',
         templateUrl : 'views/about.html'
       });
+
 
     $urlRouterProvider.otherwise('/');
   });
