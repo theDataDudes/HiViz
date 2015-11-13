@@ -9,15 +9,18 @@ module.exports = [function () {
       var height = 500;
       var centered;
 
+      d3.select(window)
+        .on('resize', sizeChange);
+
       var projection = d3.geo.albersUsa()
-          .scale(1070)
-          .translate([width / 2, height / 2]);
+          .scale(4280)
+          .translate([width / 0.80, -550]);
 
       var path = d3.geo.path()
           .projection(projection);
 
       var svg = d3.select('#mainContent').append('svg')
-          .attr('width', width)
+          .attr('width', '80%')
           .attr('height', height);
 
       svg.append('rect')
@@ -70,6 +73,12 @@ module.exports = [function () {
             .duration(750)
             .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
             .style('stroke-width', 1.5 / k + 'px');
+      }
+
+      function sizeChange () {
+        d3.select('g')
+          .attr('transform', 'scale(' + $('#mainContent').width() / 900 + ')');
+          $('svg').height($('#mainContent').width() * 0.618);
       }
 
     }

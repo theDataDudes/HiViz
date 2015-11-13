@@ -1465,15 +1465,18 @@ module.exports = [function () {
       var height = 500;
       var centered;
 
+      d3.select(window)
+        .on('resize', sizeChange);
+
       var projection = d3.geo.albersUsa()
-          .scale(1070)
-          .translate([width / 2, height / 2]);
+          .scale(4280)
+          .translate([width / 0.80, -550]);
 
       var path = d3.geo.path()
           .projection(projection);
 
       var svg = d3.select('#mainContent').append('svg')
-          .attr('width', width)
+          .attr('width', '80%')
           .attr('height', height);
 
       svg.append('rect')
@@ -1526,6 +1529,12 @@ module.exports = [function () {
             .duration(750)
             .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
             .style('stroke-width', 1.5 / k + 'px');
+      }
+
+      function sizeChange () {
+        d3.select('g')
+          .attr('transform', 'scale(' + $('#mainContent').width() / 900 + ')');
+          $('svg').height($('#mainContent').width() * 0.618);
       }
 
     }
@@ -1638,7 +1647,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_821abc75.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9adf8747.js","/")
 },{"./c3-charts":6,"./charts":8,"./common":14,"./main":19,"buffer":2,"rH1JPG":4}],19:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';

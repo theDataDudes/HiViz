@@ -13,18 +13,7 @@
   margin: 0 auto;
   padding: 20px 0 0 0;
   box-sizing: border-box;
-
-  //todo remove this hover
-
-  &:hover {
-
-    //&::after {
-    //
-    //  content: "nav bar currently centered on mainContent div which re-sizes. thus the nav moves. could refactor to have it stay static. thoughts?";
-    //
-    //}
-
-  }
+  z-index: 2;
 
   ul {
 
@@ -32,17 +21,29 @@
 
     li {
 
-      display: inline;
+      display: inline-block;
       height: 40px;
-      width: 40px;
+      width: 50px;
       box-sizing: border-box;
       padding: 0 5px;
+
+      p {
+
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+        box-sizing: border-box;
+        font-size: 12px;
+        text-align: center;
+
+      }
 
     }
 
     a {
 
       width: 40px;
+      height: 40px;
 
       &:active {
 
@@ -69,7 +70,8 @@
   width: 100px;
   height: 150px;
   float: right;
-  margin: -40px 20px 0 0;
+  margin: -60px 20px 0 0;
+  z-index: 2;
 
 
   ul {
