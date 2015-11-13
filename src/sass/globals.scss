@@ -29,3 +29,9 @@ svg {
   stroke-linecap: round;
   pointer-events: none;
 }
+
+.vertical {
+
+  transform: rotate(270deg);
+
+}

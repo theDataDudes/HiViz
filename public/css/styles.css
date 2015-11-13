@@ -19,6 +19,9 @@ svg {
   stroke-linecap: round;
   pointer-events: none; }
 
+.vertical {
+  transform: rotate(270deg); }
+
 meta.foundation-version {
   font-family: "/5.5.3/"; }
 
@@ -978,12 +981,16 @@ svg {
   stroke-linecap: round;
   pointer-events: none; }
 
+.vertical {
+  transform: rotate(270deg); }
+
 header {
   height: 12%;
   min-height: 100px;
   width: 100%;
   min-width: 480px;
-  background-color: RGBA(238, 238, 238, 0.7); }
+  background-color: RGBA(238, 238, 238, 0.7);
+  border-bottom: 1px solid gray; }
   header h1 {
     font-size: 40px;
     padding: 5px 0 0 10px; }
@@ -1019,9 +1026,55 @@ svg {
   stroke-linecap: round;
   pointer-events: none; }
 
+.vertical {
+  transform: rotate(270deg); }
+
+#sidebar {
+  background-color: #fff;
+  height: 100%;
+  border-right: 1px solid gray; }
+
+.background {
+  fill: none;
+  pointer-events: all; }
+
+#states {
+  fill: #aaa; }
+
+svg {
+  z-index: 1; }
+
+#states .active {
+  fill: #87CEFA; }
+
+#state-borders {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none; }
+
+.vertical {
+  transform: rotate(270deg); }
+
 #mainContent {
   height: 100%;
   min-width: 480px; }
+  #mainContent #toggleViewButton {
+    width: 100px;
+    height: 30px;
+    left: -35px;
+    top: 40%;
+    position: absolute;
+    background: transparent;
+    border: 1px solid gray;
+    border-top: none;
+    z-index: 2;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #111; }
 
 #mapNav {
   width: 350px;
@@ -1101,6 +1154,9 @@ svg {
   stroke-linecap: round;
   pointer-events: none; }
 
+.vertical {
+  transform: rotate(270deg); }
+
 #pipContainer {
   border: 1px solid gray;
   width: 300px;
@@ -1133,10 +1189,14 @@ svg {
   stroke-linecap: round;
   pointer-events: none; }
 
+.vertical {
+  transform: rotate(270deg); }
+
 footer {
   height: 12%;
   background-color: RGBA(238, 238, 238, 0.7);
-  min-height: 100px; }
+  min-height: 100px;
+  border-top: 1px solid gray; }
   footer #timeline {
     display: block;
     height: 50px;
@@ -1147,8 +1207,9 @@ footer {
       height: 2px; }
   footer nav {
     display: block;
-    width: 305px;
-    margin: 0 auto; }
+    width: 220px;
+    margin: 0 auto;
+    font-size: 16px; }
     footer nav a {
       padding: 0 10px; }
   footer #attribution {
