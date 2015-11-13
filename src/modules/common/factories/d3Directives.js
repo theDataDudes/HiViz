@@ -35,7 +35,7 @@ module.exports = [function () {
         if (error) throw error;
 
         g.append('g')
-            .attr('id', 'states')
+            .attr('id', 'islands')
           .selectAll('path')
             .data(hawaii.features)
           .enter().append('path')
@@ -44,7 +44,7 @@ module.exports = [function () {
 
         g.append('path')
             .datum(hawaii.features, function(a, b) { return a !== b; })
-            .attr('id', 'state-borders')
+            .attr('id', 'island-borders')
             .attr('d', path);
       });
 
@@ -78,7 +78,7 @@ module.exports = [function () {
       function sizeChange () {
         d3.select('g')
           .attr('transform', 'scale(' + $('#mainContent').width() / 900 + ')');
-          $('svg').height($('#mainContent').width() * 0.618);
+        $('svg').height($('#mainContent').width() * 0.618);
       }
 
     }
