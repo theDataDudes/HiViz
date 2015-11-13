@@ -17,26 +17,6 @@ $small: "only screen and (max-width: 680px)";
   pointer-events: all;
 }
 
-#states {
-  fill: #aaa;
-}
-svg {
-  z-index: 1;
-}
-
-#states .active {
-  fill: #87CEFA;
-}
-
-#state-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  pointer-events: none;
-}
-
 .vertical {
 
   transform: rotate(270deg);

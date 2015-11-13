@@ -2,23 +2,6 @@
   fill: none;
   pointer-events: all; }
 
-#states {
-  fill: #aaa; }
-
-svg {
-  z-index: 1; }
-
-#states .active {
-  fill: #87CEFA; }
-
-#state-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  pointer-events: none; }
-
 .vertical {
   transform: rotate(270deg); }
 
@@ -964,23 +947,6 @@ select {
   fill: none;
   pointer-events: all; }
 
-#states {
-  fill: #aaa; }
-
-svg {
-  z-index: 1; }
-
-#states .active {
-  fill: #87CEFA; }
-
-#state-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  pointer-events: none; }
-
 .vertical {
   transform: rotate(270deg); }
 
@@ -1009,23 +975,6 @@ header {
   fill: none;
   pointer-events: all; }
 
-#states {
-  fill: #aaa; }
-
-svg {
-  z-index: 1; }
-
-#states .active {
-  fill: #87CEFA; }
-
-#state-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  pointer-events: none; }
-
 .vertical {
   transform: rotate(270deg); }
 
@@ -1037,23 +986,6 @@ svg {
 .background {
   fill: none;
   pointer-events: all; }
-
-#states {
-  fill: #aaa; }
-
-svg {
-  z-index: 1; }
-
-#states .active {
-  fill: #87CEFA; }
-
-#state-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  pointer-events: none; }
 
 .vertical {
   transform: rotate(270deg); }
@@ -1137,42 +1069,17 @@ svg {
   fill: none;
   pointer-events: all; }
 
-#states {
-  fill: #aaa; }
-
-svg {
-  z-index: 1; }
-
-#states .active {
-  fill: #87CEFA; }
-
-#state-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  pointer-events: none; }
-
 .vertical {
   transform: rotate(270deg); }
 
 #pipContainer {
-  border: 1px solid gray;
-  width: 300px;
-  height: 200px;
   position: absolute;
   left: 25px;
-  bottom: 25px;
-  z-index: 2;
-  background: url(/assets/chart.gif);
-  background-size: cover; }
+  bottom: 125px;
+  z-index: 2; }
 
 #islands {
   fill: #aaa; }
-
-svg {
-  z-index: 1; }
 
 #islands .active {
   fill: #87CEFA; }
@@ -1194,26 +1101,23 @@ svg {
   border-radius: 2px;
   transition: opacity 0.3s; }
 
+svg#barChart {
+  z-index: 2;
+  position: absolute; }
+
+#barRect {
+  z-index: 2;
+  position: absolute; }
+
+.background {
+  z-index: 1; }
+
+#islandMap {
+  z-index: 1; }
+
 .background {
   fill: none;
   pointer-events: all; }
-
-#states {
-  fill: #aaa; }
-
-svg {
-  z-index: 1; }
-
-#states .active {
-  fill: #87CEFA; }
-
-#state-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  pointer-events: none; }
 
 .vertical {
   transform: rotate(270deg); }
