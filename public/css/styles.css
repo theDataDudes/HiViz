@@ -992,11 +992,11 @@ header {
 
 #mainContent {
   height: 100%;
-  min-width: 480px; }
+  min-width: 800px; }
   #mainContent #toggleViewButton {
     width: 100px;
-    height: 30px;
-    left: -35px;
+    height: 25px;
+    left: -38px;
     top: 40%;
     position: absolute;
     background: transparent;
@@ -1039,11 +1039,38 @@ header {
       height: 40px;
       width: 40px; }
 
+#viewNav {
+  width: 110px;
+  height: 50px;
+  float: left;
+  margin: -60px 0 0 25px;
+  z-index: 2;
+  box-sizing: border-box; }
+  #viewNav ul {
+    list-style-type: none; }
+    #viewNav ul li {
+      display: inline-block;
+      box-sizing: border-box;
+      border: 1px solid black; }
+      #viewNav ul li:last-child {
+        border-left: none; }
+  #viewNav button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    box-sizing: border-box;
+    font-size: 12px; }
+    #viewNav button:active {
+      position: relative;
+      top: 1px; }
+
 #timeNav {
   width: 100px;
   height: 150px;
   float: right;
-  margin: -60px 20px 0 0;
+  margin: -60px 25px 0 0;
   z-index: 2; }
   #timeNav ul {
     list-style-type: none; }
