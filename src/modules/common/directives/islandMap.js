@@ -9,16 +9,21 @@ module.exports = [function () {
       var height = 500;
       var centered;
 
+      // if the window size changes, call the sizeChange function
       d3.select(window)
         .on('resize', sizeChange);
 
+      //setting up the projection. scaled to half of main container and
+      // translated to the right middle of the page
       var projection = d3.geo.albersUsa()
           .scale(4280)
           .translate([width / 0.80, -590]);
 
+      //setting up the path
       var path = d3.geo.path()
           .projection(projection);
 
+      //appending the svg element to the main container
       var svg = d3.select('#mainContent').append('svg')
           .attr('width', '80%')
           .attr('height', height);
@@ -29,7 +34,7 @@ module.exports = [function () {
           .attr('height', height)
           .on('click', clicked);
 
-      //defining a tooltip
+      //defining the tooltip
       mapTip = d3.tip()
         .attr('class', 'd3-tip')
         .html(function (d) {
@@ -40,9 +45,11 @@ module.exports = [function () {
 
       var g = svg.append('g');
 
+      //loading the geojson data
       d3.json('/hawaii.json', function(error, hawaii) {
         if (error) throw error;
 
+        //appending the data to the path and drawing the map
         g.append('g')
             .attr('id', 'islands')
           .selectAll('path')
@@ -57,11 +64,13 @@ module.exports = [function () {
             .attr('d', path);
       });
 
+      //on path click function
       function clicked(d) {
         var x;
         var y;
         var k;
 
+        //if one island is clicked...
         if (d && centered !== d) {
           var centroid = path.centroid(d);
           x = centroid[0];
@@ -69,6 +78,8 @@ module.exports = [function () {
           k = 4;
           centered = d;
           mapTip.show(d);
+
+        //if no islands are selected
         } else {
           x = width / 2;
           y = height / 2;
@@ -80,12 +91,14 @@ module.exports = [function () {
         g.selectAll('path')
             .classed('active', centered && function(d) { return d === centered; });
 
+        //adjusts size and projection of map when single island is clicked
         g.transition()
             .duration(750)
             .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
             .style('stroke-width', 1.5 / k + 'px');
       }
 
+      //changes the size of the map as browser window size changes
       function sizeChange () {
         d3.select('g')
           .attr('transform', 'scale(' + $('#mainContent').width() / 900 + ')');
