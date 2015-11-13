@@ -1471,15 +1471,16 @@ module.exports = [function () {
     link : function () {
 
       // fake data
-      dataset = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
+      dataset = [4,8,12,16,24,50];
 
       //Width and height
       var w = 500;
       var h = 100;
 
       //Create SVG element
-      var svg = d3.select('#mainContent')
+      var svg = d3.select('#pipContainer')
                   .append('svg')
+                  .attr('id', 'barChart')
                   .attr('width', w)
                   .attr('height', h);
 
@@ -1487,12 +1488,13 @@ module.exports = [function () {
          .data(dataset)
          .enter()
          .append('rect')
+         .attr('id', 'barRect')
          .attr('fill', 'teal')
          .attr('x', function(d, i) {
           return i * (w / dataset.length);
         })
          .attr('y', h - 1)
-         .attr('width', 20)
+         .attr('width', 40)
          .attr('height', 1);
 
       bars.transition()
@@ -1518,8 +1520,9 @@ module.exports = [function () {
     scope : {},
     templateUrl : 'views/chart.html',
     link : function () {
-      var width = 960;
-      var height = 500;
+      var margin = { top : 0, right : 0, bottom : 20, left : 70 };
+      var width = 960 - margin.left;
+      var height = 500 - margin.bottom;
       var centered;
 
       // if the window size changes, call the sizeChange function
@@ -1530,7 +1533,7 @@ module.exports = [function () {
       // translated to the right middle of the page
       var projection = d3.geo.albersUsa()
           .scale(4280)
-          .translate([width / 0.75, -640]);
+          .translate([width / 0.70, -645]);
 
       //setting up the path
       var path = d3.geo.path()
@@ -1538,6 +1541,7 @@ module.exports = [function () {
 
       //appending the svg element to the main container
       var svg = d3.select('#mainContent').append('svg')
+          .attr('id', 'islandMap')
           .attr('width', '85%')
           .attr('height', height);
 
@@ -1721,7 +1725,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9c20edae.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_8c5a81b3.js","/")
 },{"./c3-charts":6,"./charts":8,"./common":15,"./main":20,"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
