@@ -1,4 +1,4 @@
-//directive for d3
+//directive for d3 island map
 module.exports = [function () {
   return {
     restrict : 'EA',
@@ -14,7 +14,7 @@ module.exports = [function () {
 
       var projection = d3.geo.albersUsa()
           .scale(4280)
-          .translate([width / 0.80, -550]);
+          .translate([width / 0.80, -590]);
 
       var path = d3.geo.path()
           .projection(projection);
@@ -28,6 +28,15 @@ module.exports = [function () {
           .attr('width', width)
           .attr('height', height)
           .on('click', clicked);
+
+      //defining a tooltip
+      mapTip = d3.tip()
+        .attr('class', 'd3-tip')
+        .html(function (d) {
+          return "<strong>" + d.name.toUpperCase() +
+            "</strong> <span style='color:grey'></span";
+        })
+      svg.call(mapTip);
 
       var g = svg.append('g');
 
@@ -59,11 +68,13 @@ module.exports = [function () {
           y = centroid[1];
           k = 4;
           centered = d;
+          mapTip.show(d);
         } else {
           x = width / 2;
           y = height / 2;
           k = 1;
           centered = null;
+          mapTip.hide(d);
         }
 
         g.selectAll('path')

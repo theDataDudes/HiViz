@@ -1424,7 +1424,14 @@ module.exports = angular.module('app.charts', [])
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/charts/index.js","/charts")
 },{"./controller":5,"buffer":2,"rH1JPG":4}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-//directive for d3
+'use strict';
+
+module.exports = angular.module('app.common.directives', [])
+  .directive('islandMap', require('./islandMap'));
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/index.js","/common/directives")
+},{"./islandMap":8,"buffer":2,"rH1JPG":4}],8:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+//directive for d3 island map
 module.exports = [function () {
   return {
     restrict : 'EA',
@@ -1440,7 +1447,7 @@ module.exports = [function () {
 
       var projection = d3.geo.albersUsa()
           .scale(4280)
-          .translate([width / 0.80, -550]);
+          .translate([width / 0.80, -590]);
 
       var path = d3.geo.path()
           .projection(projection);
@@ -1455,13 +1462,22 @@ module.exports = [function () {
           .attr('height', height)
           .on('click', clicked);
 
+      //defining a tooltip
+      mapTip = d3.tip()
+        .attr('class', 'd3-tip')
+        .html(function (d) {
+          return "<strong>" + d.name.toUpperCase() +
+            "</strong> <span style='color:grey'></span";
+        })
+      svg.call(mapTip);
+
       var g = svg.append('g');
 
       d3.json('/hawaii.json', function(error, hawaii) {
         if (error) throw error;
 
         g.append('g')
-            .attr('id', 'states')
+            .attr('id', 'islands')
           .selectAll('path')
             .data(hawaii.features)
           .enter().append('path')
@@ -1470,7 +1486,7 @@ module.exports = [function () {
 
         g.append('path')
             .datum(hawaii.features, function(a, b) { return a !== b; })
-            .attr('id', 'state-borders')
+            .attr('id', 'island-borders')
             .attr('d', path);
       });
 
@@ -1485,11 +1501,13 @@ module.exports = [function () {
           y = centroid[1];
           k = 4;
           centered = d;
+          mapTip.show(d);
         } else {
           x = width / 2;
           y = height / 2;
           k = 1;
           centered = null;
+          mapTip.hide(d);
         }
 
         g.selectAll('path')
@@ -1504,21 +1522,14 @@ module.exports = [function () {
       function sizeChange () {
         d3.select('g')
           .attr('transform', 'scale(' + $('#mainContent').width() / 900 + ')');
-          $('svg').height($('#mainContent').width() * 0.618);
+        $('svg').height($('#mainContent').width() * 0.618);
       }
 
     }
   }
 }];
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/factories/d3Directives.js","/common/factories")
-},{"buffer":2,"rH1JPG":4}],8:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-'use strict';
-
-module.exports = angular.module('app.common.factories', [])
-  .directive('dThreeChoropleth', require('./d3Directives'));
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/factories/index.js","/common/factories")
-},{"./d3Directives":7,"buffer":2,"rH1JPG":4}],9:[function(require,module,exports){
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/islandMap.js","/common/directives")
+},{"buffer":2,"rH1JPG":4}],9:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.common.filters', [])
@@ -1560,10 +1571,10 @@ module.exports = () => {
 module.exports = angular.module('app.common', [
   require('./services').name,
   require('./filters').name,
-  require('./factories').name
+  require('./directives').name
 ]);
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/index.js","/common")
-},{"./factories":8,"./filters":9,"./services":14,"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
+},{"./directives":7,"./filters":9,"./services":14,"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1616,7 +1627,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9369e45c.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c6c26ee9.js","/")
 },{"./charts":6,"./common":12,"./main":17,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';

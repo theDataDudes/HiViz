@@ -2,23 +2,6 @@
   fill: none;
   pointer-events: all; }
 
-#states {
-  fill: #aaa; }
-
-svg {
-  z-index: 1; }
-
-#states .active {
-  fill: #87CEFA; }
-
-#state-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  pointer-events: none; }
-
 meta.foundation-version {
   font-family: "/5.5.3/"; }
 
@@ -961,23 +944,6 @@ select {
   fill: none;
   pointer-events: all; }
 
-#states {
-  fill: #aaa; }
-
-svg {
-  z-index: 1; }
-
-#states .active {
-  fill: #87CEFA; }
-
-#state-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  pointer-events: none; }
-
 header {
   height: 12%;
   min-height: 100px;
@@ -1001,23 +967,6 @@ header {
 .background {
   fill: none;
   pointer-events: all; }
-
-#states {
-  fill: #aaa; }
-
-svg {
-  z-index: 1; }
-
-#states .active {
-  fill: #87CEFA; }
-
-#state-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  pointer-events: none; }
 
 #mainContent {
   height: 100%;
@@ -1084,23 +1033,6 @@ svg {
   fill: none;
   pointer-events: all; }
 
-#states {
-  fill: #aaa; }
-
-svg {
-  z-index: 1; }
-
-#states .active {
-  fill: #87CEFA; }
-
-#state-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  pointer-events: none; }
-
 #pipContainer {
   border: 1px solid gray;
   width: 300px;
@@ -1112,26 +1044,35 @@ svg {
   background: url(/assets/chart.gif);
   background-size: cover; }
 
-.background {
-  fill: none;
-  pointer-events: all; }
-
-#states {
+#islands {
   fill: #aaa; }
 
 svg {
   z-index: 1; }
 
-#states .active {
+#islands .active {
   fill: #87CEFA; }
 
-#state-borders {
+#island-borders {
   fill: none;
   stroke: #fff;
   stroke-width: 1.5px;
   stroke-linejoin: round;
   stroke-linecap: round;
   pointer-events: none; }
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #FFFFFF;
+  border-radius: 2px;
+  transition: opacity 0.3s; }
+
+.background {
+  fill: none;
+  pointer-events: all; }
 
 footer {
   height: 12%;

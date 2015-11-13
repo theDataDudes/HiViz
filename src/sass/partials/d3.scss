@@ -25,21 +25,22 @@ svg {
   line-height: 1;
   font-weight: bold;
   padding: 12px;
-  background: $toolTipBackground;
+  background: $tooltipBackground;
   color: $white;
   border-radius: 2px;
   transition: opacity 0.3s;
 
 }
 
-//tooltip for island map
-.d3-tip:after {
-  box-sizing: border-box;
-  display: inline;
-  font-size: 10px;
-  width: 100%;
-  line-height: 1;
-  color: $toolTipBackground;
-  content: '\25BC';
-  text-align: center;
-}
+//tooltip arrow for island map. could be useful once more data is shown
+
+// .d3-tip:after {
+//   box-sizing: border-box;
+//   display: inline;
+//   font-size: 10px;
+//   width: 100%;
+//   line-height: 1;
+//   color: $tooltipBackground;
+//   content: '\25BC';
+//   text-align: center;
+// }
