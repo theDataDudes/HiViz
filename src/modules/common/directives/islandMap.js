@@ -17,7 +17,7 @@ module.exports = [function () {
       // translated to the right middle of the page
       var projection = d3.geo.albersUsa()
           .scale(4280)
-          .translate([width / 0.80, -590]);
+          .translate([width / 0.75, -640]);
 
       //setting up the path
       var path = d3.geo.path()
@@ -25,7 +25,7 @@ module.exports = [function () {
 
       //appending the svg element to the main container
       var svg = d3.select('#mainContent').append('svg')
-          .attr('width', '80%')
+          .attr('width', '85%')
           .attr('height', height);
 
       svg.append('rect')
