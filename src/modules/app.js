@@ -2,6 +2,7 @@ angular.module('app', [
     'ui.router',
   require('./common').name,
   require('./charts').name,
+  require('./sideCharts').name,
   require('./c3-charts').name,
   require('./main').name
 ])
