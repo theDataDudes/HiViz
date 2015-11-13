@@ -21,7 +21,7 @@
 
 		<div id="contentContainer" class="row small-collapse">
 
-			<section id="sidebar" class="small-2 columns">
+			<section id="sidebar" class="small-3 columns">
 
 				<h2 id="sideTitle">Side Title</h2>
 
@@ -29,9 +29,12 @@
 
 			</section>
 
-			<section id="mainContent" class="small-10 columns">
+			<section id="mainContent" class="small-9 columns">
 
-				<d-three-choropleth></d-three-choropleth>
+				<button id="toggleViewButton" class="vertical">Mo Data</button>
+
+        <!-- island map directive -->
+				<island-map></island-map>
 
 				<nav id="mapNav">
 
@@ -56,6 +59,16 @@
 
 				</nav>
 
+				<nav id="viewNav">
+
+					<ul>
+						<li><button>Map</button></li><!--
+						--><li><button>Graph</button></li>
+
+					</ul>
+
+				</nav>
+
 				<nav id="timeNav">
 
 					<ul>
@@ -69,8 +82,12 @@
   <c3-charts></c3-charts>
 
 				<section id="pipContainer">
+				<!-- <section id="pipContainer"> -->
 
-				</section>
+        <!-- bar chart directive -->
+        <island-bar-chart></island-bar-chart>
+
+				<!-- </section> -->
 
 		</div>
 
@@ -87,6 +104,7 @@
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://d3js.org/queue.v1.min.js"></script>
   <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
   <script src="../js/vendors/angular.min.js"></script>
   <script src="../js/vendors/d3.min.js"></script>
   <script src="../js/vendors/c3.min.js"></script>
