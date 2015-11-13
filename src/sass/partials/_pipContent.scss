@@ -2,16 +2,13 @@
 
 #pipContainer {
 
-  border: 1px solid gray;
-  width: 300px;
-  height: 200px;
   position: absolute;
   left: 25px;
-  bottom: 25px;
+  bottom: 125px;
   z-index: 2;
 
   //just a placeholder image
-  background: url(/assets/chart.gif);
-  background-size: cover;
+  // background: url(/assets/chart.gif);
+  // background-size: cover;
 
 }

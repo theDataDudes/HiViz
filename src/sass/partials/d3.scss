@@ -3,9 +3,6 @@
 #islands {
   fill: #aaa;
 }
-svg {
-  z-index: 1;
-}
 
 #islands .active {
   fill: #87CEFA;
@@ -30,6 +27,24 @@ svg {
   border-radius: 2px;
   transition: opacity 0.3s;
 
+}
+
+svg#barChart {
+  z-index: 2;
+  position: absolute;
+}
+
+#barRect {
+  z-index: 2;
+  position: absolute;
+}
+
+.background {
+  z-index: 1;
+}
+
+#islandMap {
+  z-index: 1;
 }
 
 //tooltip arrow for island map. could be useful once more data is shown

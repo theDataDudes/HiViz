@@ -5,8 +5,9 @@ module.exports = [function () {
     scope : {},
     templateUrl : 'views/chart.html',
     link : function () {
-      var width = 960;
-      var height = 500;
+      var margin = { top : 0, right : 0, bottom : 20, left : 70 };
+      var width = 960 - margin.left;
+      var height = 500 - margin.bottom;
       var centered;
 
       // if the window size changes, call the sizeChange function
@@ -17,7 +18,7 @@ module.exports = [function () {
       // translated to the right middle of the page
       var projection = d3.geo.albersUsa()
           .scale(4280)
-          .translate([width / 0.75, -640]);
+          .translate([width / 0.70, -645]);
 
       //setting up the path
       var path = d3.geo.path()
@@ -25,6 +26,7 @@ module.exports = [function () {
 
       //appending the svg element to the main container
       var svg = d3.select('#mainContent').append('svg')
+          .attr('id', 'islandMap')
           .attr('width', '85%')
           .attr('height', height);
 
