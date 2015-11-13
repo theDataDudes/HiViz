@@ -1,8 +1,15 @@
 //globals here
 
-$color: black;
+//color palette
+$black: #000000;
+$tooltipBackground: rgba(0, 0, 0, 0.8);
+$white: #FFFFFF;
+
+//font definitions
 $font: 'helvetica';
 
+
+//media queries
 $small: "only screen and (max-width: 680px)";
 
 .background {
@@ -35,3 +42,4 @@ svg {
   transform: rotate(270deg);
 
 }
+
