@@ -1459,8 +1459,12 @@ function service (apiService, $scope, Crossfilter) {
   // $scope.annual = [2, 3, 5];
   apiService.getHawaiiVisitors()
     .success( (data) => {
-      $scope.$ngc = new Crossfilter(data);
-      console.log($scope.$ngc.filterBy('year', '2007'));
+      var filter = new Crossfilter(data);
+      $scope.$ngc = filter;
+
+      // $scope.annual = data.filter(function (current) {
+      //   return data.year;
+      // });
   });
 };
 
@@ -1498,15 +1502,12 @@ module.exports = [function () {
                   .attr('width', w)
                   .attr('height', h);
 
-
       //watching for the data to resolve
       scope.$watch('annual', function (barData) {
 
         if (!barData) {
           return;
         }
-
-        console.log(barData);
 
         //add data and attributes
         var bars = svg.selectAll('rect')
@@ -1551,10 +1552,11 @@ module.exports = [function () {
     restrict : 'EA',
     scope : {},
     templateUrl : 'views/chart.html',
-    link : function () {
+    controller : 'barGraphController',
+    link : function ($scope) {
       var margin = { top : 0, right : 0, bottom : 20, left : 70 };
       var width = 960 - margin.left;
-      var height = 500 - margin.bottom;
+      var height = 700 - margin.bottom;
       var centered = null;
 
       // if the window size changes, call the sizeChange function
@@ -1605,8 +1607,10 @@ module.exports = [function () {
             .data(hawaii.features)
           .enter().append('path')
           //add this as a function to filter by island
-            // .attr('ng-click', 'heyyy')
             .attr('d', path)
+            .attr('ng-click', function(d) {
+              return '$ngc.filterBy("island", "'+d.name+'")';
+            })
             .on('click', clicked)
             .on('mouseover', hover)
             .on('mouseout', noHover);
@@ -1635,6 +1639,7 @@ module.exports = [function () {
 
       //on path click function
       function clicked(d) {
+        console.log(d);
         var x;
         var y;
         var k;
@@ -1672,11 +1677,12 @@ module.exports = [function () {
       function sizeChange () {
         d3.select('g')
           .attr('transform', 'scale(' + $('#mainContent').width() / 900 + ')');
-        $('#islands').height($('#mainContent').width() * 0.618);
+        $('#islandMap').height($('#mainContent').width() * 0.618);
       }
 
       //set map to proper area on page load
       sizeChange();
+
 
     }
   }
@@ -1751,7 +1757,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_cc1bfc3.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_1512107e.js","/")
 },{"./c3-charts":6,"./common":13,"./main":18,"./sideCharts":20,"./sidebar":22,"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';

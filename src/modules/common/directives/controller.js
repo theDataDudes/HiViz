@@ -5,7 +5,11 @@ function service (apiService, $scope, Crossfilter) {
   // $scope.annual = [2, 3, 5];
   apiService.getHawaiiVisitors()
     .success( (data) => {
-      $scope.$ngc = new Crossfilter(data);
-      console.log($scope.$ngc.filterBy('year', '2007'));
+      var filter = new Crossfilter(data);
+      $scope.$ngc = filter;
+
+      // $scope.annual = data.filter(function (current) {
+      //   return data.year;
+      // });
   });
 };
