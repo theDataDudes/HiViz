@@ -19,15 +19,12 @@ module.exports = [function () {
                   .attr('width', w)
                   .attr('height', h);
 
-
       //watching for the data to resolve
       scope.$watch('annual', function (barData) {
 
         if (!barData) {
           return;
         }
-
-        console.log(barData);
 
         //add data and attributes
         var bars = svg.selectAll('rect')

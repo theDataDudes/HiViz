@@ -1,1 +1,5 @@
 <div id="vis"></div>
+<input ng-model="model.island"/>
+<button ng-click="$ngc.filterBy('island', model.island)">ISLAND</button>
+<div ng-repeat="piece in $ngc.collection();">{{piece.island}}</div>
+
