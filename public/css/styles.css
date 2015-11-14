@@ -978,10 +978,18 @@ header {
 .vertical {
   transform: rotate(270deg); }
 
+sidebar {
+  height: 100%; }
+
 #sidebar {
   background-color: #fff;
   height: 100%;
   border-right: 1px solid gray; }
+  #sidebar h2 {
+    padding: 5px 0 0 10px; }
+  #sidebar #originSelector {
+    width: 125px;
+    margin: 5px 0 0 10px; }
 
 .background {
   fill: none;

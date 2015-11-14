@@ -3,7 +3,8 @@ angular.module('app', [
   require('./common').name,
   require('./charts').name,
   require('./c3-charts').name,
-  require('./main').name
+  require('./main').name,
+	require('./sidebar').name
 ])
 .run(['$rootScope', '$state', '$stateParams', ($rootScope, $state, $stateParams) => {
   $rootScope.$state = $state;
