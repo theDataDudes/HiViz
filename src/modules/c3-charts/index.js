@@ -1,7 +1,5 @@
 'use strict';
-module.exports = angular.module(
-  'app.c3-charts',
-  ['gridshore.c3js.chart'])
+module.exports = angular.module('app.c3-charts',['gridshore.c3js.chart'])
   .directive('c3Charts', function () {
     return {
       scope : true,

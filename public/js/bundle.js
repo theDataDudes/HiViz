@@ -1414,9 +1414,7 @@ module.exports = [
 },{"buffer":2,"rH1JPG":4}],6:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = angular.module(
-  'app.c3-charts',
-  ['gridshore.c3js.chart'])
+module.exports = angular.module('app.c3-charts',['gridshore.c3js.chart'])
   .directive('c3Charts', function () {
     return {
       scope : true,
@@ -1733,7 +1731,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_889b9cf0.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_4a4f8187.js","/")
 },{"./c3-charts":6,"./charts":8,"./common":15,"./main":20,"./sideCharts":22,"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -1773,9 +1771,7 @@ module.exports = ['apiService', '$scope', (apiService, $scope) => {
 },{"buffer":2,"rH1JPG":4}],22:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = angular.module(
-  'app.sideCharts',
-  ['gridshore.c3js.chart'])
+module.exports = angular.module('app.sideCharts',['gridshore.c3js.chart'])
   .directive('pieCharts', function() {
     return {
       scope : true,
