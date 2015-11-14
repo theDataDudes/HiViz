@@ -1429,16 +1429,26 @@ module.exports = angular.module('app.c3-charts',['gridshore.c3js.chart'])
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
-module.exports = ['$scope' ,controller];
-function controller($scope) {
+module.exports = ['$scope', 'apiService', 'Crossfilter',controller];
+function controller($scope, apiService, Crossfilter) {
 
 	this.IsVisible = false;
+  this.filteredData = '';
 
 	this.showHide = function () {
 
 		this.IsVisible = this.IsVisible ? false : true;
 
 	}
+
+  apiService.getHawaiiVisitors()
+    .success( (data) => {
+      var filter = new Crossfilter(data);
+      this.$ngc = filter;
+      filter.filterBy('year', '2007');
+      filter.filterBy('region', 'total');
+      filter.filterBy('island', 'total');
+    });
 
 }
 
@@ -1751,7 +1761,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_cc1bfc3.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_964e9dd7.js","/")
 },{"./c3-charts":6,"./common":13,"./main":18,"./sideCharts":20,"./sidebar":22,"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
