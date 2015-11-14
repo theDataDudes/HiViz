@@ -1111,6 +1111,19 @@ sidebar {
 #pipContainer {
   position: absolute;
   left: 25px;
+  bottom: 125px;
+  z-index: 2; }
+
+.background {
+  fill: none;
+  pointer-events: all; }
+
+.vertical {
+  transform: rotate(270deg); }
+
+#pipContainer {
+  position: absolute;
+  left: 25px;
   bottom: 10px;
   z-index: 2; }
 

@@ -1,5 +1,7 @@
 'use strict';
-module.exports = ['$scope', ($scope) => {
+module.exports = ['$scope', controller];
+
+function controller() {
 
 
-}];
+}
