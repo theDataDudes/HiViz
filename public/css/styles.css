@@ -978,6 +978,9 @@ header {
 .vertical {
   transform: rotate(270deg); }
 
+sidebar {
+  height: 100%; }
+
 #sidebar {
   background-color: #fff;
   height: 100%;

@@ -1723,14 +1723,15 @@ angular.module('app', [
   require('./common').name,
   require('./charts').name,
   require('./c3-charts').name,
-  require('./main').name
+  require('./main').name,
+	require('./sidebar').name
 ])
 .run(['$rootScope', '$state', '$stateParams', ($rootScope, $state, $stateParams) => {
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_cc184282.js","/")
-},{"./c3-charts":6,"./charts":8,"./common":15,"./main":20,"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_dc19b554.js","/")
+},{"./c3-charts":6,"./charts":8,"./common":15,"./main":20,"./sidebar":22,"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1756,4 +1757,27 @@ module.exports = angular.module('app.main', [])
     $urlRouterProvider.otherwise('/');
   });
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/main/index.js","/main")
-},{"buffer":2,"rH1JPG":4}]},{},[19])
+},{"buffer":2,"rH1JPG":4}],21:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+module.exports = ['$scope', ($scope) => {
+
+
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sidebar/controller.js","/sidebar")
+},{"buffer":2,"rH1JPG":4}],22:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+module.exports = angular.module('app.sidebar', [])
+	.directive('sidebar', function () {
+		return {
+			scope : true,
+			controller : 'sidebarController',
+			controllerAs : 'sidebarctrl',
+			templateUrl : 'views/sidebar.html'
+		};
+	})
+	.controller('sidebarController', require('./controller'));
+
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sidebar/index.js","/sidebar")
+},{"./controller":21,"buffer":2,"rH1JPG":4}]},{},[19])
