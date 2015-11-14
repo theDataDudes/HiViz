@@ -1,13 +1,11 @@
 'use strict';
-module.exports = ['apiService', '$scope', service];
+module.exports = ['apiService', '$scope', 'Crossfilter', service];
 
-function service (apiService, $scope) {
+function service (apiService, $scope, Crossfilter) {
   // $scope.annual = [2, 3, 5];
   apiService.getHawaiiVisitors()
     .success( (data) => {
-      $scope.annual = data.filter(function (current) {
-        return current.year == '2007' &&
-               current.region == 'canada';
-      });
+      $scope.$ngc = new Crossfilter(data);
+      console.log($scope.$ngc.filterBy('year', '2007'));
   });
 };

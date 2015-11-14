@@ -10,7 +10,7 @@ module.exports = [function () {
 
       //Width and height
       var w = 500;
-      var h = 250;
+      var h = 800;
 
       //Create SVG element
       var svg = d3.select('#pipContainer')
@@ -50,16 +50,13 @@ module.exports = [function () {
           .duration(1000)
           .delay(100)
           .attr('y', function (d) {
-            return h - (d.month.TOTAL.passengers * 4);  //Height minus data value
+            return h - (d.month.JAN.passengers / 250);  //Height minus data value
           })
            .attr('height', function (d) {
-            return d.month.TOTAL.passengers * 4;
+            return d.month.JAN.passengers / 250;
           })
 
       });
-
-      // var svgDocs = document.querySelectorAll('svg');
-      // svgDocs[0].appendChild(svgDocs[1]);
 
       //testing directive code
       console.log('i made it !');

@@ -68,6 +68,7 @@ module.exports = [function () {
             .attr('d', path);
       });
 
+      // on hover the tooltip appears
       function hover(d) {
         if (d && centered !== d) {
           mapTip.show(d);
@@ -76,6 +77,7 @@ module.exports = [function () {
         }
       }
 
+      //when you take your mouse off the island, the tooltip disappears
       function noHover(d) {
         if (d && centered !== d) {
           mapTip.hide(d);
