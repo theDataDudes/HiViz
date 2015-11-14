@@ -1,17 +1,16 @@
 //directive for d3 island map
 module.exports = [function () {
   return {
-    restrict : 'EA',
-    scope : {},
+    restrict : 'E',
     templateUrl : 'views/chart.html',
-    link : function () {
-
-      // fake data
-      dataset = [4,8,12,16,24,50];
+    controller : 'barGraphController',
+    controllerAs : 'bar-ctrl',
+    scope : { bar : '=' },
+    link : function (scope, element, attrs) {
 
       //Width and height
       var w = 500;
-      var h = 100;
+      var h = 800;
 
       //Create SVG element
       var svg = d3.select('#pipContainer')
@@ -20,28 +19,46 @@ module.exports = [function () {
                   .attr('width', w)
                   .attr('height', h);
 
-      var bars = svg.selectAll('rect')
-         .data(dataset)
-         .enter()
-         .append('rect')
-         .attr('id', 'barRect')
+
+      //watching for the data to resolve
+      scope.$watch('annual', function (barData) {
+
+        if (!barData) {
+          return;
+        }
+
+        console.log(barData);
+
+        //add data and attributes
+        var bars = svg.selectAll('rect')
+            .data(barData);
+
+        bars.enter()
+        .append('rect');
+
+        bars.attr('id', 'barRect')
          .attr('fill', 'teal')
          .attr('x', function(d, i) {
-          return i * (w / dataset.length);
+          return i * (w / barData.length);
         })
          .attr('y', h - 1)
          .attr('width', 40)
-         .attr('height', 1);
+         .attr('height', h);
 
-      bars.transition()
-        .duration(1000)
-        .delay(100)
-        .attr('y', function (d) {
-          return h - (d * 4);  //Height minus data value
-        })
-         .attr('height', function (d) {
-          return d * 4;
-        })
+        //init transition that occurs on page load
+        bars.transition()
+          .duration(1000)
+          .delay(100)
+          .attr('y', function (d) {
+            return h - (d.month.JAN.passengers / 250);  //Height minus data value
+          })
+           .attr('height', function (d) {
+            return d.month.JAN.passengers / 250;
+          })
+
+      });
+
+      //testing directive code
       console.log('i made it !');
     }
   }

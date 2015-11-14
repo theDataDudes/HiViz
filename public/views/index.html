@@ -9,7 +9,7 @@
 </head>
 <body ng-app="app">
 
-	<div id="mainViewContainer">
+	<div id="mainViewContainer" ng-controller="mainController as main">
 
 		<header>
 
@@ -21,42 +21,14 @@
 
 		<div id="contentContainer" class="row small-collapse">
 
-			<section id="sidebar" class="small-3 columns">
+			<sidebar ng-show="main.IsVisible" class="small-3 columns"></sidebar>
 
-        <!-- insert individual data figures -->
-        <h3 id="hawaiiTitle"> Hawaii Data Set </h3>
-        <h4 id="originTitle">Data Set:  Insert Here  </h4>
-
-        <!-- insert graphs -->
-        <!-- graph one - total pie chart of exp for state comparing all variables -->
-        <!-- <pie-charts></pie-charts> -->
-
-        <donut-charts></donut-charts>
-
-        <ul>Figures go here:
-          <li>
-             Total
-             Food
-             Entertainment
-             Transportation
-             Shopping
-             Lodging
-             Other
-          </li>
-        </ul>
-
-        <!-- graph two - total pie chart of exp for selected island comparing all variables -->
-
-
-			</section>
-
-    <div ui-view></div>
+    <div ui-view ng-class="{ 'small-9 columns' : main.IsVisible, 'small-12 columns' : !main.IsVisible }"></div>
 
     </div>
 
 
 		<footer>
-    <!--todo: rename this file. propose: defaultFooter-->
 
         <section id="timeline" class="row">
 
@@ -95,6 +67,8 @@
   <script src="../js/vendors/c3.min.js"></script>
   <script src="../js/vendors/c3-angular.min.js"></script>
   <script src="../js/vendors/angular-ui-router.min.js"></script>
+  <script src="../js/vendors/crossfilter.min.js"></script>
+  <script src="../js/vendors/ng-crossfilter.min.js"></script>
   <script src="../js/vendors/modernizr.js"></script>
   <script src="../js/bundle.js"></script>
 </body>

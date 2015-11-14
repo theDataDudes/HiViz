@@ -1,10 +1,20 @@
 //styling the elements that are created by d3 code
+@import 'globals';
+
+#pipContainer {
+
+  position: absolute;
+  left: 25px;
+  bottom: 10px;
+  z-index: 2;
+}
 
 #islands {
   fill: #aaa;
 }
 
 #islands .active {
+  transition: fill 1s;
   fill: #87CEFA;
 }
 
@@ -29,22 +39,15 @@
 
 }
 
-svg#barChart {
-  z-index: 2;
-  position: absolute;
-}
-
-#barRect {
-  z-index: 2;
-  position: absolute;
-}
-
 .background {
   z-index: 1;
 }
 
 #islandMap {
   z-index: 1;
+  &:hover{
+
+  }
 }
 
 //tooltip arrow for island map. could be useful once more data is shown

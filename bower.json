@@ -21,6 +21,10 @@
     "angular": "~1.4.7",
     "foundation": "~5.5.3",
     "angular-ui-router": "~0.2.15",
-    "c3-angular": "~0.7.1"
+    "c3-angular": "~0.7.1",
+    "ng-crossfilter": "~2.5.1"
+  },
+  "resolutions": {
+    "angular": ">= 1.0.8"
   }
 }

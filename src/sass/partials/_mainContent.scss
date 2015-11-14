@@ -1,9 +1,14 @@
 @import 'globals';
 
+#view-container {
+  height: 100%;
+}
+
 #mainContent {
 
   height: 100%;
   min-width: 800px;
+  position: relative;
 
   #toggleViewButton {
 
