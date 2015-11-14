@@ -1167,6 +1167,19 @@ sidebar {
 .vertical {
   transform: rotate(270deg); }
 
+#kauai {
+  z-index: 1; }
+
+#c3row {
+  padding-top: 90px; }
+
+.background {
+  fill: none;
+  pointer-events: all; }
+
+.vertical {
+  transform: rotate(270deg); }
+
 footer {
   height: 12%;
   background-color: RGBA(238, 238, 238, 0.7);

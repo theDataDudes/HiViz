@@ -57,6 +57,8 @@ module.exports = [function () {
           .selectAll('path')
             .data(hawaii.features)
           .enter().append('path')
+          //add this as a function to filter by island
+            // .attr('ng-click', 'heyyy')
             .attr('d', path)
             .on('click', clicked)
             .on('mouseover', hover)
