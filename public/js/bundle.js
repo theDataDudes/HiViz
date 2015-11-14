@@ -1603,6 +1603,7 @@ module.exports = [function () {
           .selectAll('path')
             .data(hawaii.features)
           .enter().append('path')
+            .attr('ng-click', 'heyyy')
             .attr('d', path)
             .on('click', clicked)
             .on('mouseover', hover)
@@ -1747,7 +1748,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d9a86b16.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6be3d3fd.js","/")
 },{"./c3-charts":6,"./common":13,"./main":18,"./sidebar":20,"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
