@@ -1,13 +1,120 @@
-<c3chart bindto-id='chart1'>
-  <chart-column column-id='data 1'
-                column-values='30,200,100,400,150,250'
-                column-type='spline'/>
+<!-- containing row for the c3 island charts -->
+<div class='row' id='c3row'>
 
-  <chart-column column-id='data 2'
-                column-values='50,20,10,40,15,25'
-                column-type='line'/>
-</c3chart>
+<!-- c3 chart for Oahu -->
+<div class='small-4 columns'>
+  <h5>Oahu</h5>
+  <c3chart bindto-id='oahu'>
+    <chart-size chart-height='175' chart-width='350'/>
+    <chart-column column-id='data 1'
+                  column-color='green'
+                  column-values='200,160,250,100,300,400'
+                  column-type='spline'/>
+  </c3chart>
+</div>
 
+<!-- c3 chart for Big Island -->
+<div class='small-4 columns'>
+  <h5>Big Island</h5>
+  <c3chart bindto-id='bigIsland'>
+    <chart-size chart-height='175' chart-width='350'/>
+    <chart-column column-id='data 1'
+                  column-color='green'
+                  column-values='90,60,90,50,55,85'
+                  column-type='spline'/>
+  </c3chart>
+</div>
 
+<!-- c3 chart for Kauai -->
+<div class='small-4 columns'>
+  <h5>Kauai</h5>
+  <c3chart bindto-id='kauai'>
+    <chart-size chart-height='175' chart-width='350'/>
+    <chart-column column-id='data 1'
+                  column-color='green'
+                  column-values='30,200,100,325,150,325'
+                  column-type='spline'/>
+  </c3chart>
+</div>
 
-<!-- trying to populate on client side with hard coded data -->
+<!-- c3 chart for Maui -->
+<div class='small-4 columns'>
+  <h5>Maui</h5>
+  <c3chart bindto-id='maui'>
+    <chart-size chart-height='175' chart-width='350'/>
+    <chart-column column-id='data 1'
+                  column-color='green'
+                  column-values='100,115,220,80,150,200'
+                  column-type='spline'/>
+  </c3chart>
+</div>
+
+<!-- c3 chart for Lanai -->
+<div class='small-4 columns'>
+  <h5>Lanai</h5>
+  <c3chart bindto-id='lanai'>
+    <chart-size chart-height='175' chart-width='350'/>
+    <chart-column column-id='data 1'
+                  column-color='green'
+                  column-values='20,20,15,40,15,55'
+                  column-type='spline'/>
+  </c3chart>
+</div>
+
+<!-- c3 chart for Molokai -->
+<div class='small-4 columns'>
+  <h5>Molokai</h5>
+  <c3chart bindto-id='molokai'>
+    <chart-size chart-height='175' chart-width='350'/>
+    <chart-column column-id='data 1'
+                  column-color='green'
+                  column-values='15,15,10,30,5,25'
+                  column-type='spline'/>
+  </c3chart>
+</div>
+
+<!-- c3 chart for Hawaii total -->
+<div class='small-9 columns'>
+  <h5>Statewide</h5>
+  <c3chart bindto-id='total'>
+    <chart-size chart-height='275' chart-width='575'/>
+
+    <chart-column column-id='Molokai'
+                  column-color='salmon'
+                  column-values='15,15,10,30,5,25,15,15,10,30,5,25'
+                  column-type='spline'/>
+
+    <chart-column column-id='Lanai'
+                  column-color='purple'
+                  column-values='20,20,15,40,15,55,20,20,15,40,15,55'
+                  column-type='spline'/>
+
+    <chart-column column-id='Kauai'
+                  column-color='orange'
+                  column-values='70,50,80,50,35,75,70,50,80,50,35,75'
+                  column-type='spline'/>
+
+    <chart-column column-id='Big Island'
+                  column-color='yellow'
+                  column-values='90,60,90,50,55,85,90,60,90,50,55,85'
+                  column-type='spline'/>
+
+    <chart-column column-id='Maui'
+                  column-color='blue'
+                  column-values='100,115,220,80,150,200,100,115,220,80,150,200'
+                  column-type='spline'/>
+
+    <chart-column column-id='Oahu'
+                  column-color='red'
+                  column-values='200,160,250,100,300,400,200,160,250,100,300,400'
+                  column-type='spline'/>
+
+    <chart-column column-id='Total'
+                  column-color='green'
+                  column-values='300,600,700,325,650,825,300,600,700,325,650,825'
+                  column-type='line'/>
+  </c3chart>
+</div>
+
+</div>
+

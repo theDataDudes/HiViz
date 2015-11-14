@@ -4,10 +4,11 @@ module.exports = [function () {
     restrict : 'EA',
     scope : {},
     templateUrl : 'views/chart.html',
-    link : function () {
+    controller : 'barGraphController',
+    link : function ($scope) {
       var margin = { top : 0, right : 0, bottom : 20, left : 70 };
       var width = 960 - margin.left;
-      var height = 500 - margin.bottom;
+      var height = 700 - margin.bottom;
       var centered = null;
 
       // if the window size changes, call the sizeChange function
@@ -58,8 +59,10 @@ module.exports = [function () {
             .data(hawaii.features)
           .enter().append('path')
           //add this as a function to filter by island
-            // .attr('ng-click', 'heyyy')
             .attr('d', path)
+            .attr('ng-click', function(d) {
+              return '$ngc.filterBy("island", "'+d.name+'")';
+            })
             .on('click', clicked)
             .on('mouseover', hover)
             .on('mouseout', noHover);
@@ -88,6 +91,7 @@ module.exports = [function () {
 
       //on path click function
       function clicked(d) {
+        console.log(d);
         var x;
         var y;
         var k;
@@ -125,11 +129,12 @@ module.exports = [function () {
       function sizeChange () {
         d3.select('g')
           .attr('transform', 'scale(' + $('#mainContent').width() / 900 + ')');
-        $('#islands').height($('#mainContent').width() * 0.618);
+        $('#islandMap').height($('#mainContent').width() * 0.618);
       }
 
       //set map to proper area on page load
       sizeChange();
+
 
     }
   }

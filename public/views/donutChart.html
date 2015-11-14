@@ -1,6 +1,6 @@
 <c3chart bindto-id='donut-plot1-chart'>
   <chart-column column-id='Other'
-              column-values='70'
+              column-values='{{main.$ngc.collection()[0].month.TOTAL.total}}'
               column-type='donut'/>
   <chart-column column-id='Lodging'
               column-values='800'
@@ -21,7 +21,9 @@
   <chart-events on-click-data='showClick(data)'/>
 </c3chart>
 
+<h4>{{main.$ngc.collection()[0].month.TOTAL.total}}</h4>
+
 <!-- pull the values and name into a list underneath -->
 <h4>{{ clicked.name }}</h4>
-<h5>$ {{ clicked.value }}</h5>
+<h5>{{ clicked.value }}</h5>
 <!-- food / entertainment / transportation / shopping / lodging / other -->

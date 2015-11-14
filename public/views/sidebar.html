@@ -2,17 +2,18 @@
 
 	<h2 id="sideTitle">Side Title</h2>
 
-	<select id="originSelector" name="origin">
-		<option value="uswest">US West</option>
-		<option value="useast">US East</option>
+	<select id="originSelector" ng-init="model.region = options[0]" ng-model="model.region" ng-change="main.$ngc.unfilterBy('region'); main.$ngc.filterBy('region', model.region)">
+    <option value="total" selected="selected">Total</option>
+		<option value="usWest">US West</option>
+		<option value="usEast">US East</option>
 		<option value="japan">Japan</option>
 		<option value="canada">Canada</option>
 	</select>
 
     <!-- insert individual data figures -->
-  <h3 id="hawaiiTitle"> Hawaii Data Set </h3>
-  <h4 id="originTitle">Data Set:  Insert Here  </h4>
-
+  <!-- <h3 id="hawaiiTitle"> Hawaii Data Set </h3> -->
+<!--   <h4 id="originTitle">Data Set:  Insert Here  </h4>
+ -->
   <!-- insert graphs -->
   <!-- graph one - total pie chart of exp for state comparing all variables -->
   <!-- <pie-charts></pie-charts> -->
@@ -30,6 +31,21 @@
        Other
     </li>
   </ul>
+  <button ng-click="main.$ngc.filterBy('year', '2007')">
+    2007
+  </button>
+  <button ng-click="main.$ngc.unfilterBy('region'); main.$ngc.filterBy('region', model.region)">
+    japan
+  </button>
+  <button ng-click="main.$ngc.unfilterBy('island'); main.$ngc.filterBy('island', 'maui')">
+    maui
+  </button>
+  <div ng-repeat="piece in main.$ngc.collection();">
+    {{piece.year}}
+    {{piece.region}}
+    {{piece.island}}
+    total visitors for year: {{piece.month.TOTAL.total}}
+  </div>
 
   <!-- graph two - total pie chart of exp for selected island comparing all variables -->
 
