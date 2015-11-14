@@ -7,7 +7,8 @@ module.exports = angular.module('app.main', [])
     $stateProvider
       .state('default', {
         url : '/',
-        templateUrl : 'views/default.html'
+        templateUrl : 'views/default.html',
+	      controller : 'sidebarController'
       })
       .state('graph', {
         url : '/graph',
