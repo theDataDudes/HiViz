@@ -1052,7 +1052,7 @@ sidebar {
       width: 40px; }
 
 #viewNav {
-  width: 110px;
+  width: 120px;
   height: 50px;
   float: left;
   margin: -60px 0 0 25px;
@@ -1063,9 +1063,18 @@ sidebar {
     #viewNav ul li {
       display: inline-block;
       box-sizing: border-box;
-      border: 1px solid black; }
+      padding: 0 5px; }
       #viewNav ul li:last-child {
         border-left: none; }
+    #viewNav ul a {
+      width: 50px;
+      height: 50px; }
+      #viewNav ul a:active {
+        position: relative;
+        top: 1px; }
+    #viewNav ul img {
+      height: 50px;
+      width: 50px; }
   #viewNav button {
     border: none;
     background: transparent;
@@ -1079,19 +1088,27 @@ sidebar {
       top: 1px; }
 
 #timeNav {
-  width: 100px;
-  height: 150px;
+  width: 120px;
+  height: 50px;
   float: right;
-  margin: -60px 25px 0 0;
+  margin: -60px 15px 0 0;
   z-index: 2; }
   #timeNav ul {
     list-style-type: none; }
     #timeNav ul li {
+      display: inline-block;
       box-sizing: border-box;
-      border: 1px solid black;
-      border-bottom: none; }
-      #timeNav ul li:last-child {
-        border-bottom: 1px solid black; }
+      border-bottom: none;
+      padding: 0 5px; }
+    #timeNav ul a {
+      width: 50px;
+      height: 50px; }
+      #timeNav ul a:active {
+        position: relative;
+        top: 1px; }
+    #timeNav ul img {
+      height: 50px;
+      width: 50px; }
   #timeNav button {
     border: none;
     background: transparent;
@@ -1159,6 +1176,19 @@ sidebar {
 
 #islandMap {
   z-index: 1; }
+
+.background {
+  fill: none;
+  pointer-events: all; }
+
+.vertical {
+  transform: rotate(270deg); }
+
+#kauai {
+  z-index: 1; }
+
+#c3row {
+  padding-top: 90px; }
 
 .background {
   fill: none;
