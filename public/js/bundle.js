@@ -1731,7 +1731,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_4a4f8187.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_e293ae30.js","/")
 },{"./c3-charts":6,"./charts":8,"./common":15,"./main":20,"./sideCharts":22,"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -1762,24 +1762,40 @@ module.exports = angular.module('app.main', [])
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = ['apiService', '$scope', (apiService, $scope) => {
-  apiService.getHawaiiVisitors()
-    .success( (data) => {
-      $scope.visitorData = data;
-    });
+  $scope.clicked = {};
+
+  $scope.showClick = function (data) {
+    $scope.clicked = data;
+    console.log(data);
+  };
+
+  // apiService.getHawaiiVisitors()
+  //   .success( (data) => {
+  //     $scope.visitorData = data;
+  //   });
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/controller.js","/sideCharts")
 },{"buffer":2,"rH1JPG":4}],22:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.sideCharts',['gridshore.c3js.chart'])
-  .directive('pieCharts', function() {
+  // .directive('pieCharts', function() {
+  //   return {
+  //     scope : true,
+  //     controller : 'PieCtrl',
+  //     templateUrl : 'views/pieChart.html'
+  //   };
+  // })
+  // .controller('PieCtrl', require('./controller'))
+  .directive('donutCharts', function() {
     return {
       scope : true,
-      controller : 'PieCtrl',
-      templateUrl : 'views/pieChart.html'
+      controller : 'DonutController',
+      controllerAs : 'donutCtrl',
+      templateUrl : 'views/donutChart.html'
     };
   })
-  .controller('PieCtrl', require('./controller'));
+  .controller('DonutController', require('./controller'));
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/index.js","/sideCharts")
 },{"./controller":21,"buffer":2,"rH1JPG":4}]},{},[19])

@@ -1,10 +1,19 @@
 'use strict';
 module.exports = angular.module('app.sideCharts',['gridshore.c3js.chart'])
-  .directive('pieCharts', function() {
+  // .directive('pieCharts', function() {
+  //   return {
+  //     scope : true,
+  //     controller : 'PieCtrl',
+  //     templateUrl : 'views/pieChart.html'
+  //   };
+  // })
+  // .controller('PieCtrl', require('./controller'))
+  .directive('donutCharts', function() {
     return {
       scope : true,
-      controller : 'PieCtrl',
-      templateUrl : 'views/pieChart.html'
+      controller : 'DonutController',
+      controllerAs : 'donutCtrl',
+      templateUrl : 'views/donutChart.html'
     };
   })
-  .controller('PieCtrl', require('./controller'));
+  .controller('DonutController', require('./controller'));
