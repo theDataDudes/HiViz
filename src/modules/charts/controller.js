@@ -1,10 +1,12 @@
 'use strict';
-module.exports = ['apiService', service];
+module.exports = ['apiService', '$scope', service];
 
-function service (apiService) {
+function service (apiService, $scope) {
   apiService.getAnnual()
     .success( (data) => {
-     this.dataset = data;
+      this.annual = data;
   });
 };
+
+
 
