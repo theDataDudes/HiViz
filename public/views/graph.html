@@ -1,52 +1,56 @@
 <section id="mainContent">
 
-<button ng-click="main.showHide()" id="toggleViewButton" class="vertical">Mo Data</button>
+	<nav id="mapNav">
 
-<nav id="mapNav">
+		<!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
 
-  <!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
+		<ul>
+			<li><a href="" title="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending"></a>
+				<p>$1000</p></li><!--
+    --><li><a href="" title="Flights" class="tooltip"><img src="../assets/plane.svg" alt="flights"></a>
+			<p>$1000</p></li><!--
+    --><li><a href="" title="Lodging" class="tooltip"><img src="../assets/bed.svg" alt="lodging"></a>
+			<p>$1000</p></li><!--
+    --><li><a href="" title="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation"></a>
+			<p>$1000</p></li><!--
+    --><li><a href="" title="Shopping" class="tooltip"><img src="../assets/creditcard.svg" alt="shopping"></a>
+			<p>$1000</p></li><!--
+    --><li><a href="" title="Food" class="tooltip"><img src="../assets/utensil.svg" alt="food"></a>
+			<p>$1000</p></li><!--
+    --><li><a href="" title="Entertainment" class="tooltip"><img src="../assets/tickets.svg" alt="entertainment"></a>
+			<p>$1000</p></li>
+		</ul>
 
-  <ul>
-    <li><a href=""><img src="../assets/dollar.svg" alt="spending"></a>
-      <p>$1000</p></li><!--
-    --><li><a href=""><img src="../assets/plane.svg" alt="flights"></a>
-      <p>$1000</p></li><!--
-    --><li><a href=""><img src="../assets/bed.svg" alt="lodging"></a>
-      <p>$1000</p></li><!--
-    --><li><a href=""><img src="../assets/car.svg" alt="transportation"></a>
-      <p>$1000</p></li><!--
-    --><li><a href=""><img src="../assets/creditcard.svg" alt="shopping"></a>
-      <p>$1000</p></li><!--
-    --><li><a href=""><img src="../assets/utensil.svg" alt="food"></a>
-      <p>$1000</p></li><!--
-    --><li><a href=""><img src="../assets/tickets.svg" alt="entertainment"></a>
-      <p>$1000</p></li>
-  </ul>
+	</nav>
 
-</nav>
+	<nav id="viewNav">
 
-<nav id="viewNav">
+		<ul>
+			<!--<li><button>Map</button></li>&lt;!&ndash;-->
+			<!--&ndash;&gt;<li><button>Graph</button></li>-->
+			<li><a href="" title="Map View" class="tooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
+    --><li><a href="" title="Chart View" class="tooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
+		</ul>
 
-  <ul>
-    <li><button>Map</button></li><!--
-    --><li><button>Graph</button></li>
+	</nav>
 
-  </ul>
+	<nav id="timeNav">
 
-</nav>
+		<ul>
+			<li><a href="" title="Annual"><img src="../assets/annual.png" alt="annual"></a></li><!--
+    --><li><a href="" title="Monthly"><img src="../assets/monthly.png" alt="manthly"></a></li>
+			<!--<li><a href=""><img src="../assets/daily.png" alt="daily"></a></li>-->
+		</ul>
 
-<nav id="timeNav">
+	</nav>
 
-  <ul>
-    <li><button>Annual</button></li><!--
-    --><li><button>Monthly</button></li><!--
-    --><li><button>Daily</button></li>
-  </ul>
+	<button ng-click="main.showHide()" class="vertical toggleViewButton">Mo Data</button>
 
-</nav>
+	<c3-charts class="fullHeight"></c3-charts>
+
 </section>
 
 
 <!-- to rendor c3 to the client  -->
-<c3-charts></c3-charts>
+
 <!-- <c3-hero></c3-hero> -->

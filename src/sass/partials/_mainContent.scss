@@ -1,7 +1,9 @@
 @import 'globals';
 
 #view-container {
+
   height: 100%;
+
 }
 
 #mainContent {
@@ -10,23 +12,23 @@
   min-width: 800px;
   position: relative;
 
-  #toggleViewButton {
+}
 
-    width: 100px;
-    height: 25px;
-    left: -38px;
-    top: 40%;
-    position: absolute;
-    background: transparent;
-    border: 1px solid gray;
-    border-top: none;
-    z-index: 2;
-    cursor: pointer;
-    box-sizing: border-box;
-    font-size: 16px;
-    color: #111;
+.toggleViewButton {
 
-  }
+  width: 100px;
+  height: 25px;
+  left: -38px;
+  top: 40%;
+  position: absolute;
+  background: transparent;
+  border: 1px solid gray;
+  border-top: none;
+  z-index: 2;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: #111;
 
 }
 
