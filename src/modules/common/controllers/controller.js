@@ -21,7 +21,8 @@ function controller($scope, apiService, Crossfilter) {
 
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
     $scope.collection = collection;
-    console.log(collection);
+    console.log('controller',collection);
   });
+
 }
 
