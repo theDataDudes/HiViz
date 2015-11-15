@@ -1556,6 +1556,7 @@ function controller($scope, apiService, Crossfilter) {
 
   //updates the filters applied across all of the charts/graphs
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
+    console.log(event);
     $scope.collection = collection;
     $scope.safeApply();
   });
@@ -1578,31 +1579,6 @@ function controller($scope, apiService, Crossfilter) {
     }
   }
 
-  // $scope.donutUnload = function () {
-  //     $scope.donut.unload({
-  //             ids: {
-  //               'Food',
-  //               'Entertainment',
-  //               'Transportation',
-  //               'Shopping',
-  //               'Loding',
-  //               'Other'
-  //             }
-  //     });
-  // }
-
-  $scope.donut = '';
-
-  $scope.donutLoad = function () {
-    $scope.donut.load({columns: [
-            ['Food', 50],
-            ['Entertainment', 180],
-            ['Transportation', 150],
-            ['Shopping', 10],
-            ['Loding', 80],
-            ['Other', 680]
-    ]});
-  }
 }
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/controllers/controller.js","/common/controllers")
 },{"buffer":2,"rH1JPG":4}],8:[function(require,module,exports){
@@ -1905,7 +1881,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c378c50d.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_f50e8b77.js","/")
 },{"./c3-charts":6,"./common":12,"./main":17,"./sideCharts":19,"./sidebar":21,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -1944,12 +1920,12 @@ module.exports = ['$scope', ($scope) => {
       bindto: '#donut',
       data: {
         columns: [
-            ['Food', 400],
-            ['Entertainment', 600],
-            ['Transportation', 150],
-            ['Shopping', 1000],
-            ['Loding', 800],
-            ['Other', 80]
+            ['Food', 0],
+            ['Entertainment', 0],
+            ['Transportation', 0],
+            ['Shopping', 0],
+            ['Loding', 0],
+            ['Other', 0]
         ],
         type: 'donut'
       },
@@ -1960,6 +1936,17 @@ module.exports = ['$scope', ($scope) => {
       },
     });
   };
+
+  $scope.donutLoad = function (month) {
+    $scope.donut.load({columns: [
+            ['Food', $scope.collection[0].month[month].food],
+            ['Entertainment', $scope.collection[0].month[month].entertainment],
+            ['Transportation', $scope.collection[0].month[month].transportation],
+            ['Shopping', $scope.collection[0].month[month].shopping],
+            ['Lodging', $scope.collection[0].month[month].lodging],
+            ['Other', $scope.collection[0].month[month].other]
+    ]});
+  }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/controller.js","/sideCharts")
 },{"buffer":2,"rH1JPG":4}],19:[function(require,module,exports){
