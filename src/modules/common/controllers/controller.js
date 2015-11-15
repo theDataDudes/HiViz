@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = ['$scope', 'apiService', 'Crossfilter',controller];
+module.exports = ['$scope', 'apiService', 'Crossfilter', controller];
 function controller($scope, apiService, Crossfilter) {
 
   this.IsVisible = false;
@@ -19,9 +19,16 @@ function controller($scope, apiService, Crossfilter) {
       filter.filterBy('island', 'total');
     });
 
+  //updates the filters applied across all of the charts/graphs
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
     $scope.collection = collection;
-    console.log(collection);
+    // console.log(collection);
   });
+
+  //injects math functions for use in html
+  $scope.Math = window.Math;
+
+  //adding slider scope
+  $scope.priceSlider = 150;
 }
 

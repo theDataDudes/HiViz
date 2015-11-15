@@ -16,21 +16,22 @@
 
   <!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
 
+<!--begin expenditure icons-->
   <ul>
     <li><a href="" title="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending"></a>
-      <p>$1000</p></li><!--
+      <p>{{Math.floor($ngc.collection()[0].month.TOTAL.total / 1000000)}}</p></li><!--
     --><li><a href="" title="Flights" class="tooltip"><img src="../assets/plane.svg" alt="flights"></a>
-      <p>$1000</p></li><!--
+      <p>{{Math.floor($ngc.collection()[0].month.TOTAL.passengers / 1000000)}}</p></li><!--
     --><li><a href="" title="Lodging" class="tooltip"><img src="../assets/bed.svg" alt="lodging"></a>
-      <p>$1000</p></li><!--
+      <p>{{Math.floor($ngc.collection()[0].month.TOTAL.lodging / 1000000)}}</p></li><!--
     --><li><a href="" title="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation"></a>
-      <p>$1000</p></li><!--
+      <p>{{Math.floor($ngc.collection()[0].month.TOTAL.transportation / 1000000)}}</p></li><!--
     --><li><a href="" title="Shopping" class="tooltip"><img src="../assets/creditcard.svg" alt="shopping"></a>
-      <p>$1000</p></li><!--
+      <p>{{Math.floor($ngc.collection()[0].month.TOTAL.shopping / 1000000)}}</p></li><!--
     --><li><a href="" title="Food" class="tooltip"><img src="../assets/utensil.svg" alt="food"></a>
-      <p>$1000</p></li><!--
+      <p>{{Math.floor($ngc.collection()[0].month.TOTAL.food / 1000000)}}</p></li><!--
     --><li><a href="" title="Entertainment" class="tooltip"><img src="../assets/tickets.svg" alt="entertainment"></a>
-      <p>$1000</p></li>
+      <p>{{Math.floor($ngc.collection()[0].month.TOTAL.entertainment / 1000000)}}</p></li>
   </ul>
 
 </nav>
