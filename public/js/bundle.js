@@ -1397,17 +1397,105 @@ process.chdir = function (dir) {
 },{"buffer":2,"rH1JPG":4}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = ['$scope', 'c3', ($scope, c3) => {
-  $scope.chart = null;
+module.exports = ['$scope',($scope) => {
+  $scope.oahuChart = null;
 
   $scope.showGraph = function() {
-    $scope.chart = c3.generate({
-      bindt0: '#oahu',
+    $scope.oahuChart = c3.generate({
+      bindto: '#oahu',
       data: {
         columns: [
-        ['data1', 30, 200, 100, 400, 150, 250],
-        ['data2', 50, 20, 10, 40, 15, 25]
-        ]
+        ['data1',200,160,250,100,300,400,200,160,250,100,300,400],
+        ],
+        type: 'spline',
+      },
+      size: {
+        width: 300,
+        height: 150
+      }
+    });
+    $scope.bigIslandChart = c3.generate({
+      bindto: '#big',
+      data: {
+        columns: [
+        ['data1',90,60,90,50,55,85,90,60,90,50,55,85],
+        ],
+        type: 'spline',
+      },
+      size: {
+        width: 300,
+        height: 150
+      }
+    });
+    $scope.kauaiChart = c3.generate({
+      bindto: '#kauai',
+      data: {
+        columns: [
+        ['data1',30,200,100,325,150,325,30,200,100,325,150,325],
+        ],
+        type: 'spline',
+      },
+      size: {
+        width: 300,
+        height: 150
+      }
+    });
+    $scope.mauiChart = c3.generate({
+      bindto: '#maui',
+      data: {
+        columns: [
+        ['data1',100,115,220,80,150,200,100,115,220,80,150,200],
+        ],
+        type: 'spline',
+      },
+      size: {
+        width: 300,
+        height: 150
+      }
+    });
+    $scope.lanaiChart = c3.generate({
+      bindto: '#lanai',
+      data: {
+        columns: [
+        ['data1',20,20,15,40,15,55,20,20,15,40,15,55],
+        ],
+        type: 'spline',
+      },
+      size: {
+        width: 300,
+        height: 150
+      }
+    });
+    $scope.molokaiChart = c3.generate({
+      bindto: '#molokai',
+      data: {
+        columns: [
+        ['data1',15,15,10,30,5,25,15,15,10,30,5,25],
+        ],
+        type: 'spline',
+      },
+      size: {
+        width: 300,
+        height: 150
+      }
+    });
+    $scope.totalChart = c3.generate({
+      bindto: '#total',
+      data: {
+        columns: [
+        ['Total',300,600,700,325,650,825,300,600,700,325,650,825],
+        ['Oahu',200,160,250,100,300,400,200,160,250,100,300,400],
+        ['Maui',100,115,220,80,150,200,100,115,220,80,150,200],
+        ['Big Island',90,60,90,50,55,85,90,60,90,50,55,85],
+        ['Kauai',70,50,80,50,35,75,70,50,80,50,35,75],
+        ['Lanai',20,20,15,40,15,55,20,20,15,40,15,55],
+        ['Molokai',15,15,10,30,5,25,15,15,10,30,5,25],
+        ],
+        type: 'spline'
+      },
+      size: {
+        width: 800,
+        height: 200
       }
     });
   };
@@ -1416,7 +1504,7 @@ module.exports = ['$scope', 'c3', ($scope, c3) => {
 },{"buffer":2,"rH1JPG":4}],6:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = angular.module('app.c3-charts',['angularChat'])
+module.exports = angular.module('app.c3-charts',[])
   .directive('c3Charts', function () {
     return {
       scope : true,
@@ -1431,27 +1519,37 @@ module.exports = angular.module('app.c3-charts',['angularChat'])
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
-module.exports = ['$scope', 'apiService', 'Crossfilter',controller];
+module.exports = ['$scope', 'apiService', 'Crossfilter', controller];
 function controller($scope, apiService, Crossfilter) {
 
-	this.IsVisible = false;
+  this.IsVisible = false;
   this.filteredData = '';
 
-	this.showHide = function () {
-
-		this.IsVisible = this.IsVisible ? false : true;
-
-	}
+  this.showHide = function () {
+    this.IsVisible = this.IsVisible ? false : true;
+  }
 
   apiService.getHawaiiVisitors()
     .success( (data) => {
       var filter = new Crossfilter(data);
-      this.$ngc = filter;
+      $scope.$ngc = filter;
       filter.filterBy('year', '2007');
       filter.filterBy('region', 'total');
       filter.filterBy('island', 'total');
     });
 
+  //updates the filters applied across all of the charts/graphs
+  $scope.$on('crossfilter/updated', function (event, collection, identifier) {
+    $scope.collection = collection;
+
+    // console.log(collection);
+  });
+
+  //injects math functions for use in html
+  $scope.Math = window.Math;
+
+  //adding slider scope
+  $scope.priceSlider = 150;
 }
 
 
@@ -1465,42 +1563,20 @@ module.exports = angular.module('app.common.controllers', [])
 },{"./controller":7,"buffer":2,"rH1JPG":4}],9:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = ['apiService', '$scope', 'Crossfilter', service];
-
-function service (apiService, $scope, Crossfilter) {
-  // $scope.annual = [2, 3, 5];
-  apiService.getHawaiiVisitors()
-    .success( (data) => {
-      var filter = new Crossfilter(data);
-      $scope.$ngc = filter;
-
-      // $scope.annual = data.filter(function (current) {
-      //   return data.year;
-      // });
-  });
-};
-
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/controller.js","/common/directives")
-},{"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-'use strict';
 
 module.exports = angular.module('app.common.directives', ['ngCrossfilter'])
-  .controller('barGraphController', require('./controller'))
   .directive('islandMap', require('./islandMap'))
   .directive('islandBarChart', require('./islandBarChart'));
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/index.js","/common/directives")
-},{"./controller":9,"./islandBarChart":11,"./islandMap":12,"buffer":2,"rH1JPG":4}],11:[function(require,module,exports){
+},{"./islandBarChart":10,"./islandMap":11,"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 //directive for d3 island map
 module.exports = [function () {
   return {
     restrict : 'E',
-    templateUrl : 'views/chart.html',
-    controller : 'barGraphController',
-    controllerAs : 'bar-ctrl',
-    scope : { bar : '=' },
+    templateUrl : 'views/barChart.html',
+    scope : true,
     link : function (scope, element, attrs) {
 
       //Width and height
@@ -1556,151 +1632,158 @@ module.exports = [function () {
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/islandBarChart.js","/common/directives")
-},{"buffer":2,"rH1JPG":4}],12:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 //directive for d3 island map
 module.exports = [function () {
   return {
     restrict : 'EA',
-    scope : {},
+    scope : true,
     templateUrl : 'views/chart.html',
-    controller : 'barGraphController',
-    link : function ($scope) {
-      var margin = { top : 0, right : 0, bottom : 20, left : 70 };
-      var width = 960 - margin.left;
-      var height = 700 - margin.bottom;
-      var centered = null;
+    link : function (scope, element, attrs, ctrl) {
 
-      // if the window size changes, call the sizeChange function
-      d3.select(window)
-        .on('resize', sizeChange);
+    scope.$watch(function () {
+      return scope.$ngc;
+    }, function () {
+        if (!scope.$ngc) {
+          return;
+        }
 
-      //setting up the projection. scaled to half of main container and
-      // translated to the right middle of the page
-      var projection = d3.geo.albersUsa()
-          .scale(4280)
-          .translate([width / 0.70, -645]);
+        var islandFilter = scope.$ngc;
+        var margin = { top : 0, right : 0, bottom : 20, left : 70 };
+        var width = 960 - margin.left;
+        var height = 700 - margin.bottom;
+        var centered = null;
 
-      //setting up the path
-      var path = d3.geo.path()
-          .projection(projection);
+        // if the window size changes, call the sizeChange function
+        d3.select(window)
+          .on('resize', sizeChange);
 
-      //appending the svg element to the main container
-      var svg = d3.select('#mainContent').append('svg')
-          .attr('id', 'islandMap')
-          .attr('width', '85%')
-          .attr('height', height);
+        //setting up the projection. scaled to half of main container and
+        // translated to the right middle of the page
+        var projection = d3.geo.albersUsa()
+            .scale(4280)
+            .translate([width / 0.70, -645]);
 
-      svg.append('rect')
-          .attr('class', 'background')
-          .attr('width', width)
-          .attr('height', height)
-          .on('click', clicked);
+        //setting up the path
+        var path = d3.geo.path()
+            .projection(projection);
 
-      //defining the tooltip
-      mapTip = d3.tip()
-        .attr('class', 'd3-tip')
-        .html(function (d) {
-          return "<strong>" + d.name.toUpperCase() +
-            "</strong> <span style='color:grey'></span";
-        })
-      svg.call(mapTip);
+        //appending the svg element to the main container
+        var svg = d3.select('#mainContent').append('svg')
+            .attr('id', 'islandMap')
+            .attr('width', '85%')
+            .attr('height', height);
 
-      var g = svg.append('g');
+        svg.append('rect')
+            .attr('class', 'background')
+            .attr('width', width)
+            .attr('height', height)
+            .on('click', clicked);
 
-      //loading the geojson data
-      d3.json('/hawaii.json', function(error, hawaii) {
-        if (error) throw error;
+        //defining the tooltip
+        mapTip = d3.tip()
+          .attr('class', 'd3-tip')
+          .html(function (d) {
+            return "<strong>" + d.name.toUpperCase() +
+              "</strong> <span style='color:grey'></span";
+          })
+        svg.call(mapTip);
 
-        //appending the data to the path and drawing the map
-        g.append('g')
-            .attr('id', 'islands')
-          .selectAll('path')
-            .data(hawaii.features)
-          .enter().append('path')
-          //add this as a function to filter by island
-            .attr('d', path)
-            .attr('ng-click', function(d) {
-              return '$ngc.filterBy("island", "'+d.name+'")';
-            })
-            .on('click', clicked)
-            .on('mouseover', hover)
-            .on('mouseout', noHover);
+        var g = svg.append('g');
 
-        g.append('path')
-            .datum(hawaii.features, function(a, b) { return a !== b; })
-            .attr('id', 'island-borders')
-            .attr('d', path);
+        //loading the geojson data
+        d3.json('/hawaii.json', function(error, hawaii) {
+          if (error) throw error;
+
+          //appending the data to the path and drawing the map
+          g.append('g')
+              .attr('id', 'islands')
+            .selectAll('path')
+              .data(hawaii.features)
+            .enter().append('path')
+              .attr('d', path)
+              .on('click', clicked)
+              .on('mouseover', hover)
+              .on('mouseout', noHover);
+
+          g.append('path')
+              .datum(hawaii.features, function(a, b) { return a !== b; })
+              .attr('id', 'island-borders')
+              .attr('d', path);
+        });
+
+        // on hover the tooltip appears
+        function hover(d) {
+          if (d && centered !== d) {
+            mapTip.show(d);
+            d3.select()
+            .style('fill', 'black');
+          }
+        }
+
+        //when you take your mouse off the island, the tooltip disappears
+        function noHover(d) {
+          if (d && centered !== d) {
+            mapTip.hide(d);
+          }
+        }
+
+        //on path click function
+        function clicked(d) {
+          var x;
+          var y;
+          var k;
+
+          //if one island is clicked...
+          if (d && centered !== d) {
+            islandFilter.filterBy('island', d.name);
+            scope.$digest();
+            var centroid = path.centroid(d);
+            x = centroid[0];
+            y = centroid[1];
+            k = 2;
+            centered = d;
+            mapTip.show(d);
+
+          //if no islands are selected
+          } else {
+            islandFilter.filterBy('island', 'total');
+            scope.$digest();
+            x = width / 3.1;
+            y = height / 2.5;
+            k = 1;
+            centered = null;
+            mapTip.hide(d);
+          }
+
+          g.selectAll('path')
+              .classed('active', centered && function(d) { return d === centered; });
+
+          //adjusts size and projection of map when single island is clicked
+          g.transition()
+              .duration(750)
+              .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
+              .style('stroke-width', 1.5 / k + 'px');
+
+        }
+
+        //changes the size of the map as browser window size changes
+        function sizeChange () {
+          d3.select('g')
+            .attr('transform', 'scale(' + $('#mainContent').width() / 900 + ')');
+          $('#islandMap').height($('#mainContent').width() * 0.618);
+        }
+
+        //set map to proper area on page load
+        sizeChange();
+
       });
-
-      // on hover the tooltip appears
-      function hover(d) {
-        if (d && centered !== d) {
-          mapTip.show(d);
-          d3.select()
-          .style('fill', 'black');
-        }
-      }
-
-      //when you take your mouse off the island, the tooltip disappears
-      function noHover(d) {
-        if (d && centered !== d) {
-          mapTip.hide(d);
-        }
-      }
-
-      //on path click function
-      function clicked(d) {
-        console.log(d);
-        var x;
-        var y;
-        var k;
-
-        //if one island is clicked...
-        if (d && centered !== d) {
-          var centroid = path.centroid(d);
-          x = centroid[0];
-          y = centroid[1];
-          k = 2;
-          centered = d;
-          mapTip.show(d);
-
-        //if no islands are selected
-        } else {
-          x = width / 3.1;
-          y = height / 2.5;
-          k = 1;
-          centered = null;
-          mapTip.hide(d);
-        }
-
-        g.selectAll('path')
-            .classed('active', centered && function(d) { return d === centered; });
-
-        //adjusts size and projection of map when single island is clicked
-        g.transition()
-            .duration(750)
-            .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')scale(' + k + ')translate(' + -x + ',' + -y + ')')
-            .style('stroke-width', 1.5 / k + 'px');
-
-      }
-
-      //changes the size of the map as browser window size changes
-      function sizeChange () {
-        d3.select('g')
-          .attr('transform', 'scale(' + $('#mainContent').width() / 900 + ')');
-        $('#islandMap').height($('#mainContent').width() * 0.618);
-      }
-
-      //set map to proper area on page load
-      sizeChange();
-
-
     }
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/islandMap.js","/common/directives")
-},{"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1710,7 +1793,7 @@ module.exports = angular.module('app.common', [
 	require('./controllers').name
 ]);
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/index.js","/common")
-},{"./controllers":8,"./directives":10,"./services":15,"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
+},{"./controllers":8,"./directives":9,"./services":14,"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1736,14 +1819,14 @@ module.exports = ['$http', function apiService ($http) {
   };
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/apiService.js","/common/services")
-},{"buffer":2,"rH1JPG":4}],15:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.common.services', [])
 .service('apiService', require('./apiService'))
 .service('relationalService', require('./relationalService'));
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/index.js","/common/services")
-},{"./apiService":14,"./relationalService":16,"buffer":2,"rH1JPG":4}],16:[function(require,module,exports){
+},{"./apiService":13,"./relationalService":15,"buffer":2,"rH1JPG":4}],15:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1755,10 +1838,11 @@ module.exports = ['apiService', function relationalService (apiService) {
 
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/relationalService.js","/common/services")
-},{"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],16:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 angular.module('app', [
     'ui.router',
+    'rzModule',
   require('./common').name,
   require('./sideCharts').name,
   require('./c3-charts').name,
@@ -1769,8 +1853,8 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b9d810b4.js","/")
-},{"./c3-charts":6,"./common":13,"./main":18,"./sideCharts":20,"./sidebar":22,"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c7ba3515.js","/")
+},{"./c3-charts":6,"./common":12,"./main":17,"./sideCharts":19,"./sidebar":21,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1797,35 +1881,39 @@ module.exports = angular.module('app.main', [])
     $urlRouterProvider.otherwise('/');
   });
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/main/index.js","/main")
+},{"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+module.exports = ['$scope', ($scope) => {
+  $scope.donut = null;
+
+  $scope.showDonut = function() {
+    $scope.donut = c3.generate({
+      bindto: '#donut',
+      data: {
+        columns: [
+            ['Food', 400],
+            ['Entertainment', 600],
+            ['Transportation', 150],
+            ['Shopping', 1000],
+            ['Loding', 800],
+            ['Other', 80]
+        ],
+        type: 'donut'
+      },
+      donut: {
+        title: 'Expenditures',
+        width: 70,
+        inner_radius: 0.5
+      },
+    });
+  };
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/controller.js","/sideCharts")
 },{"buffer":2,"rH1JPG":4}],19:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = ['apiService', '$scope', (apiService, $scope) => {
-  $scope.clicked = {};
-
-  $scope.showClick = function (data) {
-    $scope.clicked = data;
-    console.log(data);
-  };
-
-  // apiService.getHawaiiVisitors()
-  //   .success( (data) => {
-  //     $scope.visitorData = data;
-  //   });
-}];
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/controller.js","/sideCharts")
-},{"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-'use strict';
-module.exports = angular.module('app.sideCharts',['gridshore.c3js.chart'])
-  // .directive('pieCharts', function() {
-  //   return {
-  //     scope : true,
-  //     controller : 'PieCtrl',
-  //     templateUrl : 'views/pieChart.html'
-  //   };
-  // })
-  // .controller('PieCtrl', require('./controller'))
+module.exports = angular.module('app.sideCharts',[])
   .directive('donutCharts', function() {
     return {
       scope : true,
@@ -1837,7 +1925,7 @@ module.exports = angular.module('app.sideCharts',['gridshore.c3js.chart'])
   .controller('DonutController', require('./controller'));
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/index.js","/sideCharts")
-},{"./controller":19,"buffer":2,"rH1JPG":4}],21:[function(require,module,exports){
+},{"./controller":18,"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = ['$scope', controller];
@@ -1847,7 +1935,7 @@ function controller() {
 
 }
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sidebar/controller.js","/sidebar")
-},{"buffer":2,"rH1JPG":4}],22:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],21:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.sidebar', [])
@@ -1862,4 +1950,4 @@ module.exports = angular.module('app.sidebar', [])
 	.controller('sidebarController', require('./controller'));
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sidebar/index.js","/sidebar")
-},{"./controller":21,"buffer":2,"rH1JPG":4}]},{},[17])
+},{"./controller":20,"buffer":2,"rH1JPG":4}]},{},[16])

@@ -1,5 +1,6 @@
 angular.module('app', [
     'ui.router',
+    'rzModule',
   require('./common').name,
   require('./sideCharts').name,
   require('./c3-charts').name,

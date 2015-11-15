@@ -2,10 +2,8 @@
 module.exports = [function () {
   return {
     restrict : 'E',
-    templateUrl : 'views/chart.html',
-    controller : 'barGraphController',
-    controllerAs : 'bar-ctrl',
-    scope : { bar : '=' },
+    templateUrl : 'views/barChart.html',
+    scope : true,
     link : function (scope, element, attrs) {
 
       //Width and height

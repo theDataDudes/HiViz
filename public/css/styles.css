@@ -5,6 +5,9 @@
 .vertical {
   transform: rotate(270deg); }
 
+.fullHeight {
+  height: 100%; }
+
 meta.foundation-version {
   font-family: "/5.5.3/"; }
 
@@ -950,6 +953,9 @@ select {
 .vertical {
   transform: rotate(270deg); }
 
+.fullHeight {
+  height: 100%; }
+
 header {
   height: 12%;
   min-height: 100px;
@@ -978,6 +984,9 @@ header {
 .vertical {
   transform: rotate(270deg); }
 
+.fullHeight {
+  height: 100%; }
+
 sidebar {
   height: 100%; }
 
@@ -998,6 +1007,9 @@ sidebar {
 .vertical {
   transform: rotate(270deg); }
 
+.fullHeight {
+  height: 100%; }
+
 #view-container {
   height: 100%; }
 
@@ -1005,20 +1017,21 @@ sidebar {
   height: 100%;
   min-width: 800px;
   position: relative; }
-  #mainContent #toggleViewButton {
-    width: 100px;
-    height: 25px;
-    left: -38px;
-    top: 40%;
-    position: absolute;
-    background: transparent;
-    border: 1px solid gray;
-    border-top: none;
-    z-index: 2;
-    cursor: pointer;
-    box-sizing: border-box;
-    font-size: 16px;
-    color: #111; }
+
+.toggleViewButton {
+  width: 100px;
+  height: 25px;
+  left: -38px;
+  top: 40%;
+  position: absolute;
+  background: transparent;
+  border: 1px solid gray;
+  border-top: none;
+  z-index: 2;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: #111; }
 
 #mapNav {
   width: 350px;
@@ -1052,7 +1065,7 @@ sidebar {
       width: 40px; }
 
 #viewNav {
-  width: 110px;
+  width: 120px;
   height: 50px;
   float: left;
   margin: -60px 0 0 25px;
@@ -1063,9 +1076,18 @@ sidebar {
     #viewNav ul li {
       display: inline-block;
       box-sizing: border-box;
-      border: 1px solid black; }
+      padding: 0 5px; }
       #viewNav ul li:last-child {
         border-left: none; }
+    #viewNav ul a {
+      width: 50px;
+      height: 50px; }
+      #viewNav ul a:active {
+        position: relative;
+        top: 1px; }
+    #viewNav ul img {
+      height: 50px;
+      width: 50px; }
   #viewNav button {
     border: none;
     background: transparent;
@@ -1079,19 +1101,27 @@ sidebar {
       top: 1px; }
 
 #timeNav {
-  width: 100px;
-  height: 150px;
+  width: 120px;
+  height: 50px;
   float: right;
-  margin: -60px 25px 0 0;
+  margin: -60px 15px 0 0;
   z-index: 2; }
   #timeNav ul {
     list-style-type: none; }
     #timeNav ul li {
+      display: inline-block;
       box-sizing: border-box;
-      border: 1px solid black;
-      border-bottom: none; }
-      #timeNav ul li:last-child {
-        border-bottom: 1px solid black; }
+      border-bottom: none;
+      padding: 0 5px; }
+    #timeNav ul a {
+      width: 50px;
+      height: 50px; }
+      #timeNav ul a:active {
+        position: relative;
+        top: 1px; }
+    #timeNav ul img {
+      height: 50px;
+      width: 50px; }
   #timeNav button {
     border: none;
     background: transparent;
@@ -1111,6 +1141,9 @@ sidebar {
 .vertical {
   transform: rotate(270deg); }
 
+.fullHeight {
+  height: 100%; }
+
 #pipContainer {
   position: absolute;
   left: 25px;
@@ -1123,6 +1156,9 @@ sidebar {
 
 .vertical {
   transform: rotate(270deg); }
+
+.fullHeight {
+  height: 100%; }
 
 #pipContainer {
   position: absolute;
@@ -1167,11 +1203,12 @@ sidebar {
 .vertical {
   transform: rotate(270deg); }
 
-#kauai {
-  z-index: 1; }
+.fullHeight {
+  height: 100%; }
 
 #c3row {
-  padding-top: 90px; }
+  padding-top: 20px;
+  padding-left: 5%; }
 
 .background {
   fill: none;
@@ -1179,6 +1216,9 @@ sidebar {
 
 .vertical {
   transform: rotate(270deg); }
+
+.fullHeight {
+  height: 100%; }
 
 footer {
   height: 12%;

@@ -23,7 +23,7 @@
     "angular-ui-router": "~0.2.15",
     "c3-angular": "~0.7.1",
     "ng-crossfilter": "~2.5.1",
-    "angular-c3": "~0.0.7"
+    "angularjs-slider": "~2.0.0"
   },
   "resolutions": {
     "angular": ">= 1.0.8"

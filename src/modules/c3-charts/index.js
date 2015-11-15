@@ -1,5 +1,5 @@
 'use strict';
-module.exports = angular.module('app.c3-charts',['angularChat'])
+module.exports = angular.module('app.c3-charts',[])
   .directive('c3Charts', function () {
     return {
       scope : true,
