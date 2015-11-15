@@ -49,6 +49,7 @@ function controller($scope, apiService, Crossfilter) {
       onEnd : function () {
         //filter by user-selected year
         $scope.selectedYear = $scope.slider_callbacks.value;
+        $scope.$ngc.filterBy('year', $scope.selectedYear);
       }
     }
   }
