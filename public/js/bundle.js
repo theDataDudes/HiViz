@@ -1439,6 +1439,19 @@ function controller($scope, apiService, Crossfilter) {
     this.IsVisible = this.IsVisible ? false : true;
   }
 
+  $scope.safeApply = function(fn) {
+    var phase = this.$root.$$phase;
+    if(phase == '$apply' || phase == '$digest') {
+      if(fn && (typeof(fn) === 'function')) {
+        fn();
+      }
+    } else {
+      this.$apply(fn);
+    }
+  };
+
+  $scope.collection = '';
+
   apiService.getHawaiiVisitors()
     .success( (data) => {
       var filter = new Crossfilter(data);
@@ -1451,8 +1464,7 @@ function controller($scope, apiService, Crossfilter) {
   //updates the filters applied across all of the charts/graphs
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
     $scope.collection = collection;
-
-    // console.log(collection);
+    $scope.safeApply();
   });
 
   //injects math functions for use in html
@@ -1501,7 +1513,7 @@ module.exports = [function () {
                   .attr('height', h);
 
       //watching for the data to resolve
-      scope.$watch('annual', function (barData) {
+      scope.$watch('collection', function (barData) {
 
         if (!barData) {
           return;
@@ -1648,7 +1660,6 @@ module.exports = [function () {
           //if one island is clicked...
           if (d && centered !== d) {
             islandFilter.filterBy('island', d.name);
-            scope.$digest();
             var centroid = path.centroid(d);
             x = centroid[0];
             y = centroid[1];
@@ -1659,7 +1670,6 @@ module.exports = [function () {
           //if no islands are selected
           } else {
             islandFilter.filterBy('island', 'total');
-            scope.$digest();
             x = width / 3.1;
             y = height / 2.5;
             k = 1;
@@ -1763,7 +1773,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_54498961.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6762fe88.js","/")
 },{"./c3-charts":6,"./common":12,"./main":17,"./sideCharts":19,"./sidebar":21,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
