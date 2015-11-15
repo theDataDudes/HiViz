@@ -1550,19 +1550,21 @@ function controller($scope, apiService, Crossfilter) {
     .success( (data) => {
       var filter = new Crossfilter(data);
       $scope.$ngc = filter;
+      filter.filterBy('year', '2014');
       filter.filterBy('region', 'total');
       filter.filterBy('island', 'total');
     });
 
   //updates the filters applied across all of the charts/graphs
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
-    console.log(event);
+    console.log('updated');
     $scope.collection = collection;
     $scope.safeApply();
   });
 
   //injects math functions for use in html
   $scope.Math = window.Math;
+  $scope.console = window.console;
 
   //adding slider scope to include callbacks
   $scope.slider_callbacks = {
@@ -1881,7 +1883,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_f50e8b77.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_28e60ba8.js","/")
 },{"./c3-charts":6,"./common":12,"./main":17,"./sideCharts":19,"./sidebar":21,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -1938,6 +1940,7 @@ module.exports = ['$scope', ($scope) => {
   };
 
   $scope.donutLoad = function (month) {
+    $scope.console.log($scope.collection[0].month[month]);
     $scope.donut.load({columns: [
             ['Food', $scope.collection[0].month[month].food],
             ['Entertainment', $scope.collection[0].month[month].entertainment],

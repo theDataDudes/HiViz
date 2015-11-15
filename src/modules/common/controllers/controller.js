@@ -31,19 +31,21 @@ function controller($scope, apiService, Crossfilter) {
     .success( (data) => {
       var filter = new Crossfilter(data);
       $scope.$ngc = filter;
+      filter.filterBy('year', '2014');
       filter.filterBy('region', 'total');
       filter.filterBy('island', 'total');
     });
 
   //updates the filters applied across all of the charts/graphs
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
-    console.log(event);
+    console.log('updated');
     $scope.collection = collection;
     $scope.safeApply();
   });
 
   //injects math functions for use in html
   $scope.Math = window.Math;
+  $scope.console = window.console;
 
   //adding slider scope to include callbacks
   $scope.slider_callbacks = {

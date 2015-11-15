@@ -25,6 +25,7 @@ module.exports = ['$scope', ($scope) => {
   };
 
   $scope.donutLoad = function (month) {
+    $scope.console.log($scope.collection[0].month[month]);
     $scope.donut.load({columns: [
             ['Food', $scope.collection[0].month[month].food],
             ['Entertainment', $scope.collection[0].month[month].entertainment],
