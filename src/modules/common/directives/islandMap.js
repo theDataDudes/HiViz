@@ -6,6 +6,7 @@ module.exports = [function () {
     templateUrl : 'views/chart.html',
     link : function (scope, element, attrs, ctrl) {
 
+    //setting the $watch to give d3 access to scope data
     scope.$watch(function () {
       return scope.$ngc;
     }, function () {
@@ -13,6 +14,7 @@ module.exports = [function () {
           return;
         }
 
+        //setting the base variables for the graph
         var islandFilter = scope.$ngc;
         var margin = { top : 0, right : 0, bottom : 20, left : 70 };
         var width = 960 - margin.left;

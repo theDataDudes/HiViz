@@ -31,6 +31,7 @@ module.exports = [function () {
         bars.enter()
         .append('rect');
 
+        //setting single bar attributes
         bars.attr('id', 'barRect')
          .attr('fill', 'teal')
          .attr('x', function(d, i) {
@@ -45,10 +46,10 @@ module.exports = [function () {
           .duration(1000)
           .delay(100)
           .attr('y', function (d) {
-            return h - (d.month.JAN.passengers / 250);  //Height minus data value
+            return h - Math.floor((d.month.TOTAL.passengers / 5000));  //Height minus data value
           })
            .attr('height', function (d) {
-            return d.month.JAN.passengers / 250;
+            return Math.floor(d.month.TOTAL.passengers / 5000);
           })
 
       });

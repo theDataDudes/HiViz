@@ -11,6 +11,7 @@ function controller($scope, apiService, Crossfilter) {
     this.IsVisible = this.IsVisible ? false : true;
   }
 
+  ///checks to see if digest has been called
   $scope.safeApply = function(fn) {
     var phase = this.$root.$$phase;
     if(phase == '$apply' || phase == '$digest') {
@@ -22,8 +23,10 @@ function controller($scope, apiService, Crossfilter) {
     }
   };
 
+  //collection init
   $scope.collection = '';
 
+  //API call to gather data for application use
   apiService.getHawaiiVisitors()
     .success( (data) => {
       var filter = new Crossfilter(data);
@@ -46,7 +49,9 @@ function controller($scope, apiService, Crossfilter) {
     value : 2014,
     options : {
       floor : 2007,
+      showTicks : true,
       onEnd : function () {
+
         //filter by user-selected year
         $scope.selectedYear = $scope.slider_callbacks.value;
         $scope.$ngc.filterBy('year', $scope.selectedYear);

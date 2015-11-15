@@ -1530,6 +1530,7 @@ function controller($scope, apiService, Crossfilter) {
     this.IsVisible = this.IsVisible ? false : true;
   }
 
+  ///checks to see if digest has been called
   $scope.safeApply = function(fn) {
     var phase = this.$root.$$phase;
     if(phase == '$apply' || phase == '$digest') {
@@ -1541,8 +1542,10 @@ function controller($scope, apiService, Crossfilter) {
     }
   };
 
+  //collection init
   $scope.collection = '';
 
+  //API call to gather data for application use
   apiService.getHawaiiVisitors()
     .success( (data) => {
       var filter = new Crossfilter(data);
@@ -1565,7 +1568,9 @@ function controller($scope, apiService, Crossfilter) {
     value : 2014,
     options : {
       floor : 2007,
+      showTicks : true,
       onEnd : function () {
+
         //filter by user-selected year
         $scope.selectedYear = $scope.slider_callbacks.value;
         $scope.$ngc.filterBy('year', $scope.selectedYear);
@@ -1626,6 +1631,7 @@ module.exports = [function () {
         bars.enter()
         .append('rect');
 
+        //setting single bar attributes
         bars.attr('id', 'barRect')
          .attr('fill', 'teal')
          .attr('x', function(d, i) {
@@ -1640,10 +1646,10 @@ module.exports = [function () {
           .duration(1000)
           .delay(100)
           .attr('y', function (d) {
-            return h - (d.month.JAN.passengers / 250);  //Height minus data value
+            return h - Math.floor((d.month.TOTAL.passengers / 5000));  //Height minus data value
           })
            .attr('height', function (d) {
-            return d.month.JAN.passengers / 250;
+            return Math.floor(d.month.TOTAL.passengers / 5000);
           })
 
       });
@@ -1664,6 +1670,7 @@ module.exports = [function () {
     templateUrl : 'views/chart.html',
     link : function (scope, element, attrs, ctrl) {
 
+    //setting the $watch to give d3 access to scope data
     scope.$watch(function () {
       return scope.$ngc;
     }, function () {
@@ -1671,6 +1678,7 @@ module.exports = [function () {
           return;
         }
 
+        //setting the base variables for the graph
         var islandFilter = scope.$ngc;
         var margin = { top : 0, right : 0, bottom : 20, left : 70 };
         var width = 960 - margin.left;
@@ -1873,7 +1881,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6f3cbfdf.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d4c0affb.js","/")
 },{"./c3-charts":6,"./common":12,"./main":17,"./sideCharts":19,"./sidebar":21,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';

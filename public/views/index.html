@@ -10,6 +10,7 @@
 </head>
 <body ng-app="app">
 
+<!-- default controller for entire app defined here -->
 	<div id="mainViewContainer" ng-controller="mainController as main">
 
 		<header>
@@ -20,15 +21,18 @@
 
 		</header>
 
+    <!-- parent container -->
 		<div id="contentContainer" class="row small-collapse">
 
+    <!-- sidebar container -->
 			<sidebar ng-show="main.IsVisible" class="small-3 columns"></sidebar>
 
+    <!-- this holds the current view being rendered -->
     <div ui-view ng-class="{ 'small-9 columns' : main.IsVisible, 'small-12 columns' : !main.IsVisible }"></div>
 
     </div>
 
-
+<!-- if you have to ask what this is...plz vacate the code -->
 		<footer>
 
         <section id="timeline" class="row">
@@ -40,7 +44,7 @@
         </section>
 
         <nav>
-
+        <!-- footer links -->
           <a ui-sref="about">About</a> •
           <a ui-sref="api">API</a> •
           <a ui-sref="contact">Contact</a>
@@ -56,7 +60,7 @@
 		</footer>
 
 	</div>
-
+<!-- all the script tags -->
   <script src="../js/vendors/jquery.js"></script>
   <script src="../js/vendors/foundation.min.js"></script>
   <script src="../js/vendors/d3.min.js"></script>
