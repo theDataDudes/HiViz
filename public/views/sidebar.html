@@ -2,7 +2,7 @@
 
 	<h2 id="sideTitle">Side Title</h2>
 
-	<select id="originSelector" ng-init="model.region = options[0]" ng-model="model.region" ng-change="main.$ngc.unfilterBy('region'); main.$ngc.filterBy('region', model.region)">
+	<select id="originSelector" ng-init="model.region = options[0]" ng-model="model.region" ng-change="$ngc.unfilterBy('region'); $ngc.filterBy('region', model.region)">
     <option value="total" selected="selected">Total</option>
 		<option value="usWest">US West</option>
 		<option value="usEast">US East</option>

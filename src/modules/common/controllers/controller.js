@@ -58,5 +58,30 @@ function controller($scope, apiService, Crossfilter) {
       }
     }
   }
-}
 
+  // $scope.donutUnload = function () {
+  //     $scope.donut.unload({
+  //             ids: {
+  //               'Food',
+  //               'Entertainment',
+  //               'Transportation',
+  //               'Shopping',
+  //               'Loding',
+  //               'Other'
+  //             }
+  //     });
+  // }
+
+  $scope.donut = '';
+
+  $scope.donutLoad = function () {
+    $scope.donut.load({columns: [
+            ['Food', 50],
+            ['Entertainment', 180],
+            ['Transportation', 150],
+            ['Shopping', 10],
+            ['Loding', 80],
+            ['Other', 680]
+    ]});
+  }
+}
