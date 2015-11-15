@@ -11,7 +11,19 @@ function controller($scope, apiService, Crossfilter) {
     this.IsVisible = this.IsVisible ? false : true;
   }
 
-  //return data from API
+  $scope.safeApply = function(fn) {
+    var phase = this.$root.$$phase;
+    if(phase == '$apply' || phase == '$digest') {
+      if(fn && (typeof(fn) === 'function')) {
+        fn();
+      }
+    } else {
+      this.$apply(fn);
+    }
+  };
+
+  $scope.collection = '';
+
   apiService.getHawaiiVisitors()
     .success( (data) => {
       var filter = new Crossfilter(data);
@@ -23,9 +35,7 @@ function controller($scope, apiService, Crossfilter) {
   //updates the filters applied across all of the charts/graphs
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
     $scope.collection = collection;
-    // $scope.$digest();
-
-    // console.log(collection);
+    $scope.safeApply();
   });
 
   //injects math functions for use in html
