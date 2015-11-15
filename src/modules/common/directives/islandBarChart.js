@@ -18,7 +18,7 @@ module.exports = [function () {
                   .attr('height', h);
 
       //watching for the data to resolve
-      scope.$watch('annual', function (barData) {
+      scope.$watch('collection', function (barData) {
 
         if (!barData) {
           return;

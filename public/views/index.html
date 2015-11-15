@@ -32,12 +32,10 @@
 		<footer>
 
         <section id="timeline" class="row">
-        <div class="small-12 columns">
 
-          <!--todo: replace hr (proof of concept placeholder) with d3 timeline element-->
-            <rzslider rz-slider-model="priceSlider"></rzslider>
-
-      </div>
+          <!--angular slider for adjusting time period-->
+          <rzslider rz-slider-model="slider_callbacks.value" ng-model="selectedYear" rz-slider-options="slider_callbacks.options">
+          </rzslider>
 
         </section>
 

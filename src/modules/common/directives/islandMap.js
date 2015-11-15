@@ -102,7 +102,6 @@ module.exports = [function () {
           //if one island is clicked...
           if (d && centered !== d) {
             islandFilter.filterBy('island', d.name);
-            scope.$digest();
             var centroid = path.centroid(d);
             x = centroid[0];
             y = centroid[1];
@@ -113,7 +112,6 @@ module.exports = [function () {
           //if no islands are selected
           } else {
             islandFilter.filterBy('island', 'total');
-            scope.$digest();
             x = width / 3.1;
             y = height / 2.5;
             k = 1;

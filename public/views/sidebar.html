@@ -32,22 +32,6 @@
        Other
     </li>
   </ul>
-  <button ng-click="main.$ngc.filterBy('year', '2007')">
-    2007
-  </button>
-  <button ng-click="main.$ngc.unfilterBy('region'); main.$ngc.filterBy('region', model.region)">
-    japan
-  </button>
-  <button ng-click="main.$ngc.unfilterBy('island'); main.$ngc.filterBy('island', 'maui')">
-    maui
-  </button>
-  <div ng-repeat="piece in main.$ngc.collection();">
-    {{piece.year}}
-    {{piece.region}}
-    {{piece.island}}
-    total visitors for year: {{piece.month.TOTAL.total}}
-  </div>
-
   <!-- graph two - total pie chart of exp for selected island comparing all variables -->
 
 </section>
