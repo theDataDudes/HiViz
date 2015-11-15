@@ -22,6 +22,7 @@ function controller($scope, apiService, Crossfilter) {
   //updates the filters applied across all of the charts/graphs
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
     $scope.collection = collection;
+
     // console.log(collection);
   });
 

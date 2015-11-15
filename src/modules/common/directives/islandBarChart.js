@@ -3,7 +3,6 @@ module.exports = [function () {
   return {
     restrict : 'E',
     templateUrl : 'views/barChart.html',
-    controllerAs : 'bar-ctrl',
     scope : true,
     link : function (scope, element, attrs) {
 
