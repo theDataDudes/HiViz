@@ -1,16 +1,17 @@
 <!-- containing row for the c3 island charts -->
-<div class='row' id='c3row'>
+<div class='row' id='c3row' ng-controller='GraphCtrl' ng-init='showGraph()'>
 
 <!-- c3 chart for Oahu -->
 <div class='small-4 columns'>
   <h5>Oahu</h5>
-  <c3chart bindto-id='oahu'>
+  <div id='oahu'>
+<!--   <c3chart bindto-id='oahu'>
     <chart-size chart-height='175' chart-width='350'/>
     <chart-column column-id='data 1'
                   column-color='green'
                   column-values='200,160,250,100,300,400'
                   column-type='spline'/>
-  </c3chart>
+  </c3chart> -->
 </div>
 
 <!-- c3 chart for Big Island -->

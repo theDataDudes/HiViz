@@ -1397,24 +1397,26 @@ process.chdir = function (dir) {
 },{"buffer":2,"rH1JPG":4}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = [
-  'apiService',
-  '$scope',
-  (apiService, $scope) => {
-    apiService.getAnnual()
-      .success( (data) => {
-        $scope.dataset = data;
-        data.forEach( function(d) {
+module.exports = ['$scope', 'c3', ($scope, c3) => {
+  $scope.chart = null;
 
-        });
-      });
-  }
-];
+  $scope.showGraph = function() {
+    $scope.chart = c3.generate({
+      bindt0: '#oahu',
+      data: {
+        columns: [
+        ['data1', 30, 200, 100, 400, 150, 250],
+        ['data2', 50, 20, 10, 40, 15, 25]
+        ]
+      }
+    });
+  };
+}];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/c3-charts/controller.js","/c3-charts")
 },{"buffer":2,"rH1JPG":4}],6:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = angular.module('app.c3-charts',['gridshore.c3js.chart'])
+module.exports = angular.module('app.c3-charts',['angularChat'])
   .directive('c3Charts', function () {
     return {
       scope : true,
@@ -1761,13 +1763,13 @@ angular.module('app', [
   require('./sideCharts').name,
   require('./c3-charts').name,
   require('./main').name,
-	require('./sidebar').name
+	require('./sidebar').name,
 ])
 .run(['$rootScope', '$state', '$stateParams', ($rootScope, $state, $stateParams) => {
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_35fd5595.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b9d810b4.js","/")
 },{"./c3-charts":6,"./common":13,"./main":18,"./sideCharts":20,"./sidebar":22,"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';

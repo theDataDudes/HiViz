@@ -4,7 +4,7 @@ angular.module('app', [
   require('./sideCharts').name,
   require('./c3-charts').name,
   require('./main').name,
-	require('./sidebar').name
+	require('./sidebar').name,
 ])
 .run(['$rootScope', '$state', '$stateParams', ($rootScope, $state, $stateParams) => {
   $rootScope.$state = $state;
