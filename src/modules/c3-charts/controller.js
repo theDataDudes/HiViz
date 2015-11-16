@@ -2,7 +2,29 @@
 module.exports = ['$scope',($scope) => {
   $scope.oahuChart = null;
 
+// pull island data from objects and assign it to each showGraph
+// formats the data to what we want
+// loop through scope.collection and reference each object (all islands)
+  // $scope.chartLoad = function () {
+  //   var monthArray = [];
+  //   for (var q in $scope.collection[0].month) {
+  //     if (q !== 'TOTAL')
+  //       monthArray.push($scope.collection[0].month[q]);
+  //   }
+  //   monthArray = monthArray.map( (c) => {
+  //     return c.passengers;
+  //   });
+
+  //   monthArray.unshift('Arrivals');
+
+  //   $scope.donut.load({columns: [
+  //     monthArray
+  //   ]});
+  //   }
+  // }];
+
   $scope.showGraph = function() {
+    // $scope.$ngc.unfilterBy('island');
     $scope.oahuChart = c3.generate({
       bindto: '#oahu',
       data: {

@@ -1400,7 +1400,29 @@ process.chdir = function (dir) {
 module.exports = ['$scope',($scope) => {
   $scope.oahuChart = null;
 
+// pull island data from objects and assign it to each showGraph
+// formats the data to what we want
+// loop through scope.collection and reference each object (all islands)
+  // $scope.chartLoad = function () {
+  //   var monthArray = [];
+  //   for (var q in $scope.collection[0].month) {
+  //     if (q !== 'TOTAL')
+  //       monthArray.push($scope.collection[0].month[q]);
+  //   }
+  //   monthArray = monthArray.map( (c) => {
+  //     return c.passengers;
+  //   });
+
+  //   monthArray.unshift('Arrivals');
+
+  //   $scope.donut.load({columns: [
+  //     monthArray
+  //   ]});
+  //   }
+  // }];
+
   $scope.showGraph = function() {
+    // $scope.$ngc.unfilterBy('island');
     $scope.oahuChart = c3.generate({
       bindto: '#oahu',
       data: {
@@ -1510,7 +1532,15 @@ module.exports = angular.module('app.c3-charts',[])
       scope : true,
       controller : 'GraphCtrl',
       controllerAs : 'graphtCtrl',
-      templateUrl : 'views/c3.html'
+      templateUrl : 'views/c3.html',
+      link : function(scope) {
+        scope.$watch('$ngc', function(filter) {
+          if(!filter) return;
+          filter.unfilterBy('island');
+          filter.unfilterBy('region');
+          console.log(filter.collection());
+        });
+      }
     };
   })
   .controller('GraphCtrl', require('./controller'));
@@ -1552,7 +1582,8 @@ function controller($scope, apiService, Crossfilter) {
       $scope.$ngc = filter;
       filter.filterBy('year', '2014');
       filter.filterBy('region', 'total');
-      filter.filterBy('island', 'total');
+// todo filter by island will happen onclick of mo data or island?
+      // filter.filterBy('island', 'total');
     });
 
   //updates the filters applied across all of the charts/graphs
@@ -1883,7 +1914,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d51e7bf4.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_4b3080e9.js","/")
 },{"./c3-charts":6,"./common":12,"./main":17,"./sideCharts":19,"./sidebar":21,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
