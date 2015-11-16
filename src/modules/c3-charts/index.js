@@ -10,8 +10,8 @@ module.exports = angular.module('app.c3-charts',[])
         scope.$watch('$ngc', function(filter) {
           if(!filter) return;
           filter.unfilterBy('island');
-          filter.unfilterBy('region');
-          console.log(filter.collection());
+          // filter.unfilterBy('region');
+          scope.oahuFilter = 'hello';
         });
       }
     };

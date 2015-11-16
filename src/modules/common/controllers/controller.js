@@ -9,7 +9,7 @@ function controller($scope, apiService, Crossfilter) {
 
   this.showHide = function () {
     this.IsVisible = this.IsVisible ? false : true;
-  }
+  };
 
   ///checks to see if digest has been called
   $scope.safeApply = function(fn) {
@@ -61,6 +61,6 @@ function controller($scope, apiService, Crossfilter) {
         $scope.$ngc.filterBy('year', $scope.selectedYear);
       }
     }
-  }
+  };
 
 }

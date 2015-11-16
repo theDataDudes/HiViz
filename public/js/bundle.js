@@ -1397,8 +1397,16 @@ process.chdir = function (dir) {
 },{"buffer":2,"rH1JPG":4}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = ['$scope',($scope) => {
+module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
   $scope.oahuChart = null;
+
+  $scope.$watch('$ngc', function(filter) {
+    var oahuFilter = new Crossfilter(filter.collection());
+    $scope.oahuFilter = oahuFilter;
+    oahuFilter.filterBy('region', 'oahu');
+  });
+
+
 
 // pull island data from objects and assign it to each showGraph
 // formats the data to what we want
@@ -1427,7 +1435,8 @@ module.exports = ['$scope',($scope) => {
       bindto: '#oahu',
       data: {
         columns: [
-        ['data1',200,160,250,100,300,400,200,160,250,100,300,400],
+        ['Total',200,160,250,100,300,400,200,160,250,100,300,400],
+        ['US West',90,60,90,50,55,85,90,60,90,50,55,85],
         ],
         type: 'spline',
       },
@@ -1440,7 +1449,8 @@ module.exports = ['$scope',($scope) => {
       bindto: '#big',
       data: {
         columns: [
-        ['data1',90,60,90,50,55,85,90,60,90,50,55,85],
+        ['US West',90,60,90,50,55,85,90,60,90,50,55,85],
+        ['US East',30,200,100,325,150,325,30,200,100,325,150,325],
         ],
         type: 'spline',
       },
@@ -1537,8 +1547,8 @@ module.exports = angular.module('app.c3-charts',[])
         scope.$watch('$ngc', function(filter) {
           if(!filter) return;
           filter.unfilterBy('island');
-          filter.unfilterBy('region');
-          console.log(filter.collection());
+          // filter.unfilterBy('region');
+          scope.oahuFilter = 'hello';
         });
       }
     };
@@ -1558,7 +1568,7 @@ function controller($scope, apiService, Crossfilter) {
 
   this.showHide = function () {
     this.IsVisible = this.IsVisible ? false : true;
-  }
+  };
 
   ///checks to see if digest has been called
   $scope.safeApply = function(fn) {
@@ -1610,7 +1620,7 @@ function controller($scope, apiService, Crossfilter) {
         $scope.$ngc.filterBy('year', $scope.selectedYear);
       }
     }
-  }
+  };
 
 }
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/controllers/controller.js","/common/controllers")
@@ -1914,7 +1924,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_4b3080e9.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_1ec2016b.js","/")
 },{"./c3-charts":6,"./common":12,"./main":17,"./sideCharts":19,"./sidebar":21,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';

@@ -1,6 +1,14 @@
 'use strict';
-module.exports = ['$scope',($scope) => {
+module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
   $scope.oahuChart = null;
+
+  $scope.$watch('$ngc', function(filter) {
+    var oahuFilter = new Crossfilter(filter.collection());
+    $scope.oahuFilter = oahuFilter;
+    oahuFilter.filterBy('region', 'oahu');
+  });
+
+
 
 // pull island data from objects and assign it to each showGraph
 // formats the data to what we want
@@ -29,7 +37,8 @@ module.exports = ['$scope',($scope) => {
       bindto: '#oahu',
       data: {
         columns: [
-        ['data1',200,160,250,100,300,400,200,160,250,100,300,400],
+        ['Total',200,160,250,100,300,400,200,160,250,100,300,400],
+        ['US West',90,60,90,50,55,85,90,60,90,50,55,85],
         ],
         type: 'spline',
       },
@@ -42,7 +51,8 @@ module.exports = ['$scope',($scope) => {
       bindto: '#big',
       data: {
         columns: [
-        ['data1',90,60,90,50,55,85,90,60,90,50,55,85],
+        ['US West',90,60,90,50,55,85,90,60,90,50,55,85],
+        ['US East',30,200,100,325,150,325,30,200,100,325,150,325],
         ],
         type: 'spline',
       },
