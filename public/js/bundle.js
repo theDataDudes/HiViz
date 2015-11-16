@@ -1883,7 +1883,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_28e60ba8.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d51e7bf4.js","/")
 },{"./c3-charts":6,"./common":12,"./main":17,"./sideCharts":19,"./sidebar":21,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -1922,32 +1922,30 @@ module.exports = ['$scope', ($scope) => {
       bindto: '#donut',
       data: {
         columns: [
-            ['Food', 0],
-            ['Entertainment', 0],
-            ['Transportation', 0],
-            ['Shopping', 0],
-            ['Loding', 0],
-            ['Other', 0]
+            ['Arrivals', 0],
         ],
-        type: 'donut'
+        type: 'bar'
       },
-      donut: {
-        title: 'Expenditures',
-        width: 70,
-        inner_radius: 0.5
-      },
+      bar: {
+
+      }
     });
   };
 
-  $scope.donutLoad = function (month) {
-    $scope.console.log($scope.collection[0].month[month]);
+  $scope.donutLoad = function () {
+    var monthArray = [];
+    for (var q in $scope.collection[0].month) {
+      if (q !== 'TOTAL')
+        monthArray.push($scope.collection[0].month[q]);
+    }
+    monthArray = monthArray.map( (c) => {
+      return c.passengers;
+    });
+
+    monthArray.unshift('Arrivals');
+
     $scope.donut.load({columns: [
-            ['Food', $scope.collection[0].month[month].food],
-            ['Entertainment', $scope.collection[0].month[month].entertainment],
-            ['Transportation', $scope.collection[0].month[month].transportation],
-            ['Shopping', $scope.collection[0].month[month].shopping],
-            ['Lodging', $scope.collection[0].month[month].lodging],
-            ['Other', $scope.collection[0].month[month].other]
+      monthArray
     ]});
   }
 }];
