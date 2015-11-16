@@ -14,8 +14,8 @@ function controller($scope, apiService, Crossfilter) {
   ///checks to see if digest has been called
   $scope.safeApply = function(fn) {
     var phase = this.$root.$$phase;
-    if(phase == '$apply' || phase == '$digest') {
-      if(fn && (typeof(fn) === 'function')) {
+    if (phase == '$apply' || phase == '$digest') {
+      if (fn && (typeof (fn) === 'function')) {
         fn();
       }
     } else {

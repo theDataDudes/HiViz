@@ -1573,8 +1573,8 @@ function controller($scope, apiService, Crossfilter) {
   ///checks to see if digest has been called
   $scope.safeApply = function(fn) {
     var phase = this.$root.$$phase;
-    if(phase == '$apply' || phase == '$digest') {
-      if(fn && (typeof(fn) === 'function')) {
+    if (phase == '$apply' || phase == '$digest') {
+      if (fn && (typeof (fn) === 'function')) {
         fn();
       }
     } else {
@@ -1924,7 +1924,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_1ec2016b.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_19c56d56.js","/")
 },{"./c3-charts":6,"./common":12,"./main":17,"./sideCharts":19,"./sidebar":21,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -1960,18 +1960,29 @@ module.exports = ['$scope', ($scope) => {
 
   $scope.showDonut = function() {
     $scope.donut = c3.generate({
-      bindto: '#donut',
-      data: {
-        columns: [
+      bindto : '#donut',
+      data : {
+        columns : [
             ['Arrivals', 0],
         ],
-        type: 'bar'
+        type : 'bar'
       },
-      bar: {
+      axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
+      },
+      bar : {
 
       }
     });
   };
+
+  $scope.$on('crossfilter/updated', function (event, collection, identifier) {
+    $scope.donutLoad();
+  });
 
   $scope.donutLoad = function () {
     var monthArray = [];
@@ -1985,7 +1996,7 @@ module.exports = ['$scope', ($scope) => {
 
     monthArray.unshift('Arrivals');
 
-    $scope.donut.load({columns: [
+    $scope.donut.load({ columns : [
       monthArray
     ]});
   }

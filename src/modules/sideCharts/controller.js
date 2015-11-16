@@ -4,18 +4,29 @@ module.exports = ['$scope', ($scope) => {
 
   $scope.showDonut = function() {
     $scope.donut = c3.generate({
-      bindto: '#donut',
-      data: {
-        columns: [
+      bindto : '#donut',
+      data : {
+        columns : [
             ['Arrivals', 0],
         ],
-        type: 'bar'
+        type : 'bar'
       },
-      bar: {
+      axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
+      },
+      bar : {
 
       }
     });
   };
+
+  $scope.$on('crossfilter/updated', function (event, collection, identifier) {
+    $scope.donutLoad();
+  });
 
   $scope.donutLoad = function () {
     var monthArray = [];
@@ -29,7 +40,7 @@ module.exports = ['$scope', ($scope) => {
 
     monthArray.unshift('Arrivals');
 
-    $scope.donut.load({columns: [
+    $scope.donut.load({ columns : [
       monthArray
     ]});
   }
