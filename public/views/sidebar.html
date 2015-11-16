@@ -17,24 +17,8 @@
   <!-- insert graphs -->
   <!-- graph one - total pie chart of exp for state comparing all variables -->
   <!-- <pie-charts></pie-charts> -->
-<select id="monthSelector" ng-init="model.month = options[0]" ng-model="model.month">
-  <option value="TOTAL">Year</option>
-  <option value="JAN">January</option>
-  <option value="FEB">Februrary</option>
-  <option value="MAR">March</option>
-  <option value="APR">April</option>
-  <option value="MAY">May</option>
-  <option value="JUN">June</option>
-  <option value="JUL">July</option>
-  <option value="AUG">August</option>
-  <option value="SEP">September</option>
-  <option value="OCT">October</option>
-  <option value="NOV">November</option>
-  <option value="DEC">December</option>
-</select>
 
 <div ng-controller='DonutController' ng-init='showDonut()'>
-  <button ng-click="donutLoad(model.month);">load data</button>
   <div id='donut'></div>
 </div>
 

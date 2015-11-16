@@ -9,13 +9,13 @@ function controller($scope, apiService, Crossfilter) {
 
   this.showHide = function () {
     this.IsVisible = this.IsVisible ? false : true;
-  }
+  };
 
   ///checks to see if digest has been called
   $scope.safeApply = function(fn) {
     var phase = this.$root.$$phase;
-    if(phase == '$apply' || phase == '$digest') {
-      if(fn && (typeof(fn) === 'function')) {
+    if (phase == '$apply' || phase == '$digest') {
+      if (fn && (typeof (fn) === 'function')) {
         fn();
       }
     } else {
@@ -33,7 +33,8 @@ function controller($scope, apiService, Crossfilter) {
       $scope.$ngc = filter;
       filter.filterBy('year', '2014');
       filter.filterBy('region', 'total');
-      filter.filterBy('island', 'total');
+// todo filter by island will happen onclick of mo data or island?
+      // filter.filterBy('island', 'total');
     });
 
   //updates the filters applied across all of the charts/graphs
@@ -60,6 +61,6 @@ function controller($scope, apiService, Crossfilter) {
         $scope.$ngc.filterBy('year', $scope.selectedYear);
       }
     }
-  }
+  };
 
 }
