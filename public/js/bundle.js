@@ -1683,7 +1683,7 @@ module.exports = angular.module('app.common.directives', ['ngCrossfilter',
 
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/index.js","/common/directives")
-},{"./islandBarChart":10,"./islandMap":11,"./sidebarNumbers":12,"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
+},{"./islandBarChart":10,"./islandMap":11,"./sidebarNumbers":14,"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 //directive for d3 island map
 module.exports = [function () {
@@ -1900,14 +1900,7 @@ module.exports = [function () {
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/islandMap.js","/common/directives")
 },{"buffer":2,"rH1JPG":4}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-'use strict';
-
-module.exports = angular.module('app.common.directives.sidebarNumbers', ['ngCrossfilter'])
-  .directive('odometer', require('./total'));
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/index.js","/common/directives/sidebarNumbers")
-},{"./total":13,"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-//directive for displaying expenditure numbers in the sidebar
+//directive for displaying entertainment expenditure numbers in the sidebar
 'use strict';
 module.exports = [function () {
   return {
@@ -1916,23 +1909,199 @@ module.exports = [function () {
     templateUrl : 'views/sideBarNumbers.html',
     link : function (scope, element, attrs, ctrl) {
       // console.log(scope);
-      var odo = new Odometer({
+      var entertainmentOdo = new Odometer({
         el : element[0],
         value : 1000
       });
 
       scope.$watch('selectedMonth', function () {
-        odo.update(scope.endValue);
+        entertainmentOdo.update(scope.expenditureTotal.entertainment);
       });
 
       scope.$on('crossfilter/updated', function () {
-        odo.update(scope.endValue);
+        entertainmentOdo.update(scope.expenditureTotal.entertainment);
+      });
+    }
+  }
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/entertainment.js","/common/directives/sidebarNumbers")
+},{"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+//directive for displaying food expenditure numbers in the sidebar
+'use strict';
+module.exports = [function () {
+  return {
+    restrict : 'EA',
+    scope : true,
+    templateUrl : 'views/sideBarNumbers.html',
+    link : function (scope, element, attrs, ctrl) {
+      // console.log(scope);
+      var foodOdo = new Odometer({
+        el : element[0],
+        value : 1000
+      });
+
+      scope.$watch('selectedMonth', function () {
+        foodOdo.update(scope.expenditureTotal.food);
+      });
+
+      scope.$on('crossfilter/updated', function () {
+        foodOdo.update(scope.expenditureTotal.food);
+      });
+    }
+  }
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/food.js","/common/directives/sidebarNumbers")
+},{"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+
+module.exports = angular.module('app.common.directives.sidebarNumbers', ['ngCrossfilter'])
+  .directive('odoTotal', require('./total'))
+  .directive('odoShopping', require('./shopping'))
+  .directive('odoLodging', require('./lodging'))
+  .directive('odoTransportation', require('./transportation'))
+  .directive('odoFood', require('./food'))
+  .directive('odoEntertainment', require('./entertainment'))
+  .directive('odoOther', require('./other'));
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/index.js","/common/directives/sidebarNumbers")
+},{"./entertainment":12,"./food":13,"./lodging":15,"./other":16,"./shopping":17,"./total":18,"./transportation":19,"buffer":2,"rH1JPG":4}],15:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+//directive for displaying lodging expenditure numbers in the sidebar
+'use strict';
+module.exports = [function () {
+  return {
+    restrict : 'EA',
+    scope : true,
+    templateUrl : 'views/sideBarNumbers.html',
+    link : function (scope, element, attrs, ctrl) {
+      // console.log(scope);
+      var lodgingOdo = new Odometer({
+        el : element[0],
+        value : 1000
+      });
+
+      scope.$watch('selectedMonth', function () {
+        lodgingOdo.update(scope.expenditureTotal.lodging);
+      });
+
+      scope.$on('crossfilter/updated', function () {
+        lodgingOdo.update(scope.expenditureTotal.lodging);
+      });
+    }
+  }
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/lodging.js","/common/directives/sidebarNumbers")
+},{"buffer":2,"rH1JPG":4}],16:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+//directive for displaying other expenditure numbers in the sidebar
+'use strict';
+module.exports = [function () {
+  return {
+    restrict : 'EA',
+    scope : true,
+    templateUrl : 'views/sideBarNumbers.html',
+    link : function (scope, element, attrs, ctrl) {
+      // console.log(scope);
+      var otherOdo = new Odometer({
+        el : element[0],
+        value : 1000
+      });
+
+      scope.$watch('selectedMonth', function () {
+        otherOdo.update(scope.expenditureTotal.other);
+      });
+
+      scope.$on('crossfilter/updated', function () {
+        otherOdo.update(scope.expenditureTotal.other);
+      });
+    }
+  }
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/other.js","/common/directives/sidebarNumbers")
+},{"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+//directive for displaying shopping expenditure numbers in the sidebar
+'use strict';
+module.exports = [function () {
+  return {
+    restrict : 'EA',
+    scope : true,
+    templateUrl : 'views/sideBarNumbers.html',
+    link : function (scope, element, attrs, ctrl) {
+      // console.log(scope);
+      var shoppingOdo = new Odometer({
+        el : element[0],
+        value : 1000
+      });
+
+      scope.$watch('selectedMonth', function () {
+        shoppingOdo.update(scope.expenditureTotal.shopping);
+      });
+
+      scope.$on('crossfilter/updated', function () {
+        shoppingOdo.update(scope.expenditureTotal.shopping);
+      });
+    }
+  }
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/shopping.js","/common/directives/sidebarNumbers")
+},{"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+//directive for displaying total expenditure numbers in the sidebar
+'use strict';
+module.exports = [function () {
+  return {
+    restrict : 'EA',
+    scope : true,
+    templateUrl : 'views/sideBarNumbers.html',
+    link : function (scope, element, attrs, ctrl) {
+      // console.log(scope);
+      var totalOdo = new Odometer({
+        el : element[0],
+        value : 1000
+      });
+      console.log(scope.expenditureTotal);
+
+      scope.$watch('selectedMonth', function () {
+        totalOdo.update(scope.expenditureTotal.total);
+      });
+
+      scope.$on('crossfilter/updated', function () {
+        totalOdo.update(scope.expenditureTotal.total);
       });
     }
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/total.js","/common/directives/sidebarNumbers")
-},{"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],19:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+//directive for displaying transportation expenditure numbers in the sidebar
+'use strict';
+module.exports = [function () {
+  return {
+    restrict : 'EA',
+    scope : true,
+    templateUrl : 'views/sideBarNumbers.html',
+    link : function (scope, element, attrs, ctrl) {
+      // console.log(scope);
+      var transportationOdo = new Odometer({
+        el : element[0],
+        value : 1000
+      });
+
+      scope.$watch('selectedMonth', function () {
+        transportationOdo.update(scope.expenditureTotal.transportation);
+      });
+
+      scope.$on('crossfilter/updated', function () {
+        transportationOdo.update(scope.expenditureTotal.transportation);
+      });
+    }
+  }
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/transportation.js","/common/directives/sidebarNumbers")
+},{"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1942,7 +2111,7 @@ module.exports = angular.module('app.common', [
 	require('./controllers').name
 ]);
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/index.js","/common")
-},{"./controllers":8,"./directives":9,"./services":16,"buffer":2,"rH1JPG":4}],15:[function(require,module,exports){
+},{"./controllers":8,"./directives":9,"./services":22,"buffer":2,"rH1JPG":4}],21:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1968,14 +2137,14 @@ module.exports = ['$http', function apiService ($http) {
   };
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/apiService.js","/common/services")
-},{"buffer":2,"rH1JPG":4}],16:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],22:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.common.services', [])
 .service('apiService', require('./apiService'))
 .service('relationalService', require('./relationalService'));
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/index.js","/common/services")
-},{"./apiService":15,"./relationalService":17,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
+},{"./apiService":21,"./relationalService":23,"buffer":2,"rH1JPG":4}],23:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1987,7 +2156,7 @@ module.exports = ['apiService', function relationalService (apiService) {
 
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/relationalService.js","/common/services")
-},{"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],24:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 angular.module('app', [
     'ui.router',
@@ -2002,8 +2171,8 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_a0b19b06.js","/")
-},{"./c3-charts":6,"./common":14,"./main":19,"./sideCharts":21,"./sidebar":23,"buffer":2,"rH1JPG":4}],19:[function(require,module,exports){
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_cb2324d3.js","/")
+},{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":29,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -2030,7 +2199,7 @@ module.exports = angular.module('app.main', [])
     $urlRouterProvider.otherwise('/');
   });
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/main/index.js","/main")
-},{"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],26:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = ['$scope', ($scope) => {
@@ -2050,7 +2219,7 @@ module.exports = ['$scope', ($scope) => {
         ],
         type : 'bar',
 
-        onmouseover : function (d) {
+        onclick : function (d) {
           $scope.selectedMonth = months[d.index];
           $scope.safeApply();
           // console.log($scope.collection[0].month[$scope.selectedMonth]);
@@ -2071,14 +2240,13 @@ module.exports = ['$scope', ($scope) => {
 
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
     $scope.donutLoad();
-    $scope.endValue = $scope.collection[0].month[$scope.selectedMonth].total;
+    $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
     $scope.safeApply();
-    // console.log($scope.selectedMonth);
   });
 
   $scope.$watch('selectedMonth', function (selectedMonth) {
     // console.log(selectedMonth);
-    $scope.endValue = $scope.collection[0].month[$scope.selectedMonth].total;
+    $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
   });
 
   $scope.donutLoad = function () {
@@ -2099,7 +2267,7 @@ module.exports = ['$scope', ($scope) => {
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/controller.js","/sideCharts")
-},{"buffer":2,"rH1JPG":4}],21:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],27:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.sideCharts',[])
@@ -2114,7 +2282,7 @@ module.exports = angular.module('app.sideCharts',[])
   .controller('DonutController', require('./controller'));
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/index.js","/sideCharts")
-},{"./controller":20,"buffer":2,"rH1JPG":4}],22:[function(require,module,exports){
+},{"./controller":26,"buffer":2,"rH1JPG":4}],28:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = ['$scope', controller];
@@ -2124,7 +2292,7 @@ function controller() {
 
 }
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sidebar/controller.js","/sidebar")
-},{"buffer":2,"rH1JPG":4}],23:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],29:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.sidebar', [])
@@ -2139,4 +2307,4 @@ module.exports = angular.module('app.sidebar', [])
 	.controller('sidebarController', require('./controller'));
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sidebar/index.js","/sidebar")
-},{"./controller":22,"buffer":2,"rH1JPG":4}]},{},[18])
+},{"./controller":28,"buffer":2,"rH1JPG":4}]},{},[24])

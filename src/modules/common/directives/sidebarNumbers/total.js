@@ -1,4 +1,4 @@
-//directive for displaying expenditure numbers in the sidebar
+//directive for displaying total expenditure numbers in the sidebar
 'use strict';
 module.exports = [function () {
   return {
@@ -7,17 +7,18 @@ module.exports = [function () {
     templateUrl : 'views/sideBarNumbers.html',
     link : function (scope, element, attrs, ctrl) {
       // console.log(scope);
-      var odo = new Odometer({
+      var totalOdo = new Odometer({
         el : element[0],
         value : 1000
       });
+      console.log(scope.expenditureTotal);
 
       scope.$watch('selectedMonth', function () {
-        odo.update(scope.endValue);
+        totalOdo.update(scope.expenditureTotal.total);
       });
 
       scope.$on('crossfilter/updated', function () {
-        odo.update(scope.endValue);
+        totalOdo.update(scope.expenditureTotal.total);
       });
     }
   }
