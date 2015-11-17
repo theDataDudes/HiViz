@@ -171,7 +171,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       },
       size: {
         width: 800,
-        height: 200
+        height: 150
       }
     });
   };
