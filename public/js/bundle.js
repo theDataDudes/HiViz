@@ -1398,14 +1398,21 @@ process.chdir = function (dir) {
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
-  $scope.oahuChart = null;
+  var self = this;
+
+  this.selectedIcon = 'total';
+
+  $scope.changeIcon = function(icon) {
+    self.selectedIcon = icon;
+    $scope.$emit('iconChanged');
+  };
 
   $scope.$watch('$ngc', function(filter) {
     // var oahuFilter = new Crossfilter(filter.collection());
     // $scope.oahuFilter = oahuFilter;
     // oahuFilter.filterBy('region', 'oahu');
 
-    $scope.chartLoad = function () {
+    $scope.chartLoad = function (icon) {
       $scope.collection.reduce( function(previous, current) {
         current.monthArray = [0,0,0,0,0,0,0,0,0,0,0,0];
         for (var q in current.month) {
@@ -1451,18 +1458,29 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             }
           }
         current.monthArray = current.monthArray.map( (c) => {
-          return c.other;
+          if(c[icon] === undefined) {
+            return (c.total * .001);
+          }
+          return (c[icon] * .001);
         });
-
         current.monthArray.unshift(current.region);
 
         if (current.island === previous.island) {
+          var columns;
+          var colors = {};
 
-          $scope[current.island + 'Chart'].load({columns: [
-            previous.monthArray,
-            current.monthArray
-          ],
-          unload : $scope[current.island + 'Chart'].columns
+          if(current.monthArray[0] > previous.monthArray[0]) {
+            columns = [previous.monthArray, current.monthArray];
+            colors[previous.monthArray[0]] = 'green';
+            colors[current.monthArray[0]] = 'blue';
+          } else {
+            columns = [current.monthArray, previous.monthArray];
+            colors[previous.monthArray[0]] = 'blue';
+            colors[current.monthArray[0]] = 'green';
+          }
+          $scope[current.island + 'Chart'].load({columns: columns,
+          unload : $scope[current.island + 'Chart'].columns,
+          colors : colors
         });
         }
 
@@ -1472,7 +1490,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
   });
 
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
-    $scope.chartLoad();
+    $scope.chartLoad(self.selectedIcon);
+    $scope.safeApply();
+  });
+
+  $scope.$on('iconChanged', function (event, collection, identifier) {
+    $scope.chartLoad(self.selectedIcon);
+    $scope.safeApply();
   });
 
 // pull island data from objects and assign it to each showGraph
@@ -1487,12 +1511,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue'],
         type: 'spline',
       },
       size: {
-        width: 300,
+        width: 400,
         height: 150
-      }
+      },
     });
     $scope.bigIslandChart = c3.generate({
       bindto: '#big',
@@ -1500,12 +1525,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue'],
         type: 'spline',
       },
       size: {
-        width: 300,
+        width: 400,
         height: 150
-      }
+      },
     });
     $scope.kauaiChart = c3.generate({
       bindto: '#kauai',
@@ -1513,12 +1539,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue'],
         type: 'spline',
       },
       size: {
-        width: 300,
+        width: 400,
         height: 150
-      }
+      },
     });
     $scope.mauiChart = c3.generate({
       bindto: '#maui',
@@ -1526,12 +1553,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue'],
         type: 'spline',
       },
       size: {
-        width: 300,
+        width: 400,
         height: 150
-      }
+      },
     });
     $scope.lanaiChart = c3.generate({
       bindto: '#lanai',
@@ -1539,12 +1567,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue'],
         type: 'spline',
       },
       size: {
-        width: 300,
+        width: 400,
         height: 150
-      }
+      },
     });
     $scope.molokaiChart = c3.generate({
       bindto: '#molokai',
@@ -1552,12 +1581,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue'],
         type: 'spline',
       },
       size: {
-        width: 300,
+        width: 400,
         height: 150
-      }
+      },
     });
     $scope.totalChart = c3.generate({
       bindto: '#total',
@@ -1565,11 +1595,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue', 'red','salmon','orange','black','yellow'],
         type: 'spline'
       },
       size: {
         width: 800,
-        height: 200
+        height: 150
       }
     });
   };
@@ -1582,8 +1613,8 @@ module.exports = angular.module('app.c3-charts',[])
   .directive('c3Charts', function () {
     return {
       scope : true,
-      controller : 'GraphCtrl',
-      controllerAs : 'graphtCtrl',
+      // controller : 'GraphCtrl',
+      // controllerAs : 'graphtCtrl',
       templateUrl : 'views/c3.html',
       link : function(scope) {
         scope.$watch('$ngc', function(filter) {
@@ -1591,6 +1622,7 @@ module.exports = angular.module('app.c3-charts',[])
           filter.unfilterBy('island');
           filter.filterBy('region', ['japan', 'usWest'], filter.filters.inArray('some'));
           filter.sortBy('island');
+          // filter.sortBy('island');
         });
       }
     };
@@ -1605,7 +1637,7 @@ module.exports = ['$scope', 'apiService', 'Crossfilter', controller];
 function controller($scope, apiService, Crossfilter) {
 
   //side-bar visibility function
-  this.IsVisible = true;
+  this.IsVisible = false;
   this.filteredData = '';
 
   this.showHide = function () {
@@ -2171,7 +2203,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_efdb433d.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_28fd9d22.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":29,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -2188,7 +2220,9 @@ module.exports = angular.module('app.main', [])
       })
       .state('graph', {
         url : '/graph',
-        templateUrl : 'views/graph.html'
+        templateUrl : 'views/graph.html',
+        controller : 'GraphCtrl',
+        controllerAs : 'graph'
       })
       .state('about', {
         url : '/about',

@@ -4,7 +4,7 @@ module.exports = ['$scope', 'apiService', 'Crossfilter', controller];
 function controller($scope, apiService, Crossfilter) {
 
   //side-bar visibility function
-  this.IsVisible = true;
+  this.IsVisible = false;
   this.filteredData = '';
 
   this.showHide = function () {
