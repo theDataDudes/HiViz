@@ -2,4 +2,5 @@
 
 module.exports = angular.module('app.common.directives', ['ngCrossfilter'])
   .directive('islandMap', require('./islandMap'))
-  .directive('islandBarChart', require('./islandBarChart'));
+  .directive('islandBarChart', require('./islandBarChart'))
+  .directive('odometer', require('./sideBarNumbers'));
