@@ -7,7 +7,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // $scope.oahuFilter = oahuFilter;
     // oahuFilter.filterBy('region', 'oahu');
 
-    $scope.chartLoad = function () {
+    $scope.chartLoad = function (icon) {
       $scope.collection.reduce( function(previous, current) {
         current.monthArray = [0,0,0,0,0,0,0,0,0,0,0,0];
         for (var q in current.month) {
@@ -53,18 +53,30 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             }
           }
         current.monthArray = current.monthArray.map( (c) => {
-          return c.other;
+          if(c[icon] === undefined) {
+            return (c.total * .001);
+          }
+          return (c[icon] * .001);
         });
-
+        console.log('region', current.region);
         current.monthArray.unshift(current.region);
 
         if (current.island === previous.island) {
+          var columns;
+          var colors = {};
 
-          $scope[current.island + 'Chart'].load({columns: [
-            previous.monthArray,
-            current.monthArray
-          ],
-          unload : $scope[current.island + 'Chart'].columns
+          if(current.monthArray[0] > previous.monthArray[0]) {
+            columns = [previous.monthArray, current.monthArray];
+            colors[previous.monthArray[0]] = 'green';
+            colors[current.monthArray[0]] = 'blue';
+          } else {
+            columns = [current.monthArray, previous.monthArray];
+            colors[previous.monthArray[0]] = 'blue';
+            colors[current.monthArray[0]] = 'green';
+          }
+          $scope[current.island + 'Chart'].load({columns: columns,
+          unload : $scope[current.island + 'Chart'].columns,
+          colors : colors
         });
         }
 
@@ -75,6 +87,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
     $scope.chartLoad();
+    $scope.safeApply();
   });
 
 // pull island data from objects and assign it to each showGraph
@@ -89,12 +102,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue'],
         type: 'spline',
       },
       size: {
-        width: 300,
+        width: 400,
         height: 150
-      }
+      },
     });
     $scope.bigIslandChart = c3.generate({
       bindto: '#big',
@@ -102,12 +116,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue'],
         type: 'spline',
       },
       size: {
-        width: 300,
+        width: 400,
         height: 150
-      }
+      },
     });
     $scope.kauaiChart = c3.generate({
       bindto: '#kauai',
@@ -115,12 +130,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue'],
         type: 'spline',
       },
       size: {
-        width: 300,
+        width: 400,
         height: 150
-      }
+      },
     });
     $scope.mauiChart = c3.generate({
       bindto: '#maui',
@@ -128,12 +144,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue'],
         type: 'spline',
       },
       size: {
-        width: 300,
+        width: 400,
         height: 150
-      }
+      },
     });
     $scope.lanaiChart = c3.generate({
       bindto: '#lanai',
@@ -141,12 +158,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue'],
         type: 'spline',
       },
       size: {
-        width: 300,
+        width: 400,
         height: 150
-      }
+      },
     });
     $scope.molokaiChart = c3.generate({
       bindto: '#molokai',
@@ -154,12 +172,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue'],
         type: 'spline',
       },
       size: {
-        width: 300,
+        width: 400,
         height: 150
-      }
+      },
     });
     $scope.totalChart = c3.generate({
       bindto: '#total',
@@ -167,12 +186,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         columns: [
 
         ],
+        colors: ['green', 'blue', 'red','salmon','orange','black','yellow'],
         type: 'spline'
       },
       size: {
         width: 800,
         height: 200
-      }
+      },
     });
   };
 }];

@@ -6,19 +6,19 @@
 
     <!-- top bar expenditure icons. need to add clickable filters -->
 		<ul>
-			<li><a href="" title="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending"></a>
+			<li><a ng-click="chartLoad('total')" title="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending"></a>
 				<p>$1000</p></li><!--
-    --><li><a href="" title="Flights" class="tooltip"><img src="../assets/plane.svg" alt="flights"></a>
+    --><li><a ng-click="chartLoad('passengers')" title="Flights" class="tooltip"><img src="../assets/plane.svg" alt="flights"></a>
 			<p>$1000</p></li><!--
-    --><li><a href="" title="Lodging" class="tooltip"><img src="../assets/bed.svg" alt="lodging"></a>
+    --><li><a ng-click="chartLoad('lodging')" title="Lodging" class="tooltip"><img src="../assets/bed.svg" alt="lodging"></a>
 			<p>$1000</p></li><!--
-    --><li><a href="" title="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation"></a>
+    --><li><a ng-click="chartLoad('transportation')" title="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation"></a>
 			<p>$1000</p></li><!--
-    --><li><a href="" title="Shopping" class="tooltip"><img src="../assets/creditcard.svg" alt="shopping"></a>
+    --><li><a ng-click="chartLoad('shopping')" title="Shopping" class="tooltip"><img src="../assets/creditcard.svg" alt="shopping"></a>
 			<p>$1000</p></li><!--
-    --><li><a href="" title="Food" class="tooltip"><img src="../assets/utensil.svg" alt="food"></a>
+    --><li><a ng-click="chartLoad('food')" title="Food" class="tooltip"><img src="../assets/utensil.svg" alt="food"></a>
 			<p>$1000</p></li><!--
-    --><li><a href="" title="Entertainment" class="tooltip"><img src="../assets/tickets.svg" alt="entertainment"></a>
+    --><li><a ng-click="chartLoad('entertainment')" title="Entertainment" class="tooltip"><img src="../assets/tickets.svg" alt="entertainment"></a>
 			<p>$1000</p></li>
 		</ul>
 
@@ -32,17 +32,6 @@
 			<!--&ndash;&gt;<li><button>Graph</button></li>-->
 			<li><a ng-href="/#/" title="Map View" class="tooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
     --><li><a href="" title="Chart View" class="tooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
-		</ul>
-
-	</nav>
-
-	<nav id="timeNav">
-
-		<ul> <!-- need to add clickable filters for this data -Beerock -->
-			<li><a href="" title="Annual"><img src="../assets/annual.png" alt="annual"></a></li><!--
-    --><li><a href="" title="Monthly"><img src="../assets/monthly.png" alt="manthly"></a></li>
-
-      <!-- STRETCH GOAL<li><a href=""><img src="../assets/daily.png" alt="daily"></a></li>-->
 		</ul>
 
 	</nav>

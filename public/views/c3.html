@@ -1,46 +1,46 @@
 <!-- containing row for the c3 island charts -->
-<div class='row' id='c3row' ng-controller='GraphCtrl' ng-init='showGraph()'>
+<div class='row' id='c3row' ng-init='showGraph()'>
 
 <!-- c3 chart for Oahu -->
 <div class='small-4 columns'>
   <h5>Oahu</h5>
-  <div id='oahu'></div>
+  <div ng-model='oahuChart' id='oahu'></div>
 </div>
 
 <!-- c3 chart for Big Island -->
 <div class='small-4 columns'>
   <h5>Big Island</h5>
-  <div id='big'></div>
+  <div ng-model='bigIslandChart' id='big'></div>
 </div>
 
 <!-- c3 chart for Kauai -->
 <div class='small-4 columns'>
   <h5>Kauai</h5>
-  <div id='kauai'></div>
+  <div ng-model='kauaiChart' id='kauai'></div>
 </div>
 
 <!-- c3 chart for Maui -->
 <div class='small-4 columns'>
   <h5>Maui</h5>
-  <div id='maui'></div>
+  <div ng-model='mauiChart' id='maui'></div>
 </div>
 
 <!-- c3 chart for Lanai -->
 <div class='small-4 columns'>
   <h5>Lanai</h5>
-  <div id='lanai'></div>
+  <div ng-model='lanaiChart' id='lanai'></div>
 </div>
 
 <!-- c3 chart for Molokai -->
 <div class='small-4 columns'>
   <h5>Molokai</h5>
-  <div id='molokai'></div>
+  <div ng-model='molokaiChart' id='molokai'></div>
 </div>
 
 <!-- c3 chart for Hawaii total -->
 <div class='small-10 small-offset-2 columns'>
   <h5>Statewide</h5>
-  <div id='total'></div>
+  <div ng-model='totalChart' id='total'></div>
 
 </div>
 
