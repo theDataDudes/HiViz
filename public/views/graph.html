@@ -1,10 +1,36 @@
 <section id="mainContent">
 
+<!-- just a place holder to test region selector for charts page -->
+  <div class='small-4 right columns'>
+
+   <span>Select Region</span>
+   <select id="regionSelector1" ng-init="model.region1 = options[0]" ng-model="model.region1" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+      <option value="total" selected="selected">Total</option>
+      <option value="usWest">US West</option>
+      <option value="usEast">US East</option>
+      <option value="japan">Japan</option>
+      <option value="canada">Canada</option>
+    </select>
+
+    <input type='checkbox' ng-model='checked' ng-change="$ngc.filterBy('region', [model.region1], $ngc.filters.inArray('some')); model.region2=null" id='compareCheckBox'/>
+
+    <span>Compare</span>
+    <select  ng-if='checked' class='animate-checked' id="regionSelector2" ng-init="model.region2 = options[0]" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+        <option value="total" selected="selected">Total</option>
+        <option value="usWest">US West</option>
+        <option value="usEast">US East</option>
+        <option value="japan">Japan</option>
+        <option value="canada">Canada</option>
+    </select>
+
+  </div>
+
 	<nav id="mapNav">
 
 		<!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
 
     <!--begin expenditure icons-->
+    <!-- on click will invoke changeIcon function that is declared in controller.js -->
   <ul>
     <li><a ng-click="changeIcon('total')" title="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending"></a>
       <p>${{Math.floor(collection[0].month.TOTAL.total)}}</p></li><!--
