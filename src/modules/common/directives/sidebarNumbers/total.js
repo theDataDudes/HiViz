@@ -9,7 +9,7 @@ module.exports = [function () {
       // console.log(scope);
       var totalOdo = new Odometer({
         el : element[0],
-        value : 1000
+        value : 0
       });
       console.log(scope.expenditureTotal);
 
