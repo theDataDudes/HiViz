@@ -13,7 +13,8 @@ module.exports = angular.module('app.main', [])
       .state('graph', {
         url : '/graph',
         templateUrl : 'views/graph.html',
-        controller : 'GraphCtrl'
+        controller : 'GraphCtrl',
+        controllerAs : 'graph'
       })
       .state('about', {
         url : '/about',

@@ -34,7 +34,7 @@ function controller($scope, apiService, Crossfilter) {
       filter.filterBy('year', '2014');
       filter.filterBy('region', 'total');
 // todo filter by island will happen onclick of mo data or island?
-      // filter.filterBy('island', 'total');
+      filter.filterBy('island', 'total');
     });
 
   //updates the filters applied across all of the charts/graphs

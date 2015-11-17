@@ -1,6 +1,13 @@
 'use strict';
 module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
-  $scope.oahuChart = null;
+  var self = this;
+
+  this.selectedIcon = 'total';
+
+  $scope.changeIcon = function(icon) {
+    self.selectedIcon = icon;
+    $scope.$emit('iconChanged');
+  };
 
   $scope.$watch('$ngc', function(filter) {
     // var oahuFilter = new Crossfilter(filter.collection());
@@ -58,7 +65,6 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
           return (c[icon] * .001);
         });
-        console.log('region', current.region);
         current.monthArray.unshift(current.region);
 
         if (current.island === previous.island) {
@@ -86,7 +92,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
   });
 
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
-    $scope.chartLoad();
+    $scope.chartLoad(self.selectedIcon);
+    $scope.safeApply();
+  });
+
+  $scope.$on('iconChanged', function (event, collection, identifier) {
+    $scope.chartLoad(self.selectedIcon);
     $scope.safeApply();
   });
 

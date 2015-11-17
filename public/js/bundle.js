@@ -1398,7 +1398,14 @@ process.chdir = function (dir) {
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
-  $scope.oahuChart = null;
+  var self = this;
+
+  this.selectedIcon = 'total';
+
+  $scope.changeIcon = function(icon) {
+    self.selectedIcon = icon;
+    $scope.$emit('iconChanged');
+  };
 
   $scope.$watch('$ngc', function(filter) {
     // var oahuFilter = new Crossfilter(filter.collection());
@@ -1456,7 +1463,6 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
           return (c[icon] * .001);
         });
-        console.log('region', current.region);
         current.monthArray.unshift(current.region);
 
         if (current.island === previous.island) {
@@ -1484,7 +1490,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
   });
 
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
-    $scope.chartLoad();
+    $scope.chartLoad(self.selectedIcon);
+    $scope.safeApply();
+  });
+
+  $scope.$on('iconChanged', function (event, collection, identifier) {
+    $scope.chartLoad(self.selectedIcon);
     $scope.safeApply();
   });
 
@@ -1656,7 +1667,7 @@ function controller($scope, apiService, Crossfilter) {
       filter.filterBy('year', '2014');
       filter.filterBy('region', 'total');
 // todo filter by island will happen onclick of mo data or island?
-      // filter.filterBy('island', 'total');
+      filter.filterBy('island', 'total');
     });
 
   //updates the filters applied across all of the charts/graphs
@@ -1697,12 +1708,14 @@ module.exports = angular.module('app.common.controllers', [])
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
-module.exports = angular.module('app.common.directives', ['ngCrossfilter'])
+module.exports = angular.module('app.common.directives', ['ngCrossfilter',
+  require('./sidebarNumbers').name])
   .directive('islandMap', require('./islandMap'))
-  .directive('islandBarChart', require('./islandBarChart'));
+  .directive('islandBarChart', require('./islandBarChart'))
+
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/index.js","/common/directives")
-},{"./islandBarChart":10,"./islandMap":11,"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
+},{"./islandBarChart":10,"./islandMap":11,"./sidebarNumbers":12,"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 //directive for d3 island map
 module.exports = [function () {
@@ -1921,13 +1934,47 @@ module.exports = [function () {
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
+module.exports = angular.module('app.common.directives.sidebarNumbers', ['ngCrossfilter'])
+  .directive('odometer', require('./total'));
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/index.js","/common/directives/sidebarNumbers")
+},{"./total":13,"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+//directive for displaying expenditure numbers in the sidebar
+'use strict';
+module.exports = [function () {
+  return {
+    restrict : 'EA',
+    scope : true,
+    templateUrl : 'views/sideBarNumbers.html',
+    link : function (scope, element, attrs, ctrl) {
+      // console.log(scope);
+      var odo = new Odometer({
+        el : element[0],
+        value : 1000
+      });
+
+      scope.$watch('selectedMonth', function () {
+        odo.update(scope.endValue);
+      });
+
+      scope.$on('crossfilter/updated', function () {
+        odo.update(scope.endValue);
+      });
+    }
+  }
+}];
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/total.js","/common/directives/sidebarNumbers")
+},{"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+
 module.exports = angular.module('app.common', [
   require('./services').name,
   require('./directives').name,
 	require('./controllers').name
 ]);
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/index.js","/common")
-},{"./controllers":8,"./directives":9,"./services":14,"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
+},{"./controllers":8,"./directives":9,"./services":16,"buffer":2,"rH1JPG":4}],15:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1953,14 +2000,14 @@ module.exports = ['$http', function apiService ($http) {
   };
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/apiService.js","/common/services")
-},{"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],16:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.common.services', [])
 .service('apiService', require('./apiService'))
 .service('relationalService', require('./relationalService'));
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/index.js","/common/services")
-},{"./apiService":13,"./relationalService":15,"buffer":2,"rH1JPG":4}],15:[function(require,module,exports){
+},{"./apiService":15,"./relationalService":17,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -1972,7 +2019,7 @@ module.exports = ['apiService', function relationalService (apiService) {
 
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/relationalService.js","/common/services")
-},{"buffer":2,"rH1JPG":4}],16:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 angular.module('app', [
     'ui.router',
@@ -1987,8 +2034,8 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_df2f07cb.js","/")
-},{"./c3-charts":6,"./common":12,"./main":17,"./sideCharts":19,"./sidebar":21,"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_e4fb72aa.js","/")
+},{"./c3-charts":6,"./common":14,"./main":19,"./sideCharts":21,"./sidebar":23,"buffer":2,"rH1JPG":4}],19:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -2005,7 +2052,8 @@ module.exports = angular.module('app.main', [])
       .state('graph', {
         url : '/graph',
         templateUrl : 'views/graph.html',
-        controller : 'GraphCtrl'
+        controller : 'GraphCtrl',
+        controllerAs : 'graph'
       })
       .state('about', {
         url : '/about',
@@ -2016,11 +2064,16 @@ module.exports = angular.module('app.main', [])
     $urlRouterProvider.otherwise('/');
   });
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/main/index.js","/main")
-},{"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = ['$scope', ($scope) => {
   $scope.donut = null;
+
+  var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC'];
+
+  $scope.selectedMonth = 'TOTAL';
 
   $scope.showDonut = function() {
     $scope.donut = c3.generate({
@@ -2029,7 +2082,13 @@ module.exports = ['$scope', ($scope) => {
         columns : [
             ['Arrivals', 0],
         ],
-        type : 'bar'
+        type : 'bar',
+
+        onmouseover : function (d) {
+          $scope.selectedMonth = months[d.index];
+          $scope.safeApply();
+          // console.log($scope.collection[0].month[$scope.selectedMonth]);
+        }
       },
       axis : {
         x : {
@@ -2046,6 +2105,14 @@ module.exports = ['$scope', ($scope) => {
 
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
     $scope.donutLoad();
+    $scope.endValue = $scope.collection[0].month[$scope.selectedMonth].total;
+    $scope.safeApply();
+    // console.log($scope.selectedMonth);
+  });
+
+  $scope.$watch('selectedMonth', function (selectedMonth) {
+    // console.log(selectedMonth);
+    $scope.endValue = $scope.collection[0].month[$scope.selectedMonth].total;
   });
 
   $scope.donutLoad = function () {
@@ -2066,7 +2133,7 @@ module.exports = ['$scope', ($scope) => {
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/controller.js","/sideCharts")
-},{"buffer":2,"rH1JPG":4}],19:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],21:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.sideCharts',[])
@@ -2081,7 +2148,7 @@ module.exports = angular.module('app.sideCharts',[])
   .controller('DonutController', require('./controller'));
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/index.js","/sideCharts")
-},{"./controller":18,"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
+},{"./controller":20,"buffer":2,"rH1JPG":4}],22:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = ['$scope', controller];
@@ -2091,7 +2158,7 @@ function controller() {
 
 }
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sidebar/controller.js","/sidebar")
-},{"buffer":2,"rH1JPG":4}],21:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],23:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.sidebar', [])
@@ -2106,4 +2173,4 @@ module.exports = angular.module('app.sidebar', [])
 	.controller('sidebarController', require('./controller'));
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sidebar/index.js","/sidebar")
-},{"./controller":20,"buffer":2,"rH1JPG":4}]},{},[16])
+},{"./controller":22,"buffer":2,"rH1JPG":4}]},{},[18])
