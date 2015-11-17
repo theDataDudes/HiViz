@@ -999,6 +999,8 @@ sidebar {
   #sidebar #originSelector {
     width: 125px;
     margin: 5px 0 0 10px; }
+  #sidebar .side-bar-num {
+    margin-bottom: 25px; }
 
 .background {
   fill: none;
@@ -1034,36 +1036,34 @@ sidebar {
   color: #111; }
 
 #mapNav {
-  width: 80%;
+  width: 350px;
   margin: 0 auto;
   padding: 20px 0 0 0;
   box-sizing: border-box;
   z-index: 2; }
-  #mapNav ul.expenditure-icons {
+  #mapNav ul {
     box-sizing: border-box;
-    text-align: center;
-    margin: auto; }
-    #mapNav ul.expenditure-icons li {
+    text-align: center; }
+    #mapNav ul li {
       display: inline-block;
       height: 40px;
       width: 50px;
       box-sizing: border-box;
-      padding: 0 5px;
-      margin-right: 45px; }
-      #mapNav ul.expenditure-icons li p {
+      padding: 0 5px; }
+      #mapNav ul li p {
         display: inline-block;
         width: 40px;
         height: 20px;
         box-sizing: border-box;
         font-size: 12px;
         text-align: center; }
-    #mapNav ul.expenditure-icons a {
+    #mapNav ul a {
       width: 40px;
       height: 40px; }
-      #mapNav ul.expenditure-icons a:active {
+      #mapNav ul a:active {
         position: relative;
         top: 1px; }
-    #mapNav ul.expenditure-icons img {
+    #mapNav ul img {
       height: 40px;
       width: 40px; }
 
