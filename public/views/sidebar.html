@@ -20,11 +20,19 @@
 
 <div ng-controller='DonutController' ng-init='showDonut()'>
   <div id='donut'></div>
-</div>
+  {{endValue}}
+
 <div class="odo">
-  <odometer value="countToNumber" class="side-bar-num"></div>
-<!--   <odometer value="countToNumber" class="side-bar-num"></div>
-  <odometer value="countToNumber" class="side-bar-num"></div> -->
+  <odometer value='{{endValue}}' class="side-bar-num"></odometer>
+<!--   <odometer value="countToNumber" class="side-bar-num"></odometer>
+  <odometer value="countToNumber" class="side-bar-num"></odometer>
+  <odometer value="countToNumber" class="side-bar-num"></odometer>
+  <odometer value="countToNumber" class="side-bar-num"></odometer>
+  <odometer value="countToNumber" class="side-bar-num"></odometer>
+  <odometer value="countToNumber" class="side-bar-num"></odometer>
+  <odometer value="countToNumber" class="side-bar-num"></odometer> -->
+</div>
+
 </div>
 
   <ul>Figures go here:
