@@ -1398,22 +1398,31 @@ process.chdir = function (dir) {
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
+  // set 'this' to global scope variable self
   var self = this;
 
+  // onload of page, selectedIcon has default value of "total"
   this.selectedIcon = 'total';
 
+  // declare changIcon function to take in icon when clicked value
+  // sets selectedIcon variable to current icon
+  // $emis is used so that everything that is on scope listens to the change inconChanged
   $scope.changeIcon = function(icon) {
     self.selectedIcon = icon;
     $scope.$emit('iconChanged');
   };
 
+  // watching ngc since collection is stored on the global variable
   $scope.$watch('$ngc', function(filter) {
     // var oahuFilter = new Crossfilter(filter.collection());
     // $scope.oahuFilter = oahuFilter;
     // oahuFilter.filterBy('region', 'oahu');
 
+    // chartLoad method is declared on $scope to filter two object regions that are brought in from common controller API call
     $scope.chartLoad = function (icon) {
-      $scope.collection.reduce( function(previous, current) {
+
+      // reduce is used to create two seperate arrays with values to be set in each islands graph column values.
+      $scope.collection.reduce( function(previous, current, index, array) {
         current.monthArray = [0,0,0,0,0,0,0,0,0,0,0,0];
         for (var q in current.month) {
             if (q !== 'TOTAL') {
@@ -1465,6 +1474,9 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         });
         current.monthArray.unshift(current.region);
 
+        // The two region objects 'island' key value must match
+        // Set the x-axis value so that all graphs on page equal
+        // return current object with new property and assign it to columns value for each island chart
         if (current.island === previous.island) {
           var columns;
           var colors = {};
@@ -1479,9 +1491,17 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             colors[current.monthArray[0]] = 'green';
           }
           $scope[current.island + 'Chart'].load({columns: columns,
-          unload : $scope[current.island + 'Chart'].columns,
-          colors : colors
+            unload : $scope[current.island + 'Chart'].columns,
+            colors : colors
         });
+        } else if (array.length < 8) {
+          var colors = {};
+
+           colors[current.monthArray[0]] = 'green';
+            $scope[current.island + 'Chart'].load({columns: [current.monthArray],
+              unload : $scope[current.island + 'Chart'].columns,
+              colors : colors
+            });
         }
 
         return current;
@@ -1620,7 +1640,7 @@ module.exports = angular.module('app.c3-charts',[])
         scope.$watch('$ngc', function(filter) {
           if(!filter) return;
           filter.unfilterBy('island');
-          filter.filterBy('region', ['japan', 'usWest'], filter.filters.inArray('some'));
+          filter.filterBy('region', ['total', 'usWest'], filter.filters.inArray('some'));
           filter.sortBy('island');
           // filter.sortBy('island');
         });
@@ -2209,7 +2229,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_1923f76b.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d53ce30b.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
