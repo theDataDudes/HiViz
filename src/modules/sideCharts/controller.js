@@ -16,7 +16,7 @@ module.exports = ['$scope', ($scope) => {
         ],
         type : 'bar',
 
-        onmouseover : function (d) {
+        onclick : function (d) {
           $scope.selectedMonth = months[d.index];
           $scope.safeApply();
           // console.log($scope.collection[0].month[$scope.selectedMonth]);
@@ -37,14 +37,13 @@ module.exports = ['$scope', ($scope) => {
 
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
     $scope.donutLoad();
-    $scope.endValue = $scope.collection[0].month[$scope.selectedMonth].total;
+    $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
     $scope.safeApply();
-    // console.log($scope.selectedMonth);
   });
 
   $scope.$watch('selectedMonth', function (selectedMonth) {
     // console.log(selectedMonth);
-    $scope.endValue = $scope.collection[0].month[$scope.selectedMonth].total;
+    $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
   });
 
   $scope.donutLoad = function () {
