@@ -12,13 +12,15 @@
       <option value="canada">Canada</option>
     </select>
 
-  <span>Compare</span>
-  <select id="regionSelector2" ng-init="model.region2 = options[0]" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
-      <option value="total" selected="selected">Total</option>
-      <option value="usWest">US West</option>
-      <option value="usEast">US East</option>
-      <option value="japan">Japan</option>
-      <option value="canada">Canada</option>
+    <input type='checkbox' ng-model='checked' ng-change="$ngc.filterBy('region', [model.region1], $ngc.filters.inArray('some')); model.region2=null" id='compareCheckBox'/>
+
+    <span>Compare</span>
+    <select  ng-if='checked' class='animate-checked' id="regionSelector2" ng-init="model.region2 = options[0]" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+        <option value="total" selected="selected">Total</option>
+        <option value="usWest">US West</option>
+        <option value="usEast">US East</option>
+        <option value="japan">Japan</option>
+        <option value="canada">Canada</option>
     </select>
 
   </div>
