@@ -1100,40 +1100,6 @@ sidebar {
       position: relative;
       top: 1px; }
 
-#timeNav {
-  width: 120px;
-  height: 50px;
-  float: right;
-  margin: -60px 15px 0 0;
-  z-index: 2; }
-  #timeNav ul {
-    list-style-type: none; }
-    #timeNav ul li {
-      display: inline-block;
-      box-sizing: border-box;
-      border-bottom: none;
-      padding: 0 5px; }
-    #timeNav ul a {
-      width: 50px;
-      height: 50px; }
-      #timeNav ul a:active {
-        position: relative;
-        top: 1px; }
-    #timeNav ul img {
-      height: 50px;
-      width: 50px; }
-  #timeNav button {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    height: 50px;
-    width: 100px;
-    box-sizing: border-box;
-    font-size: 16px; }
-    #timeNav button:active {
-      position: relative;
-      top: 1px; }
-
 .background {
   fill: none;
   pointer-events: all; }

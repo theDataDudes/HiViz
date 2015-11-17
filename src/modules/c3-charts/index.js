@@ -5,7 +5,15 @@ module.exports = angular.module('app.c3-charts',[])
       scope : true,
       controller : 'GraphCtrl',
       controllerAs : 'graphtCtrl',
-      templateUrl : 'views/c3.html'
+      templateUrl : 'views/c3.html',
+      link : function(scope) {
+        scope.$watch('$ngc', function(filter) {
+          if(!filter) return;
+          filter.unfilterBy('island');
+          filter.filterBy('region', ['japan', 'usWest'], filter.filters.inArray('some'));
+          filter.sortBy('island');
+        });
+      }
     };
   })
   .controller('GraphCtrl', require('./controller'));

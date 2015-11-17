@@ -1397,15 +1397,95 @@ process.chdir = function (dir) {
 },{"buffer":2,"rH1JPG":4}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = ['$scope',($scope) => {
+module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
   $scope.oahuChart = null;
 
+  $scope.$watch('$ngc', function(filter) {
+    // var oahuFilter = new Crossfilter(filter.collection());
+    // $scope.oahuFilter = oahuFilter;
+    // oahuFilter.filterBy('region', 'oahu');
+
+    $scope.chartLoad = function () {
+      $scope.collection.reduce( function(previous, current) {
+        current.monthArray = [0,0,0,0,0,0,0,0,0,0,0,0];
+        for (var q in current.month) {
+            if (q !== 'TOTAL') {
+              switch (q) {
+                case 'JAN':
+                  current.monthArray.splice(0, 1,current.month[q]);
+                  break;
+                case 'FEB':
+                  current.monthArray.splice(1, 1,current.month[q]);
+                  break;
+                case 'MAR':
+                  current.monthArray.splice(2, 1,current.month[q]);
+                  break;
+                case 'APR':
+                  current.monthArray.splice(3, 1,current.month[q]);
+                  break;
+                case 'MAY':
+                  current.monthArray.splice(4, 1,current.month[q]);
+                  break;
+                case 'JUN':
+                  current.monthArray.splice(5, 1,current.month[q]);
+                  break;
+                case 'JUL':
+                  current.monthArray.splice(6, 1,current.month[q]);
+                  break;
+                case 'AUG':
+                  current.monthArray.splice(7, 1,current.month[q]);
+                  break;
+                case 'SEP':
+                  current.monthArray.splice(8, 1,current.month[q]);
+                  break;
+                case 'OCT':
+                  current.monthArray.splice(9, 1,current.month[q]);
+                  break;
+                case 'NOV':
+                  current.monthArray.splice(10, 1,current.month[q]);
+                  break;
+                case 'DEC':
+                  current.monthArray.splice(11, 1,current.month[q]);
+                  break;
+              }
+            }
+          }
+        current.monthArray = current.monthArray.map( (c) => {
+          return c.other;
+        });
+
+        current.monthArray.unshift(current.region);
+
+        if (current.island === previous.island) {
+
+          $scope[current.island + 'Chart'].load({columns: [
+            previous.monthArray,
+            current.monthArray
+          ],
+          unload : $scope[current.island + 'Chart'].columns
+        });
+        }
+
+        return current;
+       }, {});
+      };
+  });
+
+  $scope.$on('crossfilter/updated', function (event, collection, identifier) {
+    $scope.chartLoad();
+  });
+
+// pull island data from objects and assign it to each showGraph
+// formats the data to what we want
+// loop through scope.collection and reference each object (all islands)
+
   $scope.showGraph = function() {
+    // $scope.$ngc.unfilterBy('island');
     $scope.oahuChart = c3.generate({
       bindto: '#oahu',
       data: {
         columns: [
-        ['data1',200,160,250,100,300,400,200,160,250,100,300,400],
+
         ],
         type: 'spline',
       },
@@ -1418,7 +1498,7 @@ module.exports = ['$scope',($scope) => {
       bindto: '#big',
       data: {
         columns: [
-        ['data1',90,60,90,50,55,85,90,60,90,50,55,85],
+
         ],
         type: 'spline',
       },
@@ -1431,7 +1511,7 @@ module.exports = ['$scope',($scope) => {
       bindto: '#kauai',
       data: {
         columns: [
-        ['data1',30,200,100,325,150,325,30,200,100,325,150,325],
+
         ],
         type: 'spline',
       },
@@ -1444,7 +1524,7 @@ module.exports = ['$scope',($scope) => {
       bindto: '#maui',
       data: {
         columns: [
-        ['data1',100,115,220,80,150,200,100,115,220,80,150,200],
+
         ],
         type: 'spline',
       },
@@ -1457,7 +1537,7 @@ module.exports = ['$scope',($scope) => {
       bindto: '#lanai',
       data: {
         columns: [
-        ['data1',20,20,15,40,15,55,20,20,15,40,15,55],
+
         ],
         type: 'spline',
       },
@@ -1470,7 +1550,7 @@ module.exports = ['$scope',($scope) => {
       bindto: '#molokai',
       data: {
         columns: [
-        ['data1',15,15,10,30,5,25,15,15,10,30,5,25],
+
         ],
         type: 'spline',
       },
@@ -1483,13 +1563,7 @@ module.exports = ['$scope',($scope) => {
       bindto: '#total',
       data: {
         columns: [
-        ['Total',300,600,700,325,650,825,300,600,700,325,650,825],
-        ['Oahu',200,160,250,100,300,400,200,160,250,100,300,400],
-        ['Maui',100,115,220,80,150,200,100,115,220,80,150,200],
-        ['Big Island',90,60,90,50,55,85,90,60,90,50,55,85],
-        ['Kauai',70,50,80,50,35,75,70,50,80,50,35,75],
-        ['Lanai',20,20,15,40,15,55,20,20,15,40,15,55],
-        ['Molokai',15,15,10,30,5,25,15,15,10,30,5,25],
+
         ],
         type: 'spline'
       },
@@ -1510,7 +1584,15 @@ module.exports = angular.module('app.c3-charts',[])
       scope : true,
       controller : 'GraphCtrl',
       controllerAs : 'graphtCtrl',
-      templateUrl : 'views/c3.html'
+      templateUrl : 'views/c3.html',
+      link : function(scope) {
+        scope.$watch('$ngc', function(filter) {
+          if(!filter) return;
+          filter.unfilterBy('island');
+          filter.filterBy('region', ['japan', 'usWest'], filter.filters.inArray('some'));
+          filter.sortBy('island');
+        });
+      }
     };
   })
   .controller('GraphCtrl', require('./controller'));
@@ -1523,12 +1605,12 @@ module.exports = ['$scope', 'apiService', 'Crossfilter', controller];
 function controller($scope, apiService, Crossfilter) {
 
   //side-bar visibility function
-  this.IsVisible = false;
+  this.IsVisible = true;
   this.filteredData = '';
 
   this.showHide = function () {
     this.IsVisible = this.IsVisible ? false : true;
-  }
+  };
 
   ///checks to see if digest has been called
   $scope.safeApply = function(fn) {
@@ -1552,7 +1634,8 @@ function controller($scope, apiService, Crossfilter) {
       $scope.$ngc = filter;
       filter.filterBy('year', '2014');
       filter.filterBy('region', 'total');
-      filter.filterBy('island', 'total');
+// todo filter by island will happen onclick of mo data or island?
+      // filter.filterBy('island', 'total');
     });
 
   //updates the filters applied across all of the charts/graphs
@@ -1579,7 +1662,7 @@ function controller($scope, apiService, Crossfilter) {
         $scope.$ngc.filterBy('year', $scope.selectedYear);
       }
     }
-  }
+  };
 
 }
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/controllers/controller.js","/common/controllers")
@@ -1908,7 +1991,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_f520af8d.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_74bdee1d.js","/")
 },{"./c3-charts":6,"./common":13,"./main":18,"./sideCharts":20,"./sidebar":22,"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
