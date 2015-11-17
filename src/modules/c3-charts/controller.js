@@ -24,7 +24,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     $scope.chartLoad = function (icon) {
 
       // reduce is used to create two seperate arrays with values to be set in each islands graph column values.
-      $scope.collection.reduce( function(previous, current) {
+      $scope.collection.reduce( function(previous, current, index, array) {
         current.monthArray = [0,0,0,0,0,0,0,0,0,0,0,0];
         for (var q in current.month) {
             if (q !== 'TOTAL') {
@@ -93,9 +93,17 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             colors[current.monthArray[0]] = 'green';
           }
           $scope[current.island + 'Chart'].load({columns: columns,
-          unload : $scope[current.island + 'Chart'].columns,
-          colors : colors
+            unload : $scope[current.island + 'Chart'].columns,
+            colors : colors
         });
+        } else if (array.length < 8) {
+          var colors = {};
+
+           colors[current.monthArray[0]] = 'green';
+            $scope[current.island + 'Chart'].load({columns: [current.monthArray],
+              unload : $scope[current.island + 'Chart'].columns,
+              colors : colors
+            });
         }
 
         return current;

@@ -1422,7 +1422,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     $scope.chartLoad = function (icon) {
 
       // reduce is used to create two seperate arrays with values to be set in each islands graph column values.
-      $scope.collection.reduce( function(previous, current) {
+      $scope.collection.reduce( function(previous, current, index, array) {
         current.monthArray = [0,0,0,0,0,0,0,0,0,0,0,0];
         for (var q in current.month) {
             if (q !== 'TOTAL') {
@@ -1491,9 +1491,17 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             colors[current.monthArray[0]] = 'green';
           }
           $scope[current.island + 'Chart'].load({columns: columns,
-          unload : $scope[current.island + 'Chart'].columns,
-          colors : colors
+            unload : $scope[current.island + 'Chart'].columns,
+            colors : colors
         });
+        } else if (array.length < 8) {
+          var colors = {};
+
+           colors[current.monthArray[0]] = 'green';
+            $scope[current.island + 'Chart'].load({columns: [current.monthArray],
+              unload : $scope[current.island + 'Chart'].columns,
+              colors : colors
+            });
         }
 
         return current;
@@ -1632,7 +1640,7 @@ module.exports = angular.module('app.c3-charts',[])
         scope.$watch('$ngc', function(filter) {
           if(!filter) return;
           filter.unfilterBy('island');
-          filter.filterBy('region', filter.filters.inArray('some'));
+          filter.filterBy('region', ['total', 'usWest'], filter.filters.inArray('some'));
           filter.sortBy('island');
           // filter.sortBy('island');
         });
@@ -2046,7 +2054,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_8ffbd196.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b39f2318.js","/")
 },{"./c3-charts":6,"./common":14,"./main":19,"./sideCharts":21,"./sidebar":23,"buffer":2,"rH1JPG":4}],19:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
