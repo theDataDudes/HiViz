@@ -34,15 +34,17 @@
 
 #mapNav {
 
-  width: 350px;
+  width: 80%;
   margin: 0 auto;
   padding: 20px 0 0 0;
   box-sizing: border-box;
   z-index: 2;
 
-  ul {
+  ul.expenditure-icons {
 
     box-sizing: border-box;
+    text-align: center;
+    margin: auto;
 
     li {
 
@@ -51,6 +53,7 @@
       width: 50px;
       box-sizing: border-box;
       padding: 0 5px;
+      margin-right: 45px;
 
       p {
 
