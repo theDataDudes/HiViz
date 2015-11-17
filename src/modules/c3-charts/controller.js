@@ -136,6 +136,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         colors: ['green', 'blue'],
         type: 'spline',
       },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
+      },
       size: {
         width: 400,
         height: 150
@@ -149,6 +156,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         ],
         colors: ['green', 'blue'],
         type: 'spline',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       size: {
         width: 400,
@@ -164,6 +178,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         colors: ['green', 'blue'],
         type: 'spline',
       },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
+      },
       size: {
         width: 400,
         height: 150
@@ -177,6 +198,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         ],
         colors: ['green', 'blue'],
         type: 'spline',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       size: {
         width: 400,
@@ -192,6 +220,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         colors: ['green', 'blue'],
         type: 'spline',
       },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
+      },
       size: {
         width: 400,
         height: 150
@@ -206,6 +241,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         colors: ['green', 'blue'],
         type: 'spline',
       },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
+      },
       size: {
         width: 400,
         height: 150
@@ -219,6 +261,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         ],
         colors: ['green', 'blue', 'red','salmon','orange','black','yellow'],
         type: 'spline'
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       size: {
         width: 800,
