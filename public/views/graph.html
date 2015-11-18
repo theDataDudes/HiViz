@@ -2,7 +2,7 @@
 
 	<div class="row">
 
-		<div class="small-2 left columns">
+		<div class="small-3 left columns">
 			<button ng-click="changeChartType('spline');">Spline</button>
 			<button ng-click="changeChartType('area-spline')">Area</button>
 			<button ng-if='checked' ng-click="changeChartType('pie')">Pie</button>
@@ -12,7 +12,7 @@
 
 <!-- just a place holder to test region selector for charts page -->
 
-		<nav id="graphNav" class="small-4 small-offset-2 columns">
+		<nav id="graphNav" class="small-6 columns">
 
 			<!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
 
@@ -31,7 +31,7 @@
 		</nav>
 
 
-	  <div class='small-4 right columns'>
+	  <div class='small-2 right columns'>
 
 	   <span>Select Region</span>
 	   <select id="regionSelector1" ng-init="model.region1 = options[0]" ng-model="model.region1" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
