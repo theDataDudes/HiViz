@@ -1600,21 +1600,19 @@ header {
   text-align: center; }
 
 sidebar {
-  height: 100%; }
-
-#sidebar {
+  height: 76%;
   background-color: #fff;
   height: 100%;
   border-right: 1px solid gray; }
-  #sidebar h2 {
+  sidebar h2 {
     padding: 5px 0 0 10px; }
-  #sidebar #originSelector {
+  sidebar #originSelector {
     width: 125px;
     margin: 5px 0 0 10px; }
-  #sidebar .small-12 {
+  sidebar .small-12 {
     padding: 10px;
     text-align: center; }
-  #sidebar .small-6 {
+  sidebar .small-6 {
     padding: 10px;
     text-align: center; }
 
