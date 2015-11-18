@@ -1433,17 +1433,58 @@ header {
   border-bottom: 1px solid gray; }
   header h1 {
     font-size: 40px;
-    padding: 5px 0 0 10px; }
+    width: 80%;
+    padding: 5px 0 0 0; }
     @media only screen and (max-width: 680px) {
       header h1 {
         font-size: 24px; } }
   header h5 {
     font-size: 14px;
-    padding: 0 0 0 10px; }
+    width: 80%;
+    padding: 0 0 0 0; }
     @media only screen and (max-width: 680px) {
       header h5 {
         font-size: 12px;
         padding: 20px 0 0 10px; } }
+
+#viewNav {
+  height: 100%;
+  margin: 0; }
+  #viewNav ul {
+    list-style-type: none;
+    z-index: 2;
+    margin: 20px 0 0 25px;
+    box-sizing: border-box; }
+    #viewNav ul li {
+      display: inline-block;
+      box-sizing: border-box;
+      padding: 0 5px;
+      z-index: 2; }
+      #viewNav ul li:last-child {
+        border-left: none; }
+    #viewNav ul a {
+      width: 50px;
+      height: 50px;
+      z-index: 2; }
+      #viewNav ul a:active {
+        position: relative;
+        top: 1px;
+        z-index: 2; }
+    #viewNav ul img {
+      height: 50px;
+      width: 50px;
+      z-index: 2; }
+  #viewNav button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    box-sizing: border-box;
+    font-size: 12px; }
+    #viewNav button:active {
+      position: relative;
+      top: 1px; }
 
 .background {
   fill: none;
@@ -1543,50 +1584,30 @@ sidebar {
       height: 40px;
       width: 40px; }
 
-#viewNav {
-  width: 140px;
-  height: 50px;
-  float: right;
-  margin: 20px 20px 0 0;
-  z-index: 2;
-  box-sizing: border-box; }
-  #viewNav ul {
-    border-radius: 10px;
-    background-color: RGBA(0, 0, 0, 0.1);
-    list-style-type: none;
-    z-index: 2;
-    padding: 10px;
+#graphNav {
+  width: 350px;
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+  box-sizing: border-box;
+  z-index: 2; }
+  #graphNav ul {
     box-sizing: border-box; }
-    #viewNav ul li {
+    #graphNav ul li {
       display: inline-block;
+      height: 40px;
+      width: 50px;
       box-sizing: border-box;
-      padding: 0 5px;
-      z-index: 2; }
-      #viewNav ul li:last-child {
-        border-left: none; }
-    #viewNav ul a {
-      width: 50px;
-      height: 50px;
-      z-index: 2; }
-      #viewNav ul a:active {
-        position: relative;
-        top: 1px;
-        z-index: 2; }
-    #viewNav ul img {
-      height: 50px;
-      width: 50px;
-      z-index: 2; }
-  #viewNav button {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    height: 50px;
-    width: 50px;
-    box-sizing: border-box;
-    font-size: 12px; }
-    #viewNav button:active {
-      position: relative;
-      top: 1px; }
+      padding: 0 5px; }
+      #graphNav ul li p {
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+        box-sizing: border-box;
+        font-size: 12px;
+        text-align: center; }
+    #graphNav ul img {
+      height: 40px;
+      width: 40px; }
 
 .background {
   fill: none;
