@@ -1448,12 +1448,13 @@ header {
         padding: 20px 0 0 10px; } }
 
 #viewNav {
-  height: 100%;
-  margin: 0; }
+  height: 100%; }
   #viewNav ul {
     list-style-type: none;
+    position: absolute;
+    right: 0;
     z-index: 2;
-    margin: 20px 0 0 25px;
+    margin: 20px 10px 0 0;
     box-sizing: border-box; }
     #viewNav ul li {
       display: inline-block;
@@ -1534,17 +1535,18 @@ sidebar {
   position: relative; }
 
 #mapNav {
+  bottom: 25%;
   position: absolute;
   width: 200px;
   margin: 0 auto;
   padding: 0px 0 0 0;
   box-sizing: border-box;
-  bottom: 0px;
   z-index: 2; }
   #mapNav ul {
     position: absolute;
     box-sizing: border-box;
-    bottom: 0px;
+    bottom: 0;
+    margin-left: 25px;
     list-style-type: none;
     z-index: 2; }
     #mapNav ul li {
@@ -1554,7 +1556,7 @@ sidebar {
       width: 200px;
       box-sizing: border-box;
       padding: 5px 5px;
-      margin: 5px 5px;
+      margin: 10px 5px;
       z-index: 2; }
       #mapNav ul li p {
         display: inline;

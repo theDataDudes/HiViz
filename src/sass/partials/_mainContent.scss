@@ -16,20 +16,20 @@
 
 #mapNav {
 
-  //width: 420px;
+  bottom: 25%;
   position: absolute;
   width: 200px;
   margin: 0 auto;
   padding: 0px 0 0 0;
   box-sizing: border-box;
-  bottom: 0px;
   z-index: 2;
 
   ul {
 
     position: absolute;
     box-sizing: border-box;
-    bottom: 0px;
+    bottom: 0;
+    margin-left: 25px;
     list-style-type: none;
     z-index: 2;
 
@@ -41,7 +41,7 @@
       width: 200px;
       box-sizing: border-box;
       padding: 5px 5px;
-      margin: 5px 5px;
+      margin: 10px 5px;
       z-index: 2;
 
       p {
