@@ -88,6 +88,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
               colors : colors
             });
         }
+        console.log('data',columns);
         return current;
        }, {});
       };
@@ -121,28 +122,32 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       bindto: '#oahu',
       data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            if(self.selectedIcon === 'passengers') {
+              if(self.selectedIcon === 'passengers') {
               exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
@@ -162,21 +167,26 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       bindto: '#big',
       data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
@@ -202,22 +212,26 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       bindto: '#kauai',
       data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
@@ -244,22 +258,26 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       bindto: '#maui',
       data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
@@ -286,22 +304,26 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       bindto: '#lanai',
       data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
@@ -326,24 +348,28 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Molokai Chart =================== //
     $scope.molokaiChart = c3.generate({
       bindto: '#molokai',
-       data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
@@ -368,24 +394,28 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Total Chart =================== //
     $scope.totalChart = c3.generate({
       bindto: '#total',
-       data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
