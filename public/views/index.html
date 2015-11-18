@@ -30,21 +30,18 @@
 			<nav id="viewNav" class="small-2 columns">
 
 				<ul>
-					<li><a ng-href="/#/" ng-if="!main.IsVisible" ng-click="main.showHide()" title="Map View" class="tooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
-          --><li><a href="/#/graph" ng-if="main.IsVisible" ng-click="main.showHide()" title="Chart View" class="tooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
+					<li><a ng-href="/#/" ng-if="!main.IsVisible" ng-click="main.showHide()" name="Map View" class="viewNavTooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
+          --><li><a href="/#/graph" ng-if="main.IsVisible" ng-click="main.showHide()" name="Chart View" class="viewNavTooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
 				</ul>
 
 			</nav>
 
 		</header>
 
-    <!-- parent container -->
-		<div id="contentContainer" class="row small-collapse">
-
       <!-- this holds the current view being rendered -->
-      <div ui-view ng-class=""></div>
+      <div ui-view ng-class="" id="contentContainer" class="row small-collapse">
 
-    </div>
+      </div>
 
 <!-- if you have to ask what this is...plz vacate the code -->
 		<footer>
@@ -70,7 +67,6 @@
           Data provided by <a href="http://www.hawaiitourismauthority.org/">The Hawaii Tourism Authority</a>
 
         </p>
-
 		</footer>
 
 	</div>

@@ -1415,9 +1415,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
   // watching ngc since collection is stored on the global variable
   $scope.$watch('$ngc', function(filter) {
-    // var oahuFilter = new Crossfilter(filter.collection());
-    // $scope.oahuFilter = oahuFilter;
-    // oahuFilter.filterBy('region', 'oahu');
+
     $scope.changeChartType = function (chart) {
       ['oahuChart', 'bigIslandChart', 'kauaiChart',
       'mauiChart', 'lanaiChart', 'molokaiChart',
@@ -1428,7 +1426,6 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     };
     // chartLoad method is declared on $scope to filter two object regions that are brought in from common controller API call
     $scope.chartLoad = function (icon) {
-
       // reduce is used to create two seperate arrays with values to be set in each islands graph column values.
       $scope.collection.reduce( function(previous, current, index, array) {
         current.monthArray = [0,0,0,0,0,0,0,0,0,0,0,0];
@@ -1474,18 +1471,21 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             colors[previous.monthArray[0]] = '#225A6D';
             colors[current.monthArray[0]] = '#38A988';
           }
-
-        // Conditional used if only one region is selected
-        } else if (array.length < 8) {
-          columns = [current.monthArray];
-
-          colors[current.monthArray[0]] = '#38A988';
-        }
-        $scope[current.island + 'Chart'].load({
+            $scope[current.island + 'Chart'].load({
               columns : columns,
               unload : $scope[current.island + 'Chart'].columns,
               colors : colors
             });
+        // Conditional used if only one region is selected
+        } else if (array.length < 8) {
+          columns = [current.monthArray];
+          colors[current.monthArray[0]] = '#38A988';
+          $scope[current.island + 'Chart'].load({
+              columns : columns,
+              unload : $scope[current.island + 'Chart'].columns,
+              colors : colors
+            });
+        }
         console.log('data',columns);
         return current;
        }, {});
@@ -1507,8 +1507,6 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 // loop through scope.collection and reference each object (all islands)
 
 
-
-
   $scope.showGraph = function() {
     var monthTicks = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
           'SEP', 'OCT', 'NOV', 'DEC'];
@@ -1520,32 +1518,34 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         // ================= Oahu Chart =================== //
     $scope.oahuChart = c3.generate({
       bindto: '#oahu',
-      data: { columns: [], type: 'area',},
+      data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                console.log('tick-o', d);
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            console.log('tooltip', value);
-            if(self.selectedIcon === 'passengers') {
+              if(self.selectedIcon === 'passengers') {
               exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
@@ -1563,25 +1563,28 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Big Island Chart =================== //
     $scope.bigIslandChart = c3.generate({
       bindto: '#big',
-      data: { columns: [], type: 'area',},
+      data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                console.log('tick-b', d);
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
@@ -1605,25 +1608,28 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Kauai Chart =================== //
     $scope.kauaiChart = c3.generate({
       bindto: '#kauai',
-      data: { columns: [], type: 'area',},
+      data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                console.log('tick-k', d);
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
@@ -1648,25 +1654,28 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Maui Chart =================== //
     $scope.mauiChart = c3.generate({
       bindto: '#maui',
-      data: { columns: [], type: 'area',},
+      data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                console.log('tick-ma', d);
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
@@ -1691,25 +1700,28 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Lanai Chart =================== //
     $scope.lanaiChart = c3.generate({
       bindto: '#lanai',
-      data: { columns: [], type: 'area',},
+      data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                console.log('tick-l', d);
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
@@ -1734,25 +1746,28 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Molokai Chart =================== //
     $scope.molokaiChart = c3.generate({
       bindto: '#molokai',
-       data: { columns: [], type: 'area',},
+      data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                console.log('tick-mo', d);
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
@@ -1777,25 +1792,28 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Total Chart =================== //
     $scope.totalChart = c3.generate({
       bindto: '#total',
-       data: { columns: [], type: 'area',},
+      data: { columns: [], type: 'spline',},
       axis : {
-        y : {
-            tick: {
-              count: 7,
-              format: function(d) {
-                console.log('tick-t', d);
-                if(self.selectedIcon === 'passengers') {
+         y : {
+              tick: {
+                count: 7,
+                format: function(d) {
+                    if(self.selectedIcon === 'passengers') {
+                    yAxis = Math.ceil(d);
+                    format = d3.format(',');
+                    return format(yAxis);
+                  }
                   yAxis = Math.ceil(d);
-                  format = d3.format(',');
+                  // var newY = Math.round(y);
+                  format = d3.format('$,');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d);
-                // var newY = Math.round(y);
-                format = d3.format('$,');
-                return format(yAxis);
+              },
+              min: 0,
+              padding: {
+                bottom: 0
               }
-            }
-        },
+          },
         x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
@@ -2435,7 +2453,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_1e74ec2c.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c41efd12.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
