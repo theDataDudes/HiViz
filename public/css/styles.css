@@ -1693,10 +1693,6 @@ footer {
     display: block;
     height: 50px;
     width: 100%; }
-    footer #timeline hr {
-      top: 30px;
-      background-color: gray;
-      height: 2px; }
   footer nav {
     display: block;
     width: 220px;

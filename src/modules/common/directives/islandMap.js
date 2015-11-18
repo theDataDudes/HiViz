@@ -107,13 +107,13 @@ module.exports = [function () {
             y = centroid[1];
             k = 1.5;
             centered = d;
-            mapTip.hide(d);
+            mapTip.show(d);
 
           //if no islands are selected
           } else {
             islandFilter.filterBy('island', 'total');
-            x = width / 2.5;
-            y = height / 2.5;
+            x = width / 2.2;
+            y = height / 2.3;
             k = 1;
             centered = null;
             mapTip.hide(d);
