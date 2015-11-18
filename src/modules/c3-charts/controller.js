@@ -17,9 +17,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
   // watching ngc since collection is stored on the global variable
   $scope.$watch('$ngc', function(filter) {
-    // var oahuFilter = new Crossfilter(filter.collection());
-    // $scope.oahuFilter = oahuFilter;
-    // oahuFilter.filterBy('region', 'oahu');
+
     $scope.changeChartType = function (chart) {
       ['oahuChart', 'bigIslandChart', 'kauaiChart',
       'mauiChart', 'lanaiChart', 'molokaiChart',
@@ -30,7 +28,6 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     };
     // chartLoad method is declared on $scope to filter two object regions that are brought in from common controller API call
     $scope.chartLoad = function (icon) {
-
       // reduce is used to create two seperate arrays with values to be set in each islands graph column values.
       $scope.collection.reduce( function(previous, current, index, array) {
         current.monthArray = [0,0,0,0,0,0,0,0,0,0,0,0];
@@ -54,9 +51,9 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
         current.monthArray = current.monthArray.map( (c) => {
           if(c[icon] === undefined) {
-            return (c.total * .001);
+            return (c.total);
           }
-          return (c[icon] * .001);
+          return (c[icon]);
         });
         current.monthArray.unshift(current.region);
 
@@ -76,18 +73,21 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             colors[previous.monthArray[0]] = '#225A6D';
             colors[current.monthArray[0]] = '#38A988';
           }
-
-        // Conditional used if only one region is selected
-        } else if (array.length < 8) {
-          columns = [current.monthArray];
-
-          colors[current.monthArray[0]] = '#38A988';
-        }
-        $scope[current.island + 'Chart'].load({
+            $scope[current.island + 'Chart'].load({
               columns : columns,
               unload : $scope[current.island + 'Chart'].columns,
               colors : colors
             });
+        // Conditional used if only one region is selected
+        } else if (array.length < 8) {
+          columns = [current.monthArray];
+          colors[current.monthArray[0]] = '#38A988';
+          $scope[current.island + 'Chart'].load({
+              columns : columns,
+              unload : $scope[current.island + 'Chart'].columns,
+              colors : colors
+            });
+        }
         return current;
        }, {});
       };
@@ -108,8 +108,6 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 // loop through scope.collection and reference each object (all islands)
 
 
-
-
   $scope.showGraph = function() {
     var monthTicks = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
           'SEP', 'OCT', 'NOV', 'DEC'];
@@ -121,18 +119,18 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         // ================= Oahu Chart =================== //
     $scope.oahuChart = c3.generate({
       bindto: '#oahu',
-      data: { columns: [], type: 'area',},
+      data: { columns: [], type: 'spline',},
       axis : {
         y : {
             tick: {
               count: 7,
               format: function(d) {
                 if(self.selectedIcon === 'passengers') {
-                  yAxis = Math.ceil(d)*1000;
+                  yAxis = Math.ceil(d);
                   format = d3.format(',');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d/10)*10000;
+                yAxis = Math.ceil(d);
                 // var newY = Math.round(y);
                 format = d3.format('$,');
                 return format(yAxis);
@@ -145,12 +143,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         format: {
           value: function (value, ratio, id) {
             if(self.selectedIcon === 'passengers') {
-              exp = value*1000;
+              exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
               return format(newExp);
             }
-            exp = value*1000;
+            exp = value;
             newExp = exp.toFixed(2);
             format = d3.format('$,');
             return format(newExp);
@@ -162,19 +160,18 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Big Island Chart =================== //
     $scope.bigIslandChart = c3.generate({
       bindto: '#big',
-      data: { columns: [], type: 'area',},
+      data: { columns: [], type: 'spline',},
       axis : {
         y : {
             tick: {
               count: 7,
               format: function(d) {
                 if(self.selectedIcon === 'passengers') {
-                  yAxis = Math.ceil(d)*1000;
+                  yAxis = Math.ceil(d);
                   format = d3.format(',');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d/10)*10000;
-                // var newY = Math.round(y);
+                yAxis = Math.ceil(d);
                 format = d3.format('$,');
                 return format(yAxis);
               }
@@ -186,12 +183,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         format: {
           value: function (value, ratio, id) {
             if(self.selectedIcon === 'passengers') {
-              exp = value*1000;
+              exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
               return format(newExp);
             }
-            exp = value*1000;
+            exp = value;
             newExp = exp.toFixed(2);
             format = d3.format('$,');
             return format(newExp);
@@ -203,18 +200,18 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Kauai Chart =================== //
     $scope.kauaiChart = c3.generate({
       bindto: '#kauai',
-      data: { columns: [], type: 'area',},
+      data: { columns: [], type: 'spline',},
       axis : {
         y : {
             tick: {
               count: 7,
               format: function(d) {
                 if(self.selectedIcon === 'passengers') {
-                  yAxis = Math.ceil(d)*1000;
+                  yAxis = Math.ceil(d);
                   format = d3.format(',');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d/10)*10000;
+                yAxis = Math.ceil(d);
                 // var newY = Math.round(y);
                 format = d3.format('$,');
                 return format(yAxis);
@@ -227,12 +224,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         format: {
           value: function (value, ratio, id) {
             if(self.selectedIcon === 'passengers') {
-              exp = value*1000;
+              exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
               return format(newExp);
             }
-            exp = value*1000;
+            exp = value;
             newExp = exp.toFixed(2);
             format = d3.format('$,');
             return format(newExp);
@@ -245,18 +242,18 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Maui Chart =================== //
     $scope.mauiChart = c3.generate({
       bindto: '#maui',
-      data: { columns: [], type: 'area',},
+      data: { columns: [], type: 'spline',},
       axis : {
         y : {
             tick: {
               count: 7,
               format: function(d) {
                 if(self.selectedIcon === 'passengers') {
-                  yAxis = Math.ceil(d)*1000;
+                  yAxis = Math.ceil(d);
                   format = d3.format(',');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d/10)*10000;
+                yAxis = Math.ceil(d);
                 // var newY = Math.round(y);
                 format = d3.format('$,');
                 return format(yAxis);
@@ -269,12 +266,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         format: {
           value: function (value, ratio, id) {
             if(self.selectedIcon === 'passengers') {
-              exp = value*1000;
+              exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
               return format(newExp);
             }
-            exp = value*1000;
+            exp = value;
             newExp = exp.toFixed(2);
             format = d3.format('$,');
             return format(newExp);
@@ -287,18 +284,18 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Lanai Chart =================== //
     $scope.lanaiChart = c3.generate({
       bindto: '#lanai',
-      data: { columns: [], type: 'area',},
+      data: { columns: [], type: 'spline',},
       axis : {
         y : {
             tick: {
               count: 7,
               format: function(d) {
                 if(self.selectedIcon === 'passengers') {
-                  yAxis = Math.ceil(d)*1000;
+                  yAxis = Math.ceil(d);
                   format = d3.format(',');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d/10)*10000;
+                yAxis = Math.ceil(d);
                 // var newY = Math.round(y);
                 format = d3.format('$,');
                 return format(yAxis);
@@ -311,12 +308,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         format: {
           value: function (value, ratio, id) {
             if(self.selectedIcon === 'passengers') {
-              exp = value*1000;
+              exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
               return format(newExp);
             }
-            exp = value*1000;
+            exp = value;
             newExp = exp.toFixed(2);
             format = d3.format('$,');
             return format(newExp);
@@ -329,18 +326,18 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Molokai Chart =================== //
     $scope.molokaiChart = c3.generate({
       bindto: '#molokai',
-       data: { columns: [], type: 'area',},
+       data: { columns: [], type: 'spline',},
       axis : {
         y : {
             tick: {
               count: 7,
               format: function(d) {
                 if(self.selectedIcon === 'passengers') {
-                  yAxis = Math.ceil(d)*1000;
+                  yAxis = Math.ceil(d);
                   format = d3.format(',');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d/10)*10000;
+                yAxis = Math.ceil(d);
                 // var newY = Math.round(y);
                 format = d3.format('$,');
                 return format(yAxis);
@@ -353,12 +350,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         format: {
           value: function (value, ratio, id) {
             if(self.selectedIcon === 'passengers') {
-              exp = value*1000;
+              exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
               return format(newExp);
             }
-            exp = value*1000;
+            exp = value;
             newExp = exp.toFixed(2);
             format = d3.format('$,');
             return format(newExp);
@@ -371,18 +368,18 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Total Chart =================== //
     $scope.totalChart = c3.generate({
       bindto: '#total',
-       data: { columns: [], type: 'area',},
+       data: { columns: [], type: 'spline',},
       axis : {
         y : {
             tick: {
               count: 7,
               format: function(d) {
                 if(self.selectedIcon === 'passengers') {
-                  yAxis = Math.ceil(d)*1000;
+                  yAxis = Math.ceil(d);
                   format = d3.format(',');
                   return format(yAxis);
                 }
-                yAxis = Math.ceil(d/10)*10000;
+                yAxis = Math.ceil(d);
                 // var newY = Math.round(y);
                 format = d3.format('$,');
                 return format(yAxis);
@@ -395,12 +392,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         format: {
           value: function (value, ratio, id) {
             if(self.selectedIcon === 'passengers') {
-              exp = value*1000;
+              exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
               return format(newExp);
             }
-            exp = value*1000;
+            exp = value;
             newExp = exp.toFixed(2);
             format = d3.format('$,');
             return format(newExp);
