@@ -102,3 +102,12 @@
 .odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner, .odometer.odometer-theme-plaza .odometer-digit .odometer-digit-inner {
   left: 0.03em;
 }
+.odometer .odometer-inside .odometer-digit:first-child,
+.odometer .odometer-inside .odometer-formatting-mark:nth-child(2),
+.odometer .odometer-inside .odometer-digit:last-child {
+    display: none
+}
+
+.odometer .odometer-inside:before {
+    content: "$"
+}

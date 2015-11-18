@@ -1448,12 +1448,13 @@ header {
         padding: 20px 0 0 10px; } }
 
 #viewNav {
-  height: 100%;
-  margin: 0; }
+  height: 100%; }
   #viewNav ul {
     list-style-type: none;
+    position: absolute;
+    right: 0;
     z-index: 2;
-    margin: 20px 0 0 25px;
+    margin: 20px 10px 0 0;
     box-sizing: border-box; }
     #viewNav ul li {
       display: inline-block;
@@ -1533,33 +1534,19 @@ sidebar {
   min-width: 800px;
   position: relative; }
 
-.toggleViewButton {
-  width: 100px;
-  height: 25px;
-  left: -38px;
-  top: 40%;
-  position: absolute;
-  background: transparent;
-  border: 1px solid gray;
-  border-top: none;
-  z-index: 2;
-  cursor: pointer;
-  box-sizing: border-box;
-  font-size: 16px;
-  color: #111; }
-
 #mapNav {
+  bottom: 25%;
   position: absolute;
   width: 200px;
   margin: 0 auto;
   padding: 0px 0 0 0;
   box-sizing: border-box;
-  bottom: 0px;
   z-index: 2; }
   #mapNav ul {
     position: absolute;
     box-sizing: border-box;
-    bottom: 0px;
+    bottom: 0;
+    margin-left: 25px;
     list-style-type: none;
     z-index: 2; }
     #mapNav ul li {
@@ -1569,7 +1556,7 @@ sidebar {
       width: 200px;
       box-sizing: border-box;
       padding: 5px 5px;
-      margin: 5px 5px;
+      margin: 10px 5px;
       z-index: 2; }
       #mapNav ul li p {
         display: inline;
@@ -1585,9 +1572,10 @@ sidebar {
       width: 40px; }
 
 #graphNav {
-  width: 350px;
+  width: 800px;
   margin: 0 auto;
-  padding: 20px 0 0 0;
+  padding: 5px 5px;
+  margin-left: -20px;
   box-sizing: border-box;
   z-index: 2; }
   #graphNav ul {
@@ -1597,7 +1585,8 @@ sidebar {
       height: 40px;
       width: 50px;
       box-sizing: border-box;
-      padding: 0 5px; }
+      padding: 0 5px;
+      margin: 0 30px; }
       #graphNav ul li p {
         display: inline-block;
         width: 40px;
