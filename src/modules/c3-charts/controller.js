@@ -14,12 +14,20 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     $scope.$emit('iconChanged');
   };
 
+
   // watching ngc since collection is stored on the global variable
   $scope.$watch('$ngc', function(filter) {
     // var oahuFilter = new Crossfilter(filter.collection());
     // $scope.oahuFilter = oahuFilter;
     // oahuFilter.filterBy('region', 'oahu');
+    $scope.changeChartType = function (chart) {
+      ['oahuChart', 'bigIslandChart', 'kauaiChart',
+      'mauiChart', 'lanaiChart', 'molokaiChart',
+      'totalChart'].forEach( function(c) {
+        $scope[c].transform(chart);
+      });
 
+    }
     // chartLoad method is declared on $scope to filter two object regions that are brought in from common controller API call
     $scope.chartLoad = function (icon) {
 
@@ -85,12 +93,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
           if(current.monthArray[0] > previous.monthArray[0]) {
             columns = [previous.monthArray, current.monthArray];
-            colors[previous.monthArray[0]] = 'green';
-            colors[current.monthArray[0]] = 'blue';
+            colors[previous.monthArray[0]] = '#38A988';
+            colors[current.monthArray[0]] = '#225A6D';
           } else {
             columns = [current.monthArray, previous.monthArray];
-            colors[previous.monthArray[0]] = 'blue';
-            colors[current.monthArray[0]] = 'green';
+            colors[previous.monthArray[0]] = '#225A6D';
+            colors[current.monthArray[0]] = '#38A988';
           }
           $scope[current.island + 'Chart'].load({columns: columns,
             unload : $scope[current.island + 'Chart'].columns,
@@ -99,7 +107,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         } else if (array.length < 8) {
           var colors = {};
 
-           colors[current.monthArray[0]] = 'green';
+           colors[current.monthArray[0]] = '#38A988';
             $scope[current.island + 'Chart'].load({columns: [current.monthArray],
               unload : $scope[current.island + 'Chart'].columns,
               colors : colors
@@ -134,7 +142,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       size: {
         width: 400,
@@ -148,7 +163,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       size: {
         width: 400,
@@ -162,7 +184,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       size: {
         width: 400,
@@ -176,7 +205,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       size: {
         width: 400,
@@ -190,7 +226,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       size: {
         width: 400,
@@ -204,7 +247,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       size: {
         width: 400,
@@ -218,7 +268,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue', 'red','salmon','orange','black','yellow'],
-        type: 'spline'
+        type: 'area'
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       size: {
         width: 800,
