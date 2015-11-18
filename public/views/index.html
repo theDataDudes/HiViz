@@ -16,11 +16,25 @@
 <!-- default controller for entire app defined here -->
 	<div id="mainViewContainer" ng-controller="mainController as main">
 
-		<header>
+		<header class="row">
 
-			<h1 id="mainTitle">Hawaii Tourism Data Visualization</h1>
+			<div class="small-10 columns">
 
-			<h5 id="subtitle">Annual, Monthy, Daily Visitors by Origin and Island</h5>
+				<h1 id="mainTitle">Hawaii Tourism Data Visualization</h1>
+
+				<h5 id="subtitle">Annual, Monthy, Daily Visitors by Origin and Island</h5>
+
+			</div>
+
+			<!-- look to make moduler  -->
+			<nav id="viewNav" class="small-2 columns">
+
+				<ul>
+					<li><a ng-href="/#/" ng-if="!main.IsVisible" ng-click="main.showHide()" title="Map View" class="tooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
+          --><li><a href="/#/graph" ng-if="main.IsVisible" ng-click="main.showHide()" title="Chart View" class="tooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
+				</ul>
+
+			</nav>
 
 		</header>
 
