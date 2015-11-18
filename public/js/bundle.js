@@ -1932,25 +1932,23 @@ module.exports = [function () {
         var height = 700 - margin.bottom;
         var centered = null;
 
-        // if the window size changes, call the sizeChange function
-        d3.select(window)
-          .on('resize', sizeChange);
-
         //setting up the projection. scaled to half of main container and
         // translated to the right middle of the page
         var projection = d3.geo.albersUsa()
-            .scale(4280)
-            .translate([width / 0.70, -645]);
+            .scale(6420) //4280
+            .translate([width / 0.55, -1025]);
 
         //setting up the path
         var path = d3.geo.path()
             .projection(projection);
 
         //appending the svg element to the main container
-        var svg = d3.select('#mainContent').append('svg')
+        var svg = d3.select('#vis').append('svg')
             .attr('id', 'islandMap')
             .attr('width', '85%')
-            .attr('height', height);
+            .attr('height', height)
+            .attr('viewBox', '0 0 960 700')
+            .attr('preserveAspectRatio', 'xMidYMid');
 
         svg.append('rect')
             .attr('class', 'background')
@@ -2018,14 +2016,14 @@ module.exports = [function () {
             var centroid = path.centroid(d);
             x = centroid[0];
             y = centroid[1];
-            k = 2;
+            k = 1.5;
             centered = d;
             mapTip.hide(d);
 
           //if no islands are selected
           } else {
             islandFilter.filterBy('island', 'total');
-            x = width / 3.1;
+            x = width / 2.5;
             y = height / 2.5;
             k = 1;
             centered = null;
@@ -2043,15 +2041,15 @@ module.exports = [function () {
 
         }
 
-        //changes the size of the map as browser window size changes
-        function sizeChange () {
-          d3.select('g')
-            .attr('transform', 'scale(' + $('#mainContent').width() / 900 + ')');
-          $('#islandMap').height($('#mainContent').width() * 0.618);
-        }
-
-        //set map to proper area on page load
-        sizeChange();
+        //resizing the svg based on screen size
+        var map = $('#islandMap');
+        var aspect = map.width() / map.height();
+        var container = map.parent();
+        $(window).on('resize', function() {
+          var targetWidth = container.width();
+          map.attr('width', targetWidth);
+          map.attr('height', Math.round(targetWidth / aspect));
+        }).trigger('resize');
 
       });
     }
@@ -2337,7 +2335,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_a39aaf26.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_5fb73f1f.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
