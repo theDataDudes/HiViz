@@ -40,44 +40,25 @@
     <button ng-click="changeChartType('spline');">Spline</button>
     <button ng-click="changeChartType('area-spline')">Area</button>
     <button ng-if='checked' ng-click="changeChartType('pie')">Pie</button>
+
+	  <nav id="graphNav">
+
+		  <!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
+
+		  <!--begin expenditure icons-->
+		  <!-- on click will invoke changeIcon function that is declared in controller.js -->
+		  <ul>
+			  <li><a ng-click="changeIcon('total')" title="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending"></a</li><!--
+    --><li><a ng-click="changeIcon('passengers')" title="Flights" class="tooltip"><img src="../assets/plane.svg" alt="flights"></a></li><!--
+    --><li><a ng-click="changeIcon('lodging')" title="Lodging" class="tooltip"><img src="../assets/bed.svg" alt="lodging"></a></li><!--
+    --><li><a ng-click="changeIcon('transportation')" title="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation"></a></li><!--
+    --><li><a ng-click="changeIcon('shopping')" title="Shopping" class="tooltip"><img src="../assets/creditcard.svg" alt="shopping"></a></li><!--
+    --><li><a ng-click="changeIcon('food')" title="Food" class="tooltip"><img src="../assets/utensil.svg" alt="food"></a></li><!--
+    --><li><a ng-click="changeIcon('entertainment')" title="Entertainment" class="tooltip"><img src="../assets/tickets.svg" alt="entertainment"></a></li>
+		  </ul>
+
+	  </nav>
   </div>
-
-	<nav id="mapNav">
-
-		<!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
-
-    <!--begin expenditure icons-->
-    <!-- on click will invoke changeIcon function that is declared in controller.js -->
-  <ul>
-    <li><a ng-click="changeIcon('total')" title="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending"></a>
-      <p>${{Math.floor(collection[0].month.TOTAL.total)}}</p></li><!--
-    --><li><a ng-click="changeIcon('passengers')" title="Flights" class="tooltip"><img src="../assets/plane.svg" alt="flights"></a>
-      <p>${{Math.floor(collection[0].month.TOTAL.passengers)}}</p></li><!--
-    --><li><a ng-click="changeIcon('lodging')" title="Lodging" class="tooltip"><img src="../assets/bed.svg" alt="lodging"></a>
-      <p>${{Math.floor(collection[0].month.TOTAL.lodging)}}</p></li><!--
-    --><li><a ng-click="changeIcon('transportation')" title="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation"></a>
-      <p>${{Math.floor(collection[0].month.TOTAL.transportation)}}</p></li><!--
-    --><li><a ng-click="changeIcon('shopping')" title="Shopping" class="tooltip"><img src="../assets/creditcard.svg" alt="shopping"></a>
-      <p>${{Math.floor(collection[0].month.TOTAL.shopping)}}</p></li><!--
-    --><li><a ng-click="changeIcon('food')" title="Food" class="tooltip"><img src="../assets/utensil.svg" alt="food"></a>
-      <p>${{Math.floor(collection[0].month.TOTAL.food)}}</p></li><!--
-    --><li><a ng-click="changeIcon('entertainment')" title="Entertainment" class="tooltip"><img src="../assets/tickets.svg" alt="entertainment"></a>
-      <p>${{Math.floor(collection[0].month.TOTAL.entertainment)}}</p></li>
-  </ul>
-
-	</nav>
-
-  <!-- look to make moduler  -->
-	<nav id="viewNav">
-
-		<ul>
-			<!--<li><button>Map</button></li>&lt;!&ndash;-->
-			<!--&ndash;&gt;<li><button>Graph</button></li>-->
-			<li><a ng-href="/#/" ng-click="main.showHide()" title="Map View" class="tooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
-    --><li><a href="" title="Chart View" class="tooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
-		</ul>
-
-	</nav>
 
 <!-- does this need to be here anymore? -Beerock -->
 	<c3-charts class="fullHeight"></c3-charts>
