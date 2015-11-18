@@ -2423,7 +2423,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_a27fc199.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_cea10e90.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -2461,7 +2461,7 @@ module.exports = ['$scope', ($scope) => {
   var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
           'SEP', 'OCT', 'NOV', 'DEC'];
 
-  $scope.selectedMonth = 'TOTAL';
+  $scope.selectedMonth = 'JAN';
 
   $scope.showDonut = function() {
     $scope.donut = c3.generate({
@@ -2471,9 +2471,12 @@ module.exports = ['$scope', ($scope) => {
             ['Arrivals', 0],
         ],
         type : 'bar',
-        onclick : function (d) {
+        onclick : function (d, element) {
           $scope.selectedMonth = months[d.index];
           $scope.safeApply();
+        },
+        color: function (color, d) {
+            return d.index === months.indexOf($scope.selectedMonth) ? "#86BB6A" : "#225A6D";
         }
       },
       axis : {
@@ -2529,9 +2532,9 @@ module.exports = ['$scope', ($scope) => {
 
       monthArray.unshift('Arrivals');
 
-      $scope.donut.load({ columns : [
-        monthArray
-      ]});
+      $scope.donut.load({
+        columns : [ monthArray ]
+      });
     };
   });
 }];
