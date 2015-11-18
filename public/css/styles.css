@@ -999,8 +999,10 @@ sidebar {
   #sidebar #originSelector {
     width: 125px;
     margin: 5px 0 0 10px; }
-  #sidebar .side-bar-num {
-    margin-bottom: 25px; }
+  #sidebar .small-12 {
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px; }
 
 .background {
   fill: none;
