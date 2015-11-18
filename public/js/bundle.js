@@ -1425,7 +1425,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         $scope[c].transform(chart);
       });
 
-    }
+    };
     // chartLoad method is declared on $scope to filter two object regions that are brought in from common controller API call
     $scope.chartLoad = function (icon) {
 
@@ -1461,9 +1461,9 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         // The two region objects 'island' key value must match
         // Set the x-axis value so that all graphs on page equal
         // return current object with new property and assign it to columns value for each island chart
+        var columns;
+        var colors = {};
         if (current.island === previous.island) {
-          var columns;
-          var colors = {};
 
           if(current.monthArray[0] > previous.monthArray[0]) {
             columns = [previous.monthArray, current.monthArray];
@@ -1474,22 +1474,18 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             colors[previous.monthArray[0]] = '#225A6D';
             colors[current.monthArray[0]] = '#38A988';
           }
-          $scope[current.island + 'Chart'].load({columns: columns,
-            unload : $scope[current.island + 'Chart'].columns,
-            colors : colors
-        });
 
         // Conditional used if only one region is selected
         } else if (array.length < 8) {
-          var colors = {};
+          columns = [current.monthArray];
 
-           colors[current.monthArray[0]] = '#38A988';
-            $scope[current.island + 'Chart'].load({columns: [current.monthArray],
+          colors[current.monthArray[0]] = '#38A988';
+        }
+        $scope[current.island + 'Chart'].load({
+              columns : columns,
               unload : $scope[current.island + 'Chart'].columns,
               colors : colors
             });
-        }
-
         return current;
        }, {});
       };
@@ -1512,6 +1508,10 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
   $scope.showGraph = function() {
     var monthTicks = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
           'SEP', 'OCT', 'NOV', 'DEC'];
+    var format;
+    var yAxis;
+    var exp;
+    var newExp;
 
     // ================= Oahu Chart =================== //
     $scope.oahuChart = c3.generate({
@@ -1522,10 +1522,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             tick: {
               count: 7,
               format: function(d) {
-                var y = Math.ceil(d/10)*10000;
+                if(self.selectedIcon === 'passengers') {
+                  yAxis = Math.ceil(d)*1000;
+                  format = d3.format(',');
+                  return format(yAxis);
+                }
+                yAxis = Math.ceil(d/10)*10000;
                 // var newY = Math.round(y);
-                var format = d3.format('$,');
-                return format(y);
+                format = d3.format('$,');
+                return format(yAxis);
               }
             }
         },
@@ -1534,10 +1539,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            var exp = value*1000;
-            var newExp = exp.toFixed(2);
-            var format = d3.format('$,');
-
+            if(self.selectedIcon === 'passengers') {
+              exp = value*1000;
+              newExp = exp.toFixed(2);
+              format = d3.format(',');
+              return format(newExp);
+            }
+            exp = value*1000;
+            newExp = exp.toFixed(2);
+            format = d3.format('$,');
             return format(newExp);
           }
         }
@@ -1554,10 +1564,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             tick: {
               count: 7,
               format: function(d) {
-                var y = Math.ceil(d/10)*10000;
+                if(self.selectedIcon === 'passengers') {
+                  yAxis = Math.ceil(d)*1000;
+                  format = d3.format(',');
+                  return format(yAxis);
+                }
+                yAxis = Math.ceil(d/10)*10000;
                 // var newY = Math.round(y);
-                var format = d3.format('$,');
-                return format(y);
+                format = d3.format('$,');
+                return format(yAxis);
               }
             }
         },
@@ -1566,10 +1581,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            var exp = value*1000;
-            var newExp = exp.toFixed(2);
-            var format = d3.format('$,');
-
+            if(self.selectedIcon === 'passengers') {
+              exp = value*1000;
+              newExp = exp.toFixed(2);
+              format = d3.format(',');
+              return format(newExp);
+            }
+            exp = value*1000;
+            newExp = exp.toFixed(2);
+            format = d3.format('$,');
             return format(newExp);
           }
         }
@@ -1586,10 +1606,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             tick: {
               count: 7,
               format: function(d) {
-                var y = Math.ceil(d/10)*10000;
+                if(self.selectedIcon === 'passengers') {
+                  yAxis = Math.ceil(d)*1000;
+                  format = d3.format(',');
+                  return format(yAxis);
+                }
+                yAxis = Math.ceil(d/10)*10000;
                 // var newY = Math.round(y);
-                var format = d3.format('$,');
-                return format(y);
+                format = d3.format('$,');
+                return format(yAxis);
               }
             }
         },
@@ -1598,10 +1623,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            var exp = value*1000;
-            var newExp = exp.toFixed(2);
-            var format = d3.format('$,');
-
+            if(self.selectedIcon === 'passengers') {
+              exp = value*1000;
+              newExp = exp.toFixed(2);
+              format = d3.format(',');
+              return format(newExp);
+            }
+            exp = value*1000;
+            newExp = exp.toFixed(2);
+            format = d3.format('$,');
             return format(newExp);
           }
         }
@@ -1618,10 +1648,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             tick: {
               count: 7,
               format: function(d) {
-                var y = Math.ceil(d/10)*10000;
+                if(self.selectedIcon === 'passengers') {
+                  yAxis = Math.ceil(d)*1000;
+                  format = d3.format(',');
+                  return format(yAxis);
+                }
+                yAxis = Math.ceil(d/10)*10000;
                 // var newY = Math.round(y);
-                var format = d3.format('$,');
-                return format(y);
+                format = d3.format('$,');
+                return format(yAxis);
               }
             }
         },
@@ -1630,10 +1665,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            var exp = value*1000;
-            var newExp = exp.toFixed(2);
-            var format = d3.format('$,');
-
+            if(self.selectedIcon === 'passengers') {
+              exp = value*1000;
+              newExp = exp.toFixed(2);
+              format = d3.format(',');
+              return format(newExp);
+            }
+            exp = value*1000;
+            newExp = exp.toFixed(2);
+            format = d3.format('$,');
             return format(newExp);
           }
         }
@@ -1650,10 +1690,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             tick: {
               count: 7,
               format: function(d) {
-                var y = Math.ceil(d)*100;
+                if(self.selectedIcon === 'passengers') {
+                  yAxis = Math.ceil(d)
+                  format = d3.format(',');
+                  return format(yAxis);
+                }
+                yAxis = Math.ceil(d/10)*10000;
                 // var newY = Math.round(y);
-                var format = d3.format('$,');
-                return format(y);
+                format = d3.format('$,');
+                return format(yAxis);
               }
             }
         },
@@ -1662,10 +1707,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            var exp = value*1000;
-            var newExp = exp.toFixed(1);
-            var format = d3.format('$,');
-
+            if(self.selectedIcon === 'passengers') {
+              exp = value*1000;
+              newExp = exp.toFixed(2);
+              format = d3.format(',');
+              return format(newExp);
+            }
+            exp = value*1000;
+            newExp = exp.toFixed(2);
+            format = d3.format('$,');
             return format(newExp);
           }
         }
@@ -1682,10 +1732,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             tick: {
               count: 7,
               format: function(d) {
-                var y = Math.ceil(d)*1000;
+                if(self.selectedIcon === 'passengers') {
+                  yAxis = Math.ceil(d)
+                  format = d3.format(',');
+                  return format(yAxis);
+                }
+                yAxis = Math.ceil(d/10)*10000;
                 // var newY = Math.round(y);
-                var format = d3.format('$,');
-                return format(y);
+                format = d3.format('$,');
+                return format(yAxis);
               }
             }
         },
@@ -1694,10 +1749,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            var exp = value*1000;
-            var newExp = exp.toFixed(1);
-            var format = d3.format('$,');
-
+            if(self.selectedIcon === 'passengers') {
+              exp = value*1000;
+              newExp = exp.toFixed(2);
+              format = d3.format(',');
+              return format(newExp);
+            }
+            exp = value*1000;
+            newExp = exp.toFixed(2);
+            format = d3.format('$,');
             return format(newExp);
           }
         }
@@ -1714,10 +1774,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             tick: {
               count: 7,
               format: function(d) {
-                var y = Math.ceil(d/10)*10000;
+                if(self.selectedIcon === 'passengers') {
+                  yAxis = Math.ceil(d)*1000;
+                  format = d3.format(',');
+                  return format(yAxis);
+                }
+                yAxis = Math.ceil(d/10)*10000;
                 // var newY = Math.round(y);
-                var format = d3.format('$,');
-                return format(y);
+                format = d3.format('$,');
+                return format(yAxis);
               }
             }
         },
@@ -1726,10 +1791,15 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            var exp = value*1000;
-            var newExp = exp.toFixed(2);
-            var format = d3.format('$,');
-
+            if(self.selectedIcon === 'passengers') {
+              exp = value*1000;
+              newExp = exp.toFixed(2);
+              format = d3.format(',');
+              return format(newExp);
+            }
+            exp = value*1000;
+            newExp = exp.toFixed(2);
+            format = d3.format('$,');
             return format(newExp);
           }
         }
@@ -2337,7 +2407,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_e8caf8b1.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_2a52cf65.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
