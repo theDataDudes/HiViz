@@ -33,13 +33,11 @@ function controller($scope, apiService, Crossfilter) {
       $scope.$ngc = filter;
       filter.filterBy('year', '2014');
       filter.filterBy('region', 'total');
-// todo filter by island will happen onclick of mo data or island?
       filter.filterBy('island', 'total');
     });
 
   //updates the filters applied across all of the charts/graphs
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
-    console.log('updated');
     $scope.collection = collection;
     $scope.safeApply();
   });

@@ -37,42 +37,18 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         for (var q in current.month) {
             if (q !== 'TOTAL') {
               switch (q) {
-                case 'JAN':
-                  current.monthArray.splice(0, 1,current.month[q]);
-                  break;
-                case 'FEB':
-                  current.monthArray.splice(1, 1,current.month[q]);
-                  break;
-                case 'MAR':
-                  current.monthArray.splice(2, 1,current.month[q]);
-                  break;
-                case 'APR':
-                  current.monthArray.splice(3, 1,current.month[q]);
-                  break;
-                case 'MAY':
-                  current.monthArray.splice(4, 1,current.month[q]);
-                  break;
-                case 'JUN':
-                  current.monthArray.splice(5, 1,current.month[q]);
-                  break;
-                case 'JUL':
-                  current.monthArray.splice(6, 1,current.month[q]);
-                  break;
-                case 'AUG':
-                  current.monthArray.splice(7, 1,current.month[q]);
-                  break;
-                case 'SEP':
-                  current.monthArray.splice(8, 1,current.month[q]);
-                  break;
-                case 'OCT':
-                  current.monthArray.splice(9, 1,current.month[q]);
-                  break;
-                case 'NOV':
-                  current.monthArray.splice(10, 1,current.month[q]);
-                  break;
-                case 'DEC':
-                  current.monthArray.splice(11, 1,current.month[q]);
-                  break;
+                case 'JAN': current.monthArray.splice(0, 1, current.month[q]); break;
+                case 'FEB': current.monthArray.splice(1, 1, current.month[q]); break;
+                case 'MAR': current.monthArray.splice(2, 1, current.month[q]); break;
+                case 'APR': current.monthArray.splice(3, 1, current.month[q]); break;
+                case 'MAY': current.monthArray.splice(4, 1, current.month[q]); break;
+                case 'JUN': current.monthArray.splice(5, 1, current.month[q]); break;
+                case 'JUL': current.monthArray.splice(6, 1, current.month[q]); break;
+                case 'AUG': current.monthArray.splice(7, 1, current.month[q]); break;
+                case 'SEP': current.monthArray.splice(8, 1, current.month[q]); break;
+                case 'OCT': current.monthArray.splice(9, 1, current.month[q]); break;
+                case 'NOV': current.monthArray.splice(10, 1, current.month[q]); break;
+                case 'DEC': current.monthArray.splice(11, 1, current.month[q]); break;
               }
             }
           }
@@ -134,153 +110,64 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 // loop through scope.collection and reference each object (all islands)
 
   $scope.showGraph = function() {
+    var monthTicks = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC'];
     // $scope.$ngc.unfilterBy('island');
     $scope.oahuChart = c3.generate({
       bindto: '#oahu',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue'],
-        type: 'area',
-      },
+      data: { columns: [], type: 'area',},
      axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
+        x : { type : 'category', categories : monthTicks }
       },
-      size: {
-        width: 400,
-        height: 150
-      },
+      size: { width: 400, height: 150 },
     });
     $scope.bigIslandChart = c3.generate({
       bindto: '#big',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue'],
-        type: 'area',
-      },
+      data: { columns: [], type: 'area',},
      axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
+        x : { type : 'category', categories : monthTicks }
       },
-      size: {
-        width: 400,
-        height: 150
-      },
+      size: { width: 400, height: 150 },
     });
     $scope.kauaiChart = c3.generate({
       bindto: '#kauai',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue'],
-        type: 'area',
-      },
+      data: { columns: [], type: 'area',},
      axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
+        x : { type : 'category', categories : monthTicks }
       },
-      size: {
-        width: 400,
-        height: 150
-      },
+      size: { width: 400, height: 150 },
     });
     $scope.mauiChart = c3.generate({
       bindto: '#maui',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue'],
-        type: 'area',
-      },
+      data: { columns: [], type: 'area',},
      axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
+        x : { type : 'category', categories : monthTicks }
       },
-      size: {
-        width: 400,
-        height: 150
-      },
+      size: { width: 400, height: 150 },
     });
     $scope.lanaiChart = c3.generate({
       bindto: '#lanai',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue'],
-        type: 'area',
-      },
+      data: { columns: [], type: 'area',},
      axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
+        x : { type : 'category', categories : monthTicks }
       },
-      size: {
-        width: 400,
-        height: 150
-      },
+      size: { width: 400, height: 150 },
     });
     $scope.molokaiChart = c3.generate({
       bindto: '#molokai',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue'],
-        type: 'area',
-      },
+      data: { columns: [], type: 'area',},
      axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
+        x : { type : 'category', categories : monthTicks }
       },
-      size: {
-        width: 400,
-        height: 150
-      },
+      size: { width: 400, height: 150 },
     });
     $scope.totalChart = c3.generate({
       bindto: '#total',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue', 'red','salmon','orange','black','yellow'],
-        type: 'area'
-      },
+      data: { columns: [], type: 'area'},
      axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
+        x : { type : 'category', categories : monthTicks }
       },
-      size: {
-        width: 800,
-        height: 150
-      }
+      size: { width: 800, height: 150 }
     });
   };
 }];
