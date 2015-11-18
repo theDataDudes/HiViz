@@ -8,6 +8,40 @@
 .fullHeight {
   height: 100%; }
 
+.tooltip {
+  position: relative; }
+
+.tooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 40px;
+  color: #fff;
+  content: attr(name);
+  left: 25%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
+.viewNavTooltip {
+  position: relative; }
+
+.viewNavTooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 10px;
+  color: #fff;
+  content: attr(name);
+  right: 110%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
 meta.foundation-version {
   font-family: "/5.5.3/"; }
 
@@ -1424,6 +1458,40 @@ button::-moz-focus-inner {
 .fullHeight {
   height: 100%; }
 
+.tooltip {
+  position: relative; }
+
+.tooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 40px;
+  color: #fff;
+  content: attr(name);
+  left: 25%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
+.viewNavTooltip {
+  position: relative; }
+
+.viewNavTooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 10px;
+  color: #fff;
+  content: attr(name);
+  right: 110%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
 header {
   height: 12%;
   min-height: 100px;
@@ -1497,22 +1565,54 @@ header {
 .fullHeight {
   height: 100%; }
 
-sidebar {
-  height: 100%; }
+.tooltip {
+  position: relative; }
 
-#sidebar {
+.tooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 40px;
+  color: #fff;
+  content: attr(name);
+  left: 25%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
+.viewNavTooltip {
+  position: relative; }
+
+.viewNavTooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 10px;
+  color: #fff;
+  content: attr(name);
+  right: 110%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
+sidebar {
+  height: 76%;
   background-color: #fff;
   height: 100%;
   border-right: 1px solid gray; }
-  #sidebar h2 {
+  sidebar h2 {
     padding: 5px 0 0 10px; }
-  #sidebar #originSelector {
+  sidebar #originSelector {
     width: 125px;
     margin: 5px 0 0 10px; }
-  #sidebar .small-12 {
+  sidebar .small-12 {
     padding: 10px;
     text-align: center; }
-  #sidebar .small-6 {
+  sidebar .small-6 {
     padding: 10px;
     text-align: center; }
 
@@ -1526,6 +1626,40 @@ sidebar {
 .fullHeight {
   height: 100%; }
 
+.tooltip {
+  position: relative; }
+
+.tooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 40px;
+  color: #fff;
+  content: attr(name);
+  left: 25%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
+.viewNavTooltip {
+  position: relative; }
+
+.viewNavTooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 10px;
+  color: #fff;
+  content: attr(name);
+  right: 110%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
 #view-container {
   height: 100%; }
 
@@ -1535,11 +1669,11 @@ sidebar {
   position: relative; }
 
 #mapNav {
-  bottom: 25%;
+  bottom: 0;
   position: absolute;
   width: 200px;
-  margin: 0 auto;
-  padding: 0px 0 0 0;
+  margin-bottom: 25px;
+  padding: 0;
   box-sizing: border-box;
   z-index: 2; }
   #mapNav ul {
@@ -1608,6 +1742,40 @@ sidebar {
 .fullHeight {
   height: 100%; }
 
+.tooltip {
+  position: relative; }
+
+.tooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 40px;
+  color: #fff;
+  content: attr(name);
+  left: 25%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
+.viewNavTooltip {
+  position: relative; }
+
+.viewNavTooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 10px;
+  color: #fff;
+  content: attr(name);
+  right: 110%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
 #pipContainer {
   position: absolute;
   left: 25px;
@@ -1623,6 +1791,40 @@ sidebar {
 
 .fullHeight {
   height: 100%; }
+
+.tooltip {
+  position: relative; }
+
+.tooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 40px;
+  color: #fff;
+  content: attr(name);
+  left: 25%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
+.viewNavTooltip {
+  position: relative; }
+
+.viewNavTooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 10px;
+  color: #fff;
+  content: attr(name);
+  right: 110%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
 
 #pipContainer {
   position: absolute;
@@ -1670,6 +1872,40 @@ sidebar {
 .fullHeight {
   height: 100%; }
 
+.tooltip {
+  position: relative; }
+
+.tooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 40px;
+  color: #fff;
+  content: attr(name);
+  left: 25%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
+.viewNavTooltip {
+  position: relative; }
+
+.viewNavTooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 10px;
+  color: #fff;
+  content: attr(name);
+  right: 110%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
 #c3row {
   padding-top: 20px;
   padding-left: 5%; }
@@ -1683,6 +1919,40 @@ sidebar {
 
 .fullHeight {
   height: 100%; }
+
+.tooltip {
+  position: relative; }
+
+.tooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 40px;
+  color: #fff;
+  content: attr(name);
+  left: 25%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
+
+.viewNavTooltip {
+  position: relative; }
+
+.viewNavTooltip:hover:after {
+  background: #333;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  bottom: 10px;
+  color: #fff;
+  content: attr(name);
+  right: 110%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center; }
 
 footer {
   height: 12%;
@@ -1722,6 +1992,7 @@ body {
   background-color: #fff; }
 
 #mainViewContainer {
+  min-width: 1200px;
   height: 100%; }
 
 #contentContainer {
