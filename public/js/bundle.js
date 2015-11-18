@@ -1412,12 +1412,20 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     $scope.$emit('iconChanged');
   };
 
+
   // watching ngc since collection is stored on the global variable
   $scope.$watch('$ngc', function(filter) {
     // var oahuFilter = new Crossfilter(filter.collection());
     // $scope.oahuFilter = oahuFilter;
     // oahuFilter.filterBy('region', 'oahu');
+    $scope.changeChartType = function (chart) {
+      ['oahuChart', 'bigIslandChart', 'kauaiChart',
+      'mauiChart', 'lanaiChart', 'molokaiChart',
+      'totalChart'].forEach( function(c) {
+        $scope[c].transform(chart);
+      });
 
+    }
     // chartLoad method is declared on $scope to filter two object regions that are brought in from common controller API call
     $scope.chartLoad = function (icon) {
 
@@ -1483,12 +1491,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
           if(current.monthArray[0] > previous.monthArray[0]) {
             columns = [previous.monthArray, current.monthArray];
-            colors[previous.monthArray[0]] = 'green';
-            colors[current.monthArray[0]] = 'blue';
+            colors[previous.monthArray[0]] = '#38A988';
+            colors[current.monthArray[0]] = '#225A6D';
           } else {
             columns = [current.monthArray, previous.monthArray];
-            colors[previous.monthArray[0]] = 'blue';
-            colors[current.monthArray[0]] = 'green';
+            colors[previous.monthArray[0]] = '#225A6D';
+            colors[current.monthArray[0]] = '#38A988';
           }
           $scope[current.island + 'Chart'].load({columns: columns,
             unload : $scope[current.island + 'Chart'].columns,
@@ -1499,7 +1507,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         } else if (array.length < 8) {
           var colors = {};
 
-           colors[current.monthArray[0]] = 'green';
+           colors[current.monthArray[0]] = '#38A988';
             $scope[current.island + 'Chart'].load({columns: [current.monthArray],
               unload : $scope[current.island + 'Chart'].columns,
               colors : colors
@@ -1535,7 +1543,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       axis : {
         y : {
@@ -1575,7 +1590,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       axis : {
         y : {
@@ -1615,7 +1637,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       axis : {
         y : {
@@ -1655,7 +1684,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       axis : {
         y : {
@@ -1695,7 +1731,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       axis : {
         y : {
@@ -1735,7 +1778,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       axis : {
         y : {
@@ -1775,7 +1825,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue', 'red','salmon','orange','black','yellow'],
-        type: 'spline'
+        type: 'area'
+      },
+     axis : {
+        x : {
+          type : 'category',
+          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC']
+        }
       },
       axis : {
         y : {
@@ -1823,7 +1880,7 @@ module.exports = angular.module('app.c3-charts',[])
         scope.$watch('$ngc', function(filter) {
           if(!filter) return;
           filter.unfilterBy('island');
-          filter.filterBy('region', ['total', 'usWest'], filter.filters.inArray('some'));
+          filter.filterBy('region', 'total');
           filter.sortBy('island');
           // filter.sortBy('island');
         });
@@ -2146,15 +2203,16 @@ module.exports = [function () {
       // console.log(scope);
       var entertainmentOdo = new Odometer({
         el : element[0],
-        value : 0
+        value : 0,
+        animation : 'count'
       });
 
       scope.$watch('selectedMonth', function () {
-        entertainmentOdo.update(scope.expenditureTotal.entertainment);
+        entertainmentOdo.update(scope.expenditureTotal.entertainment / 10000);
       });
 
       scope.$on('crossfilter/updated', function () {
-        entertainmentOdo.update(scope.expenditureTotal.entertainment);
+        entertainmentOdo.update(scope.expenditureTotal.entertainment / 10000);
       });
     }
   }
@@ -2173,15 +2231,16 @@ module.exports = [function () {
       // console.log(scope);
       var foodOdo = new Odometer({
         el : element[0],
-        value : 0
+        value : 0,
+        animation : 'count'
       });
 
       scope.$watch('selectedMonth', function () {
-        foodOdo.update(scope.expenditureTotal.food);
+        foodOdo.update(scope.expenditureTotal.food / 10000);
       });
 
       scope.$on('crossfilter/updated', function () {
-        foodOdo.update(scope.expenditureTotal.food);
+        foodOdo.update(scope.expenditureTotal.food / 10000);
       });
     }
   }
@@ -2213,15 +2272,16 @@ module.exports = [function () {
       // console.log(scope);
       var lodgingOdo = new Odometer({
         el : element[0],
-        value : 0
+        value : 0,
+        animation : 'count'
       });
 
       scope.$watch('selectedMonth', function () {
-        lodgingOdo.update(scope.expenditureTotal.lodging);
+        lodgingOdo.update(scope.expenditureTotal.lodging / 10000);
       });
 
       scope.$on('crossfilter/updated', function () {
-        lodgingOdo.update(scope.expenditureTotal.lodging);
+        lodgingOdo.update(scope.expenditureTotal.lodging / 10000);
       });
     }
   }
@@ -2240,15 +2300,16 @@ module.exports = [function () {
       // console.log(scope);
       var otherOdo = new Odometer({
         el : element[0],
-        value : 0
+        value : 0,
+        animation : 'count'
       });
 
       scope.$watch('selectedMonth', function () {
-        otherOdo.update(scope.expenditureTotal.other);
+        otherOdo.update(scope.expenditureTotal.other / 10000);
       });
 
       scope.$on('crossfilter/updated', function () {
-        otherOdo.update(scope.expenditureTotal.other);
+        otherOdo.update(scope.expenditureTotal.other / 10000);
       });
     }
   }
@@ -2267,15 +2328,16 @@ module.exports = [function () {
       // console.log(scope);
       var shoppingOdo = new Odometer({
         el : element[0],
-        value : 0
+        value : 0,
+        animation : 'count'
       });
 
       scope.$watch('selectedMonth', function () {
-        shoppingOdo.update(scope.expenditureTotal.shopping);
+        shoppingOdo.update(scope.expenditureTotal.shopping / 10000);
       });
 
       scope.$on('crossfilter/updated', function () {
-        shoppingOdo.update(scope.expenditureTotal.shopping);
+        shoppingOdo.update(scope.expenditureTotal.shopping / 10000);
       });
     }
   }
@@ -2294,16 +2356,16 @@ module.exports = [function () {
       // console.log(scope);
       var totalOdo = new Odometer({
         el : element[0],
-        value : 0
+        value : 0,
+        animation : 'count'
       });
-      console.log(scope.expenditureTotal);
 
       scope.$watch('selectedMonth', function () {
-        totalOdo.update(scope.expenditureTotal.total);
+        totalOdo.update(scope.expenditureTotal.total / 10000 );
       });
 
       scope.$on('crossfilter/updated', function () {
-        totalOdo.update(scope.expenditureTotal.total);
+        totalOdo.update(scope.expenditureTotal.total / 10000);
       });
     }
   }
@@ -2322,15 +2384,16 @@ module.exports = [function () {
       // console.log(scope);
       var transportationOdo = new Odometer({
         el : element[0],
-        value : 0
+        value : 0,
+        animation : 'count'
       });
 
       scope.$watch('selectedMonth', function () {
-        transportationOdo.update(scope.expenditureTotal.transportation);
+        transportationOdo.update(scope.expenditureTotal.transportation / 10000);
       });
 
       scope.$on('crossfilter/updated', function () {
-        transportationOdo.update(scope.expenditureTotal.transportation);
+        transportationOdo.update(scope.expenditureTotal.transportation / 10000);
       });
     }
   }
@@ -2406,20 +2469,19 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_85ca90b.js","/")
-},{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":29,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_e7cbd103.js","/")
+},{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
 module.exports = angular.module('app.main', [])
 .config( ($stateProvider, $urlRouterProvider) => {
-    // for unmatched urls redirect to default view
+  // for unmatched urls redirect to default view
 
     $stateProvider
       .state('default', {
         url : '/',
-        templateUrl : 'views/default.html',
-	      controller : 'sidebarController'
+        templateUrl : 'views/default.html'
       })
       .state('graph', {
         url : '/graph',
@@ -2522,26 +2584,14 @@ module.exports = angular.module('app.sideCharts',[])
 },{"./controller":26,"buffer":2,"rH1JPG":4}],28:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = ['$scope', controller];
-
-function controller() {
-
-
-}
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sidebar/controller.js","/sidebar")
-},{"buffer":2,"rH1JPG":4}],29:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-'use strict';
 module.exports = angular.module('app.sidebar', [])
 	.directive('sidebar', function () {
-		return {
-			scope : true,
-			controller : 'sidebarController',
-			controllerAs : 'sidebarctrl',
-			templateUrl : 'views/sidebar.html'
-		};
-	})
-	.controller('sidebarController', require('./controller'));
+  		return {
+  			scope : true,
+  			templateUrl : 'views/sidebar.html'
+  		};
+	});
+
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sidebar/index.js","/sidebar")
-},{"./controller":28,"buffer":2,"rH1JPG":4}]},{},[24])
+},{"buffer":2,"rH1JPG":4}]},{},[24])
