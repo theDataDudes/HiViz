@@ -27,7 +27,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         $scope[c].transform(chart);
       });
 
-    }
+    };
     // chartLoad method is declared on $scope to filter two object regions that are brought in from common controller API call
     $scope.chartLoad = function (icon) {
 
@@ -63,9 +63,9 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         // The two region objects 'island' key value must match
         // Set the x-axis value so that all graphs on page equal
         // return current object with new property and assign it to columns value for each island chart
+        var columns;
+        var colors = {};
         if (current.island === previous.island) {
-          var columns;
-          var colors = {};
 
           if(current.monthArray[0] > previous.monthArray[0]) {
             columns = [previous.monthArray, current.monthArray];
@@ -76,22 +76,18 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             colors[previous.monthArray[0]] = '#225A6D';
             colors[current.monthArray[0]] = '#38A988';
           }
-          $scope[current.island + 'Chart'].load({columns: columns,
-            unload : $scope[current.island + 'Chart'].columns,
-            colors : colors
-        });
 
         // Conditional used if only one region is selected
         } else if (array.length < 8) {
-          var colors = {};
+          columns = [current.monthArray];
 
-           colors[current.monthArray[0]] = '#38A988';
-            $scope[current.island + 'Chart'].load({columns: [current.monthArray],
+          colors[current.monthArray[0]] = '#38A988';
+        }
+        $scope[current.island + 'Chart'].load({
+              columns : columns,
               unload : $scope[current.island + 'Chart'].columns,
               colors : colors
             });
-        }
-
         return current;
        }, {});
       };
