@@ -1469,12 +1469,10 @@ sidebar {
     margin: 5px 0 0 10px; }
   #sidebar .small-12 {
     padding: 10px;
-    text-align: center;
-    margin-bottom: 10px; }
+    text-align: center; }
   #sidebar .small-6 {
     padding: 10px;
-    text-align: center;
-    margin-bottom: 10px; }
+    text-align: center; }
 
 .background {
   fill: none;
@@ -1510,61 +1508,74 @@ sidebar {
   color: #111; }
 
 #mapNav {
-  width: 350px;
+  position: absolute;
+  width: 200px;
   margin: 0 auto;
-  padding: 20px 0 0 0;
+  padding: 0px 0 0 0;
   box-sizing: border-box;
+  bottom: 0px;
   z-index: 2; }
   #mapNav ul {
+    position: absolute;
     box-sizing: border-box;
-    text-align: center; }
+    bottom: 0px;
+    list-style-type: none;
+    z-index: 2; }
     #mapNav ul li {
-      display: inline-block;
-      height: 40px;
-      width: 50px;
+      border-radius: 10px;
+      background-color: RGBA(0, 0, 0, 0.1);
+      height: 50px;
+      width: 200px;
       box-sizing: border-box;
-      padding: 0 5px; }
+      padding: 5px 5px;
+      margin: 5px 5px;
+      z-index: 2; }
       #mapNav ul li p {
-        display: inline-block;
-        width: 40px;
-        height: 20px;
+        display: inline;
+        font-size: 20px;
+        width: 150px;
+        height: 15px;
         box-sizing: border-box;
-        font-size: 12px;
-        text-align: center; }
-    #mapNav ul a {
-      width: 40px;
-      height: 40px; }
-      #mapNav ul a:active {
-        position: relative;
-        top: 1px; }
+        vertical-align: middle;
+        padding: 0 0 0 5px;
+        z-index: 2; }
     #mapNav ul img {
       height: 40px;
       width: 40px; }
 
 #viewNav {
-  width: 120px;
+  width: 140px;
   height: 50px;
-  float: left;
-  margin: -60px 0 0 25px;
+  float: right;
+  margin: 20px 20px 0 0;
   z-index: 2;
   box-sizing: border-box; }
   #viewNav ul {
-    list-style-type: none; }
+    border-radius: 10px;
+    background-color: RGBA(0, 0, 0, 0.1);
+    list-style-type: none;
+    z-index: 2;
+    padding: 10px;
+    box-sizing: border-box; }
     #viewNav ul li {
       display: inline-block;
       box-sizing: border-box;
-      padding: 0 5px; }
+      padding: 0 5px;
+      z-index: 2; }
       #viewNav ul li:last-child {
         border-left: none; }
     #viewNav ul a {
       width: 50px;
-      height: 50px; }
+      height: 50px;
+      z-index: 2; }
       #viewNav ul a:active {
         position: relative;
-        top: 1px; }
+        top: 1px;
+        z-index: 2; }
     #viewNav ul img {
       height: 50px;
-      width: 50px; }
+      width: 50px;
+      z-index: 2; }
   #viewNav button {
     border: none;
     background: transparent;

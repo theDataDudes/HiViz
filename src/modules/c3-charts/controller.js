@@ -80,6 +80,8 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
             unload : $scope[current.island + 'Chart'].columns,
             colors : colors
         });
+
+        // Conditional used if only one region is selected
         } else if (array.length < 8) {
           var colors = {};
 
@@ -112,60 +114,227 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
   $scope.showGraph = function() {
     var monthTicks = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
           'SEP', 'OCT', 'NOV', 'DEC'];
-    // $scope.$ngc.unfilterBy('island');
+
+    // ================= Oahu Chart =================== //
     $scope.oahuChart = c3.generate({
       bindto: '#oahu',
       data: { columns: [], type: 'area',},
-     axis : {
+      axis : {
+        y : {
+            tick: {
+              count: 7,
+              format: function(d) {
+                var y = Math.ceil(d/10)*10000;
+                // var newY = Math.round(y);
+                var format = d3.format('$,');
+                return format(y);
+              }
+            }
+        },
         x : { type : 'category', categories : monthTicks }
+      },
+      tooltip: {
+        format: {
+          value: function (value, ratio, id) {
+            var exp = value*1000;
+            var newExp = exp.toFixed(2);
+            var format = d3.format('$,');
+
+            return format(newExp);
+          }
+        }
       },
       size: { width: 400, height: 150 },
     });
+
+    // ================= Big Island Chart =================== //
     $scope.bigIslandChart = c3.generate({
       bindto: '#big',
       data: { columns: [], type: 'area',},
-     axis : {
+      axis : {
+        y : {
+            tick: {
+              count: 7,
+              format: function(d) {
+                var y = Math.ceil(d/10)*10000;
+                // var newY = Math.round(y);
+                var format = d3.format('$,');
+                return format(y);
+              }
+            }
+        },
         x : { type : 'category', categories : monthTicks }
+      },
+      tooltip: {
+        format: {
+          value: function (value, ratio, id) {
+            var exp = value*1000;
+            var newExp = exp.toFixed(2);
+            var format = d3.format('$,');
+
+            return format(newExp);
+          }
+        }
       },
       size: { width: 400, height: 150 },
     });
+
+    // ================= Kauai Chart =================== //
     $scope.kauaiChart = c3.generate({
       bindto: '#kauai',
       data: { columns: [], type: 'area',},
-     axis : {
+      axis : {
+        y : {
+            tick: {
+              count: 7,
+              format: function(d) {
+                var y = Math.ceil(d/10)*10000;
+                // var newY = Math.round(y);
+                var format = d3.format('$,');
+                return format(y);
+              }
+            }
+        },
         x : { type : 'category', categories : monthTicks }
+      },
+      tooltip: {
+        format: {
+          value: function (value, ratio, id) {
+            var exp = value*1000;
+            var newExp = exp.toFixed(2);
+            var format = d3.format('$,');
+
+            return format(newExp);
+          }
+        }
       },
       size: { width: 400, height: 150 },
     });
+
+    // ================= Maui Chart =================== //
     $scope.mauiChart = c3.generate({
       bindto: '#maui',
       data: { columns: [], type: 'area',},
-     axis : {
+      axis : {
+        y : {
+            tick: {
+              count: 7,
+              format: function(d) {
+                var y = Math.ceil(d/10)*10000;
+                // var newY = Math.round(y);
+                var format = d3.format('$,');
+                return format(y);
+              }
+            }
+        },
         x : { type : 'category', categories : monthTicks }
+      },
+      tooltip: {
+        format: {
+          value: function (value, ratio, id) {
+            var exp = value*1000;
+            var newExp = exp.toFixed(2);
+            var format = d3.format('$,');
+
+            return format(newExp);
+          }
+        }
       },
       size: { width: 400, height: 150 },
     });
+
+    // ================= Lanai Chart =================== //
     $scope.lanaiChart = c3.generate({
       bindto: '#lanai',
       data: { columns: [], type: 'area',},
-     axis : {
+      axis : {
+        y : {
+            tick: {
+              count: 7,
+              format: function(d) {
+                var y = Math.ceil(d)*100;
+                // var newY = Math.round(y);
+                var format = d3.format('$,');
+                return format(y);
+              }
+            }
+        },
         x : { type : 'category', categories : monthTicks }
+      },
+      tooltip: {
+        format: {
+          value: function (value, ratio, id) {
+            var exp = value*1000;
+            var newExp = exp.toFixed(1);
+            var format = d3.format('$,');
+
+            return format(newExp);
+          }
+        }
       },
       size: { width: 400, height: 150 },
     });
+
+    // ================= Molokai Chart =================== //
     $scope.molokaiChart = c3.generate({
       bindto: '#molokai',
       data: { columns: [], type: 'area',},
-     axis : {
+      axis : {
+        y : {
+            tick: {
+              count: 7,
+              format: function(d) {
+                var y = Math.ceil(d)*1000;
+                // var newY = Math.round(y);
+                var format = d3.format('$,');
+                return format(y);
+              }
+            }
+        },
         x : { type : 'category', categories : monthTicks }
+      },
+      tooltip: {
+        format: {
+          value: function (value, ratio, id) {
+            var exp = value*1000;
+            var newExp = exp.toFixed(1);
+            var format = d3.format('$,');
+
+            return format(newExp);
+          }
+        }
       },
       size: { width: 400, height: 150 },
     });
+
+    // ================= Total Chart =================== //
     $scope.totalChart = c3.generate({
       bindto: '#total',
       data: { columns: [], type: 'area'},
-     axis : {
+      axis : {
+        y : {
+            tick: {
+              count: 7,
+              format: function(d) {
+                var y = Math.ceil(d/10)*10000;
+                // var newY = Math.round(y);
+                var format = d3.format('$,');
+                return format(y);
+              }
+            }
+        },
         x : { type : 'category', categories : monthTicks }
+      },
+      tooltip: {
+        format: {
+          value: function (value, ratio, id) {
+            var exp = value*1000;
+            var newExp = exp.toFixed(2);
+            var format = d3.format('$,');
+
+            return format(newExp);
+          }
+        }
       },
       size: { width: 800, height: 150 }
     });
