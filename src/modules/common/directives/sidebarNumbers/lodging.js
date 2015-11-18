@@ -9,16 +9,17 @@ module.exports = [function () {
       var lodgingOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        lodgingOdo.update(scope.expenditureTotal.lodging / 10000);
+        lodgingOdo.update(scope.expenditureTotal.lodging);
       });
 
       scope.$on('crossfilter/updated', function () {
-        lodgingOdo.update(scope.expenditureTotal.lodging / 10000);
+        lodgingOdo.update(scope.expenditureTotal.lodging);
       });
     }
   }
