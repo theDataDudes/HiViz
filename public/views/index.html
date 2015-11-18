@@ -41,11 +41,8 @@
     <!-- parent container -->
 		<div id="contentContainer" class="row small-collapse">
 
-    <!-- sidebar container -->
-			<sidebar ng-if="main.IsVisible" class="small-4 columns"></sidebar>
-
-    <!-- this holds the current view being rendered -->
-    <div ui-view ng-class="{ 'small-8 columns' : main.IsVisible, 'small-12 columns' : !main.IsVisible }"></div>
+      <!-- this holds the current view being rendered -->
+      <div ui-view ng-class=""></div>
 
     </div>
 

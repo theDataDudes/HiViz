@@ -42,6 +42,8 @@ module.exports = ['$scope', ($scope) => {
   $scope.$watch('selectedMonth', function (selectedMonth) {
     if (!$scope.$ngc) return;
     $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
+    $scope.donutLoad();
+    $scope.safeApply();
   });
 
   $scope.$watch('$ngc', function () {
