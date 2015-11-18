@@ -1469,12 +1469,10 @@ sidebar {
     margin: 5px 0 0 10px; }
   #sidebar .small-12 {
     padding: 10px;
-    text-align: center;
-    margin-bottom: 10px; }
+    text-align: center; }
   #sidebar .small-6 {
     padding: 10px;
-    text-align: center;
-    margin-bottom: 10px; }
+    text-align: center; }
 
 .background {
   fill: none;
