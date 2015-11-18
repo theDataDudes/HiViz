@@ -8,6 +8,12 @@
 		<option value="usEast">US East</option>
 		<option value="japan">Japan</option>
 		<option value="canada">Canada</option>
+    <option ng-if="collection[0].year > 2012" value="otherAsia">Other Asia</option>
+    <option ng-if="collection[0].year > 2012" value="taiwan">Taiwan</option>
+    <option ng-if="collection[0].year > 2012" value="australia">Australia</option>
+    <option ng-if="collection[0].year > 2012" value="europe">Europe</option>
+    <option ng-if="collection[0].year > 2012" value="china">China</option>
+    <option ng-if="collection[0].year > 2012" value="korea">Korea</option>
 	</select>
 
   <!-- insert individual data figures -->
@@ -30,27 +36,38 @@
       <odometer value="countToNumber" class="side-bar-num"></odometer>
     </odo-total>
   </div>
-  <div class="small-12 columns">
+  <div class="small-6 columns">
   <h4>Shopping</h4>
     <odo-shopping>
       <odometer value="countToNumber" class="side-bar-num"></odometer>
     </odo-shopping>
+  </div>
+  <div class="small-6 columns">
+  <h4>Lodging</h4>
     <odo-lodging>
       <odometer value="countToNumber" class="side-bar-num"></odometer>
     </odo-lodging>
   </div>
-  <div class="small-12 columns">
-    <odo-food>
-      <odometer value="countToNumber" class="side-bar-num"></odometer>
-    </odo-food>
+  <div class="small-6 columns">
+    <h4>Entertainment</h4>
     <odo-entertainment>
       <odometer value="countToNumber" class="side-bar-num"></odometer>
     </odo-entertainment>
   </div>
-  <div class="small-12 columns">
+  <div class="small-6 columns">
+    <h4>Food</h4>
+    <odo-food>
+      <odometer value="countToNumber" class="side-bar-num"></odometer>
+    </odo-food>
+  </div>
+  <div class="small-6 columns">
+    <h4>Transportation</h4>
     <odo-transportation>
       <odometer value="countToNumber" class="side-bar-num"></odometer>
     </odo-transportation>
+  </div>
+  <div class="small-6 columns">
+    <h4>Other</h4>
     <odo-other>
       <odometer value="countToNumber" class="side-bar-num"></odometer>
     </odo-other>
