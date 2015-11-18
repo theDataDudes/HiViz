@@ -1505,6 +1505,9 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 // formats the data to what we want
 // loop through scope.collection and reference each object (all islands)
 
+
+
+
   $scope.showGraph = function() {
     var monthTicks = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
           'SEP', 'OCT', 'NOV', 'DEC'];
@@ -1513,7 +1516,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     var exp;
     var newExp;
 
-    // ================= Oahu Chart =================== //
+        // ================= Oahu Chart =================== //
     $scope.oahuChart = c3.generate({
       bindto: '#oahu',
       data: { columns: [], type: 'area',},
@@ -1554,7 +1557,6 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       },
       size: { width: 400, height: 150 },
     });
-
     // ================= Big Island Chart =================== //
     $scope.bigIslandChart = c3.generate({
       bindto: '#big',
@@ -1596,7 +1598,6 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       },
       size: { width: 400, height: 150 },
     });
-
     // ================= Kauai Chart =================== //
     $scope.kauaiChart = c3.generate({
       bindto: '#kauai',
@@ -1691,7 +1692,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
               count: 7,
               format: function(d) {
                 if(self.selectedIcon === 'passengers') {
-                  yAxis = Math.ceil(d)
+                  yAxis = Math.ceil(d)*1000;
                   format = d3.format(',');
                   return format(yAxis);
                 }
@@ -1726,14 +1727,14 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Molokai Chart =================== //
     $scope.molokaiChart = c3.generate({
       bindto: '#molokai',
-      data: { columns: [], type: 'area',},
+       data: { columns: [], type: 'area',},
       axis : {
         y : {
             tick: {
               count: 7,
               format: function(d) {
                 if(self.selectedIcon === 'passengers') {
-                  yAxis = Math.ceil(d)
+                  yAxis = Math.ceil(d)*1000;
                   format = d3.format(',');
                   return format(yAxis);
                 }
@@ -1768,7 +1769,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Total Chart =================== //
     $scope.totalChart = c3.generate({
       bindto: '#total',
-      data: { columns: [], type: 'area'},
+       data: { columns: [], type: 'area',},
       axis : {
         y : {
             tick: {
@@ -1890,6 +1891,18 @@ function controller($scope, apiService, Crossfilter) {
 
         //filter by user-selected year
         $scope.selectedYear = $scope.slider_callbacks.value;
+        if ($scope.selectedYear < 2013){
+          switch ($scope.collection[0].region) {
+            case 'taiwan':
+            case 'australia':
+            case 'otherAsia':
+            case 'korea':
+            case 'europe':
+            case 'china':
+              $scope.$ngc.filterBy('region', 'total');
+              break;
+          }
+        }
         $scope.$ngc.filterBy('year', $scope.selectedYear);
       }
     }
@@ -2413,7 +2426,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_7a2dc06d.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d659c150.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -2488,6 +2501,8 @@ module.exports = ['$scope', ($scope) => {
   $scope.$watch('selectedMonth', function (selectedMonth) {
     if (!$scope.$ngc) return;
     $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
+    $scope.donutLoad();
+    $scope.safeApply();
   });
 
   $scope.$watch('$ngc', function () {

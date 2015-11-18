@@ -56,6 +56,18 @@ function controller($scope, apiService, Crossfilter) {
 
         //filter by user-selected year
         $scope.selectedYear = $scope.slider_callbacks.value;
+        if ($scope.selectedYear < 2013){
+          switch ($scope.collection[0].region) {
+            case 'taiwan':
+            case 'australia':
+            case 'otherAsia':
+            case 'korea':
+            case 'europe':
+            case 'china':
+              $scope.$ngc.filterBy('region', 'total');
+              break;
+          }
+        }
         $scope.$ngc.filterBy('year', $scope.selectedYear);
       }
     }
