@@ -1,64 +1,73 @@
 <section id="mainContent">
 
+	<div class="row">
+
+		<div class="small-3 left columns">
+			<button ng-click="changeChartType('spline');">Spline</button>
+			<button ng-click="changeChartType('area-spline')">Area</button>
+			<button ng-if='checked' ng-click="changeChartType('pie')">Pie</button>
+
+
+		</div>
+
 <!-- just a place holder to test region selector for charts page -->
-  <div class='small-4 right columns'>
 
-   <span>Select Region</span>
-   <select id="regionSelector1" ng-init="model.region1 = options[0]" ng-model="model.region1" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
-      <option value="total" selected="selected">Total</option>
-      <option value="usWest">US West</option>
-      <option value="usEast">US East</option>
-      <option value="japan">Japan</option>
-      <option value="canada">Canada</option>
-      <option ng-if="collection[0].year > 2012" value="otherAsia">Other Asia</option>
-      <option ng-if="collection[0].year > 2012" value="taiwan">Taiwan</option>
-      <option ng-if="collection[0].year > 2012" value="australia">Australia</option>
-      <option ng-if="collection[0].year > 2012" value="europe">Europe</option>
-      <option ng-if="collection[0].year > 2012" value="china">China</option>
-      <option ng-if="collection[0].year > 2012" value="korea">Korea</option>
-    </select>
+		<nav id="graphNav" class="small-6 columns">
 
-    <input type='checkbox' ng-model='checked' ng-change="$ngc.filterBy('region', [model.region1], $ngc.filters.inArray('some')); model.region2=null" id='compareCheckBox'/>
+			<!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
 
-    <span>Compare</span>
-    <select  ng-if='checked' class='animate-checked' id="regionSelector2" ng-init="model.region2 = options[0]" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
-        <option value="total" selected="selected">Total</option>
-        <option value="usWest">US West</option>
-        <option value="usEast">US East</option>
-        <option value="japan">Japan</option>
-        <option value="canada">Canada</option>
-        <option ng-if="collection[0].year > 2012" value="otherAsia">Other Asia</option>
-        <option ng-if="collection[0].year > 2012" value="taiwan">Taiwan</option>
-        <option ng-if="collection[0].year > 2012" value="australia">Australia</option>
-        <option ng-if="collection[0].year > 2012" value="europe">Europe</option>
-        <option ng-if="collection[0].year > 2012" value="china">China</option>
-        <option ng-if="collection[0].year > 2012" value="korea">Korea</option>
-    </select>
-
-  </div>
-  <div>
-    <button ng-click="changeChartType('spline');">Spline</button>
-    <button ng-click="changeChartType('area-spline')">Area</button>
-    <button ng-if='checked' ng-click="changeChartType('pie')">Pie</button>
-
-	  <nav id="graphNav">
-
-		  <!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
-
-		  <!--begin expenditure icons-->
-		  <!-- on click will invoke changeIcon function that is declared in controller.js -->
-		  <ul>
-			  <li><a ng-click="changeIcon('total')" title="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending"></a</li><!--
+			<!--begin expenditure icons-->
+			<!-- on click will invoke changeIcon function that is declared in controller.js -->
+			<ul>
+				<li><a ng-click="changeIcon('total')" title="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending"></a</li><!--
     --><li><a ng-click="changeIcon('passengers')" title="Flights" class="tooltip"><img src="../assets/plane.svg" alt="flights"></a></li><!--
     --><li><a ng-click="changeIcon('lodging')" title="Lodging" class="tooltip"><img src="../assets/bed.svg" alt="lodging"></a></li><!--
     --><li><a ng-click="changeIcon('transportation')" title="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation"></a></li><!--
     --><li><a ng-click="changeIcon('shopping')" title="Shopping" class="tooltip"><img src="../assets/creditcard.svg" alt="shopping"></a></li><!--
     --><li><a ng-click="changeIcon('food')" title="Food" class="tooltip"><img src="../assets/utensil.svg" alt="food"></a></li><!--
     --><li><a ng-click="changeIcon('entertainment')" title="Entertainment" class="tooltip"><img src="../assets/tickets.svg" alt="entertainment"></a></li>
-		  </ul>
+			</ul>
 
-	  </nav>
-  </div>
+		</nav>
+
+
+	  <div class='small-2 right columns'>
+
+	   <span>Select Region</span>
+	   <select id="regionSelector1" ng-init="model.region1 = options[0]" ng-model="model.region1" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+	      <option value="total" selected="selected">Total</option>
+	      <option value="usWest">US West</option>
+	      <option value="usEast">US East</option>
+	      <option value="japan">Japan</option>
+	      <option value="canada">Canada</option>
+	      <option ng-if="collection[0].year > 2012" value="otherAsia">Other Asia</option>
+	      <option ng-if="collection[0].year > 2012" value="taiwan">Taiwan</option>
+	      <option ng-if="collection[0].year > 2012" value="australia">Australia</option>
+	      <option ng-if="collection[0].year > 2012" value="europe">Europe</option>
+	      <option ng-if="collection[0].year > 2012" value="china">China</option>
+	      <option ng-if="collection[0].year > 2012" value="korea">Korea</option>
+	    </select>
+
+	    <input type='checkbox' ng-model='checked' ng-change="$ngc.filterBy('region', [model.region1], $ngc.filters.inArray('some')); model.region2=null" id='compareCheckBox'/>
+
+	    <span>Compare</span>
+	    <select  ng-if='checked' class='animate-checked' id="regionSelector2" ng-init="model.region2 = options[0]" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+	        <option value="total" selected="selected">Total</option>
+	        <option value="usWest">US West</option>
+	        <option value="usEast">US East</option>
+	        <option value="japan">Japan</option>
+	        <option value="canada">Canada</option>
+	        <option ng-if="collection[0].year > 2012" value="otherAsia">Other Asia</option>
+	        <option ng-if="collection[0].year > 2012" value="taiwan">Taiwan</option>
+	        <option ng-if="collection[0].year > 2012" value="australia">Australia</option>
+	        <option ng-if="collection[0].year > 2012" value="europe">Europe</option>
+	        <option ng-if="collection[0].year > 2012" value="china">China</option>
+	        <option ng-if="collection[0].year > 2012" value="korea">Korea</option>
+	    </select>
+
+	  </div>
+
+	</div>
 
 <!-- does this need to be here anymore? -Beerock -->
 	<c3-charts class="fullHeight"></c3-charts>

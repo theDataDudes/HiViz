@@ -1817,7 +1817,8 @@ module.exports = angular.module('app.c3-charts',[])
     return {
       scope : true,
       templateUrl : 'views/c3.html',
-      link : function(scope) {
+      link : function(scope, element, attrs) {
+        scope.main.IsVisible = false;
         scope.$watch('$ngc', function(filter) {
           if(!filter) return;
           filter.unfilterBy('island');
@@ -2002,25 +2003,23 @@ module.exports = [function () {
         var height = 700 - margin.bottom;
         var centered = null;
 
-        // if the window size changes, call the sizeChange function
-        d3.select(window)
-          .on('resize', sizeChange);
-
         //setting up the projection. scaled to half of main container and
         // translated to the right middle of the page
         var projection = d3.geo.albersUsa()
-            .scale(4280)
-            .translate([width / 0.70, -645]);
+            .scale(6420) //4280
+            .translate([width / 0.55, -1025]);
 
         //setting up the path
         var path = d3.geo.path()
             .projection(projection);
 
         //appending the svg element to the main container
-        var svg = d3.select('#mainContent').append('svg')
+        var svg = d3.select('#vis').append('svg')
             .attr('id', 'islandMap')
             .attr('width', '85%')
-            .attr('height', height);
+            .attr('height', height)
+            .attr('viewBox', '0 0 960 700')
+            .attr('preserveAspectRatio', 'xMidYMid');
 
         svg.append('rect')
             .attr('class', 'background')
@@ -2088,14 +2087,14 @@ module.exports = [function () {
             var centroid = path.centroid(d);
             x = centroid[0];
             y = centroid[1];
-            k = 2;
+            k = 1.5;
             centered = d;
             mapTip.hide(d);
 
           //if no islands are selected
           } else {
             islandFilter.filterBy('island', 'total');
-            x = width / 3.1;
+            x = width / 2.5;
             y = height / 2.5;
             k = 1;
             centered = null;
@@ -2113,15 +2112,15 @@ module.exports = [function () {
 
         }
 
-        //changes the size of the map as browser window size changes
-        function sizeChange () {
-          d3.select('g')
-            .attr('transform', 'scale(' + $('#mainContent').width() / 900 + ')');
-          $('#islandMap').height($('#mainContent').width() * 0.618);
-        }
-
-        //set map to proper area on page load
-        sizeChange();
+        //resizing the svg based on screen size
+        var map = $('#islandMap');
+        var aspect = map.width() / map.height();
+        var container = map.parent();
+        $(window).on('resize', function() {
+          var targetWidth = container.width();
+          map.attr('width', targetWidth);
+          map.attr('height', Math.round(targetWidth / aspect));
+        }).trigger('resize');
 
       });
     }
@@ -2141,16 +2140,17 @@ module.exports = [function () {
       var entertainmentOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        entertainmentOdo.update(scope.expenditureTotal.entertainment / 10000);
+        entertainmentOdo.update(scope.expenditureTotal.entertainment);
       });
 
       scope.$on('crossfilter/updated', function () {
-        entertainmentOdo.update(scope.expenditureTotal.entertainment / 10000);
+        entertainmentOdo.update(scope.expenditureTotal.entertainment);
       });
     }
   }
@@ -2169,16 +2169,17 @@ module.exports = [function () {
       var foodOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        foodOdo.update(scope.expenditureTotal.food / 10000);
+        foodOdo.update(scope.expenditureTotal.food);
       });
 
       scope.$on('crossfilter/updated', function () {
-        foodOdo.update(scope.expenditureTotal.food / 10000);
+        foodOdo.update(scope.expenditureTotal.food);
       });
     }
   }
@@ -2210,16 +2211,17 @@ module.exports = [function () {
       var lodgingOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        lodgingOdo.update(scope.expenditureTotal.lodging / 10000);
+        lodgingOdo.update(scope.expenditureTotal.lodging);
       });
 
       scope.$on('crossfilter/updated', function () {
-        lodgingOdo.update(scope.expenditureTotal.lodging / 10000);
+        lodgingOdo.update(scope.expenditureTotal.lodging);
       });
     }
   }
@@ -2238,16 +2240,17 @@ module.exports = [function () {
       var otherOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        otherOdo.update(scope.expenditureTotal.other / 10000);
+        otherOdo.update(scope.expenditureTotal.other);
       });
 
       scope.$on('crossfilter/updated', function () {
-        otherOdo.update(scope.expenditureTotal.other / 10000);
+        otherOdo.update(scope.expenditureTotal.other);
       });
     }
   }
@@ -2266,16 +2269,17 @@ module.exports = [function () {
       var shoppingOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        shoppingOdo.update(scope.expenditureTotal.shopping / 10000);
+        shoppingOdo.update(scope.expenditureTotal.shopping);
       });
 
       scope.$on('crossfilter/updated', function () {
-        shoppingOdo.update(scope.expenditureTotal.shopping / 10000);
+        shoppingOdo.update(scope.expenditureTotal.shopping);
       });
     }
   }
@@ -2294,16 +2298,17 @@ module.exports = [function () {
       var totalOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        totalOdo.update(scope.expenditureTotal.total / 10000 );
+        totalOdo.update(scope.expenditureTotal.total);
       });
 
       scope.$on('crossfilter/updated', function () {
-        totalOdo.update(scope.expenditureTotal.total / 10000);
+        totalOdo.update(scope.expenditureTotal.total);
       });
     }
   }
@@ -2322,16 +2327,17 @@ module.exports = [function () {
       var transportationOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        transportationOdo.update(scope.expenditureTotal.transportation / 10000);
+        transportationOdo.update(scope.expenditureTotal.transportation);
       });
 
       scope.$on('crossfilter/updated', function () {
-        transportationOdo.update(scope.expenditureTotal.transportation / 10000);
+        transportationOdo.update(scope.expenditureTotal.transportation);
       });
     }
   }
@@ -2407,7 +2413,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_2a52cf65.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b25bc5fd.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
