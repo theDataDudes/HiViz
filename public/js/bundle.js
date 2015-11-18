@@ -1435,42 +1435,18 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         for (var q in current.month) {
             if (q !== 'TOTAL') {
               switch (q) {
-                case 'JAN':
-                  current.monthArray.splice(0, 1,current.month[q]);
-                  break;
-                case 'FEB':
-                  current.monthArray.splice(1, 1,current.month[q]);
-                  break;
-                case 'MAR':
-                  current.monthArray.splice(2, 1,current.month[q]);
-                  break;
-                case 'APR':
-                  current.monthArray.splice(3, 1,current.month[q]);
-                  break;
-                case 'MAY':
-                  current.monthArray.splice(4, 1,current.month[q]);
-                  break;
-                case 'JUN':
-                  current.monthArray.splice(5, 1,current.month[q]);
-                  break;
-                case 'JUL':
-                  current.monthArray.splice(6, 1,current.month[q]);
-                  break;
-                case 'AUG':
-                  current.monthArray.splice(7, 1,current.month[q]);
-                  break;
-                case 'SEP':
-                  current.monthArray.splice(8, 1,current.month[q]);
-                  break;
-                case 'OCT':
-                  current.monthArray.splice(9, 1,current.month[q]);
-                  break;
-                case 'NOV':
-                  current.monthArray.splice(10, 1,current.month[q]);
-                  break;
-                case 'DEC':
-                  current.monthArray.splice(11, 1,current.month[q]);
-                  break;
+                case 'JAN': current.monthArray.splice(0, 1, current.month[q]); break;
+                case 'FEB': current.monthArray.splice(1, 1, current.month[q]); break;
+                case 'MAR': current.monthArray.splice(2, 1, current.month[q]); break;
+                case 'APR': current.monthArray.splice(3, 1, current.month[q]); break;
+                case 'MAY': current.monthArray.splice(4, 1, current.month[q]); break;
+                case 'JUN': current.monthArray.splice(5, 1, current.month[q]); break;
+                case 'JUL': current.monthArray.splice(6, 1, current.month[q]); break;
+                case 'AUG': current.monthArray.splice(7, 1, current.month[q]); break;
+                case 'SEP': current.monthArray.splice(8, 1, current.month[q]); break;
+                case 'OCT': current.monthArray.splice(9, 1, current.month[q]); break;
+                case 'NOV': current.monthArray.splice(10, 1, current.month[q]); break;
+                case 'DEC': current.monthArray.splice(11, 1, current.month[q]); break;
               }
             }
           }
@@ -1534,24 +1510,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 // loop through scope.collection and reference each object (all islands)
 
   $scope.showGraph = function() {
+    var monthTicks = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
+          'SEP', 'OCT', 'NOV', 'DEC'];
 
     // ================= Oahu Chart =================== //
     $scope.oahuChart = c3.generate({
       bindto: '#oahu',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue'],
-        type: 'area',
-      },
-     axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
-      },
+      data: { columns: [], type: 'area',},
       axis : {
         y : {
             tick: {
@@ -1563,7 +1528,8 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
                 return format(y);
               }
             }
-        }
+        },
+        x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
         format: {
@@ -1576,29 +1542,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
         }
       },
-      size: {
-        width: 400,
-        height: 150
-      },
+      size: { width: 400, height: 150 },
     });
 
     // ================= Big Island Chart =================== //
     $scope.bigIslandChart = c3.generate({
       bindto: '#big',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue'],
-        type: 'area',
-      },
-     axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
-      },
+      data: { columns: [], type: 'area',},
       axis : {
         y : {
             tick: {
@@ -1610,7 +1560,8 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
                 return format(y);
               }
             }
-        }
+        },
+        x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
         format: {
@@ -1623,29 +1574,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
         }
       },
-      size: {
-        width: 400,
-        height: 150
-      },
+      size: { width: 400, height: 150 },
     });
 
     // ================= Kauai Chart =================== //
     $scope.kauaiChart = c3.generate({
       bindto: '#kauai',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue'],
-        type: 'area',
-      },
-     axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
-      },
+      data: { columns: [], type: 'area',},
       axis : {
         y : {
             tick: {
@@ -1657,7 +1592,8 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
                 return format(y);
               }
             }
-        }
+        },
+        x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
         format: {
@@ -1670,29 +1606,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
         }
       },
-      size: {
-        width: 400,
-        height: 150
-      },
+      size: { width: 400, height: 150 },
     });
 
     // ================= Maui Chart =================== //
     $scope.mauiChart = c3.generate({
       bindto: '#maui',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue'],
-        type: 'area',
-      },
-     axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
-      },
+      data: { columns: [], type: 'area',},
       axis : {
         y : {
             tick: {
@@ -1704,7 +1624,8 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
                 return format(y);
               }
             }
-        }
+        },
+        x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
         format: {
@@ -1717,29 +1638,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
         }
       },
-      size: {
-        width: 400,
-        height: 150
-      },
+      size: { width: 400, height: 150 },
     });
 
     // ================= Lanai Chart =================== //
     $scope.lanaiChart = c3.generate({
       bindto: '#lanai',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue'],
-        type: 'area',
-      },
-     axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
-      },
+      data: { columns: [], type: 'area',},
       axis : {
         y : {
             tick: {
@@ -1751,7 +1656,8 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
                 return format(y);
               }
             }
-        }
+        },
+        x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
         format: {
@@ -1764,29 +1670,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
         }
       },
-      size: {
-        width: 400,
-        height: 150
-      },
+      size: { width: 400, height: 150 },
     });
 
     // ================= Molokai Chart =================== //
     $scope.molokaiChart = c3.generate({
       bindto: '#molokai',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue'],
-        type: 'area',
-      },
-     axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
-      },
+      data: { columns: [], type: 'area',},
       axis : {
         y : {
             tick: {
@@ -1798,7 +1688,8 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
                 return format(y);
               }
             }
-        }
+        },
+        x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
         format: {
@@ -1811,29 +1702,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
         }
       },
-      size: {
-        width: 400,
-        height: 150
-      },
+      size: { width: 400, height: 150 },
     });
 
     // ================= Total Chart =================== //
     $scope.totalChart = c3.generate({
       bindto: '#total',
-      data: {
-        columns: [
-
-        ],
-        colors: ['green', 'blue', 'red','salmon','orange','black','yellow'],
-        type: 'area'
-      },
-     axis : {
-        x : {
-          type : 'category',
-          categories : ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
-          'SEP', 'OCT', 'NOV', 'DEC']
-        }
-      },
+      data: { columns: [], type: 'area'},
       axis : {
         y : {
             tick: {
@@ -1845,7 +1720,8 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
                 return format(y);
               }
             }
-        }
+        },
+        x : { type : 'category', categories : monthTicks }
       },
       tooltip: {
         format: {
@@ -1858,10 +1734,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
         }
       },
-      size: {
-        width: 800,
-        height: 150
-      }
+      size: { width: 800, height: 150 }
     });
   };
 }];
@@ -1873,8 +1746,6 @@ module.exports = angular.module('app.c3-charts',[])
   .directive('c3Charts', function () {
     return {
       scope : true,
-      // controller : 'GraphCtrl',
-      // controllerAs : 'graphtCtrl',
       templateUrl : 'views/c3.html',
       link : function(scope) {
         scope.$watch('$ngc', function(filter) {
@@ -1882,7 +1753,6 @@ module.exports = angular.module('app.c3-charts',[])
           filter.unfilterBy('island');
           filter.filterBy('region', 'total');
           filter.sortBy('island');
-          // filter.sortBy('island');
         });
       }
     };
@@ -1926,13 +1796,11 @@ function controller($scope, apiService, Crossfilter) {
       $scope.$ngc = filter;
       filter.filterBy('year', '2014');
       filter.filterBy('region', 'total');
-// todo filter by island will happen onclick of mo data or island?
       filter.filterBy('island', 'total');
     });
 
   //updates the filters applied across all of the charts/graphs
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
-    console.log('updated');
     $scope.collection = collection;
     $scope.safeApply();
   });
@@ -2096,7 +1964,7 @@ module.exports = [function () {
           .html(function (d) {
             return "<strong>" + d.name.toUpperCase() +
               "</strong> <span style='color:grey'></span";
-          })
+          });
         svg.call(mapTip);
 
         var g = svg.append('g');
@@ -2152,7 +2020,7 @@ module.exports = [function () {
             y = centroid[1];
             k = 2;
             centered = d;
-            mapTip.show(d);
+            mapTip.hide(d);
 
           //if no islands are selected
           } else {
@@ -2200,7 +2068,6 @@ module.exports = [function () {
     scope : true,
     templateUrl : 'views/sideBarNumbers.html',
     link : function (scope, element, attrs, ctrl) {
-      // console.log(scope);
       var entertainmentOdo = new Odometer({
         el : element[0],
         value : 0,
@@ -2208,6 +2075,7 @@ module.exports = [function () {
       });
 
       scope.$watch('selectedMonth', function () {
+        if (!scope.$ngc) return;
         entertainmentOdo.update(scope.expenditureTotal.entertainment / 10000);
       });
 
@@ -2228,7 +2096,6 @@ module.exports = [function () {
     scope : true,
     templateUrl : 'views/sideBarNumbers.html',
     link : function (scope, element, attrs, ctrl) {
-      // console.log(scope);
       var foodOdo = new Odometer({
         el : element[0],
         value : 0,
@@ -2236,6 +2103,7 @@ module.exports = [function () {
       });
 
       scope.$watch('selectedMonth', function () {
+        if (!scope.$ngc) return;
         foodOdo.update(scope.expenditureTotal.food / 10000);
       });
 
@@ -2269,7 +2137,6 @@ module.exports = [function () {
     scope : true,
     templateUrl : 'views/sideBarNumbers.html',
     link : function (scope, element, attrs, ctrl) {
-      // console.log(scope);
       var lodgingOdo = new Odometer({
         el : element[0],
         value : 0,
@@ -2277,6 +2144,7 @@ module.exports = [function () {
       });
 
       scope.$watch('selectedMonth', function () {
+        if (!scope.$ngc) return;
         lodgingOdo.update(scope.expenditureTotal.lodging / 10000);
       });
 
@@ -2297,7 +2165,6 @@ module.exports = [function () {
     scope : true,
     templateUrl : 'views/sideBarNumbers.html',
     link : function (scope, element, attrs, ctrl) {
-      // console.log(scope);
       var otherOdo = new Odometer({
         el : element[0],
         value : 0,
@@ -2305,6 +2172,7 @@ module.exports = [function () {
       });
 
       scope.$watch('selectedMonth', function () {
+        if (!scope.$ngc) return;
         otherOdo.update(scope.expenditureTotal.other / 10000);
       });
 
@@ -2325,7 +2193,6 @@ module.exports = [function () {
     scope : true,
     templateUrl : 'views/sideBarNumbers.html',
     link : function (scope, element, attrs, ctrl) {
-      // console.log(scope);
       var shoppingOdo = new Odometer({
         el : element[0],
         value : 0,
@@ -2333,6 +2200,7 @@ module.exports = [function () {
       });
 
       scope.$watch('selectedMonth', function () {
+        if (!scope.$ngc) return;
         shoppingOdo.update(scope.expenditureTotal.shopping / 10000);
       });
 
@@ -2353,7 +2221,6 @@ module.exports = [function () {
     scope : true,
     templateUrl : 'views/sideBarNumbers.html',
     link : function (scope, element, attrs, ctrl) {
-      // console.log(scope);
       var totalOdo = new Odometer({
         el : element[0],
         value : 0,
@@ -2361,6 +2228,7 @@ module.exports = [function () {
       });
 
       scope.$watch('selectedMonth', function () {
+        if (!scope.$ngc) return;
         totalOdo.update(scope.expenditureTotal.total / 10000 );
       });
 
@@ -2381,7 +2249,6 @@ module.exports = [function () {
     scope : true,
     templateUrl : 'views/sideBarNumbers.html',
     link : function (scope, element, attrs, ctrl) {
-      // console.log(scope);
       var transportationOdo = new Odometer({
         el : element[0],
         value : 0,
@@ -2389,6 +2256,7 @@ module.exports = [function () {
       });
 
       scope.$watch('selectedMonth', function () {
+        if (!scope.$ngc) return;
         transportationOdo.update(scope.expenditureTotal.transportation / 10000);
       });
 
@@ -2469,7 +2337,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_cd76aa11.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_327697ea.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -2517,11 +2385,9 @@ module.exports = ['$scope', ($scope) => {
             ['Arrivals', 0],
         ],
         type : 'bar',
-
         onclick : function (d) {
           $scope.selectedMonth = months[d.index];
           $scope.safeApply();
-          // console.log($scope.collection[0].month[$scope.selectedMonth]);
         }
       },
       axis : {
@@ -2544,26 +2410,42 @@ module.exports = ['$scope', ($scope) => {
   });
 
   $scope.$watch('selectedMonth', function (selectedMonth) {
-    // console.log(selectedMonth);
+    if (!$scope.$ngc) return;
     $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
   });
 
-  $scope.donutLoad = function () {
-    var monthArray = [];
-    for (var q in $scope.collection[0].month) {
-      if (q !== 'TOTAL')
-        monthArray.push($scope.collection[0].month[q]);
-    }
-    monthArray = monthArray.map( (c) => {
-      return c.passengers;
-    });
+  $scope.$watch('$ngc', function () {
+    $scope.donutLoad = function () {
+      var monthArray = [0,0,0,0,0,0,0,0,0,0,0,0];
+      for (var q in $scope.collection[0].month) {
+        if (q !== 'TOTAL') {
+              switch (q) {
+                case 'JAN': monthArray.splice(0, 1,$scope.collection[0].month[q]); break;
+                case 'FEB': monthArray.splice(1, 1,$scope.collection[0].month[q]); break;
+                case 'MAR': monthArray.splice(2, 1,$scope.collection[0].month[q]); break;
+                case 'APR': monthArray.splice(3, 1,$scope.collection[0].month[q]); break;
+                case 'MAY': monthArray.splice(4, 1,$scope.collection[0].month[q]); break;
+                case 'JUN': monthArray.splice(5, 1,$scope.collection[0].month[q]); break;
+                case 'JUL': monthArray.splice(6, 1,$scope.collection[0].month[q]); break;
+                case 'AUG': monthArray.splice(7, 1,$scope.collection[0].month[q]); break;
+                case 'SEP': monthArray.splice(8, 1,$scope.collection[0].month[q]); break;
+                case 'OCT': monthArray.splice(9, 1,$scope.collection[0].month[q]); break;
+                case 'NOV': monthArray.splice(10, 1,$scope.collection[0].month[q]); break;
+                case 'DEC': monthArray.splice(11, 1,$scope.collection[0].month[q]); break;
+                }
+              }
+      }
+      monthArray = monthArray.map( (c) => {
+        return c.passengers;
+      });
 
-    monthArray.unshift('Arrivals');
+      monthArray.unshift('Arrivals');
 
-    $scope.donut.load({ columns : [
-      monthArray
-    ]});
-  }
+      $scope.donut.load({ columns : [
+        monthArray
+      ]});
+    };
+  });
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/controller.js","/sideCharts")
 },{"buffer":2,"rH1JPG":4}],27:[function(require,module,exports){
@@ -2575,7 +2457,14 @@ module.exports = angular.module('app.sideCharts',[])
       scope : true,
       controller : 'DonutController',
       controllerAs : 'donutCtrl',
-      templateUrl : 'views/donutChart.html'
+      templateUrl : 'views/donutChart.html',
+      link : function (scope) {
+        scope.$watch('$ngc', function(filter) {
+          if(!filter) return;
+          filter.filterBy('region', 'total');
+          filter.filterBy('island', 'total');
+        });
+      }
     };
   })
   .controller('DonutController', require('./controller'));

@@ -6,7 +6,6 @@ module.exports = [function () {
     scope : true,
     templateUrl : 'views/sideBarNumbers.html',
     link : function (scope, element, attrs, ctrl) {
-      // console.log(scope);
       var totalOdo = new Odometer({
         el : element[0],
         value : 0,
@@ -14,6 +13,7 @@ module.exports = [function () {
       });
 
       scope.$watch('selectedMonth', function () {
+        if (!scope.$ngc) return;
         totalOdo.update(scope.expenditureTotal.total / 10000 );
       });
 

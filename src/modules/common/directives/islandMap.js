@@ -53,7 +53,7 @@ module.exports = [function () {
           .html(function (d) {
             return "<strong>" + d.name.toUpperCase() +
               "</strong> <span style='color:grey'></span";
-          })
+          });
         svg.call(mapTip);
 
         var g = svg.append('g');
@@ -109,7 +109,7 @@ module.exports = [function () {
             y = centroid[1];
             k = 2;
             centered = d;
-            mapTip.show(d);
+            mapTip.hide(d);
 
           //if no islands are selected
           } else {
