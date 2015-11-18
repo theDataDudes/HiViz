@@ -9,15 +9,16 @@ module.exports = [function () {
       // console.log(scope);
       var lodgingOdo = new Odometer({
         el : element[0],
-        value : 0
+        value : 0,
+        animation : 'count'
       });
 
       scope.$watch('selectedMonth', function () {
-        lodgingOdo.update(scope.expenditureTotal.lodging);
+        lodgingOdo.update(scope.expenditureTotal.lodging / 10000);
       });
 
       scope.$on('crossfilter/updated', function () {
-        lodgingOdo.update(scope.expenditureTotal.lodging);
+        lodgingOdo.update(scope.expenditureTotal.lodging / 10000);
       });
     }
   }
