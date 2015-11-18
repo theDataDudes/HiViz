@@ -10,6 +10,12 @@
       <option value="usEast">US East</option>
       <option value="japan">Japan</option>
       <option value="canada">Canada</option>
+      <option ng-if="collection[0].year > 2012" value="otherAsia">Other Asia</option>
+      <option ng-if="collection[0].year > 2012" value="taiwan">Taiwan</option>
+      <option ng-if="collection[0].year > 2012" value="australia">Australia</option>
+      <option ng-if="collection[0].year > 2012" value="europe">Europe</option>
+      <option ng-if="collection[0].year > 2012" value="china">China</option>
+      <option ng-if="collection[0].year > 2012" value="korea">Korea</option>
     </select>
 
     <input type='checkbox' ng-model='checked' ng-change="$ngc.filterBy('region', [model.region1], $ngc.filters.inArray('some')); model.region2=null" id='compareCheckBox'/>
@@ -21,8 +27,19 @@
         <option value="usEast">US East</option>
         <option value="japan">Japan</option>
         <option value="canada">Canada</option>
+        <option ng-if="collection[0].year > 2012" value="otherAsia">Other Asia</option>
+        <option ng-if="collection[0].year > 2012" value="taiwan">Taiwan</option>
+        <option ng-if="collection[0].year > 2012" value="australia">Australia</option>
+        <option ng-if="collection[0].year > 2012" value="europe">Europe</option>
+        <option ng-if="collection[0].year > 2012" value="china">China</option>
+        <option ng-if="collection[0].year > 2012" value="korea">Korea</option>
     </select>
 
+  </div>
+  <div>
+    <button ng-click="changeChartType('spline');">Spline</button>
+    <button ng-click="changeChartType('area-spline')">Area</button>
+    <button ng-if='checked' ng-click="changeChartType('pie')">Pie</button>
   </div>
 
 	<nav id="mapNav">

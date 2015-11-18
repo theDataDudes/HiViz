@@ -1412,12 +1412,20 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     $scope.$emit('iconChanged');
   };
 
+
   // watching ngc since collection is stored on the global variable
   $scope.$watch('$ngc', function(filter) {
     // var oahuFilter = new Crossfilter(filter.collection());
     // $scope.oahuFilter = oahuFilter;
     // oahuFilter.filterBy('region', 'oahu');
+    $scope.changeChartType = function (chart) {
+      ['oahuChart', 'bigIslandChart', 'kauaiChart',
+      'mauiChart', 'lanaiChart', 'molokaiChart',
+      'totalChart'].forEach( function(c) {
+        $scope[c].transform(chart);
+      });
 
+    }
     // chartLoad method is declared on $scope to filter two object regions that are brought in from common controller API call
     $scope.chartLoad = function (icon) {
 
@@ -1483,12 +1491,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
           if(current.monthArray[0] > previous.monthArray[0]) {
             columns = [previous.monthArray, current.monthArray];
-            colors[previous.monthArray[0]] = 'green';
-            colors[current.monthArray[0]] = 'blue';
+            colors[previous.monthArray[0]] = '#38A988';
+            colors[current.monthArray[0]] = '#225A6D';
           } else {
             columns = [current.monthArray, previous.monthArray];
-            colors[previous.monthArray[0]] = 'blue';
-            colors[current.monthArray[0]] = 'green';
+            colors[previous.monthArray[0]] = '#225A6D';
+            colors[current.monthArray[0]] = '#38A988';
           }
           $scope[current.island + 'Chart'].load({columns: columns,
             unload : $scope[current.island + 'Chart'].columns,
@@ -1497,7 +1505,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         } else if (array.length < 8) {
           var colors = {};
 
-           colors[current.monthArray[0]] = 'green';
+           colors[current.monthArray[0]] = '#38A988';
             $scope[current.island + 'Chart'].load({columns: [current.monthArray],
               unload : $scope[current.island + 'Chart'].columns,
               colors : colors
@@ -1532,7 +1540,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
       },
      axis : {
         x : {
@@ -1553,7 +1561,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
       },
      axis : {
         x : {
@@ -1574,7 +1582,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
       },
      axis : {
         x : {
@@ -1595,7 +1603,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
       },
      axis : {
         x : {
@@ -1616,7 +1624,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
       },
      axis : {
         x : {
@@ -1637,7 +1645,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue'],
-        type: 'spline',
+        type: 'area',
       },
      axis : {
         x : {
@@ -1658,7 +1666,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
 
         ],
         colors: ['green', 'blue', 'red','salmon','orange','black','yellow'],
-        type: 'spline'
+        type: 'area'
       },
      axis : {
         x : {
@@ -1689,7 +1697,7 @@ module.exports = angular.module('app.c3-charts',[])
         scope.$watch('$ngc', function(filter) {
           if(!filter) return;
           filter.unfilterBy('island');
-          filter.filterBy('region', ['total', 'usWest'], filter.filters.inArray('some'));
+          filter.filterBy('region', 'total');
           filter.sortBy('island');
           // filter.sortBy('island');
         });
@@ -2272,7 +2280,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d26fea64.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c58570cc.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":29,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
