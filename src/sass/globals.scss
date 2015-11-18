@@ -30,29 +30,52 @@ $small: "only screen and (max-width: 680px)";
 
 //optional tooltip style
 
-//.tooltip {
-//
-//  display: inline;
-//  position: relative;
-//
-//}
-//
-//.tooltip:hover:after{
-//
-//  background: #333;
-//  background: rgba(0,0,0,.8);
-//  border-radius: 5px;
-//  bottom: 35px;
-//  color: #fff;
-//  content: attr(title);
-//  left: 20%;
-//  padding: 5px 15px;
-//  position: absolute;
-//  z-index: 98;
-//  width: 130px;
-//  text-align: center;
-//
-//}
+.tooltip {
+
+  //display: inline;
+  position: relative;
+
+}
+
+.tooltip:hover:after{
+
+  background: #333;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  bottom: 40px;
+  color: #fff;
+  content: attr(name);
+  left: 25%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center;
+
+}
+
+.viewNavTooltip {
+
+  position: relative;
+
+}
+
+.viewNavTooltip:hover:after {
+
+  background: #333;
+  background: rgba(0, 0, 0, .8);
+  border-radius: 5px;
+  bottom: 10px;
+  color: #fff;
+  content: attr(name);
+  right: 110%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 130px;
+  text-align: center;
+
+}
 
 
 
