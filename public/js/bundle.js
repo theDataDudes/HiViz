@@ -2071,16 +2071,17 @@ module.exports = [function () {
       var entertainmentOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        entertainmentOdo.update(scope.expenditureTotal.entertainment / 10000);
+        entertainmentOdo.update(scope.expenditureTotal.entertainment);
       });
 
       scope.$on('crossfilter/updated', function () {
-        entertainmentOdo.update(scope.expenditureTotal.entertainment / 10000);
+        entertainmentOdo.update(scope.expenditureTotal.entertainment);
       });
     }
   }
@@ -2099,16 +2100,17 @@ module.exports = [function () {
       var foodOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        foodOdo.update(scope.expenditureTotal.food / 10000);
+        foodOdo.update(scope.expenditureTotal.food);
       });
 
       scope.$on('crossfilter/updated', function () {
-        foodOdo.update(scope.expenditureTotal.food / 10000);
+        foodOdo.update(scope.expenditureTotal.food);
       });
     }
   }
@@ -2140,16 +2142,17 @@ module.exports = [function () {
       var lodgingOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        lodgingOdo.update(scope.expenditureTotal.lodging / 10000);
+        lodgingOdo.update(scope.expenditureTotal.lodging);
       });
 
       scope.$on('crossfilter/updated', function () {
-        lodgingOdo.update(scope.expenditureTotal.lodging / 10000);
+        lodgingOdo.update(scope.expenditureTotal.lodging);
       });
     }
   }
@@ -2168,16 +2171,17 @@ module.exports = [function () {
       var otherOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        otherOdo.update(scope.expenditureTotal.other / 10000);
+        otherOdo.update(scope.expenditureTotal.other);
       });
 
       scope.$on('crossfilter/updated', function () {
-        otherOdo.update(scope.expenditureTotal.other / 10000);
+        otherOdo.update(scope.expenditureTotal.other);
       });
     }
   }
@@ -2196,16 +2200,17 @@ module.exports = [function () {
       var shoppingOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        shoppingOdo.update(scope.expenditureTotal.shopping / 10000);
+        shoppingOdo.update(scope.expenditureTotal.shopping);
       });
 
       scope.$on('crossfilter/updated', function () {
-        shoppingOdo.update(scope.expenditureTotal.shopping / 10000);
+        shoppingOdo.update(scope.expenditureTotal.shopping);
       });
     }
   }
@@ -2224,16 +2229,17 @@ module.exports = [function () {
       var totalOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        totalOdo.update(scope.expenditureTotal.total / 10000 );
+        totalOdo.update(scope.expenditureTotal.total);
       });
 
       scope.$on('crossfilter/updated', function () {
-        totalOdo.update(scope.expenditureTotal.total / 10000);
+        totalOdo.update(scope.expenditureTotal.total);
       });
     }
   }
@@ -2252,16 +2258,17 @@ module.exports = [function () {
       var transportationOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        transportationOdo.update(scope.expenditureTotal.transportation / 10000);
+        transportationOdo.update(scope.expenditureTotal.transportation);
       });
 
       scope.$on('crossfilter/updated', function () {
-        transportationOdo.update(scope.expenditureTotal.transportation / 10000);
+        transportationOdo.update(scope.expenditureTotal.transportation);
       });
     }
   }
@@ -2337,7 +2344,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_a39aaf26.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_3f5a862d.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';

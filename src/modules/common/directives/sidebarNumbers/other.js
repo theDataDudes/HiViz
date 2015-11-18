@@ -9,16 +9,17 @@ module.exports = [function () {
       var otherOdo = new Odometer({
         el : element[0],
         value : 0,
-        animation : 'count'
+        animation : 'count',
+        format: '(,ddd).ddd'
       });
 
       scope.$watch('selectedMonth', function () {
         if (!scope.$ngc) return;
-        otherOdo.update(scope.expenditureTotal.other / 10000);
+        otherOdo.update(scope.expenditureTotal.other);
       });
 
       scope.$on('crossfilter/updated', function () {
-        otherOdo.update(scope.expenditureTotal.other / 10000);
+        otherOdo.update(scope.expenditureTotal.other);
       });
     }
   }
