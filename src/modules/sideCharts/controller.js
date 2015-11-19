@@ -5,7 +5,7 @@ module.exports = ['$scope', ($scope) => {
   var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
           'SEP', 'OCT', 'NOV', 'DEC'];
 
-  $scope.selectedMonth = 'TOTAL';
+  $scope.selectedMonth = 'JAN';
 
   $scope.showDonut = function() {
     $scope.donut = c3.generate({
@@ -15,9 +15,12 @@ module.exports = ['$scope', ($scope) => {
             ['Arrivals', 0],
         ],
         type : 'bar',
-        onclick : function (d) {
+        onclick : function (d, element) {
           $scope.selectedMonth = months[d.index];
           $scope.safeApply();
+        },
+        color: function (color, d) {
+            return d.index === months.indexOf($scope.selectedMonth) ? "#86BB6A" : "#225A6D";
         }
       },
       axis : {
@@ -73,9 +76,9 @@ module.exports = ['$scope', ($scope) => {
 
       monthArray.unshift('Arrivals');
 
-      $scope.donut.load({ columns : [
-        monthArray
-      ]});
+      $scope.donut.load({
+        columns : [ monthArray ]
+      });
     };
   });
 }];
