@@ -22,7 +22,7 @@
 
       <div class="row">
 
-        <div class='small-6 columns'>
+        <div class="small-6 columns">
 
           <div class="row">
 
@@ -34,19 +34,27 @@
 
             <div class="small-3 columns">
 
-                <select id="originSelector" ng-init="model.region = options[0]" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
+              <select id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region = 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
                   <option value="total" selected="selected">Total</option>
                   <option value="usWest">US West</option>
                   <option value="usEast">US East</option>
                   <option value="japan">Japan</option>
                   <option value="canada">Canada</option>
-                  <option ng-if="collection[0].year > 2012" value="otherAsia">Other Asia</option>
-                  <option ng-if="collection[0].year > 2012" value="taiwan">Taiwan</option>
-                  <option ng-if="collection[0].year > 2012" value="australia">Australia</option>
-                  <option ng-if="collection[0].year > 2012" value="europe">Europe</option>
-                  <option ng-if="collection[0].year > 2012" value="china">China</option>
-                  <option ng-if="collection[0].year > 2012" value="korea">Korea</option>
+                  <option value="otherAsia">Other Asia</option>
+                  <option value="taiwan">Taiwan</option>
+                  <option value="australia">Australia</option>
+                  <option value="europe">Europe</option>
+                  <option value="china">China</option>
+                  <option value="korea">Korea</option>
                 </select>
+
+              <select id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region = 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
+                <option value="total" selected="selected">Total</option>
+                <option value="usWest">US West</option>
+                <option value="usEast">US East</option>
+                <option value="japan">Japan</option>
+                <option value="canada">Canada</option>
+              </select>
 
             </div>
 
@@ -64,8 +72,8 @@
           <nav id="viewNav" class="small-2 columns">
 
             <ul>
-              <li><a ng-href="/#/" ng-if="!main.IsVisible" ng-click="main.showHide()" name="Map View" class="viewNavTooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
-              --><li><a href="/#/graph" ng-if="main.IsVisible" ng-click="main.showHide()" name="Chart View" class="viewNavTooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
+              <li ng-class="{ 'highlighted' : main.IsVisible}" ><a ng-href="/#/" ng-click="main.showHide()" name="Map View" class="viewNavTooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
+              --><li ng-class="{ 'highlighted' : !main.IsVisible}" ><a href="/#/graph" ng-click="main.showHide()" name="Chart View" class="viewNavTooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
             </ul>
 
           </nav>
@@ -83,20 +91,13 @@
 		<footer>
 
         <section id="timeline" class="row">
-
-          <!--angular slider for adjusting time period-->
-          <rzslider rz-slider-model="slider_callbacks.value" ng-model="selectedYear" rz-slider-options="slider_callbacks.options">
-          </rzslider>
+        <div class="small-12 columns">
+            <!--angular slider for adjusting time period-->
+            <rzslider rz-slider-model="slider_callbacks.value" ng-model="selectedYear" rz-slider-options="slider_callbacks.options">
+            </rzslider>
+        </div>
 
         </section>
-
-        <nav>
-        <!-- footer links -->
-          <a ui-sref="about">About</a> •
-          <a ui-sref="api">API</a> •
-          <a ui-sref="contact">Contact</a>
-
-        </nav>
 
         <p id="attribution" class="right">
 

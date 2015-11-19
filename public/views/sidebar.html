@@ -1,8 +1,9 @@
-<h2 id="sideTitle">Detailed Monthly Data</h2>
+<!-- <h2 id="sideTitle">Detailed Monthly Data</h2> -->
+<h4 id='month'>{{collection[0].region === 'total' ? 'All' : collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1)}}  Visitor Spending in {{selectedMonth}} {{collection[0].year}}</h4>
 
 <div ng-init='showDonut()'>
   <div id='donut'></div>
-  <div id="month">Selected Month ({{selectedMonth}})</div>
+
 	<div class="row">
 	  <!--odometer numbers for all expenditures-->
 	  <div class="small-12 small-centered columns">
