@@ -4,6 +4,25 @@
 <!-- IMPORTANT section....holds multiple data visualizations  -->
 <section id="mainContent" class="small-8 columns">
 
+<div id='listContent' class="row">
+  <div id='selectedContent' class='small-4 columns'>
+
+    <div>Origin: {{ collection[0].region }}</div>
+
+  </div>
+  <div id='selectedContent' class='small-4 columns'>
+
+    <div>Year: {{ collection[0].year }}</div>
+
+  </div>
+  <div id='selectedContent' class='small-4 columns'>
+
+    <div>Hawaii Data: {{ collection[0].island === 'total' ? 'State' : collection[0].island }}</div>
+
+  </div>
+</div>
+
+
 <!-- island map directive -->
 <island-map></island-map>
 
