@@ -3,7 +3,8 @@ module.exports = angular.module('app.sidebar', [])
 	.directive('sidebar', function () {
   		return {
   			scope : true,
-  			templateUrl : 'views/sidebar.html'
+  			templateUrl : 'views/sidebar.html',
+        controller : 'DonutController'
   		};
 	});
 

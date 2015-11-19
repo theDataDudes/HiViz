@@ -1,5 +1,5 @@
 <!-- sidebar container -->
-<sidebar ng-if="main.IsVisible" class="small-4 columns"></sidebar>
+<sidebar class="small-4 columns"></sidebar>
 
 <!-- IMPORTANT section....holds multiple data visualizations  -->
 <section id="mainContent" class="small-8 columns">
@@ -7,7 +7,7 @@
 <div id='listContent' class="row">
   <div class='small-3 columns selectedContent'>
 
-    <div>Origin: {{ collection[0].region }}</div>
+    <div>Origin: {{ collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1) }}</div>
 
   </div>
   <div class='small-3 small-offset-1 columns selectedContent'>
@@ -16,6 +16,7 @@
 
   </div>
   <div class='small-3 columns small-offset-1 end selectedContent'>
+
 
     <div>Data: {{ collection[0].island === 'total' ? 'State' : collection[0].island }}</div>
 
