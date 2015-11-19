@@ -1910,6 +1910,12 @@ sidebar {
   padding-top: 20px;
   padding-left: 5%; }
 
+.icon-higlighted {
+  background-color: green; }
+
+.icon-un-highlighted {
+  background-color: yellow; }
+
 .background {
   fill: none;
   pointer-events: all; }
