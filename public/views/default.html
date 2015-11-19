@@ -2,21 +2,10 @@
 <section id="mainContent" class="small-8 columns">
 
 <div id='listContent' class="row">
-  <div class='small-3 columns selectedContent'>
-
-    <div>Origin: {{ collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1) }}</div>
-
+  <div class='small-9 columns selectedContent'>
+  <div id="sentence">
+    In the year {{ collection[0].year }}, {{ collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1) }} brought in these numbers to {{ collection[0].island === 'total' ? 'State' : collection[0].island }}
   </div>
-  <div class='small-3 small-offset-1 columns selectedContent'>
-
-    <div>Year: {{ collection[0].year }}</div>
-
-  </div>
-  <div class='small-3 columns small-offset-1 end selectedContent'>
-
-
-    <div>Data: {{ collection[0].island === 'total' ? 'State' : collection[0].island }}</div>
-
   </div>
 </div>
 
