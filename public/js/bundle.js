@@ -1402,13 +1402,13 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
   var self = this;
 
   // onload of page, selectedIcon has default value of "total"
-  this.selectedIcon = 'total';
+  $scope.selectedIcon = 'total';
 
   // declare changIcon function to take in icon when clicked value
   // sets selectedIcon variable to current icon
   // $emis is used so that everything that is on scope listens to the change inconChanged
   $scope.changeIcon = function(icon) {
-    self.selectedIcon = icon;
+    $scope.selectedIcon = icon;
     $scope.$emit('iconChanged');
   };
 
@@ -1426,6 +1426,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     };
     // chartLoad method is declared on $scope to filter two object regions that are brought in from common controller API call
     $scope.chartLoad = function (icon) {
+      if (!$scope.$ngc) return;
       // reduce is used to create two seperate arrays with values to be set in each islands graph column values.
       $scope.collection.reduce( function(previous, current, index, array) {
         current.monthArray = [0,0,0,0,0,0,0,0,0,0,0,0];
@@ -1486,19 +1487,18 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
               colors : colors
             });
         }
-        console.log('data',columns);
         return current;
        }, {});
       };
   });
 
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
-    $scope.chartLoad(self.selectedIcon);
+    $scope.chartLoad($scope.selectedIcon);
     $scope.safeApply();
   });
 
   $scope.$on('iconChanged', function (event, collection, identifier) {
-    $scope.chartLoad(self.selectedIcon);
+    $scope.chartLoad($scope.selectedIcon);
     $scope.safeApply();
   });
 
@@ -1832,7 +1832,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
         }
       },
-      size: { width: 800, height: 150 }
+      size: { width: 400, height: 150 }
     });
   };
 }];
@@ -2097,6 +2097,24 @@ module.exports = [function () {
               .datum(hawaii.features, function(a, b) { return a !== b; })
               .attr('id', 'island-borders')
               .attr('d', path);
+
+          // big island
+          g.append("image")
+              .attr("xlink:href", "http://www.gohawaii.com/lhh/images/big-island/map.png")
+              .attr("x", "700")
+              .attr("y", "290")
+              .attr("width", "170")
+              .attr("height", "170")
+              .style("pointer-events", "none");
+
+         g.append("image")
+            .attr("xlink:href", "http://www.gohawaii.com/lhh/images/molokai/map.png")
+            .attr("x", "585")
+            .attr("y", "160")
+            .attr("width", "65")
+            .attr("height", "80")
+            .style("pointer-events", "none");
+
         });
 
         // on hover the tooltip appears
@@ -2453,7 +2471,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_820989a6.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c7bae20d.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -2498,7 +2516,7 @@ module.exports = ['$scope', ($scope) => {
       bindto : '#donut',
       data : {
         columns : [
-            ['Arrivals', 0],
+            ['Total Monthly Arrivals', 0],
         ],
         type : 'bar',
         onclick : function (d, element) {

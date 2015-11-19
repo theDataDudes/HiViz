@@ -16,25 +16,69 @@
 <!-- default controller for entire app defined here -->
 	<div id="mainViewContainer" ng-controller="mainController as main">
 
-		<header class="row">
+		<header>
 
-			<div class="small-10 columns">
+      <h4 id="mainTitle">HiViz </h4>
 
-				<h1 id="mainTitle">Hawaii Tourism Data Visualization</h1>
+      <div class="row">
 
-				<h5 id="subtitle">Annual, Monthy, Daily Visitors by Origin and Island</h5>
+        <div class="small-6 columns">
 
-			</div>
+          <div class="row">
 
-			<!-- look to make moduler  -->
-			<nav id="viewNav" class="small-2 columns">
+            <div class="small-5 columns">
 
-				<ul>
-					<li><a ng-href="/#/" ng-if="!main.IsVisible" ng-click="main.showHide()" name="Map View" class="viewNavTooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
-          --><li><a href="/#/graph" ng-if="main.IsVisible" ng-click="main.showHide()" name="Chart View" class="viewNavTooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
-				</ul>
+              <div> Visitors coming from </div>
 
-			</nav>
+            </div>
+
+            <div class="small-3 columns">
+
+              <select id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region = 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
+                  <option value="total" selected="selected">Total</option>
+                  <option value="usWest">US West</option>
+                  <option value="usEast">US East</option>
+                  <option value="japan">Japan</option>
+                  <option value="canada">Canada</option>
+                  <option value="otherAsia">Other Asia</option>
+                  <option value="taiwan">Taiwan</option>
+                  <option value="australia">Australia</option>
+                  <option value="europe">Europe</option>
+                  <option value="china">China</option>
+                  <option value="korea">Korea</option>
+                </select>
+
+              <select id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region = 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
+                <option value="total" selected="selected">Total</option>
+                <option value="usWest">US West</option>
+                <option value="usEast">US East</option>
+                <option value="japan">Japan</option>
+                <option value="canada">Canada</option>
+              </select>
+
+            </div>
+
+            <div class="small-4 columns">
+
+              <div> to {{ collection[0].island === 'total' ? 'Hawaii' : collection[0].island.charAt(0).toUpperCase() + collection[0].island.slice(1) }} in {{ collection[0].year }} </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      <!-- look to make moduler  -->
+          <nav id="viewNav" class="small-2 columns">
+
+            <ul>
+              <li ng-class="{ 'highlighted' : main.IsVisible}" ><a ng-href="/#/" ng-click="main.showHide()" name="Map View" class="viewNavTooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
+              --><li ng-class="{ 'highlighted' : !main.IsVisible}" ><a href="/#/graph" ng-click="main.showHide()" name="Chart View" class="viewNavTooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
+            </ul>
+
+          </nav>
+
+		  </div>
 
 		</header>
 
