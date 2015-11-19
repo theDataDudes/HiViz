@@ -4,6 +4,25 @@
 <!-- IMPORTANT section....holds multiple data visualizations  -->
 <section id="mainContent" class="small-8 columns">
 
+<div id='listContent' class="row">
+  <div id='selectedContent' class='small-4 columns'>
+
+    <div>Origin: {{ collection[0].region }}</div>
+
+  </div>
+  <div id='selectedContent' class='small-4 columns'>
+
+    <div>Year: {{ collection[0].year }}</div>
+
+  </div>
+  <div id='selectedContent' class='small-4 columns'>
+
+    <div>Hawaii Data: {{ collection[0].island === 'total' ? 'State' : collection[0].island }}</div>
+
+  </div>
+</div>
+
+
 <!-- island map directive -->
 <island-map></island-map>
 
@@ -13,7 +32,8 @@
 
 <!--begin expenditure icons-->
   <ul>
-    <li name="Flights" class="tooltip"><img src="../assets/plane.svg" alt="flights">
+	  <li name="Flights"><h2>Annual Totals</h2></li><!--
+	  --><li name="Flights" class="tooltip"><img src="../assets/plane.svg" alt="flights">
       <p>${{Math.floor(collection[0].month.TOTAL.passengers)}}</p></li><!--
     --><li name="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending">
       <p>${{Math.floor(collection[0].month.TOTAL.total)}}</p></li><!--
