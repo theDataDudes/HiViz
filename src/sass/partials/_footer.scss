@@ -2,9 +2,9 @@
 
 footer {
 
-  height: 12%;
+  height: 10%;
   background-color: RGBA(238, 238, 238, 0.7);
-  min-height: 100px;
+  min-height: 75px;
   border-top: 1px solid gray;
 
 
@@ -12,23 +12,13 @@ footer {
 
     display: block;
     height: 50px;
-    width: 100%;
-
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
 
-  nav {
-
-    display: block;
-    width: 220px;
-    margin: 0 auto;
-    font-size: 16px;
-
-    a {
-
-      padding: 0 10px;
-
-    }
-
+  .small-12 {
+    margin: auto;
   }
 
   #attribution {
