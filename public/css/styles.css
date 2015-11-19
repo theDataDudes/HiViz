@@ -1679,7 +1679,9 @@ sidebar {
   box-sizing: border-box;
   z-index: 2; }
   #mapNav h2 {
-    text-align: center; }
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px; }
   #mapNav ul {
     position: absolute;
     box-sizing: border-box;
@@ -1735,6 +1737,18 @@ sidebar {
     #graphNav ul img {
       height: 40px;
       width: 40px; }
+
+.selectedContent {
+  border-radius: 10px;
+  margin: 25px 0 0 25px;
+  box-sizing: border-box;
+  background-color: RGBA(0, 0, 0, 0.1);
+  height: 50px;
+  z-index: 2;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px; }
 
 .background {
   fill: none;

@@ -5,19 +5,19 @@
 <section id="mainContent" class="small-8 columns">
 
 <div id='listContent' class="row">
-  <div id='selectedContent' class='small-4 columns'>
+  <div class='small-3 columns selectedContent'>
 
     <div>Origin: {{ collection[0].region }}</div>
 
   </div>
-  <div id='selectedContent' class='small-4 columns'>
+  <div class='small-3 small-offset-1 columns selectedContent'>
 
     <div>Year: {{ collection[0].year }}</div>
 
   </div>
-  <div id='selectedContent' class='small-4 columns'>
+  <div class='small-3 columns small-offset-1 end selectedContent'>
 
-    <div>Hawaii Data: {{ collection[0].island === 'total' ? 'State' : collection[0].island }}</div>
+    <div>Data: {{ collection[0].island === 'total' ? 'State' : collection[0].island }}</div>
 
   </div>
 </div>
