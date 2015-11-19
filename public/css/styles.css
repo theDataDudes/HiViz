@@ -1606,6 +1606,8 @@ sidebar {
   border-right: 1px solid gray; }
   sidebar h2 {
     padding: 5px 0 0 10px; }
+  sidebar #month {
+    text-align: center; }
   sidebar #originSelector {
     width: 125px;
     margin: 5px 0 0 10px; }
