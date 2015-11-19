@@ -1,4 +1,5 @@
 @import 'globals';
+@import url(https://fonts.googleapis.com/css?family=Maven+Pro:500,900);
 @import 'partials/settings';
 @import 'foundation/components/grid';
 @import 'foundation/components/buttons';
@@ -31,6 +32,7 @@ body {
   width:100%;
   position:absolute;
   background-color: #fff;
+  font-family: $maven;
 
 }
 
