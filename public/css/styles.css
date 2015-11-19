@@ -1603,9 +1603,12 @@ sidebar {
   height: 76%;
   background-color: #fff;
   height: 100%;
-  border-right: 1px solid gray; }
+  border-right: 1px solid gray;
+  padding: 10px; }
   sidebar h2 {
     padding: 5px 0 0 10px; }
+  sidebar #donut {
+    margin-right: 15px; }
   sidebar #month {
     text-align: center; }
   sidebar #originSelector {
