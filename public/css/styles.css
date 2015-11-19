@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Maven+Pro:500,900);
 .background {
   fill: none;
   pointer-events: all; }
@@ -1493,6 +1494,7 @@ button::-moz-focus-inner {
   text-align: center; }
 
 header {
+  font-family: "Maven Pro", sans-serif;
   height: 12%;
   min-height: 100px;
   width: 100%;
@@ -1600,12 +1602,14 @@ header {
   text-align: center; }
 
 sidebar {
-  height: 76%;
-  background-color: #fff;
   height: 100%;
-  border-right: 1px solid gray; }
+  background-color: #fff;
+  border-left: 1px solid gray;
+  padding: 10px; }
   sidebar h2 {
     padding: 5px 0 0 10px; }
+  sidebar #donut {
+    margin-right: 15px; }
   sidebar #month {
     text-align: center; }
   sidebar #originSelector {
@@ -1679,7 +1683,9 @@ sidebar {
   box-sizing: border-box;
   z-index: 2; }
   #mapNav h2 {
-    text-align: center; }
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px; }
   #mapNav ul {
     position: absolute;
     box-sizing: border-box;
@@ -1688,8 +1694,6 @@ sidebar {
     list-style-type: none;
     z-index: 2; }
     #mapNav ul li {
-      border-radius: 10px;
-      background-color: RGBA(0, 0, 0, 0.1);
       height: 50px;
       width: 200px;
       box-sizing: border-box;
@@ -1698,7 +1702,7 @@ sidebar {
       z-index: 2; }
       #mapNav ul li p {
         display: inline;
-        font-size: 20px;
+        font-size: 16px;
         width: 150px;
         height: 15px;
         box-sizing: border-box;
@@ -1735,6 +1739,18 @@ sidebar {
     #graphNav ul img {
       height: 40px;
       width: 40px; }
+
+.selectedContent {
+  border-radius: 10px;
+  margin: 25px 0 0 25px;
+  box-sizing: border-box;
+  background-color: RGBA(0, 0, 0, 0.1);
+  height: 50px;
+  z-index: 2;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px; }
 
 .background {
   fill: none;
@@ -1993,7 +2009,8 @@ body {
   height: 100%;
   width: 100%;
   position: absolute;
-  background-color: #fff; }
+  background-color: #fff;
+  font-family: "Maven Pro", sans-serif; }
 
 #mainViewContainer {
   min-width: 1350px;

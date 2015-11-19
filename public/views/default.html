@@ -1,23 +1,21 @@
-<!-- sidebar container -->
-<sidebar ng-if="main.IsVisible" class="small-4 columns"></sidebar>
-
 <!-- IMPORTANT section....holds multiple data visualizations  -->
 <section id="mainContent" class="small-8 columns">
 
 <div id='listContent' class="row">
-  <div id='selectedContent' class='small-4 columns'>
+  <div class='small-3 columns selectedContent'>
 
-    <div>Origin: {{ collection[0].region }}</div>
+    <div>Origin: {{ collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1) }}</div>
 
   </div>
-  <div id='selectedContent' class='small-4 columns'>
+  <div class='small-3 small-offset-1 columns selectedContent'>
 
     <div>Year: {{ collection[0].year }}</div>
 
   </div>
-  <div id='selectedContent' class='small-4 columns'>
+  <div class='small-3 columns small-offset-1 end selectedContent'>
 
-    <div>Hawaii Data: {{ collection[0].island === 'total' ? 'State' : collection[0].island }}</div>
+
+    <div>Data: {{ collection[0].island === 'total' ? 'State' : collection[0].island }}</div>
 
   </div>
 </div>
@@ -33,22 +31,24 @@
 <!--begin expenditure icons-->
   <ul>
 	  <li name="Flights"><h2>Annual Totals</h2></li><!--
-	  --><li name="Flights" class="tooltip"><img src="../assets/plane.svg" alt="flights">
-      <p>{{Math.floor(collection[0].month.TOTAL.passengers)}}</p></li><!--
+	  --><li name="Visitors" class="tooltip"><img src="../assets/plane.svg" alt="Visitors">
+      <p>{{Math.floor(collection[0].month.TOTAL.passengers).toLocaleString()}}</p></li><!--
     --><li name="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending">
-      <p>${{Math.floor(collection[0].month.TOTAL.total)}}</p></li><!--
+      <p>${{Math.floor(collection[0].month.TOTAL.total).toLocaleString()}}</p></li><!--
     --><li name="Lodging" class="tooltip"><img src="../assets/bed.svg" alt="lodging">
-      <p>${{Math.floor(collection[0].month.TOTAL.lodging)}}</p></li><!--
+      <p>${{Math.floor(collection[0].month.TOTAL.lodging).toLocaleString()}}</p></li><!--
     --><li name="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation">
-      <p>${{Math.floor(collection[0].month.TOTAL.transportation)}}</p></li><!--
+      <p>${{Math.floor(collection[0].month.TOTAL.transportation).toLocaleString()}}</p></li><!--
     --><li name="Shopping" class="tooltip"><img src="../assets/creditcard.svg" alt="shopping">
-      <p>${{Math.floor(collection[0].month.TOTAL.shopping)}}</p></li><!--
+      <p>${{Math.floor(collection[0].month.TOTAL.shopping).toLocaleString()}}</p></li><!--
     --><li name="Food" class="tooltip"><img src="../assets/utensil.svg" alt="food">
-      <p>${{Math.floor(collection[0].month.TOTAL.food)}}</p></li><!--
+      <p>${{Math.floor(collection[0].month.TOTAL.food).toLocaleString()}}</p></li><!--
     --><li name="Entertainment" class="tooltip"><img src="../assets/tickets.svg" alt="entertainment">
-      <p>${{Math.floor(collection[0].month.TOTAL.entertainment)}}</p></li>
+      <p>${{Math.floor(collection[0].month.TOTAL.entertainment).toLocaleString()}}</p></li>
   </ul>
 
 </nav>
 
 </section>
+<!-- sidebar container -->
+<sidebar class="small-4 columns"></sidebar>
