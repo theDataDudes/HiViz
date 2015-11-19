@@ -2005,21 +2005,18 @@ sidebar {
   background-color: RGBA(0, 184, 243, 0.1); }
 
 footer {
-  height: 12%;
+  height: 10%;
   background-color: RGBA(238, 238, 238, 0.7);
-  min-height: 100px;
+  min-height: 75px;
   border-top: 1px solid gray; }
   footer #timeline {
     display: block;
     height: 50px;
-    width: 100%; }
-  footer nav {
-    display: block;
-    width: 220px;
-    margin: 0 auto;
-    font-size: 16px; }
-    footer nav a {
-      padding: 0 10px; }
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 20px; }
+  footer .small-12 {
+    margin: auto; }
   footer #attribution {
     display: block;
     bottom: 0px;

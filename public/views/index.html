@@ -47,20 +47,13 @@
 		<footer>
 
         <section id="timeline" class="row">
-
-          <!--angular slider for adjusting time period-->
-          <rzslider rz-slider-model="slider_callbacks.value" ng-model="selectedYear" rz-slider-options="slider_callbacks.options">
-          </rzslider>
+        <div class="small-12 columns">
+            <!--angular slider for adjusting time period-->
+            <rzslider rz-slider-model="slider_callbacks.value" ng-model="selectedYear" rz-slider-options="slider_callbacks.options">
+            </rzslider>
+        </div>
 
         </section>
-
-        <nav>
-        <!-- footer links -->
-          <a ui-sref="about">About</a> •
-          <a ui-sref="api">API</a> •
-          <a ui-sref="contact">Contact</a>
-
-        </nav>
 
         <p id="attribution" class="right">
 
