@@ -12,7 +12,7 @@ module.exports = ['$scope', ($scope) => {
       bindto : '#donut',
       data : {
         columns : [
-            ['Arrivals', 0],
+            ['Total Monthly Arrivals', 0],
         ],
         type : 'bar',
         onclick : function (d, element) {

@@ -2,10 +2,9 @@
 
 sidebar {
 
-  height: 76%;
-  background-color: #fff;
   height: 100%;
-  border-right: 1px solid gray;
+  background-color: #fff;
+  border-left: 1px solid gray;
   padding: 10px;
 
   h2 {
@@ -20,13 +19,6 @@ sidebar {
 
   #month {
     text-align: center;
-  }
-
-  #originSelector {
-
-    width: 125px;
-    margin: 5px 0 0 10px;
-
   }
 
   .small-12 {

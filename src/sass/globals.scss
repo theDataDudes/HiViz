@@ -67,10 +67,10 @@ $small: "only screen and (max-width: 680px)";
   background: #333;
   background: rgba(0, 0, 0, .8);
   border-radius: 5px;
-  bottom: 10px;
+  bottom: 35px;
   color: #fff;
   content: attr(name);
-  right: 110%;
+  right: 50%;
   padding: 5px 15px;
   position: absolute;
   z-index: 98;
@@ -79,5 +79,10 @@ $small: "only screen and (max-width: 680px)";
 
 }
 
+.highlighted {
+
+  background-color: RGBA(0, 184, 243, .1);
+
+}
 
 
