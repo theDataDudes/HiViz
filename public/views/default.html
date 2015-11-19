@@ -7,7 +7,7 @@
 <div id='listContent' class="row">
   <div id='selectedContent' class='small-4 columns'>
 
-    <div>Origin: {{ collection[0].region }}</div>
+    <div>Origin: {{ collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1) }}</div>
 
   </div>
   <div id='selectedContent' class='small-4 columns'>
@@ -17,7 +17,7 @@
   </div>
   <div id='selectedContent' class='small-4 columns'>
 
-    <div>Hawaii Data: {{ collection[0].island === 'total' ? 'State' : collection[0].island }}</div>
+    <div>Hawaii Data: {{ collection[0].island === 'total' ? 'State' : collection[0].island.charAt(0).toUpperCase() + collection[0].island.slice(1) }}</div>
 
   </div>
 </div>
