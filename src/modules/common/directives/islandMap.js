@@ -75,6 +75,24 @@ module.exports = [function () {
               .datum(hawaii.features, function(a, b) { return a !== b; })
               .attr('id', 'island-borders')
               .attr('d', path);
+
+          // big island
+          g.append("image")
+              .attr("xlink:href", "http://www.gohawaii.com/lhh/images/big-island/map.png")
+              .attr("x", "700")
+              .attr("y", "290")
+              .attr("width", "170")
+              .attr("height", "170")
+              .style("pointer-events", "none");
+
+         g.append("image")
+            .attr("xlink:href", "http://www.gohawaii.com/lhh/images/molokai/map.png")
+            .attr("x", "585")
+            .attr("y", "160")
+            .attr("width", "65")
+            .attr("height", "80")
+            .style("pointer-events", "none");
+
         });
 
         // on hover the tooltip appears

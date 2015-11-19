@@ -2097,6 +2097,24 @@ module.exports = [function () {
               .datum(hawaii.features, function(a, b) { return a !== b; })
               .attr('id', 'island-borders')
               .attr('d', path);
+
+          // big island
+          g.append("image")
+              .attr("xlink:href", "http://www.gohawaii.com/lhh/images/big-island/map.png")
+              .attr("x", "700")
+              .attr("y", "290")
+              .attr("width", "170")
+              .attr("height", "170")
+              .style("pointer-events", "none");
+
+         g.append("image")
+            .attr("xlink:href", "http://www.gohawaii.com/lhh/images/molokai/map.png")
+            .attr("x", "585")
+            .attr("y", "160")
+            .attr("width", "65")
+            .attr("height", "80")
+            .style("pointer-events", "none");
+
         });
 
         // on hover the tooltip appears
@@ -2453,7 +2471,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9df569e0.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_2ab26e66.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';

@@ -2041,6 +2041,7 @@ body {
   height: 100%; }
 
 #contentContainer {
+  min-height: 800px;
   height: 76%; }
 
 .animate-checked.ng-enter, .animate-checked.ng-leave {
