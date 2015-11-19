@@ -1681,6 +1681,8 @@ sidebar {
   padding: 0;
   box-sizing: border-box;
   z-index: 2; }
+  #mapNav h2 {
+    text-align: center; }
   #mapNav ul {
     position: absolute;
     box-sizing: border-box;
@@ -1997,7 +1999,7 @@ body {
   background-color: #fff; }
 
 #mainViewContainer {
-  min-width: 1200px;
+  min-width: 1350px;
   height: 100%; }
 
 #contentContainer {
