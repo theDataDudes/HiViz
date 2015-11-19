@@ -28,6 +28,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     };
     // chartLoad method is declared on $scope to filter two object regions that are brought in from common controller API call
     $scope.chartLoad = function (icon) {
+      if (!$scope.$ngc) return;
       // reduce is used to create two seperate arrays with values to be set in each islands graph column values.
       $scope.collection.reduce( function(previous, current, index, array) {
         current.monthArray = [0,0,0,0,0,0,0,0,0,0,0,0];

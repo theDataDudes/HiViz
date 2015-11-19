@@ -1,20 +1,26 @@
 <h2 id="sideTitle">Detailed Monthly Data</h2>
-
-	<select id="originSelector" ng-init="model.region = options[0]" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
+  <select id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region = 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
     <option value="total" selected="selected">Total</option>
-		<option value="usWest">US West</option>
-		<option value="usEast">US East</option>
-		<option value="japan">Japan</option>
-		<option value="canada">Canada</option>
-    <option ng-if="collection[0].year > 2012" value="otherAsia">Other Asia</option>
-    <option ng-if="collection[0].year > 2012" value="taiwan">Taiwan</option>
-    <option ng-if="collection[0].year > 2012" value="australia">Australia</option>
-    <option ng-if="collection[0].year > 2012" value="europe">Europe</option>
-    <option ng-if="collection[0].year > 2012" value="china">China</option>
-    <option ng-if="collection[0].year > 2012" value="korea">Korea</option>
-	</select>
+    <option value="usWest">US West</option>
+    <option value="usEast">US East</option>
+    <option value="japan">Japan</option>
+    <option value="canada">Canada</option>
+    <option value="otherAsia">Other Asia</option>
+    <option value="taiwan">Taiwan</option>
+    <option value="australia">Australia</option>
+    <option value="europe">Europe</option>
+    <option value="china">China</option>
+    <option value="korea">Korea</option>
+  </select>
 
-<div ng-controller='DonutController' ng-init='showDonut()'>
+  <select id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region = 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
+    <option value="total" selected="selected">Total</option>
+    <option value="usWest">US West</option>
+    <option value="usEast">US East</option>
+    <option value="japan">Japan</option>
+    <option value="canada">Canada</option>
+  </select>
+<div ng-controller='DonutController' ng-init='showDonut(); donutLoad();'>
   <div id='donut'></div>
   <div id="month">Selected Month ({{selectedMonth}})</div>
 	<div class="row">
