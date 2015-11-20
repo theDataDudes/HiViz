@@ -3,17 +3,13 @@
 
 <div class="row">
 
-  <div class="small-6 columns">
+      <div class="align-left small-3 columns">
 
-    <div class="row">
-
-      <div class="small-5 columns">
-
-        <div> Visitors coming from </div>
+        <span> Visitors coming from </span>
 
       </div>
 
-      <div class="small-2 columns">
+      <span class="align-left small-2 columns">
 
         <select id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region = 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
             <option value="total" selected="selected">Total</option>
@@ -37,15 +33,13 @@
           <option value="canada">Canada</option>
         </select>
 
+      </span>
+
+      <div class="align-left small-3 columns">
+
+        <span> to {{ collection[0].island === 'total' ? 'Hawaii' : collection[0].island.charAt(0).toUpperCase() + collection[0].island.slice(1) }} in {{ collection[0].year }} </span>
+
       </div>
-
-      <div class="small-5 columns">
-
-        <div> to {{ collection[0].island === 'total' ? 'Hawaii' : collection[0].island.charAt(0).toUpperCase() + collection[0].island.slice(1) }} in {{ collection[0].year }} </div>
-
-      </div>
-
-    </div>
 
   </div>
 
