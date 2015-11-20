@@ -126,13 +126,12 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
               tick: {
                 count: 7,
                 format: function(d) {
-                    if(self.selectedIcon === 'passengers') {
+                    if($scope.selectedIcon === 'passengers') {
                     yAxis = Math.ceil(d);
                     format = d3.format(',');
                     return format(yAxis);
                   }
                   yAxis = Math.ceil(d);
-                  // var newY = Math.round(y);
                   format = d3.format('$,');
                   return format(yAxis);
                 }
@@ -147,7 +146,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-              if(self.selectedIcon === 'passengers') {
+              if($scope.selectedIcon === 'passengers') {
               exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
@@ -171,7 +170,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
               tick: {
                 count: 7,
                 format: function(d) {
-                    if(self.selectedIcon === 'passengers') {
+                    if($scope.selectedIcon === 'passengers') {
                     yAxis = Math.ceil(d);
                     format = d3.format(',');
                     return format(yAxis);
@@ -192,7 +191,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            if(self.selectedIcon === 'passengers') {
+            if($scope.selectedIcon === 'passengers') {
               exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
@@ -216,7 +215,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
               tick: {
                 count: 7,
                 format: function(d) {
-                    if(self.selectedIcon === 'passengers') {
+                    if($scope.selectedIcon === 'passengers') {
                     yAxis = Math.ceil(d);
                     format = d3.format(',');
                     return format(yAxis);
@@ -237,7 +236,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            if(self.selectedIcon === 'passengers') {
+            if($scope.selectedIcon === 'passengers') {
               exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
@@ -262,7 +261,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
               tick: {
                 count: 7,
                 format: function(d) {
-                    if(self.selectedIcon === 'passengers') {
+                    if($scope.selectedIcon === 'passengers') {
                     yAxis = Math.ceil(d);
                     format = d3.format(',');
                     return format(yAxis);
@@ -283,7 +282,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            if(self.selectedIcon === 'passengers') {
+            if($scope.selectedIcon === 'passengers') {
               exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
@@ -308,7 +307,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
               tick: {
                 count: 7,
                 format: function(d) {
-                    if(self.selectedIcon === 'passengers') {
+                    if($scope.selectedIcon === 'passengers') {
                     yAxis = Math.ceil(d);
                     format = d3.format(',');
                     return format(yAxis);
@@ -329,7 +328,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            if(self.selectedIcon === 'passengers') {
+            if($scope.selectedIcon === 'passengers') {
               exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
@@ -354,7 +353,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
               tick: {
                 count: 7,
                 format: function(d) {
-                    if(self.selectedIcon === 'passengers') {
+                    if($scope.selectedIcon === 'passengers') {
                     yAxis = Math.ceil(d);
                     format = d3.format(',');
                     return format(yAxis);
@@ -375,7 +374,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            if(self.selectedIcon === 'passengers') {
+            if($scope.selectedIcon === 'passengers') {
               exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
@@ -400,7 +399,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
               tick: {
                 count: 7,
                 format: function(d) {
-                    if(self.selectedIcon === 'passengers') {
+                    if($scope.selectedIcon === 'passengers') {
                     yAxis = Math.ceil(d);
                     format = d3.format(',');
                     return format(yAxis);
@@ -421,7 +420,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
       tooltip: {
         format: {
           value: function (value, ratio, id) {
-            if(self.selectedIcon === 'passengers') {
+            if($scope.selectedIcon === 'passengers') {
               exp = value;
               newExp = exp.toFixed(2);
               format = d3.format(',');
