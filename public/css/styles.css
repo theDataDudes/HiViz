@@ -1689,28 +1689,27 @@ sidebar {
   text-align: center; }
 
 #mapNav {
-  text-align: center;
   bottom: 0;
   position: absolute;
-  width: 200px;
-  margin-bottom: 75px;
+  width: 500px;
+  margin-left: 50px;
   padding: 0;
   box-sizing: border-box;
   z-index: 2; }
-  #mapNav ul {
-    display: table;
+  #mapNav #left-expend {
     margin: auto;
+    float: left;
     padding: 10px;
+    list-style-type: none;
     z-index: 2; }
-    #mapNav ul li {
-      display: inline;
+    #mapNav #left-expend li {
       height: 50px;
       box-sizing: border-box;
       padding: 5px 5px;
       margin: 10px 5px;
       z-index: 2; }
-      #mapNav ul li p {
-        display: inline;
+      #mapNav #left-expend li p {
+        display: inline-block;
         font-size: 16px;
         width: 150px;
         height: 15px;
@@ -1718,7 +1717,32 @@ sidebar {
         vertical-align: middle;
         padding: 0 0 0 5px;
         z-index: 2; }
-    #mapNav ul img {
+    #mapNav #left-expend img {
+      height: 40px;
+      width: 40px;
+      text-align: center; }
+  #mapNav #right-expend {
+    margin: auto;
+    padding: 10px;
+    list-style-type: none;
+    z-index: 2;
+    float: right; }
+    #mapNav #right-expend li {
+      height: 50px;
+      box-sizing: border-box;
+      padding: 5px 5px;
+      margin: 10px 5px;
+      z-index: 2; }
+      #mapNav #right-expend li p {
+        display: inline-block;
+        font-size: 16px;
+        width: 150px;
+        height: 15px;
+        box-sizing: border-box;
+        vertical-align: middle;
+        padding: 0 0 0 5px;
+        z-index: 2; }
+    #mapNav #right-expend img {
       height: 40px;
       width: 40px;
       text-align: center; }
