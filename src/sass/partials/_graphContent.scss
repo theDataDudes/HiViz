@@ -1,0 +1,97 @@
+@import 'globals';
+
+#graphTitle {
+
+  width: 650px;
+  margin: 0 auto;
+
+}
+
+h1 {
+
+  display: inline;
+
+}
+
+
+#regionSelector1 {
+
+  display: inline;
+  width: 100px;
+
+}
+
+#regionSelector2 {
+
+  display: inline;
+  width: 100px;
+
+}
+
+
+#graphNav {
+
+  width: 800px;
+  margin: 0 auto;
+  padding: 5px 5px;
+  margin-left: -20px;
+  box-sizing: border-box;
+  z-index: 2;
+
+  ul {
+
+    box-sizing: border-box;
+
+    li {
+
+      display: inline-block;
+      height: 40px;
+      width: 50px;
+      box-sizing: border-box;
+      padding: 0 5px;
+      margin: 0 30px;
+
+
+      p {
+
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+        box-sizing: border-box;
+        font-size: 12px;
+        text-align: center;
+
+      }
+
+    }
+
+    img {
+
+      height: 40px;
+      width: 40px;
+
+      &:active {
+        border-bottom: 2px dashed #87CEFA;
+        padding-bottom: 2px;
+      }
+    }
+
+  }
+
+}
+
+// animation is used for the graph.html
+// hides the 'compare' selector for regions
+//.animate-checked.ng-enter, .animate-checked.ng-leave {
+//  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+//}
+
+//.animate-checked.ng-enter,
+//.animate-checked.ng-leave.ng-leave-active {
+//  opacity:0;
+//}
+
+//.animate-checked.ng-leave,
+//.animate-checked.ng-enter.ng-enter-active {
+//  opacity:1;
+//}
