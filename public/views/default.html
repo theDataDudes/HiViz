@@ -1,49 +1,35 @@
 <!-- IMPORTANT section....holds multiple data visualizations  -->
 <section id="mainContent" class="small-8 columns">
 
-<div class="row">
+<div>
 
-      <div class="align-left small-3 columns">
+     <h2 id="mapTitle">Visitors coming from
 
-        <span> Visitors coming from </span>
-
-      </div>
-
-      <span class="align-left small-2 columns">
-
-        <select id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region = 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
-            <option value="total" selected="selected">Total</option>
-            <option value="usWest">US West</option>
-            <option value="usEast">US East</option>
-            <option value="japan">Japan</option>
-            <option value="canada">Canada</option>
-            <option value="otherAsia">Other Asia</option>
-            <option value="taiwan">Taiwan</option>
-            <option value="australia">Australia</option>
-            <option value="europe">Europe</option>
-            <option value="china">China</option>
-            <option value="korea">Korea</option>
-          </select>
-
-        <select id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region = 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
+      <select id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region = 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
           <option value="total" selected="selected">Total</option>
           <option value="usWest">US West</option>
           <option value="usEast">US East</option>
           <option value="japan">Japan</option>
           <option value="canada">Canada</option>
+          <option value="otherAsia">Other Asia</option>
+          <option value="taiwan">Taiwan</option>
+          <option value="australia">Australia</option>
+          <option value="europe">Europe</option>
+          <option value="china">China</option>
+          <option value="korea">Korea</option>
         </select>
 
-      </span>
+      <select id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region = 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
+        <option value="total" selected="selected">Total</option>
+        <option value="usWest">US West</option>
+        <option value="usEast">US East</option>
+        <option value="japan">Japan</option>
+        <option value="canada">Canada</option>
+      </select>
 
-      <div class="align-left small-3 columns">
-
-        <span> to {{ collection[0].island === 'total' ? 'Hawaii' : collection[0].island.charAt(0).toUpperCase() + collection[0].island.slice(1) }} in {{ collection[0].year }} </span>
-
-      </div>
+    to {{ collection[0].island === 'total' ? 'Hawaii' : collection[0].island.charAt(0).toUpperCase() + collection[0].island.slice(1) }} in {{ collection[0].year }}</h2>
 
   </div>
-
-
 
 <!-- island map directive -->
 <island-map></island-map>
