@@ -50,7 +50,7 @@ module.exports = [function () {
           .attr('class', 'd3-tip')
           .html(function (d) {
             return "<strong>" + d.name.toUpperCase() +
-              "</strong> <span style='color:grey'></span";
+              "</strong> <span style='color:grey'></span>";
           });
         svg.call(mapTip);
 
@@ -78,21 +78,54 @@ module.exports = [function () {
 
           // big island
           g.append("image")
-              .attr("xlink:href", "http://www.gohawaii.com/lhh/images/big-island/map.png")
-              .attr("x", "700")
+              .attr("xlink:href", "/img/big-island.png")
+              .attr("x", "695")
               .attr("y", "290")
               .attr("width", "170")
               .attr("height", "170")
               .style("pointer-events", "none");
 
-         g.append("image")
-            .attr("xlink:href", "http://www.gohawaii.com/lhh/images/molokai/map.png")
-            .attr("x", "585")
-            .attr("y", "160")
-            .attr("width", "65")
-            .attr("height", "80")
-            .style("pointer-events", "none");
+          // oahu
+          g.append("image")
+              .attr("xlink:href", "/img/oahu.png")
+              .attr("x", "470")
+              .attr("y", "110")
+              .attr("width", "105")
+              .attr("height", "105")
+              .style("pointer-events", "none");
 
+          // maui
+          g.append("image")
+              .attr("xlink:href", "/img/maui.png")
+              .attr("x", "640")
+              .attr("y", "195")
+              .attr("width", "95")
+              .attr("height", "95")
+              .style("pointer-events", "none");
+          // kauai
+          g.append("image")
+              .attr("xlink:href", "/img/kauai.png")
+              .attr("x", "275")
+              .attr("y", "47")
+              .attr("width", "120")
+              .attr("height", "120")
+              .style("pointer-events", "none");
+          // lanai
+          g.append("image")
+              .attr("xlink:href", "/img/lanai.png")
+              .attr("x", "600")
+              .attr("y", "215")
+              .attr("width", "40")
+              .attr("height", "40")
+              .style("pointer-events", "none");
+          // molokai
+          g.append("image")
+              .attr("xlink:href", "/img/molokai.png")
+              .attr("x", "570")
+              .attr("y", "150")
+              .attr("width", "85")
+              .attr("height", "90")
+              .style("pointer-events", "none");
         });
 
         // on hover the tooltip appears
