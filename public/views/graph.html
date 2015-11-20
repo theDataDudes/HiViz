@@ -92,7 +92,7 @@
 			<!--begin expenditure icons-->
 			<!-- on click will invoke changeIcon function that is declared in controller.js -->
 			<ul>
-			 <li><a ng-click="changeIcon('passengers')" name="Flights" class="tooltip"><img src="../assets/plane.svg" alt="flights"></a></li><!--
+			 <li><a ng-click="changeIcon('passengers')" name="Flights" class="tooltip"><img ng-src="{{ selectedIcon == 'passengers' && '../assets/plane.svg' || '../assets/unselected-plane.svg' }}" alt="flights"/></a></li><!--
 		--><li><a ng-click="changeIcon('total')" name="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending"></a</li><!--
     --><li><a ng-click="changeIcon('lodging')" name="Lodging" class="tooltip"><img src="../assets/bed.svg" alt="lodging"></a></li><!--
     --><li><a ng-click="changeIcon('transportation')" name="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation"></a></li><!--

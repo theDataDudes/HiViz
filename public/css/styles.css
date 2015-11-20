@@ -1900,11 +1900,13 @@ h1 {
   z-index: 2; }
 
 #islands {
-  fill: #aaa; }
+  fill: #aaa;
+  fill-opacity: .1; }
 
 #islands .active {
   transition: fill 1s;
-  fill: #aaa; }
+  fill: #bbb;
+  fill-opacity: 1; }
 
 #island-borders {
   fill: none;
