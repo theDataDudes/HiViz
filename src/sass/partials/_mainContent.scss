@@ -76,56 +76,6 @@
 
 }
 
-#graphNav {
-
-  width: 800px;
-  margin: 0 auto;
-  padding: 5px 5px;
-  margin-left: -20px;
-  box-sizing: border-box;
-  z-index: 2;
-
-  ul {
-
-    box-sizing: border-box;
-
-    li {
-
-      display: inline-block;
-      height: 40px;
-      width: 50px;
-      box-sizing: border-box;
-      padding: 0 5px;
-      margin: 0 30px;
-
-
-      p {
-
-        display: inline-block;
-        width: 40px;
-        height: 20px;
-        box-sizing: border-box;
-        font-size: 12px;
-        text-align: center;
-
-      }
-
-    }
-
-    img {
-
-      height: 40px;
-      width: 40px;
-
-      &:active {
-        border-bottom: 2px dashed #87CEFA;
-        padding-bottom: 2px;
-      }
-    }
-
-  }
-
-}
 
 .selectedContent {
 
