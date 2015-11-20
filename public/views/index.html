@@ -16,31 +16,25 @@
 <!-- default controller for entire app defined here -->
 	<div id="mainViewContainer" ng-controller="mainController as main">
 
-		<header>
+		<header class="row">
 
-      <!-- <h4 id="mainTitle">HiViz </h4> -->
-      <h1 id="mainTitle"> Hawaii Visitor Market </h1>
-      <h4>Powered by HiViz</h4>
+			<div class="small-10 columns">
 
-      <div class="row">
+	      <!-- <h4 id="mainTitle">HiViz </h4> -->
+	      <h1 id="mainTitle"> Hawaii Visitor Market </h1>
+	      <h4>Powered by HiViz</h4>
 
-        <div class="small-6 columns">
-
-        <!--  -->
-
-        </div>
+			</div>
 
       <!-- look to make moduler  -->
-          <nav id="viewNav" class="small-2 columns">
+      <nav id="viewNav" class="small-2 columns">
 
-            <ul>
-              <li ng-class="{ 'highlighted' : main.IsVisible}" ><a ng-href="/#/" ng-click="main.showHide()" name="Map View" class="viewNavTooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
-              --><li ng-class="{ 'highlighted' : !main.IsVisible}" ><a href="/#/graph" ng-click="main.showHide()" name="Chart View" class="viewNavTooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
-            </ul>
+        <ul>
+          <li ng-class="{ 'highlighted' : main.IsVisible}" ><a ng-href="/#/" ng-click="main.showHide()" name="Map View" class="viewNavTooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
+          --><li ng-class="{ 'highlighted' : !main.IsVisible}" ><a href="/#/graph" ng-click="main.showHide()" name="Chart View" class="viewNavTooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
+        </ul>
 
-          </nav>
-
-		  </div>
+      </nav>
 
 		</header>
 
