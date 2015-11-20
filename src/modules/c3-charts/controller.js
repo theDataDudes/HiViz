@@ -120,7 +120,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         // ================= Oahu Chart =================== //
     $scope.oahuChart = c3.generate({
       bindto: '#oahu',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -165,7 +165,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Big Island Chart =================== //
     $scope.bigIslandChart = c3.generate({
       bindto: '#big',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -210,7 +210,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Kauai Chart =================== //
     $scope.kauaiChart = c3.generate({
       bindto: '#kauai',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -256,7 +256,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Maui Chart =================== //
     $scope.mauiChart = c3.generate({
       bindto: '#maui',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -302,7 +302,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Lanai Chart =================== //
     $scope.lanaiChart = c3.generate({
       bindto: '#lanai',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -348,7 +348,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Molokai Chart =================== //
     $scope.molokaiChart = c3.generate({
       bindto: '#molokai',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -394,7 +394,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Total Chart =================== //
     $scope.totalChart = c3.generate({
       bindto: '#total',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {

@@ -1895,7 +1895,7 @@ sidebar {
 
 #islands .active {
   transition: fill 1s;
-  fill: #87CEFA; }
+  fill: #aaa; }
 
 #island-borders {
   fill: none;
