@@ -40,7 +40,7 @@
 
 <!--begin expenditure icons-->
   <ul>
-	  <li name="Flights"><h4>Total annual impact from {{collection[0].region === 'total' ? 'All' : collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1)}} visitors to {{collection[0].island === 'total' ? 'Hawaii' : collection[0].island.charAt(0).toUpperCase() + collection[0].island.slice(1)}} in {{collection[0].year}} :</h4></li><!--
+	  <h4 id="binded-impact">Total annual impact from {{collection[0].region === 'total' ? 'All' : collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1)}} visitors to {{collection[0].island === 'total' ? 'Hawaii' : collection[0].island.charAt(0).toUpperCase() + collection[0].island.slice(1)}} in {{collection[0].year}} :</h4><!--
 	  --><li name="Visitors" class="tooltip"><img src="../assets/plane.svg" alt="Visitors">
       <p>{{Math.floor(collection[0].month.TOTAL.passengers).toLocaleString()}}</p></li><!--
     --><li name="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending">
