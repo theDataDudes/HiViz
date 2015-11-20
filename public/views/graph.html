@@ -1,10 +1,12 @@
 <section id="mainContent">
 
+  <!-- Section is reserved for the data explination sentence at the top of the page  -->
   <div class="row">
 
     <div class="small-5 small-centered columns">
 
-      <h1 ng-if="!checked"> {{ collection[0].region === 'total' ? 'All' : collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1)}} visitor expenditures in {{ collection[0].year}} </h1>
+      <!-- // When icon clicked it should switch between arrivals or expenditures -->
+      <h1 ng-if="!checked"> {{ collection[0].region === 'total' ? 'All' : collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1)}} visitor {{ selectedIcon === 'passengers' ? 'arrivals' : 'expenditures' }} in {{ collection[0].year}} </h1>
 
       <h1 ng-if="checked"> {{ collection[0].region === 'total' ? 'All' : collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1) }} visitor expenditures vs {{ collection[1].region === 'total' ? 'All' : collection[1].region.charAt(0).toUpperCase() + collection[1].region.slice(1) }} in {{ collection[0].year}} </h1>
 
@@ -64,7 +66,8 @@
 	    <input type='checkbox' ng-model='checked' ng-change="$ngc.filterBy('region', [model.region1], $ngc.filters.inArray('some')); model.region2=null" id='compareCheckBox'/>
 
 	    <span>Compare</span>
-	    <select  ng-if='checked' class='animate-checked' id="regionSelector2" ng-init="model.region2 = options[0]" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+
+	    <select ng-if='checked' class='animate-checked' id="regionSelector2" ng-init="model.region2 = options[0]" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
 	        <option value="total" selected="selected">Total</option>
 	        <option value="usWest">US West</option>
 	        <option value="usEast">US East</option>

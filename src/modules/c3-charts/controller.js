@@ -125,6 +125,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
          y : {
               tick: {
                 count: 7,
+                // conditional to change number style between passengers and expenditures
                 format: function(d) {
                     if($scope.selectedIcon === 'passengers') {
                     yAxis = Math.ceil(d);
