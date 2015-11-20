@@ -74,7 +74,7 @@ module.exports = ['$scope', ($scope) => {
         return c.passengers;
       });
 
-      monthArray.unshift('Arrivals');
+      monthArray.unshift('Total Monthly Arrivals');
 
       $scope.donut.load({
         columns : [ monthArray ]

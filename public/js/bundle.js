@@ -1518,7 +1518,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
         // ================= Oahu Chart =================== //
     $scope.oahuChart = c3.generate({
       bindto: '#oahu',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -1563,7 +1563,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Big Island Chart =================== //
     $scope.bigIslandChart = c3.generate({
       bindto: '#big',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -1608,7 +1608,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Kauai Chart =================== //
     $scope.kauaiChart = c3.generate({
       bindto: '#kauai',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -1654,7 +1654,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Maui Chart =================== //
     $scope.mauiChart = c3.generate({
       bindto: '#maui',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -1700,7 +1700,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Lanai Chart =================== //
     $scope.lanaiChart = c3.generate({
       bindto: '#lanai',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -1746,7 +1746,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Molokai Chart =================== //
     $scope.molokaiChart = c3.generate({
       bindto: '#molokai',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -1792,7 +1792,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
     // ================= Total Chart =================== //
     $scope.totalChart = c3.generate({
       bindto: '#total',
-      data: { columns: [], type: 'spline',},
+      data: { columns: [], type: 'area-spline',},
       axis : {
          y : {
               tick: {
@@ -1832,7 +1832,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
         }
       },
-      size: { width: 400, height: 150 }
+      size: { width: 800, height: 300 }
     });
   };
 }];
@@ -2072,7 +2072,7 @@ module.exports = [function () {
           .attr('class', 'd3-tip')
           .html(function (d) {
             return "<strong>" + d.name.toUpperCase() +
-              "</strong> <span style='color:grey'></span";
+              "</strong> <span style='color:grey'></span>";
           });
         svg.call(mapTip);
 
@@ -2098,23 +2098,57 @@ module.exports = [function () {
               .attr('id', 'island-borders')
               .attr('d', path);
 
-          // big island
-         //  g.append("image")
-         //      .attr("xlink:href", "http://www.gohawaii.com/lhh/images/big-island/map.png")
-         //      .attr("x", "700")
-         //      .attr("y", "290")
-         //      .attr("width", "170")
-         //      .attr("height", "170")
-         //      .style("pointer-events", "none");
+          //big island
+          g.append("image")
+              .attr("xlink:href", "/img/big-island.png")
+              .attr("x", "695")
+              .attr("y", "290")
+              .attr("width", "170")
+              .attr("height", "170")
+              .style("pointer-events", "none");
 
-         // g.append("image")
-         //    .attr("xlink:href", "http://www.gohawaii.com/lhh/images/molokai/map.png")
-         //    .attr("x", "585")
-         //    .attr("y", "160")
-         //    .attr("width", "65")
-         //    .attr("height", "80")
-         //    .style("pointer-events", "none");
+          // oahu
+          g.append("image")
+              .attr("xlink:href", "/img/oahu.png")
+              .attr("x", "470")
+              .attr("y", "110")
+              .attr("width", "105")
+              .attr("height", "105")
+              .style("pointer-events", "none");
 
+
+          // maui
+          g.append("image")
+              .attr("xlink:href", "/img/maui.png")
+              .attr("x", "640")
+              .attr("y", "195")
+              .attr("width", "95")
+              .attr("height", "95")
+              .style("pointer-events", "none");
+          // kauai
+          g.append("image")
+              .attr("xlink:href", "/img/kauai.png")
+              .attr("x", "275")
+              .attr("y", "47")
+              .attr("width", "120")
+              .attr("height", "120")
+              .style("pointer-events", "none");
+          // lanai
+          g.append("image")
+              .attr("xlink:href", "/img/lanai.png")
+              .attr("x", "600")
+              .attr("y", "215")
+              .attr("width", "40")
+              .attr("height", "40")
+              .style("pointer-events", "none");
+          // molokai
+          g.append("image")
+              .attr("xlink:href", "/img/molokai.png")
+              .attr("x", "570")
+              .attr("y", "150")
+              .attr("width", "85")
+              .attr("height", "90")
+              .style("pointer-events", "none");
         });
 
         // on hover the tooltip appears
@@ -2471,7 +2505,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_e0d1e118.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_a5f37a0f.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -2578,7 +2612,7 @@ module.exports = ['$scope', ($scope) => {
         return c.passengers;
       });
 
-      monthArray.unshift('Arrivals');
+      monthArray.unshift('Total Monthly Arrivals');
 
       $scope.donut.load({
         columns : [ monthArray ]
