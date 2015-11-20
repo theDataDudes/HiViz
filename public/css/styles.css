@@ -1689,23 +1689,22 @@ sidebar {
   text-align: center; }
 
 #mapNav {
+  text-align: center;
   bottom: 0;
   position: absolute;
   width: 200px;
-  margin-bottom: 25px;
+  margin-bottom: 75px;
   padding: 0;
   box-sizing: border-box;
   z-index: 2; }
   #mapNav ul {
-    position: absolute;
-    box-sizing: border-box;
-    bottom: 0;
-    margin-left: 25px;
-    list-style-type: none;
+    display: table;
+    margin: auto;
+    padding: 10px;
     z-index: 2; }
     #mapNav ul li {
+      display: inline;
       height: 50px;
-      width: 200px;
       box-sizing: border-box;
       padding: 5px 5px;
       margin: 10px 5px;
@@ -1721,7 +1720,8 @@ sidebar {
         z-index: 2; }
     #mapNav ul img {
       height: 40px;
-      width: 40px; }
+      width: 40px;
+      text-align: center; }
 
 #graphNav {
   width: 800px;

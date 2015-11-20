@@ -22,28 +22,29 @@
 }
 
 #mapNav {
-
+  text-align: center;
   bottom: 0;
   position: absolute;
   width: 200px;
-  margin-bottom: 25px;
+  margin-bottom: 75px;
   padding: 0;
   box-sizing: border-box;
   z-index: 2;
 
   ul {
-
-    position: absolute;
-    box-sizing: border-box;
-    bottom: 0;
-    margin-left: 25px;
-    list-style-type: none;
+    display: table;
+    // position: absolute;
+    // box-sizing: border-box;
+    // bottom: 0;
+    margin: auto;
+    padding: 10px;
+    // list-style-type: none;
     z-index: 2;
 
     li {
-
+      display: inline;
       height: 50px;
-      width: 200px;
+      // width: 200px;
       box-sizing: border-box;
       padding: 5px 5px;
       margin: 10px 5px;
@@ -69,6 +70,7 @@
 
       height: 40px;
       width: 40px;
+      text-align: center;
 
     }
 
