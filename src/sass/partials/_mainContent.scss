@@ -100,6 +100,7 @@
       padding: 0 5px;
       margin: 0 30px;
 
+
       p {
 
         display: inline-block;
@@ -118,6 +119,10 @@
       height: 40px;
       width: 40px;
 
+      &:active {
+        border-bottom: 2px dashed #87CEFA;
+        padding-bottom: 2px;
+      }
     }
 
   }

@@ -1768,6 +1768,9 @@ sidebar {
     #graphNav ul img {
       height: 40px;
       width: 40px; }
+      #graphNav ul img:active {
+        border-bottom: 2px dashed #87CEFA;
+        padding-bottom: 2px; }
 
 .selectedContent {
   border-radius: 10px;
