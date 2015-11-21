@@ -14,6 +14,19 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
     $scope.$emit('iconChanged');
   };
 
+  $scope.$on('crossfilter-updated', function (event, collection, identifier) {
+    $scope.chartLoad($scope.selectedIcon);
+    $scope.safeApply();
+  });
+
+  $scope.$on('iconChanged', function (event, collection, identifier) {
+    $scope.chartLoad($scope.selectedIcon);
+    $scope.safeApply();
+  });
+
+  $timeout(function() {
+    $scope.$emit('crossfilter-updated');
+  }, 800);
 
   // watching ngc since collection is stored on the global variable
   $scope.$watch('$ngc', function(filter) {
@@ -95,19 +108,6 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
 
   });
 
-  $scope.$on('crossfilter-updated', function (event, collection, identifier) {
-    $scope.chartLoad($scope.selectedIcon);
-    $scope.safeApply();
-  });
-
-  $scope.$on('iconChanged', function (event, collection, identifier) {
-    $scope.chartLoad($scope.selectedIcon);
-    $scope.safeApply();
-  });
-
-  $timeout(function() {
-    $scope.$emit('crossfilter-updated');
-  }, 1000);
 // pull island data from objects and assign it to each showGraph
 // formats the data to what we want
 // loop through scope.collection and reference each object (all islands)
