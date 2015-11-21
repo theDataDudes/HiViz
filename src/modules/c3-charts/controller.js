@@ -92,9 +92,10 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
         return current;
        }, {});
       };
+
   });
 
-  $scope.$on('crossfilter/updated', function (event, collection, identifier) {
+  $scope.$on('crossfilter-updated', function (event, collection, identifier) {
     $scope.chartLoad($scope.selectedIcon);
     $scope.safeApply();
   });
@@ -104,6 +105,9 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
     $scope.safeApply();
   });
 
+  $timeout(function() {
+    $scope.$emit('crossfilter-updated');
+  }, 1000);
 // pull island data from objects and assign it to each showGraph
 // formats the data to what we want
 // loop through scope.collection and reference each object (all islands)
@@ -436,4 +440,6 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
       size: { width: 400, height: 150 }
     });
   };
+
 }];
+

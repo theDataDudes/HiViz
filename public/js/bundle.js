@@ -1490,9 +1490,10 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
         return current;
        }, {});
       };
+
   });
 
-  $scope.$on('crossfilter/updated', function (event, collection, identifier) {
+  $scope.$on('crossfilter-updated', function (event, collection, identifier) {
     $scope.chartLoad($scope.selectedIcon);
     $scope.safeApply();
   });
@@ -1502,6 +1503,9 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
     $scope.safeApply();
   });
 
+  $timeout(function() {
+    $scope.$emit('crossfilter-updated');
+  }, 1000);
 // pull island data from objects and assign it to each showGraph
 // formats the data to what we want
 // loop through scope.collection and reference each object (all islands)
@@ -1834,7 +1838,10 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
       size: { width: 400, height: 150 }
     });
   };
+
 }];
+
+
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/c3-charts/controller.js","/c3-charts")
 },{"buffer":2,"rH1JPG":4}],6:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
@@ -1929,6 +1936,8 @@ function controller($scope, apiService, Crossfilter) {
           }
         }
         $scope.$ngc.filterBy('year', $scope.selectedYear);
+        $scope.safeApply();
+        $scope.$broadcast('crossfilter-updated');
       }
     }
   };
@@ -2506,7 +2515,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b7160034.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_38705103.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';

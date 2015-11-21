@@ -44,7 +44,7 @@
   text-align: center; }
 
 .highlighted {
-  background-color: RGBA(0, 184, 243, 0.1); }
+  background-color: RGBA(0, 184, 243, 0.7); }
 
 meta.foundation-version {
   font-family: "/5.5.3/"; }
@@ -1497,7 +1497,7 @@ button::-moz-focus-inner {
   text-align: center; }
 
 .highlighted {
-  background-color: RGBA(0, 184, 243, 0.1); }
+  background-color: RGBA(0, 184, 243, 0.7); }
 
 header {
   font-family: "Maven Pro", sans-serif;
@@ -1536,7 +1536,7 @@ header {
     margin: 49px 50px 0 0;
     box-sizing: border-box; }
     #viewNav ul li {
-      border: 1px solid black;
+      border: 1px solid white;
       border-bottom: none;
       display: inline-block;
       box-sizing: border-box;
@@ -1613,7 +1613,7 @@ header {
   text-align: center; }
 
 .highlighted {
-  background-color: RGBA(0, 184, 243, 0.1); }
+  background-color: RGBA(0, 184, 243, 0.7); }
 
 sidebar {
   height: 100%;
@@ -1678,7 +1678,7 @@ sidebar {
   text-align: center; }
 
 .highlighted {
-  background-color: RGBA(0, 184, 243, 0.1); }
+  background-color: RGBA(0, 184, 243, 0.7); }
 
 #view-container {
   height: 100%; }
@@ -1829,7 +1829,7 @@ sidebar {
   text-align: center; }
 
 .highlighted {
-  background-color: RGBA(0, 184, 243, 0.1); }
+  background-color: RGBA(0, 184, 243, 0.7); }
 
 #graphTitle {
   text-align: center; }
@@ -1917,7 +1917,7 @@ h1 {
   text-align: center; }
 
 .highlighted {
-  background-color: RGBA(0, 184, 243, 0.1); }
+  background-color: RGBA(0, 184, 243, 0.7); }
 
 #pipContainer {
   position: absolute;
@@ -2002,7 +2002,7 @@ h1 {
   text-align: center; }
 
 .highlighted {
-  background-color: RGBA(0, 184, 243, 0.1); }
+  background-color: RGBA(0, 184, 243, 0.7); }
 
 #c3row {
   padding-top: 20px;
@@ -2053,7 +2053,7 @@ h1 {
   text-align: center; }
 
 .highlighted {
-  background-color: RGBA(0, 184, 243, 0.1); }
+  background-color: RGBA(0, 184, 243, 0.7); }
 
 footer {
   height: 10%;
