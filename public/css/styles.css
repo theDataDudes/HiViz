@@ -1696,9 +1696,15 @@ sidebar {
   bottom: 0;
   position: absolute;
   width: 500px;
-  margin-left: 50px;
-  padding: 0;
+  margin-left: 40px;
+  margin-bottom: 34px;
+  padding: 6px;
+  padding-left: 19px;
   box-sizing: border-box;
+  background-color: white;
+  border: solid 1px silver;
+  box-shadow: 0px 3px 5px 1px silver;
+  border-radius: 5px;
   z-index: 2; }
   #mapNav h4 {
     color: #2C2C2C; }
@@ -1711,6 +1717,8 @@ sidebar {
     #mapNav #left-expend li {
       height: 50px;
       box-sizing: border-box;
+      font-family: "Helvetica Neue", sans-serif;
+      font-weight: 200;
       padding: 5px 5px;
       margin: 10px 5px;
       z-index: 2; }
@@ -1735,6 +1743,8 @@ sidebar {
     float: right; }
     #mapNav #right-expend li {
       height: 50px;
+      font-family: "Helvetica Neue", sans-serif;
+      font-weight: 200;
       box-sizing: border-box;
       padding: 5px 5px;
       margin: 10px 5px;
@@ -1766,13 +1776,6 @@ sidebar {
   line-height: 50px; }
 
 #originSelector {
-  -webkit-appearance: button;
-  -webkit-border-radius: 2px;
-  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  -webkit-padding-end: 20px;
-  -webkit-padding-start: 2px;
-  -webkit-user-select: none;
-  background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
   background-position: 97% center;
   background-repeat: no-repeat;
   border: 1px solid #AAA;
@@ -1782,7 +1785,7 @@ sidebar {
   padding: 5px 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 138px; }
+  width: 145px; }
 
 .background {
   fill: none;
@@ -1839,15 +1842,32 @@ h1 {
 
 #regionSelector1 {
   display: inline;
-  width: 100px; }
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  border: 1px solid #AAA;
+  color: #555;
+  font-size: 20px;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 145px; }
 
 #regionSelector2 {
   display: inline;
-  width: 100px; }
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  border: 1px solid #AAA;
+  color: #555;
+  font-size: 20px;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 145px; }
 
 #compareDiv {
-  margin: 0 auto;
-  width: 250px;
+  text-align: center;
   padding-top: 5px; }
 
 #graphNav {
@@ -2005,26 +2025,24 @@ h1 {
   background-color: RGBA(0, 184, 243, 0.7); }
 
 #c3row {
-  padding-top: 20px;
-  padding-left: 5%; }
+  padding-top: 20px; }
 
 .box {
-  width: 455px;
-  height: 190px;
-  padding-left: 5px;
-  margin-bottom: 40px;
-  background-color: #fef9f0;
+  width: 460px;
+  height: 205px;
+  padding: 10px;
+  margin-bottom: 13px;
+  background-color: white;
   border: solid 1px silver;
-  box-shadow: 0px 3px 5px 1px silver;
   border-radius: 5px; }
 
 .boxL {
-  width: 455px;
-  height: 190px;
-  padding-left: 5px;
-  background-color: #fef9f0;
+  width: 460px;
+  height: 205px;
+  padding: 10px;
+  margin-bottom: 13px;
+  background-color: white;
   border: solid 1px silver;
-  box-shadow: 0px 3px 5px 1px silver;
   border-radius: 5px; }
 
 .background {

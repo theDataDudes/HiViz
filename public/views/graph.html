@@ -60,12 +60,8 @@
 		    <option value="japan">Japan</option>
 		    <option value="canada">Canada</option>
 	    </select>
-	    <!--{{ collection[0].region === 'total' ? 'All' : collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1) }} -->
 
 	   vs
-
-	    <!--{{ collection[1].region === 'total' ? 'All' : collection[1].region.charAt(0).toUpperCase() + collection[1].region.slice(1) }}-->
-
 
 	    <select  class="regionSelector" id="regionSelector2"  ng-if="collection[0].year > 2012" ng-init="model.region2 = collection[1].region || 'total'" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some')); $emit('crossfilter-updated');">
 

@@ -15,22 +15,39 @@ h1 {
 
 #regionSelector1 {
 
-  display: inline;
-  width: 100px;
+ display: inline;
+ background-position: 97% center;
+ background-repeat: no-repeat;
+ border: 1px solid #AAA;
+ color: #555;
+ font-size: 20px;
+ overflow: hidden;
+ padding: 5px 10px;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ width: 145px;
 
 }
 
 #regionSelector2 {
 
-  display: inline;
-  width: 100px;
+ display: inline;
+ background-position: 97% center;
+ background-repeat: no-repeat;
+ border: 1px solid #AAA;
+ color: #555;
+ font-size: 20px;
+ overflow: hidden;
+ padding: 5px 10px;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ width: 145px;
 
 }
 
 #compareDiv {
 
-  margin: 0 auto;
-  width:250px;
+  text-align: center;
   padding-top: 5px;
 
 }
@@ -75,19 +92,3 @@ h1 {
   }
 
 }
-
-// animation is used for the graph.html
-// hides the 'compare' selector for regions
-//.animate-checked.ng-enter, .animate-checked.ng-leave {
-//  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-//}
-
-//.animate-checked.ng-enter,
-//.animate-checked.ng-leave.ng-leave-active {
-//  opacity:0;
-//}
-
-//.animate-checked.ng-leave,
-//.animate-checked.ng-enter.ng-enter-active {
-//  opacity:1;
-//}

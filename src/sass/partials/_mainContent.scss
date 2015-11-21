@@ -11,7 +11,6 @@
   height: 100%;
   min-width: 800px;
   position: relative;
-  //background-color: RGBA(0, 184, 243, .1);
 
 }
 
@@ -26,9 +25,15 @@
   bottom: 0;
   position: absolute;
   width: 500px;
-  margin-left: 50px;
-  padding: 0;
+  margin-left: 40px;
+  margin-bottom: 34px;
+  padding: 6px;
+  padding-left: 19px;
   box-sizing: border-box;
+  background-color: white;
+  border: solid 1px silver;
+  box-shadow: 0px 3px 5px 1px silver;
+  border-radius: 5px;
   z-index: 2;
 
   h4 {
@@ -36,10 +41,6 @@
   }
 
   #left-expend {
-    // display: block;
-    // position: absolute;
-    // box-sizing: border-box;
-    // bottom: 0;
     margin: auto;
     float: left;
     padding: 10px;
@@ -47,10 +48,10 @@
     z-index: 2;
 
     li {
-      // display: inline-block;
       height: 50px;
-      // width: 200px;
       box-sizing: border-box;
+      font-family: "Helvetica Neue", sans-serif;
+      font-weight: 200;
       padding: 5px 5px;
       margin: 10px 5px;
       z-index: 2;
@@ -82,10 +83,6 @@
   }
 
     #right-expend {
-    // display: table;
-    // position: absolute;
-    // box-sizing: border-box;
-    // bottom: 0;
     margin: auto;
     padding: 10px;
     list-style-type: none;
@@ -93,9 +90,9 @@
     float: right;
 
     li {
-      // display: inline-block;
       height: 50px;
-      // width: 200px;
+      font-family: "Helvetica Neue", sans-serif;
+      font-weight: 200;
       box-sizing: border-box;
       padding: 5px 5px;
       margin: 10px 5px;
@@ -129,7 +126,6 @@
 
 }
 
-
 .selectedContent {
 
   border-radius: 10px;
@@ -146,13 +142,6 @@
 }
 
 #originSelector {
-     -webkit-appearance: button;
-     -webkit-border-radius: 2px;
-     -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-     -webkit-padding-end: 20px;
-     -webkit-padding-start: 2px;
-     -webkit-user-select: none;
-     background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
      background-position: 97% center;
      background-repeat: no-repeat;
      border: 1px solid #AAA;
@@ -162,5 +151,5 @@
      padding: 5px 10px;
      text-overflow: ellipsis;
      white-space: nowrap;
-     width: 138px;
+     width: 145px;
 }

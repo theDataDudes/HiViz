@@ -35,6 +35,8 @@
 <!-- island map directive -->
 <island-map></island-map>
 
+<div class="mapBox">
+
 <nav id="mapNav">
 
   <!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
@@ -45,7 +47,8 @@
     <ul id="left-expend"> Total Visitors
     <li name="Visitors" class="tooltip"><img src="../assets/plane.svg" alt="transportation">
       <p>{{Math.floor(collection[0].month.TOTAL.passengers).toLocaleString()}}</p></li><!--
-    -->TESTINGINGING<li name="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation">
+    --><li style="text-align : center">  -------------------------  </li><!--
+    --><li name="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation">
       <p>${{Math.floor(collection[0].month.TOTAL.transportation).toLocaleString()}}</p></li><!--
     --><li name="Lodging" class="tooltip"><img src="../assets/bed.svg" alt="lodging">
       <p>${{Math.floor(collection[0].month.TOTAL.lodging).toLocaleString()}}</p></li><!--
@@ -60,7 +63,8 @@ Total Visitor Spending by Category
     <ul id="right-expend"> Total Visitor Spending
     <li name="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending">
       <p>${{Math.floor(collection[0].month.TOTAL.total).toLocaleString()}}</p></li><!--
-    -->TESTINGINGING<li name="Shopping" class="tooltip"><img src="../assets/creditcard.svg" alt="shopping">
+    --><li style="text-align : center">  -------------------------  </li><!--
+    --><li name="Shopping" class="tooltip"><img src="../assets/creditcard.svg" alt="shopping">
       <p>${{Math.floor(collection[0].month.TOTAL.shopping).toLocaleString()}}</p></li><!--
     --><li name="Food" class="tooltip"><img src="../assets/utensil.svg" alt="food">
       <p>${{Math.floor(collection[0].month.TOTAL.food).toLocaleString()}}</p></li><!--
@@ -69,6 +73,8 @@ Total Visitor Spending by Category
     </ul>
 
 </nav>
+
+</div>
 
 </section>
 

@@ -5,27 +5,28 @@
 #c3row {
 
   padding-top: 20px;
-  padding-left: 5%;
+  // padding-left: 5%;
 
 }
 
 .box {
-  width: 455px;
-  height: 190px;
-  padding-left: 5px;
-  margin-bottom: 40px;
-  background-color: $lightSand;
+  width: 460px;
+  height: 205px;
+  padding: 10px;
+  margin-bottom: 13px;
+  background-color: white;
   border: solid 1px silver;
-  box-shadow: 0px 3px 5px 1px silver;
+  // box-shadow: 0px 3px 5px 1px silver;
   border-radius: 5px;
 }
 
 .boxL {
-  width: 455px;
-  height: 190px;
-  padding-left: 5px;
-  background-color: $lightSand;
+  width: 460px;
+  height: 205px;
+  padding: 10px;
+  margin-bottom: 13px;
+  background-color: white;
   border: solid 1px silver;
-  box-shadow: 0px 3px 5px 1px silver;
+  // box-shadow: 0px 3px 5px 1px silver;
   border-radius: 5px;
 }
