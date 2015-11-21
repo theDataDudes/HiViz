@@ -1,5 +1,5 @@
 'use strict';
-module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
+module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossfilter) => {
   // set 'this' to global scope variable self
   var self = this;
 

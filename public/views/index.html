@@ -31,7 +31,7 @@
 
         <ul>
           <li ng-class="{ 'highlighted' : main.IsVisible}" ><a ng-href="/#/" ng-click="main.showHide()" name="Map View" class="viewNavTooltip"><img src="../assets/earth.svg" alt="map" ></a></li><!--
-          --><li ng-class="{ 'highlighted' : !main.IsVisible}" ><a href="/#/graph" ng-click="main.showHide()" name="Chart View" class="viewNavTooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
+          --><li ng-class="{ 'highlighted' : !main.IsVisible}" ><a href="/#/graph" ng-click="main.showHide(); hideToolTip();" name="Chart View" class="viewNavTooltip"><img src="../assets/chart.svg" alt="chart" ></a></li>
         </ul>
 
       </nav>
