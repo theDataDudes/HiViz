@@ -4,7 +4,7 @@
 
 		<h1 ng-if="!compareChecked">
 
-			<select class="regionSelector" id="regionSelector1" ng-if="collection[0].year > 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', model.region1)">
+			<select class="regionSelector" id="regionSelector1" ng-if="collection[0].year > 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', model.region1); $emit('crossfilter-updated');">
 				<option value="total" selected="selected">Total</option>
 				<option value="usWest">US West</option>
 				<option value="usEast">US East</option>
@@ -18,7 +18,7 @@
 				<option value="korea">Korea</option>
 			</select>
 
-			<select class="regionSelector" id="regionSelector1" ng-if="collection[0].year <= 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', model.region1)">
+			<select class="regionSelector" id="regionSelector1" ng-if="collection[0].year <= 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', model.region1); $emit('crossfilter-updated');">
 				<option value="total" selected="selected">Total</option>
 				<option value="usWest">US West</option>
 				<option value="usEast">US East</option>
@@ -32,7 +32,7 @@
 
     <h1 ng-if="compareChecked">
 
-	    <select class="regionSelector" id="regionSelector1" ng-if="collection[0].year > 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+	    <select class="regionSelector" id="regionSelector1" ng-if="collection[0].year > 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some')); $emit('crossfilter-updated');">
 		    <option value="total" selected="selected">Total</option>
 		    <option value="usWest">US West</option>
 		    <option value="usEast">US East</option>
@@ -46,7 +46,7 @@
 		    <option value="korea">Korea</option>
 	    </select>
 
-	    <select class="regionSelector" id="regionSelector1" ng-if="collection[0].year <= 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+	    <select class="regionSelector" id="regionSelector1" ng-if="collection[0].year <= 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some')); $emit('crossfilter-updated');">
 		    <option value="total" selected="selected">Total</option>
 		    <option value="usWest">US West</option>
 		    <option value="usEast">US East</option>
@@ -60,7 +60,7 @@
 
 	    <!--{{ collection[1].region === 'total' ? 'All' : collection[1].region.charAt(0).toUpperCase() + collection[1].region.slice(1) }}-->
 
-	    <select  class="regionSelector" id="regionSelector2"  ng-if="collection[0].year > 2012" ng-init="model.region2 = collection[1].region || 'total'" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+	    <select  class="regionSelector" id="regionSelector2"  ng-if="collection[0].year > 2012" ng-init="model.region2 = collection[1].region || 'total'" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some')); $emit('crossfilter-updated');">
 		    <option value="total" selected="selected">Total</option>
 		    <option value="usWest">US West</option>
 		    <option value="usEast">US East</option>
@@ -74,7 +74,7 @@
 		    <option value="korea">Korea</option>
 	    </select>
 
-      <select class="regionSelector" id="regionSelector2" ng-if="collection[0].year <= 2012" ng-init="model.region2 = collection[1].region || 'total'" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+      <select class="regionSelector" id="regionSelector2" ng-if="collection[0].year <= 2012" ng-init="model.region2 = collection[1].region || 'total'" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some')); $emit('crossfilter-updated');">
         <option value="total" selected="selected">Total</option>
         <option value="usWest">US West</option>
         <option value="usEast">US East</option>
@@ -89,7 +89,7 @@
 	<div id="compareDiv">
 
 		<span>Compare Regions: </span>
-		<input type='checkbox' ng-model='compareChecked' ng-change="$ngc.filterBy('region', model.region1); model.region2=null" id='compareCheckBox'/>
+		<input type='checkbox' ng-model='compareChecked' ng-change="$emit('crossfilter-updated'); model.region2=null;" id='compareCheckBox'/>
 
 	</div>
 

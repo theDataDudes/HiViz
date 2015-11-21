@@ -14,6 +14,19 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
     $scope.$emit('iconChanged');
   };
 
+  $scope.$on('crossfilter-updated', function (event, collection, identifier) {
+    $scope.chartLoad($scope.selectedIcon);
+    $scope.safeApply();
+  });
+
+  $scope.$on('iconChanged', function (event, collection, identifier) {
+    $scope.chartLoad($scope.selectedIcon);
+    $scope.safeApply();
+  });
+
+  $timeout(function() {
+    $scope.$emit('crossfilter-updated');
+  }, 800);
 
   // watching ngc since collection is stored on the global variable
   $scope.$watch('$ngc', function(filter) {
@@ -92,16 +105,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
         return current;
        }, {});
       };
-  });
 
-  $scope.$on('crossfilter/updated', function (event, collection, identifier) {
-    $scope.chartLoad($scope.selectedIcon);
-    $scope.safeApply();
-  });
-
-  $scope.$on('iconChanged', function (event, collection, identifier) {
-    $scope.chartLoad($scope.selectedIcon);
-    $scope.safeApply();
   });
 
 // pull island data from objects and assign it to each showGraph
@@ -436,4 +440,6 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
       size: { width: 400, height: 150 }
     });
   };
+
 }];
+

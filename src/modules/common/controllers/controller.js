@@ -69,6 +69,8 @@ function controller($scope, apiService, Crossfilter) {
           }
         }
         $scope.$ngc.filterBy('year', $scope.selectedYear);
+        $scope.safeApply();
+        $scope.$broadcast('crossfilter-updated');
       }
     }
   };
