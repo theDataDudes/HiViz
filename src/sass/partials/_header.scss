@@ -49,7 +49,7 @@ header {
   ul {
 
     list-style-type: none;
-    position: absolution;
+    position: absolute;
     right: 0;
     z-index: 2;
     margin: 49px 50px 0 0;
@@ -58,7 +58,7 @@ header {
     li {
 
       border: 1px solid black;
-      border-bottom:: none;
+      border-bottom: none;
       display: inline-block;
       box-sizing: border-box;
       padding: 10px 20px;
