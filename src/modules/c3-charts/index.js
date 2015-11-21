@@ -9,7 +9,6 @@ module.exports = angular.module('app.c3-charts',[])
         scope.$watch('$ngc', function(filter) {
           if(!filter) return;
           filter.unfilterBy('island');
-          filter.filterBy('region', 'total');
           filter.sortBy('island');
         });
       }
