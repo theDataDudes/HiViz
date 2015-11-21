@@ -36,10 +36,6 @@
   }
 
   #left-expend {
-    // display: block;
-    // position: absolute;
-    // box-sizing: border-box;
-    // bottom: 0;
     margin: auto;
     float: left;
     padding: 10px;
@@ -47,9 +43,7 @@
     z-index: 2;
 
     li {
-      // display: inline-block;
       height: 50px;
-      // width: 200px;
       box-sizing: border-box;
       padding: 5px 5px;
       margin: 10px 5px;
@@ -82,10 +76,6 @@
   }
 
     #right-expend {
-    // display: table;
-    // position: absolute;
-    // box-sizing: border-box;
-    // bottom: 0;
     margin: auto;
     padding: 10px;
     list-style-type: none;
@@ -93,9 +83,7 @@
     float: right;
 
     li {
-      // display: inline-block;
       height: 50px;
-      // width: 200px;
       box-sizing: border-box;
       padding: 5px 5px;
       margin: 10px 5px;

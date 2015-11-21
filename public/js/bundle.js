@@ -1579,7 +1579,6 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
                     return format(yAxis);
                   }
                   yAxis = Math.ceil(d);
-                  // var newY = Math.round(y);
                   format = d3.format('$,');
                   return format(yAxis);
                 }
@@ -1762,7 +1761,6 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
                     return format(yAxis);
                   }
                   yAxis = Math.ceil(d);
-                  // var newY = Math.round(y);
                   format = d3.format('$,');
                   return format(yAxis);
                 }
@@ -1808,7 +1806,6 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
                     return format(yAxis);
                   }
                   yAxis = Math.ceil(d);
-                  // var newY = Math.round(y);
                   format = d3.format('$,');
                   return format(yAxis);
                 }
@@ -1957,76 +1954,11 @@ module.exports = angular.module('app.common.controllers', [])
 
 module.exports = angular.module('app.common.directives', ['ngCrossfilter',
   require('./sidebarNumbers').name])
-  .directive('islandMap', require('./islandMap'))
-  .directive('islandBarChart', require('./islandBarChart'))
+  .directive('islandMap', require('./islandMap'));
 
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/index.js","/common/directives")
-},{"./islandBarChart":10,"./islandMap":11,"./sidebarNumbers":14,"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-//directive for d3 island map
-module.exports = [function () {
-  return {
-    restrict : 'E',
-    templateUrl : 'views/barChart.html',
-    scope : true,
-    link : function (scope, element, attrs) {
-
-      //Width and height
-      var w = 500;
-      var h = 800;
-
-      //Create SVG element
-      var svg = d3.select('#pipContainer')
-                  .append('svg')
-                  .attr('id', 'barChart')
-                  .attr('width', w)
-                  .attr('height', h);
-
-      //watching for the data to resolve
-      scope.$watch('collection', function (barData) {
-
-        if (!barData) {
-          return;
-        }
-
-        //add data and attributes
-        var bars = svg.selectAll('rect')
-            .data(barData);
-
-        bars.enter()
-        .append('rect');
-
-        //setting single bar attributes
-        bars.attr('id', 'barRect')
-         .attr('fill', 'teal')
-         .attr('x', function(d, i) {
-          return i * (w / barData.length);
-        })
-         .attr('y', h - 1)
-         .attr('width', 40)
-         .attr('height', h);
-
-        //init transition that occurs on page load
-        bars.transition()
-          .duration(1000)
-          .delay(100)
-          .attr('y', function (d) {
-            return h - Math.floor((d.month.TOTAL.passengers / 5000));  //Height minus data value
-          })
-           .attr('height', function (d) {
-            return Math.floor(d.month.TOTAL.passengers / 5000);
-          })
-
-      });
-
-      //testing directive code
-      console.log('i made it !');
-    }
-  }
-}];
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/islandBarChart.js","/common/directives")
-},{"buffer":2,"rH1JPG":4}],11:[function(require,module,exports){
+},{"./islandMap":10,"./sidebarNumbers":13,"buffer":2,"rH1JPG":4}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 //directive for d3 island map
 module.exports = [function () {
@@ -2230,7 +2162,7 @@ module.exports = [function () {
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/islandMap.js","/common/directives")
-},{"buffer":2,"rH1JPG":4}],12:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 //directive for displaying entertainment expenditure numbers in the sidebar
 'use strict';
@@ -2259,7 +2191,7 @@ module.exports = [function () {
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/entertainment.js","/common/directives/sidebarNumbers")
-},{"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 //directive for displaying food expenditure numbers in the sidebar
 'use strict';
@@ -2288,7 +2220,7 @@ module.exports = [function () {
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/food.js","/common/directives/sidebarNumbers")
-},{"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],13:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -2301,7 +2233,7 @@ module.exports = angular.module('app.common.directives.sidebarNumbers', ['ngCros
   .directive('odoEntertainment', require('./entertainment'))
   .directive('odoOther', require('./other'));
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/index.js","/common/directives/sidebarNumbers")
-},{"./entertainment":12,"./food":13,"./lodging":15,"./other":16,"./shopping":17,"./total":18,"./transportation":19,"buffer":2,"rH1JPG":4}],15:[function(require,module,exports){
+},{"./entertainment":11,"./food":12,"./lodging":14,"./other":15,"./shopping":16,"./total":17,"./transportation":18,"buffer":2,"rH1JPG":4}],14:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 //directive for displaying lodging expenditure numbers in the sidebar
 'use strict';
@@ -2330,7 +2262,7 @@ module.exports = [function () {
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/lodging.js","/common/directives/sidebarNumbers")
-},{"buffer":2,"rH1JPG":4}],16:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],15:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 //directive for displaying other expenditure numbers in the sidebar
 'use strict';
@@ -2359,7 +2291,7 @@ module.exports = [function () {
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/other.js","/common/directives/sidebarNumbers")
-},{"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],16:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 //directive for displaying shopping expenditure numbers in the sidebar
 'use strict';
@@ -2388,7 +2320,7 @@ module.exports = [function () {
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/shopping.js","/common/directives/sidebarNumbers")
-},{"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 //directive for displaying total expenditure numbers in the sidebar
 'use strict';
@@ -2417,7 +2349,7 @@ module.exports = [function () {
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/total.js","/common/directives/sidebarNumbers")
-},{"buffer":2,"rH1JPG":4}],19:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],18:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 //directive for displaying transportation expenditure numbers in the sidebar
 'use strict';
@@ -2446,7 +2378,7 @@ module.exports = [function () {
   }
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/directives/sidebarNumbers/transportation.js","/common/directives/sidebarNumbers")
-},{"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],19:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -2456,7 +2388,7 @@ module.exports = angular.module('app.common', [
 	require('./controllers').name
 ]);
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/index.js","/common")
-},{"./controllers":8,"./directives":9,"./services":22,"buffer":2,"rH1JPG":4}],21:[function(require,module,exports){
+},{"./controllers":8,"./directives":9,"./services":21,"buffer":2,"rH1JPG":4}],20:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -2482,26 +2414,13 @@ module.exports = ['$http', function apiService ($http) {
   };
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/apiService.js","/common/services")
-},{"buffer":2,"rH1JPG":4}],22:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],21:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.common.services', [])
-.service('apiService', require('./apiService'))
-.service('relationalService', require('./relationalService'));
+.service('apiService', require('./apiService'));
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/index.js","/common/services")
-},{"./apiService":21,"./relationalService":23,"buffer":2,"rH1JPG":4}],23:[function(require,module,exports){
-(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-'use strict';
-
-module.exports = ['apiService', function relationalService (apiService) {
-
-  this.stitch = (passengers, expenditures, stay) => {
-
-  };
-
-}];
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/relationalService.js","/common/services")
-},{"buffer":2,"rH1JPG":4}],24:[function(require,module,exports){
+},{"./apiService":20,"buffer":2,"rH1JPG":4}],22:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 angular.module('app', [
     'ui.router',
@@ -2516,8 +2435,8 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_be651d8.js","/")
-},{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_e0ec3628.js","/")
+},{"./c3-charts":6,"./common":19,"./main":23,"./sideCharts":25,"./sidebar":26,"buffer":2,"rH1JPG":4}],23:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -2549,7 +2468,7 @@ module.exports = angular.module('app.main', [])
     $urlRouterProvider.otherwise('/');
   });
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/main/index.js","/main")
-},{"buffer":2,"rH1JPG":4}],26:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],24:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = ['$scope', ($scope) => {
@@ -2636,7 +2555,7 @@ module.exports = ['$scope', ($scope) => {
   });
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/controller.js","/sideCharts")
-},{"buffer":2,"rH1JPG":4}],27:[function(require,module,exports){
+},{"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.sideCharts',[])
@@ -2658,7 +2577,7 @@ module.exports = angular.module('app.sideCharts',[])
   .controller('DonutController', require('./controller'));
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/index.js","/sideCharts")
-},{"./controller":26,"buffer":2,"rH1JPG":4}],28:[function(require,module,exports){
+},{"./controller":24,"buffer":2,"rH1JPG":4}],26:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 module.exports = angular.module('app.sidebar', [])
@@ -2672,4 +2591,4 @@ module.exports = angular.module('app.sidebar', [])
 
 
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sidebar/index.js","/sidebar")
-},{"buffer":2,"rH1JPG":4}]},{},[24])
+},{"buffer":2,"rH1JPG":4}]},{},[22])
