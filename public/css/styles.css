@@ -1527,7 +1527,7 @@ header {
   height: 100%; }
   #viewNav ul {
     list-style-type: none;
-    position: fixed;
+    position: absolution;
     right: 0;
     z-index: 2;
     margin: 49px 50px 0 0;
