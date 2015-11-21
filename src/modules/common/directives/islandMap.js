@@ -160,6 +160,9 @@ module.exports = [function () {
             k = 1.5;
             centered = d;
             mapTip.show(d);
+            setTimeout(function () {
+              mapTip.hide();
+            }, 7000);
 
           //if no islands are selected
           } else {
