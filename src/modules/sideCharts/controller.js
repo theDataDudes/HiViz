@@ -1,5 +1,5 @@
 'use strict';
-module.exports = ['$scope', ($scope) => {
+module.exports = ['$scope', '$timeout', ($scope, $timeout) => {
   $scope.donut = null;
 
   var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
@@ -36,18 +36,19 @@ module.exports = ['$scope', ($scope) => {
     });
   };
 
+  $scope.$on('crossfilter-updated', function() {
+    $timeout(function(){
+      $scope.donutLoad();
+      $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
+      }, 800);
+  });
+
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
     $scope.donutLoad();
     $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
     $scope.safeApply();
   });
 
-  $scope.$watch('selectedMonth', function (selectedMonth) {
-    if (!$scope.$ngc) return;
-    $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
-    $scope.donutLoad();
-    $scope.safeApply();
-  });
 
   $scope.$watch('$ngc', function () {
     $scope.donutLoad = function () {
@@ -80,5 +81,11 @@ module.exports = ['$scope', ($scope) => {
         columns : [ monthArray ]
       });
     };
+    $scope.$watch('selectedMonth', function (selectedMonth) {
+      if (!$scope.$ngc) return;
+      $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
+      $scope.donutLoad();
+      $scope.safeApply();
+    });
   });
 }];

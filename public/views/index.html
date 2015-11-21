@@ -27,7 +27,7 @@
       <nav id="viewNav" class="small-2 columns">
 
         <ul>
-          <li ng-class="{ 'highlighted' : main.IsVisible}" ><a ng-href="/#/" ng-click="main.showHide()" name="Map View" class="viewNavTooltip"><img src="../assets/white-earth.svg" alt="map" ></a></li><!--
+          <li ng-class="{ 'highlighted' : main.IsVisible}" ><a ng-href="/#/" ng-click="main.showHide(); $broadcast('crossfilter-updated');" name="Map View" class="viewNavTooltip"><img src="../assets/white-earth.svg" alt="map" ></a></li><!--
           --><li ng-class="{ 'highlighted' : !main.IsVisible}" ><a href="/#/graph" ng-click="main.showHide(); hideThis();" name="Chart View" class="viewNavTooltip"><img src="../assets/white-chart.svg" alt="chart" ></a></li>
         </ul>
 
