@@ -11,11 +11,13 @@
 
 #islands {
   fill: #aaa;
+  fill-opacity: .1;
 }
 
 #islands .active {
   transition: fill 1s;
-  fill: #aaa;
+  fill: #bbb;
+  fill-opacity: 1;
 }
 
 #island-borders {

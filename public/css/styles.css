@@ -1691,27 +1691,25 @@ sidebar {
 #mapNav {
   bottom: 0;
   position: absolute;
-  width: 200px;
-  margin-bottom: 25px;
+  width: 500px;
+  margin-left: 50px;
   padding: 0;
   box-sizing: border-box;
   z-index: 2; }
-  #mapNav ul {
-    position: absolute;
-    box-sizing: border-box;
-    bottom: 0;
-    margin-left: 25px;
+  #mapNav #left-expend {
+    margin: auto;
+    float: left;
+    padding: 10px;
     list-style-type: none;
     z-index: 2; }
-    #mapNav ul li {
+    #mapNav #left-expend li {
       height: 50px;
-      width: 200px;
       box-sizing: border-box;
       padding: 5px 5px;
       margin: 10px 5px;
       z-index: 2; }
-      #mapNav ul li p {
-        display: inline;
+      #mapNav #left-expend li p {
+        display: inline-block;
         font-size: 16px;
         width: 150px;
         height: 15px;
@@ -1719,9 +1717,35 @@ sidebar {
         vertical-align: middle;
         padding: 0 0 0 5px;
         z-index: 2; }
-    #mapNav ul img {
+    #mapNav #left-expend img {
       height: 40px;
-      width: 40px; }
+      width: 40px;
+      text-align: center; }
+  #mapNav #right-expend {
+    margin: auto;
+    padding: 10px;
+    list-style-type: none;
+    z-index: 2;
+    float: right; }
+    #mapNav #right-expend li {
+      height: 50px;
+      box-sizing: border-box;
+      padding: 5px 5px;
+      margin: 10px 5px;
+      z-index: 2; }
+      #mapNav #right-expend li p {
+        display: inline-block;
+        font-size: 16px;
+        width: 150px;
+        height: 15px;
+        box-sizing: border-box;
+        vertical-align: middle;
+        padding: 0 0 0 5px;
+        z-index: 2; }
+    #mapNav #right-expend img {
+      height: 40px;
+      width: 40px;
+      text-align: center; }
 
 .selectedContent {
   border-radius: 10px;
@@ -1900,11 +1924,13 @@ h1 {
   z-index: 2; }
 
 #islands {
-  fill: #aaa; }
+  fill: #aaa;
+  fill-opacity: .1; }
 
 #islands .active {
   transition: fill 1s;
-  fill: #aaa; }
+  fill: #bbb;
+  fill-opacity: 1; }
 
 #island-borders {
   fill: none;

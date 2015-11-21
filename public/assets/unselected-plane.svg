@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<svg width="510" height="510" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g fill="white" id="svg_1">
+   <g id="flights">
+    <path fill="#cccccc" id="svg_2" d="m510,255c0,-20.399994 -17.850006,-38.25 -38.25,-38.25l-140.25,0l-127.5,-204l-51,0l63.75,204l-140.25,0l-38.25,-51l-38.25,0l25.5,89.25l-25.5,89.25l38.25,0l38.25,-51l140.25,0l-63.75,204l51,0l127.5,-204l140.25,0c20.399994,0 38.25,-17.850006 38.25,-38.25z"/>
+   </g>
+  </g>
+  <g id="svg_3"/>
+  <g id="svg_4"/>
+  <g id="svg_5"/>
+  <g id="svg_6"/>
+  <g id="svg_7"/>
+  <g id="svg_8"/>
+  <g id="svg_9"/>
+  <g id="svg_10"/>
+  <g id="svg_11"/>
+  <g id="svg_12"/>
+  <g id="svg_13"/>
+  <g id="svg_14"/>
+  <g id="svg_15"/>
+  <g id="svg_16"/>
+  <g id="svg_17"/>
+ </g>
+</svg>
