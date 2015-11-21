@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = angular.module('app.main', [])
-.config( ($stateProvider, $urlRouterProvider) => {
+.config( ($stateProvider, $urlRouterProvider, $locationProvider) => {
   // for unmatched urls redirect to default view
 
     $stateProvider
@@ -20,6 +20,10 @@ module.exports = angular.module('app.main', [])
         templateUrl : 'views/about.html'
       });
 
+    $locationProvider.html5Mode({
+      enabled : true,
+      requireBase : false
+    });
 
     $urlRouterProvider.otherwise('/');
   });

@@ -12,8 +12,11 @@
     { method : 'GET', path : '/hawaiivisitors', config : Controller.getHawaiiVisitors },
     // serves index for angular
     { method : 'GET', path : '/', config : Controller.getIndex },
+    { method : 'GET', path : '/graph', config : Controller.getIndex },
+    { method : 'GET', path : '/about', config : Controller.getIndex },
 
     { method : 'GET', path : '/{param*}', config : Controller.getStatic }
+
   ];
 
 })();
