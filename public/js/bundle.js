@@ -2097,7 +2097,7 @@ module.exports = [function () {
               .attr('id', 'island-borders')
               .attr('d', path);
 
-          // big island
+          //big island
           g.append("image")
               .attr("xlink:href", "/img/big-island.png")
               .attr("x", "695")
@@ -2114,6 +2114,7 @@ module.exports = [function () {
               .attr("width", "105")
               .attr("height", "105")
               .style("pointer-events", "none");
+
 
           // maui
           g.append("image")
@@ -2503,11 +2504,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-<<<<<<< HEAD
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_3eca0877.js","/")
-=======
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_779ce190.js","/")
->>>>>>> 3eba2452bd0abcd9bbb5d54755cae9bb499a0a0c
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_34b50bb8.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';

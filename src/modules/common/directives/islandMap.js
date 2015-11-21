@@ -76,7 +76,7 @@ module.exports = [function () {
               .attr('id', 'island-borders')
               .attr('d', path);
 
-          // big island
+          //big island
           g.append("image")
               .attr("xlink:href", "/img/big-island.png")
               .attr("x", "695")
@@ -93,6 +93,7 @@ module.exports = [function () {
               .attr("width", "105")
               .attr("height", "105")
               .style("pointer-events", "none");
+
 
           // maui
           g.append("image")
