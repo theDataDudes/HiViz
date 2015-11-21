@@ -181,7 +181,6 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
                     return format(yAxis);
                   }
                   yAxis = Math.ceil(d);
-                  // var newY = Math.round(y);
                   format = d3.format('$,');
                   return format(yAxis);
                 }
@@ -364,7 +363,6 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
                     return format(yAxis);
                   }
                   yAxis = Math.ceil(d);
-                  // var newY = Math.round(y);
                   format = d3.format('$,');
                   return format(yAxis);
                 }
@@ -410,7 +408,6 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
                     return format(yAxis);
                   }
                   yAxis = Math.ceil(d);
-                  // var newY = Math.round(y);
                   format = d3.format('$,');
                   return format(yAxis);
                 }
