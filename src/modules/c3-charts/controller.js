@@ -433,7 +433,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 800, height: 300 }
+      size: { width: 400, height: 150 }
     });
   };
 }];

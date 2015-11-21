@@ -7,7 +7,7 @@
      <h2 id="mapTitle">Visitors coming from
 
       <select id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region = collection[0].region || 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
-          <option value="total" selected="selected">Total</option>
+          <option value="total" selected="selected">All Regions</option>
           <option value="usWest">US West</option>
           <option value="usEast">US East</option>
           <option value="japan">Japan</option>
@@ -21,7 +21,7 @@
         </select>
 
       <select id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region = collection[0].region || 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
-        <option value="total" selected="selected">Total</option>
+        <option value="total" selected="selected">All Regions</option>
         <option value="usWest">US West</option>
         <option value="usEast">US East</option>
         <option value="japan">Japan</option>
@@ -40,15 +40,22 @@
   <!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
 
 <!--begin expenditure icons-->
-  <ul>
 	  <h4 id="binded-impact">Total annual impact from {{collection[0].region === 'total' ? 'All' : collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1)}} visitors to {{collection[0].island === 'total' ? 'Hawaii' : collection[0].island.charAt(0).toUpperCase() + collection[0].island.slice(1)}} in {{collection[0].year}} :</h4><!--
-	  --><li name="Visitors" class="tooltip"><img src="../assets/plane.svg" alt="Visitors">
+	  -->
+    <ul id="left-expend">
+    <li name="Visitors" class="tooltip"><img src="../assets/plane.svg" alt="Visitors">
       <p>{{Math.floor(collection[0].month.TOTAL.passengers).toLocaleString()}}</p></li><!--
     --><li name="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending">
       <p>${{Math.floor(collection[0].month.TOTAL.total).toLocaleString()}}</p></li><!--
     --><li name="Lodging" class="tooltip"><img src="../assets/bed.svg" alt="lodging">
       <p>${{Math.floor(collection[0].month.TOTAL.lodging).toLocaleString()}}</p></li><!--
-    --><li name="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation">
+    --><li name="Other" class="tooltip"><img src="../assets/bag.svg" alt="lodging">
+      <p>${{Math.floor(collection[0].month.TOTAL.other).toLocaleString()}}</p></li><!--
+    -->
+    </ul><!--
+    -->
+    <ul id="right-expend">
+    <li name="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation">
       <p>${{Math.floor(collection[0].month.TOTAL.transportation).toLocaleString()}}</p></li><!--
     --><li name="Shopping" class="tooltip"><img src="../assets/creditcard.svg" alt="shopping">
       <p>${{Math.floor(collection[0].month.TOTAL.shopping).toLocaleString()}}</p></li><!--
@@ -56,7 +63,7 @@
       <p>${{Math.floor(collection[0].month.TOTAL.food).toLocaleString()}}</p></li><!--
     --><li name="Entertainment" class="tooltip"><img src="../assets/tickets.svg" alt="entertainment">
       <p>${{Math.floor(collection[0].month.TOTAL.entertainment).toLocaleString()}}</p></li>
-  </ul>
+    </ul>
 
 </nav>
 
