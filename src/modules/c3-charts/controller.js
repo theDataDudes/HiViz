@@ -160,7 +160,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 },
+      size: { width: 410, height: 175 },
     });
     // ================= Big Island Chart =================== //
     $scope.bigIslandChart = c3.generate({
@@ -205,7 +205,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 },
+      size: { width: 410, height: 175 },
     });
     // ================= Kauai Chart =================== //
     $scope.kauaiChart = c3.generate({
@@ -250,7 +250,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 },
+      size: { width: 410, height: 175 },
     });
 
     // ================= Maui Chart =================== //
@@ -296,7 +296,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 },
+      size: { width: 410, height: 175 },
     });
 
     // ================= Lanai Chart =================== //
@@ -342,7 +342,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 },
+      size: { width: 410, height: 175 },
     });
 
     // ================= Molokai Chart =================== //
@@ -388,7 +388,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 },
+      size: { width: 410, height: 175 },
     });
 
     // ================= Total Chart =================== //
@@ -434,7 +434,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 }
+      size: { width: 410, height: 175 }
     });
   };
 }];

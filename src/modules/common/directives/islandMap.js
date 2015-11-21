@@ -155,9 +155,9 @@ module.exports = [function () {
           if (d && centered !== d) {
             islandFilter.filterBy('island', d.name);
             var centroid = path.centroid(d);
-            x = centroid[0];
-            y = centroid[1];
-            k = 1.5;
+            x = centroid[0] - 25;
+            y = centroid[1] + 75;
+            k = 2;
             centered = d;
             mapTip.show(d);
             setTimeout(function () {
@@ -167,8 +167,8 @@ module.exports = [function () {
           //if no islands are selected
           } else {
             islandFilter.filterBy('island', 'total');
-            x = width / 2.2;
-            y = height / 2.3;
+            x = width / 2;
+            y = height / 2;
             k = 1;
             centered = null;
             mapTip.hide(d);

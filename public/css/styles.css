@@ -1505,9 +1505,11 @@ header {
   min-height: 100px;
   width: 100%;
   min-width: 480px;
-  background-color: RGBA(238, 238, 238, 0.7);
-  border-bottom: 1px solid gray; }
+  background-color: #2C2C2C;
+  border-bottom: 1px solid gray;
+  color: #FFFFFF; }
   header h1 {
+    color: #FFFFFF;
     font-size: 40px;
     width: 80%;
     padding: 5px 0 0 0; }
@@ -1515,6 +1517,7 @@ header {
       header h1 {
         font-size: 24px; } }
   header h5 {
+    color: #FFFFFF;
     font-size: 14px;
     width: 80%;
     padding: 0 0 0 0; }
@@ -1527,7 +1530,7 @@ header {
   height: 100%; }
   #viewNav ul {
     list-style-type: none;
-    position: absolution;
+    position: absolute;
     right: 0;
     z-index: 2;
     margin: 49px 50px 0 0;
@@ -1686,7 +1689,8 @@ sidebar {
   position: relative; }
 
 #mapTitle {
-  text-align: center; }
+  text-align: center;
+  color: #1D1313; }
 
 #mapNav {
   bottom: 0;
@@ -1696,6 +1700,8 @@ sidebar {
   padding: 0;
   box-sizing: border-box;
   z-index: 2; }
+  #mapNav h4 {
+    color: #2C2C2C; }
   #mapNav #left-expend {
     margin: auto;
     float: left;
@@ -2002,6 +2008,25 @@ h1 {
   padding-top: 20px;
   padding-left: 5%; }
 
+.box {
+  width: 420px;
+  height: 190px;
+  padding-left: 5px;
+  margin-bottom: 40px;
+  background-color: #fef9f0;
+  border: solid 1px silver;
+  box-shadow: 0px 3px 5px 1px silver;
+  border-radius: 5px; }
+
+.boxL {
+  width: 420px;
+  height: 190px;
+  padding-left: 5px;
+  background-color: #fef9f0;
+  border: solid 1px silver;
+  box-shadow: 0px 3px 5px 1px silver;
+  border-radius: 5px; }
+
 .background {
   fill: none;
   pointer-events: all; }
@@ -2051,7 +2076,7 @@ h1 {
 
 footer {
   height: 10%;
-  background-color: RGBA(238, 238, 238, 0.7);
+  background-color: #2C2C2C;
   min-height: 75px;
   border-top: 1px solid gray; }
   footer #timeline {
@@ -2081,7 +2106,7 @@ body {
   height: 100%;
   width: 100%;
   position: absolute;
-  background-color: #fff;
+  background-color: rgba(43, 135, 158, 0.15);
   font-family: "Maven Pro", sans-serif; }
 
 #mainViewContainer {

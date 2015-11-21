@@ -1558,7 +1558,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 },
+      size: { width: 410, height: 175 },
     });
     // ================= Big Island Chart =================== //
     $scope.bigIslandChart = c3.generate({
@@ -1603,7 +1603,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 },
+      size: { width: 410, height: 175 },
     });
     // ================= Kauai Chart =================== //
     $scope.kauaiChart = c3.generate({
@@ -1648,7 +1648,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 },
+      size: { width: 410, height: 175 },
     });
 
     // ================= Maui Chart =================== //
@@ -1694,7 +1694,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 },
+      size: { width: 410, height: 175 },
     });
 
     // ================= Lanai Chart =================== //
@@ -1740,7 +1740,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 },
+      size: { width: 410, height: 175 },
     });
 
     // ================= Molokai Chart =================== //
@@ -1786,7 +1786,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 },
+      size: { width: 410, height: 175 },
     });
 
     // ================= Total Chart =================== //
@@ -1832,7 +1832,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 400, height: 150 }
+      size: { width: 410, height: 175 }
     });
   };
 }];
@@ -2176,9 +2176,9 @@ module.exports = [function () {
           if (d && centered !== d) {
             islandFilter.filterBy('island', d.name);
             var centroid = path.centroid(d);
-            x = centroid[0];
-            y = centroid[1];
-            k = 1.5;
+            x = centroid[0] - 25;
+            y = centroid[1] + 75;
+            k = 2;
             centered = d;
             mapTip.show(d);
             setTimeout(function () {
@@ -2188,8 +2188,8 @@ module.exports = [function () {
           //if no islands are selected
           } else {
             islandFilter.filterBy('island', 'total');
-            x = width / 2.2;
-            y = height / 2.3;
+            x = width / 2;
+            y = height / 2;
             k = 1;
             centered = null;
             mapTip.hide(d);
@@ -2507,7 +2507,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_55ba37ae.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_2af00cb9.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';

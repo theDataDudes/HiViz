@@ -4,7 +4,7 @@
 
 		<h1 ng-if="!compareChecked">
 
-			<select id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', model.region1)">
+			<select class="regionSelector" id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', model.region1)">
 				<option value="total" selected="selected">Total</option>
 				<option value="usWest">US West</option>
 				<option value="usEast">US East</option>
@@ -18,7 +18,8 @@
 				<option value="korea">Korea</option>
 			</select>
 
-			<select id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', model.region1)">
+
+			<select class="regionSelector" id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', model.region1)">
 				<option value="total" selected="selected">Total</option>
 				<option value="usWest">US West</option>
 				<option value="usEast">US East</option>
@@ -32,7 +33,7 @@
 
     <h1 ng-if="compareChecked">
 
-	    <select id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+	    <select class="regionSelector" id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
 		    <option value="total" selected="selected">Total</option>
 		    <option value="usWest">US West</option>
 		    <option value="usEast">US East</option>
@@ -46,17 +47,20 @@
 		    <option value="korea">Korea</option>
 	    </select>
 
-	    <select id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+	    <select class="regionSelector" id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region1 = collection[0].region || 'total'" ng-model="model.region1" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
 		    <option value="total" selected="selected">Total</option>
 		    <option value="usWest">US West</option>
 		    <option value="usEast">US East</option>
 		    <option value="japan">Japan</option>
 		    <option value="canada">Canada</option>
 	    </select>
+	    <!--{{ collection[0].region === 'total' ? 'All' : collection[0].region.charAt(0).toUpperCase() + collection[0].region.slice(1) }} -->
 
-	     vs
+	   vs
 
-	    <select  id="originSelector"  ng-if="collection[0].year > 2012" ng-init="model.region2 = collection[1].region || 'total'" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+	    <!--{{ collection[1].region === 'total' ? 'All' : collection[1].region.charAt(0).toUpperCase() + collection[1].region.slice(1) }}-->
+
+	    <select  class="regionSelector" id="originSelector"  ng-if="collection[0].year > 2012" ng-init="model.region2 = collection[1].region || 'total'" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
 		    <option value="total" selected="selected">Total</option>
 		    <option value="usWest">US West</option>
 		    <option value="usEast">US East</option>
@@ -70,7 +74,8 @@
 		    <option value="korea">Korea</option>
 	    </select>
 
-      <select id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region2 = collection[1].region || 'total'" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+      <select class="regionSelector" id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region2 = collection[1].region || 'total'" ng-model="model.region2" ng-change="$ngc.filterBy('region', [model.region1, model.region2], $ngc.filters.inArray('some'))">
+
         <option value="total" selected="selected">Total</option>
         <option value="usWest">US West</option>
         <option value="usEast">US East</option>
@@ -101,12 +106,12 @@
 			<!-- on click will invoke changeIcon function that is declared in controller.js -->
 			<ul>
 			 <li><a ng-click="changeIcon('passengers')" name="Flights" class="tooltip"><img ng-src="{{ selectedIcon == 'passengers' && '../assets/plane.svg' || '../assets/unselected-plane.svg' }}" alt="flights"/></a></li><!--
-		--><li><a ng-click="changeIcon('total')" name="Spending" class="tooltip"><img src="../assets/dollar.svg" alt="spending"></a</li><!--
-    --><li><a ng-click="changeIcon('lodging')" name="Lodging" class="tooltip"><img src="../assets/bed.svg" alt="lodging"></a></li><!--
-    --><li><a ng-click="changeIcon('transportation')" name="Transportation" class="tooltip"><img src="../assets/car.svg" alt="transportation"></a></li><!--
-    --><li><a ng-click="changeIcon('shopping')" name="Shopping" class="tooltip"><img src="../assets/creditcard.svg" alt="shopping"></a></li><!--
-    --><li><a ng-click="changeIcon('food')" name="Food" class="tooltip"><img src="../assets/utensil.svg" alt="food"></a></li><!--
-    --><li><a ng-click="changeIcon('entertainment')" name="Entertainment" class="tooltip"><img src="../assets/tickets.svg" alt="entertainment"></a></li>
+		--><li><a ng-click="changeIcon('total')" name="Spending" class="tooltip"><img ng-src="{{ selectedIcon == 'total' && '../assets/dollar.svg' || '../assets/unselected-dollar.svg' }}" alt="spending"></a</li><!--
+    --><li><a ng-click="changeIcon('lodging')" name="Lodging" class="tooltip"><img ng-src="{{ selectedIcon == 'lodging' && '../assets/bed.svg' || '../assets/unselected-bed.svg' }}" alt="lodging"></a></li><!--
+    --><li><a ng-click="changeIcon('transportation')" name="Transportation" class="tooltip"><img ng-src="{{ selectedIcon == 'transportation' && '../assets/car.svg' || '../assets/unselected-car.svg' }}" alt="transportation"></a></li><!--
+    --><li><a ng-click="changeIcon('shopping')" name="Shopping" class="tooltip"><img ng-src="{{ selectedIcon == 'shopping' && '../assets/creditcard.svg' || '../assets/unselected-creditcard.svg' }}" alt="shopping"></a></li><!--
+    --><li><a ng-click="changeIcon('food')" name="Food" class="tooltip"><img ng-src="{{ selectedIcon == 'food' && '../assets/utensil.svg' || '../assets/unselected-utensil.svg' }}" alt="food"></a></li><!--
+    --><li><a ng-click="changeIcon('entertainment')" name="Entertainment" class="tooltip"><img ng-src="{{ selectedIcon == 'entertainment' && '../assets/tickets.svg' || '../assets/unselected-tickets.svg' }}" alt="entertainment"></a></li>
 			</ul>
 
 		</nav>
