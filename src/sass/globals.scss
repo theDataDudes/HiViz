@@ -7,6 +7,8 @@ $white: #FFFFFF;
 $darkBlue: #2C2C2C;
 $lightBlue: #1D1313;
 $backgroundWhite: rgba(43,135,158, 0.15);
+$lightSand: rgba(254,249,240, 1);
+
 
 //font definitions
 $bigFont: 900;
@@ -84,7 +86,7 @@ $small: "only screen and (max-width: 680px)";
 
 .highlighted {
 
-  background-color: RGBA(0, 184, 243, .1);
+  background-color: RGBA(0, 184, 243, .7);
 
 }
 

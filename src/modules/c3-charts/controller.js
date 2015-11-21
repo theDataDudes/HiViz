@@ -14,6 +14,19 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
     $scope.$emit('iconChanged');
   };
 
+  $scope.$on('crossfilter-updated', function (event, collection, identifier) {
+    $scope.chartLoad($scope.selectedIcon);
+    $scope.safeApply();
+  });
+
+  $scope.$on('iconChanged', function (event, collection, identifier) {
+    $scope.chartLoad($scope.selectedIcon);
+    $scope.safeApply();
+  });
+
+  $timeout(function() {
+    $scope.$emit('crossfilter-updated');
+  }, 800);
 
   // watching ngc since collection is stored on the global variable
   $scope.$watch('$ngc', function(filter) {
@@ -92,16 +105,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
         return current;
        }, {});
       };
-  });
 
-  $scope.$on('crossfilter/updated', function (event, collection, identifier) {
-    $scope.chartLoad($scope.selectedIcon);
-    $scope.safeApply();
-  });
-
-  $scope.$on('iconChanged', function (event, collection, identifier) {
-    $scope.chartLoad($scope.selectedIcon);
-    $scope.safeApply();
   });
 
 // pull island data from objects and assign it to each showGraph
@@ -160,7 +164,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 410, height: 175 },
+      size: { width: 440, height: 175 },
     });
     // ================= Big Island Chart =================== //
     $scope.bigIslandChart = c3.generate({
@@ -205,7 +209,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 410, height: 175 },
+      size: { width: 440, height: 175 },
     });
     // ================= Kauai Chart =================== //
     $scope.kauaiChart = c3.generate({
@@ -250,7 +254,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 410, height: 175 },
+      size: { width: 440, height: 175 },
     });
 
     // ================= Maui Chart =================== //
@@ -296,7 +300,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 410, height: 175 },
+      size: { width: 440, height: 175 },
     });
 
     // ================= Lanai Chart =================== //
@@ -342,7 +346,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 410, height: 175 },
+      size: { width: 440, height: 175 },
     });
 
     // ================= Molokai Chart =================== //
@@ -388,7 +392,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 410, height: 175 },
+      size: { width: 440, height: 175 },
     });
 
     // ================= Total Chart =================== //
@@ -434,7 +438,9 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           }
         }
       },
-      size: { width: 410, height: 175 }
+      size: { width: 440, height: 175 }
     });
   };
+
 }];
+
