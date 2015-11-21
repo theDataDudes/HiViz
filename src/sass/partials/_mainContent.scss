@@ -18,6 +18,7 @@
 #mapTitle {
 
   text-align: center;
+  color: $lightBlue;
 
 }
 
@@ -29,6 +30,10 @@
   padding: 0;
   box-sizing: border-box;
   z-index: 2;
+
+  h4 {
+    color: $darkBlue;
+  }
 
   #left-expend {
     // display: block;

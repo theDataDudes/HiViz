@@ -6,12 +6,13 @@ header {
   min-height: 100px;
   width: 100%;
   min-width: 480px;
-  background-color: RGBA(238, 238, 238, 0.7);
+  background-color: $darkBlue;
   border-bottom: 1px solid gray;
+  color: $backgroundWhite;
 
   h1 {
 
-    // color: #87CEFA;
+    color: $backgroundWhite;
     font-size: 40px;
     width: 80%;
     padding: 5px 0 0 0;
@@ -25,7 +26,7 @@ header {
   }
 
   h5 {
-
+    color: $backgroundWhite;
     font-size: 14px;
     width: 80%;
     padding: 0 0 0 0;
@@ -49,7 +50,7 @@ header {
   ul {
 
     list-style-type: none;
-    position: absolution;
+    position: absolute;
     right: 0;
     z-index: 2;
     margin: 49px 50px 0 0;
@@ -58,7 +59,7 @@ header {
     li {
 
       border: 1px solid black;
-      border-bottom:: none;
+      border-bottom: none;
       display: inline-block;
       box-sizing: border-box;
       padding: 10px 20px;
