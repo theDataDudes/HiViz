@@ -84,8 +84,12 @@
 
 	    in {{ collection[0].year}} </h1>
 
-			<span>Compare Regions?</span>
-			<input type='checkbox' ng-model='compareChecked' ng-change="$ngc.filterBy('region', model.region1); model.region2=null" id='compareCheckBox'/>
+	</div>
+
+	<div id="compareDiv">
+
+		<span>Compare Regions: </span>
+		<input type='checkbox' ng-model='compareChecked' ng-change="$ngc.filterBy('region', model.region1); model.region2=null" id='compareCheckBox'/>
 
 	</div>
 
@@ -93,7 +97,7 @@
 
 <!-- just a place holder to test region selector for charts page -->
 
-		<nav id="graphNav" class="small-6 columns small-offset-3">
+		<nav id="graphNav">
 
 			<!-- comments on purpose to avoid line break: https://css-tricks.com/fighting-the-space-between-inline-block-elements/-->
 
