@@ -2025,9 +2025,14 @@ h1 {
   background-color: RGBA(0, 184, 243, 0.7); }
 
 #c3row {
+  text-align: center;
   padding-top: 20px; }
 
+.centerbox {
+  text-align: center; }
+
 .box {
+  display: inline-block;
   width: 460px;
   height: 205px;
   padding: 10px;
@@ -2037,6 +2042,7 @@ h1 {
   border-radius: 5px; }
 
 .boxL {
+  display: inline-block;
   width: 460px;
   height: 205px;
   padding: 10px;
