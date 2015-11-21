@@ -2,14 +2,13 @@
 
 #graphTitle {
 
-  width: 650px;
-  margin: 0 auto;
+  text-align: center;
 
 }
 
 h1 {
 
-  display: inline;
+  display: inline-block;
 
 }
 
@@ -28,12 +27,20 @@ h1 {
 
 }
 
+#compareDiv {
+
+  margin: 0 auto;
+  width:155px;
+  padding-top: 5px;
+
+}
+
 
 #graphNav {
 
-  width: 800px;
+  text-align: center;
   margin: 0 auto;
-  padding: 5px 5px;
+  padding: 5px 0px;
   box-sizing: border-box;
   z-index: 2;
 
@@ -48,7 +55,7 @@ h1 {
       width: 35px;
       box-sizing: border-box;
       padding: 0 5px;
-      margin: 0 30px;
+      margin: 0 28px;
 
     }
 

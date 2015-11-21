@@ -1527,7 +1527,7 @@ header {
   height: 100%; }
   #viewNav ul {
     list-style-type: none;
-    position: absolute;
+    position: fixed;
     right: 0;
     z-index: 2;
     margin: 49px 50px 0 0;
@@ -1826,11 +1826,10 @@ sidebar {
   background-color: RGBA(0, 184, 243, 0.1); }
 
 #graphTitle {
-  width: 650px;
-  margin: 0 auto; }
+  text-align: center; }
 
 h1 {
-  display: inline; }
+  display: inline-block; }
 
 #regionSelector1 {
   display: inline;
@@ -1840,10 +1839,15 @@ h1 {
   display: inline;
   width: 100px; }
 
-#graphNav {
-  width: 800px;
+#compareDiv {
   margin: 0 auto;
-  padding: 5px 5px;
+  width: 155px;
+  padding-top: 5px; }
+
+#graphNav {
+  text-align: center;
+  margin: 0 auto;
+  padding: 5px 0px;
   box-sizing: border-box;
   z-index: 2; }
   #graphNav ul {
@@ -1854,7 +1858,7 @@ h1 {
       width: 35px;
       box-sizing: border-box;
       padding: 0 5px;
-      margin: 0 30px; }
+      margin: 0 28px; }
     #graphNav ul img {
       height: 35px;
       width: 35px; }
