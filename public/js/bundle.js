@@ -2516,7 +2516,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_be651d8.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_f7afeef3.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
@@ -2552,7 +2552,7 @@ module.exports = angular.module('app.main', [])
 },{"buffer":2,"rH1JPG":4}],26:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = ['$scope', ($scope) => {
+module.exports = ['$scope', '$timeout', ($scope, $timeout) => {
   $scope.donut = null;
 
   var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG',
@@ -2589,18 +2589,19 @@ module.exports = ['$scope', ($scope) => {
     });
   };
 
+  $scope.$on('crossfilter-updated', function() {
+    $timeout(function(){
+      $scope.donutLoad();
+      $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
+      }, 800);
+  });
+
   $scope.$on('crossfilter/updated', function (event, collection, identifier) {
     $scope.donutLoad();
     $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
     $scope.safeApply();
   });
 
-  $scope.$watch('selectedMonth', function (selectedMonth) {
-    if (!$scope.$ngc) return;
-    $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
-    $scope.donutLoad();
-    $scope.safeApply();
-  });
 
   $scope.$watch('$ngc', function () {
     $scope.donutLoad = function () {
@@ -2633,6 +2634,12 @@ module.exports = ['$scope', ($scope) => {
         columns : [ monthArray ]
       });
     };
+    $scope.$watch('selectedMonth', function (selectedMonth) {
+      if (!$scope.$ngc) return;
+      $scope.expenditureTotal = $scope.collection[0].month[$scope.selectedMonth];
+      $scope.donutLoad();
+      $scope.safeApply();
+    });
   });
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/sideCharts/controller.js","/sideCharts")
