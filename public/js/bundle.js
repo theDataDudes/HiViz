@@ -1397,7 +1397,7 @@ process.chdir = function (dir) {
 },{"buffer":2,"rH1JPG":4}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
-module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
+module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossfilter) => {
   // set 'this' to global scope variable self
   var self = this;
 
@@ -1832,7 +1832,7 @@ module.exports = ['$scope', 'Crossfilter', ($scope, Crossfilter) => {
           }
         }
       },
-      size: { width: 800, height: 300 }
+      size: { width: 400, height: 150 }
     });
   };
 }];
@@ -1850,7 +1850,6 @@ module.exports = angular.module('app.c3-charts',[])
         scope.$watch('$ngc', function(filter) {
           if(!filter) return;
           filter.unfilterBy('island');
-          filter.filterBy('region', 'total');
           filter.sortBy('island');
         });
       }
@@ -2505,7 +2504,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b81bdd4a.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9ec55dde.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';

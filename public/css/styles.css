@@ -1844,28 +1844,20 @@ h1 {
   width: 800px;
   margin: 0 auto;
   padding: 5px 5px;
-  margin-left: -20px;
   box-sizing: border-box;
   z-index: 2; }
   #graphNav ul {
     box-sizing: border-box; }
     #graphNav ul li {
       display: inline-block;
-      height: 40px;
-      width: 50px;
+      height: 35px;
+      width: 35px;
       box-sizing: border-box;
       padding: 0 5px;
       margin: 0 30px; }
-      #graphNav ul li p {
-        display: inline-block;
-        width: 40px;
-        height: 20px;
-        box-sizing: border-box;
-        font-size: 12px;
-        text-align: center; }
     #graphNav ul img {
-      height: 40px;
-      width: 40px; }
+      height: 35px;
+      width: 35px; }
       #graphNav ul img:active {
         border-bottom: 2px dashed #87CEFA;
         padding-bottom: 2px; }
