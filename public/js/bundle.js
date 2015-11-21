@@ -2516,13 +2516,13 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9cf9b3b2.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_be651d8.js","/")
 },{"./c3-charts":6,"./common":20,"./main":25,"./sideCharts":27,"./sidebar":28,"buffer":2,"rH1JPG":4}],25:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
 module.exports = angular.module('app.main', [])
-.config( ($stateProvider, $urlRouterProvider) => {
+.config( ($stateProvider, $urlRouterProvider, $locationProvider) => {
   // for unmatched urls redirect to default view
 
     $stateProvider
@@ -2541,6 +2541,10 @@ module.exports = angular.module('app.main', [])
         templateUrl : 'views/about.html'
       });
 
+    $locationProvider.html5Mode({
+      enabled : true,
+      requireBase : false
+    });
 
     $urlRouterProvider.otherwise('/');
   });
