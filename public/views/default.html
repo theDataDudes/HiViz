@@ -6,7 +6,7 @@
 
      <h2 id="mapTitle">Visitors coming from
 
-      <select id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region = collection[0].region || 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
+      <select class="regionSelector" id="originSelector" ng-if="collection[0].year > 2012" ng-init="model.region = collection[0].region || 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
           <option value="total" selected="selected">All Regions</option>
           <option value="usWest">US West</option>
           <option value="usEast">US East</option>
@@ -20,7 +20,7 @@
           <option value="korea">Korea</option>
         </select>
 
-      <select id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region = collection[0].region || 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
+      <select class="regionSelector" id="originSelector" ng-if="collection[0].year <= 2012" ng-init="model.region = collection[0].region || 'total'" ng-model="model.region" ng-change="$ngc.filterBy('region', model.region)">
         <option value="total" selected="selected">All Regions</option>
         <option value="usWest">US West</option>
         <option value="usEast">US East</option>
