@@ -10,7 +10,14 @@ header {
   border-bottom: 1px solid gray;
   color: $white;
 
-  h1 {
+   a {
+    color: inherit;
+    text-decoration: none;
+    width: 20%;
+
+   }
+
+    h1 {
 
     color: $white;
     font-size: 40px;
@@ -23,6 +30,11 @@ header {
 
     }
 
+  }
+
+  h4 {
+    width: 20%;
+    display: inline-block;
   }
 
   h5 {

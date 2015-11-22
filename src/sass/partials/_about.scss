@@ -1,0 +1,29 @@
+// styling css for about page
+@import 'globals';
+
+#about {
+  margin-left: 15px;
+}
+
+.aboutLinks {
+  max-width: 30px;
+}
+
+.headShot {
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 13px;
+  background-color: white;
+  border: solid 1px silver;
+  border-radius: 5px;
+}
+
+.profile {
+  text-align: center;
+}
+
+.profile-detail {
+  margin-bottom: 20px;
+}
