@@ -1710,9 +1710,9 @@ sidebar {
   box-sizing: border-box;
   background-color: white;
   border: solid 1px silver;
-  box-shadow: 0px 3px 5px 1px silver;
   border-radius: 5px;
-  z-index: 2; }
+  z-index: 2;
+  font-size: 15px; }
   #mapNav h4 {
     color: #2C2C2C; }
   #mapNav #left-expend {
@@ -2032,9 +2032,14 @@ h1 {
   background-color: RGBA(0, 184, 243, 0.7); }
 
 #c3row {
+  text-align: center;
   padding-top: 20px; }
 
+.centerbox {
+  text-align: center; }
+
 .box {
+  display: inline-block;
   width: 460px;
   height: 205px;
   padding: 10px;
@@ -2044,6 +2049,7 @@ h1 {
   border-radius: 5px; }
 
 .boxL {
+  display: inline-block;
   width: 460px;
   height: 205px;
   padding: 10px;
