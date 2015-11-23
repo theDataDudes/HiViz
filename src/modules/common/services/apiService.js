@@ -2,22 +2,22 @@
 
 module.exports = ['$http', function apiService ($http) {
   this.getAnnual = () => {
-    return $http.get('http://localhost:8000/annual');
+    return $http.get('/annual');
   };
 
   this.getDaily = () => {
-    return $http.get('http://localhost:8000/daily');
+    return $http.get('/daily');
   };
 
   this.getExpenditures = () => {
-    return $http.get('http://localhost:8000/expenditures');
+    return $http.get('/expenditures');
   };
 
   this.getAvgStay = () => {
-    return $http.get('http://localhost:8000/avgstay');
+    return $http.get('/avgstay');
   };
 
   this.getHawaiiVisitors = () => {
-    return $http.get('http://localhost:8000/hawaiivisitors');
+    return $http.get('/hawaiivisitors');
   };
 }];

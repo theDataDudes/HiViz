@@ -1,10 +1,10 @@
 (function () {
   'use strict';
-  const PORT = process.env.PORT || Config.server.port;
   const Hapi = require('hapi');
   const Path = require('path');
   const Inert = require('inert');
   const Config = require('./config');
+  const PORT = process.env.PORT || Config.server.port;
   const Route = require('./routes');
 
 
