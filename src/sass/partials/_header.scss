@@ -10,6 +10,12 @@ header {
   border-bottom: 1px solid gray;
   color: $white;
 
+  #mainTitle {
+    &:hover {
+      color: rgba(256,256,256, .5);
+    }
+  }
+
    a {
     color: inherit;
     text-decoration: none;
@@ -35,6 +41,14 @@ header {
   h4 {
     width: 20%;
     display: inline-block;
+
+    #hiViz {
+      color: RGBA(0, 184, 243, 0.7);
+      &:hover {
+        color: RGBA(0, 184, 243, 1);
+      }
+
+    }
   }
 
   h5 {

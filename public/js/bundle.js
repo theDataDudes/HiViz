@@ -2394,23 +2394,23 @@ module.exports = angular.module('app.common', [
 
 module.exports = ['$http', function apiService ($http) {
   this.getAnnual = () => {
-    return $http.get('http://localhost:8000/annual');
+    return $http.get('/annual');
   };
 
   this.getDaily = () => {
-    return $http.get('http://localhost:8000/daily');
+    return $http.get('/daily');
   };
 
   this.getExpenditures = () => {
-    return $http.get('http://localhost:8000/expenditures');
+    return $http.get('/expenditures');
   };
 
   this.getAvgStay = () => {
-    return $http.get('http://localhost:8000/avgstay');
+    return $http.get('/avgstay');
   };
 
   this.getHawaiiVisitors = () => {
-    return $http.get('http://localhost:8000/hawaiivisitors');
+    return $http.get('/hawaiivisitors');
   };
 }];
 }).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/common/services/apiService.js","/common/services")
@@ -2435,7 +2435,7 @@ angular.module('app', [
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
 }]);
-}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_56331a22.js","/")
+}).call(this,require("rH1JPG"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_bb118ca5.js","/")
 },{"./c3-charts":6,"./common":19,"./main":23,"./sideCharts":25,"./sidebar":26,"buffer":2,"rH1JPG":4}],23:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
