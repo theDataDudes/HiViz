@@ -4,6 +4,8 @@ var nodemon = require('gulp-nodemon');
 var livereload = require('gulp-livereload');
 var rename = require('gulp-rename');
 var browserify = require('gulp-browserify');
+var babel = require('gulp-babel');
+
 
 // keeps gulp from crashing for scss errors
 gulp.task('sass', function () {
@@ -15,14 +17,25 @@ gulp.task('sass', function () {
       .pipe(gulp.dest('./public/css/'));
 });
 
-gulp.task('browserify', () => {
+gulp.task('browserify', function () {
   gulp.src('src/modules/app.js')
         .pipe(browserify({
           insertGlobals : true
         }))
+         .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(rename('bundle.js'))
         .pipe(gulp.dest('./public/js/'));
 });
+
+// gulp.task('babel', function () {
+//     return gulp.src('public/js/bundle.js')
+//         .pipe(babel({
+//             presets: ['es2015']
+//         }))
+//         .pipe(gulp.dest('public/js/'));
+// });
 
 gulp.task('watch', function () {
   gulp.watch('./src/**/*.js', ['browserify']);
@@ -50,4 +63,5 @@ gulp.task('start', function () {
 
 });
 
+gulp.task('production', ['sass', 'browserify']);
 gulp.task('default', ['watch', 'sass', 'browserify', 'start']);

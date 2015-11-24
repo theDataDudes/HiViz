@@ -46,7 +46,7 @@ module.exports = [function () {
             .on('click', clicked);
 
         //defining the tooltip
-        mapTip = d3.tip()
+        var mapTip = d3.tip()
           .attr('class', 'd3-tip')
           .html(function (d) {
             return "<strong>" + d.name.toUpperCase() +
