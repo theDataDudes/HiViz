@@ -2291,11 +2291,13 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
     }).call(this, require("rH1JPG"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/common/services/index.js", "/common/services");
   }, { "./apiService": 20, "buffer": 2, "rH1JPG": 4 }], 22: [function (require, module, exports) {
     (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
-      angular.module('app', ['ui.router', 'rzModule', require('./common').name, require('./sideCharts').name, require('./c3-charts').name, require('./main').name, require('./sidebar').name]).run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
-        $rootScope.$state = $state;
-        $rootScope.$stateParams = $stateParams;
+      angular.module('app', ['ui.router', 'rzModule', require('./common').name, require('./sideCharts').name, require('./c3-charts').name, require('./main').name, require('./sidebar').name]).run(['$rootScope', '$location', '$window', function ($rootScope, $location, $window) {
+        $rootScope.$on('$stateChangeSuccess', function (event) {
+          if (!$window.ga) return;
+          $window.ga('send', 'pageview', { page: $location.path() });
+        });
       }]);
-    }).call(this, require("rH1JPG"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_683b9015.js", "/");
+    }).call(this, require("rH1JPG"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_fda02fc5.js", "/");
   }, { "./c3-charts": 6, "./common": 19, "./main": 23, "./sideCharts": 25, "./sidebar": 26, "buffer": 2, "rH1JPG": 4 }], 23: [function (require, module, exports) {
     (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
       'use strict';

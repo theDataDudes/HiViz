@@ -7,7 +7,12 @@ angular.module('app', [
   require('./main').name,
 	require('./sidebar').name,
 ])
-.run(['$rootScope', '$state', '$stateParams', ($rootScope, $state, $stateParams) => {
-  $rootScope.$state = $state;
-  $rootScope.$stateParams = $stateParams;
+.run(['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
+  $rootScope
+    .$on('$stateChangeSuccess',
+      function(event) {
+        if(!$window.ga)
+          return;
+        $window.ga('send', 'pageview', { page: $location.path() });
+      });
 }]);
