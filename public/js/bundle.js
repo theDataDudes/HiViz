@@ -1471,6 +1471,13 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
           $scope.oahuChart = c3.generate({
             bindto: '#oahu',
             data: { columns: [], type: 'area-spline' },
+            padding: {
+              left: 75,
+              right: 10
+            },
+            transition: {
+              duration: 0
+            },
             axis: {
               y: {
                 tick: {
@@ -1489,6 +1496,7 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
                 },
                 min: 0,
                 padding: {
+                  left: 1,
                   bottom: 0
                 }
               },
@@ -1516,6 +1524,10 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
           $scope.bigIslandChart = c3.generate({
             bindto: '#big',
             data: { columns: [], type: 'area-spline' },
+            padding: {
+              left: 75,
+              right: 10
+            },
             axis: {
               y: {
                 tick: {
@@ -1560,6 +1572,10 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
           $scope.kauaiChart = c3.generate({
             bindto: '#kauai',
             data: { columns: [], type: 'area-spline' },
+            padding: {
+              left: 75,
+              right: 10
+            },
             axis: {
               y: {
                 tick: {
@@ -1606,6 +1622,10 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
           $scope.mauiChart = c3.generate({
             bindto: '#maui',
             data: { columns: [], type: 'area-spline' },
+            padding: {
+              left: 75,
+              right: 10
+            },
             axis: {
               y: {
                 tick: {
@@ -1652,6 +1672,10 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
           $scope.lanaiChart = c3.generate({
             bindto: '#lanai',
             data: { columns: [], type: 'area-spline' },
+            padding: {
+              left: 75,
+              right: 10
+            },
             axis: {
               y: {
                 tick: {
@@ -1698,6 +1722,10 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
           $scope.molokaiChart = c3.generate({
             bindto: '#molokai',
             data: { columns: [], type: 'area-spline' },
+            padding: {
+              left: 75,
+              right: 10
+            },
             axis: {
               y: {
                 tick: {
@@ -1743,6 +1771,10 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
           $scope.totalChart = c3.generate({
             bindto: '#total',
             data: { columns: [], type: 'area-spline' },
+            padding: {
+              left: 80,
+              right: 10
+            },
             axis: {
               y: {
                 tick: {
@@ -2297,7 +2329,7 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
           $window.ga('send', 'pageview', { page: $location.path() });
         });
       }]);
-    }).call(this, require("rH1JPG"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_5e6275ba.js", "/");
+    }).call(this, require("rH1JPG"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_2c80582d.js", "/");
   }, { "./c3-charts": 6, "./common": 19, "./main": 23, "./sideCharts": 25, "./sidebar": 26, "buffer": 2, "rH1JPG": 4 }], 23: [function (require, module, exports) {
     (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
       'use strict';

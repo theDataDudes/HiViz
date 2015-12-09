@@ -125,8 +125,15 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
     $scope.oahuChart = c3.generate({
       bindto: '#oahu',
       data: { columns: [], type: 'area-spline',},
+      padding: {
+        left : 75,
+        right : 10,
+      },
+      transition: {
+        duration: 0
+      },
       axis : {
-         y : {
+          y : {
               tick: {
                 count: 7,
                 // conditional to change number style between passengers and expenditures
@@ -143,6 +150,7 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
               },
               min: 0,
               padding: {
+                left: 1,
                 bottom: 0
               }
           },
@@ -170,6 +178,10 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
     $scope.bigIslandChart = c3.generate({
       bindto: '#big',
       data: { columns: [], type: 'area-spline',},
+      padding: {
+        left : 75,
+        right : 10,
+      },
       axis : {
          y : {
               tick: {
@@ -214,6 +226,10 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
     $scope.kauaiChart = c3.generate({
       bindto: '#kauai',
       data: { columns: [], type: 'area-spline',},
+      padding: {
+        left : 75,
+        right : 10,
+      },
       axis : {
          y : {
               tick: {
@@ -260,6 +276,10 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
     $scope.mauiChart = c3.generate({
       bindto: '#maui',
       data: { columns: [], type: 'area-spline',},
+      padding: {
+        left : 75,
+        right : 10,
+      },
       axis : {
          y : {
               tick: {
@@ -306,6 +326,10 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
     $scope.lanaiChart = c3.generate({
       bindto: '#lanai',
       data: { columns: [], type: 'area-spline',},
+      padding: {
+        left : 75,
+        right : 10,
+      },
       axis : {
          y : {
               tick: {
@@ -352,6 +376,10 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
     $scope.molokaiChart = c3.generate({
       bindto: '#molokai',
       data: { columns: [], type: 'area-spline',},
+      padding: {
+        left : 75,
+        right : 10,
+      },
       axis : {
          y : {
               tick: {
@@ -397,6 +425,10 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
     $scope.totalChart = c3.generate({
       bindto: '#total',
       data: { columns: [], type: 'area-spline',},
+      padding: {
+        left : 80,
+        right : 10,
+      },
       axis : {
          y : {
               tick: {
