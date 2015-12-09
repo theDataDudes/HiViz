@@ -30,7 +30,15 @@ module.exports = ['$scope', '$timeout', ($scope, $timeout) => {
           'SEP', 'OCT', 'NOV', 'DEC']
         }
       },
-      bar : {
+      tooltip : {
+        format : {
+          value : function (value, ratio, id) {
+            var exp = value;
+            var newExp = exp.toFixed(2);
+            var format = d3.format(',');
+            return format(newExp);
+          }
+        }
 
       }
     });

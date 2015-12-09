@@ -148,9 +148,9 @@ module.exports = ['$scope', '$timeout', 'Crossfilter', ($scope, $timeout, Crossf
           },
         x : { type : 'category', categories : monthTicks }
       },
-      tooltip: {
-        format: {
-          value: function (value, ratio, id) {
+      tooltip : {
+        format : {
+          value : function (value, ratio, id) {
               if($scope.selectedIcon === 'passengers') {
               exp = value;
               newExp = exp.toFixed(2);

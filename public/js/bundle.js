@@ -2297,7 +2297,7 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
           $window.ga('send', 'pageview', { page: $location.path() });
         });
       }]);
-    }).call(this, require("rH1JPG"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_fda02fc5.js", "/");
+    }).call(this, require("rH1JPG"), typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {}, require("buffer").Buffer, arguments[3], arguments[4], arguments[5], arguments[6], "/fake_5e6275ba.js", "/");
   }, { "./c3-charts": 6, "./common": 19, "./main": 23, "./sideCharts": 25, "./sidebar": 26, "buffer": 2, "rH1JPG": 4 }], 23: [function (require, module, exports) {
     (function (process, global, Buffer, __argument0, __argument1, __argument2, __argument3, __filename, __dirname) {
       'use strict';
@@ -2357,7 +2357,17 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
                 categories: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
               }
             },
-            bar: {}
+            tooltip: {
+              format: {
+                value: function value(_value8, ratio, id) {
+                  var exp = _value8;
+                  var newExp = exp.toFixed(2);
+                  var format = d3.format(',');
+                  return format(newExp);
+                }
+              }
+
+            }
           });
         };
 
